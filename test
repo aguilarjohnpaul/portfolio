@@ -1,0 +1,52 @@
+from prettytable import PrettyTable
+import os
+import json
+
+def load_data(file_name):
+    if os.path.exists(file_name):
+        with open(file_name, 'r') as file:
+            return json.load(file)
+    else:
+        return []
+
+def save_data(data, file_name):
+    with open(file_name, 'w') as file:
+        json.dump(data, file, indent=4)
+
+def display_table(data):
+    table = PrettyTable()
+    table.field_names = ["Company", "Position", "Last Updated", "Status", "Note"]
+    for job in data:
+        table.add_row([job["Company"], job["Position"], job["Last Updated"], job["Status"], job["Note"]])
+    print(table)
+
+def add_job(data):
+    company = input("Enter Company: ")
+    position = input("Enter Position: ")
+    last_updated = input("Enter Last Updated: ")
+    status = input("Enter Status: ")
+    note = input("Enter Note: ")
+    job = {"Company": company, "Position": position, "Last Updated": last_updated, "Status": status, "Note": note}
+    data.append(job)
+    return data
+
+def main():
+    file_name = "job_applications.json"
+    jobs_data = load_data(file_name)
+    while True:
+        print("\n1. Add Job Application\n2. Display Job Applications\n3. Quit")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            jobs_data = add_job(jobs_data)
+            save_data(jobs_data, file_name)
+            print("Job application added successfully!")
+        elif choice == "2":
+            display_table(jobs_data)
+        elif choice == "3":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
