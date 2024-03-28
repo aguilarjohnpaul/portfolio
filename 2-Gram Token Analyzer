@@ -3,7 +3,7 @@ import re
 
 def get_2grams(text):
     # Define stop words
-    stop_words = set(["of", "to", "a", "the", "and", "in", "for", "who", "such", "as", "or", "with", "be", "will", "an"," s"])
+    stop_words = set(["of", "to", "a", "the", "and", "in", "for", "who","such","an","with","will","an","this","is","some","such","are","but","on","as", "s","or"])
 
     # Tokenize the text into words
     words = re.findall(r'\b\w+\b', text.lower())
