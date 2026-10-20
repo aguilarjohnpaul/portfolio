@@ -1,0 +1,18 @@
+---
+import type { HomeData } from '../lib/content';
+interface Props { pains: HomeData['pains'] }
+const { pains } = Astro.props;
+---
+<section class="section section-surface" aria-labelledby="pains-h">
+  <div class="container">
+    <h2 id="pains-h" class="section-head">{pains.heading}</h2>
+    <ul role="list" class="grid">
+      {pains.items.map((p) => (
+        <li class="stack">
+          <h3>{p.title}</h3>
+          <p class="muted">{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

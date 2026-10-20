@@ -1,0 +1,40 @@
+---
+import type { HomeData } from '../lib/content';
+interface Props { how: HomeData['how'] }
+const { how } = Astro.props;
+---
+<section id="how" class="section" aria-labelledby="how-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{how.eyebrow}</p>
+      <h2 id="how-h">{how.heading}</h2>
+      <p class="lead">{how.intro}</p>
+    </div>
+    <ol role="list" class="grid">
+      {how.stages.map((s, i) => (
+        <li class="card stage">
+          <p class="n" aria-hidden="true">{i + 1}</p>
+          <h3><span class="visually-hidden">{i + 1}. </span>{s.name}</h3>
+          <div>
+            <p class="label">{how.breaks_label}</p>
+            <p>{s.breaks}</p>
+          </div>
+          <div>
+            <p class="label">{how.fix_label}</p>
+            <p>{s.fix}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .stage { display: grid; gap: var(--space-4); align-content: start; }
+  .n {
+    font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--accent-text);
+    width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .label { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: var(--space-1); }
+</style>

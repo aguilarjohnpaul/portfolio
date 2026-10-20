@@ -1,0 +1,39 @@
+# Founding client program page (spec §7, /founding-clients).
+
+heading: Founding client program
+intro:
+  - "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System."
+  - In return, I ask for your before and after numbers, a written case study and an honest testimonial.
+
+for:
+  heading: Who it's for
+  body: Owner-run service businesses with 5 to 20 people, where the owner can meet weekly for a month and share before and after numbers.
+
+deal:
+  heading: The deal
+  get_label: What you get
+  get:
+    - Referral Leak Audit
+    - 30-Day Referral System
+    - Weekly check-ins for a month
+  ask_label: What I ask
+  ask:
+    - Before and after numbers
+    - A written case study
+    - An honest testimonial
+
+steps:
+  heading: How it works
+  items:
+    - Apply (5 minutes)
+    - 20-minute fit call
+    - Audit
+    - 30-Day Referral System
+    - Case study
+
+apply:
+  heading: Apply for a spot
+  waitlist_heading: Join the waitlist
+  loading: Loading the application…
+  fallback: "Trouble loading the form? Open the application in a new tab."
+  iframe_title: Founding client application

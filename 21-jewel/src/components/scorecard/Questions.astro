@@ -1,0 +1,37 @@
+---
+import { fill, type ScorecardContent } from '../../lib/content';
+interface Props { sc: ScorecardContent }
+const { sc } = Astro.props;
+const total = sc.questions.length;
+const stageName = Object.fromEntries(sc.stages.map((s) => [s.id, s.name]));
+---
+<div class="sc-questions" data-state="questions" hidden>
+  <div class="progress">
+    <p class="small" aria-live="polite" data-progress data-template={sc.question_ui.progress}>
+      {fill(sc.question_ui.progress, { n: 1, total })}
+    </p>
+    <div class="bar" aria-hidden="true"><div class="bar-fill" data-progress-bar></div></div>
+  </div>
+  {sc.questions.map((q, i) => (
+    <fieldset class="q" data-q={i} hidden={i > 0}>
+      <legend>
+        <span class="stage">{stageName[q.stage]}</span>
+        <span class="q-text" tabindex="-1">{q.text}</span>
+      </legend>
+      <div class="options">
+        {(q.options ?? sc.standard_options).map((o, j) => (
+          <label class="opt">
+            <input type="radio" name={`q${q.id}`} value={o.score} data-index={j} />
+            <span class="key" aria-hidden="true">{j + 1}</span>
+            <span>{o.label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  ))}
+  <div class="nav">
+    <button type="button" class="link-btn" data-action="back">{sc.question_ui.back}</button>
+    <button type="button" class="btn btn-primary" data-action="next" disabled>{sc.question_ui.next}</button>
+  </div>
+  <p class="micro hint">{sc.question_ui.keyboard_hint}</p>
+</div>

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { calHref, doc } from '../lib/content';
+const [site, s] = await Promise.all([doc('site'), doc('studios')]);
+---
+<Base page="studios">
+  <div class="container page-head">
+    <h1>{s.heading}</h1>
+    <p class="lead">{s.intro}</p>
+  </div>
+  <section class="section">
+    <div class="container grid">
+      <div class="card stack">
+        <h2 class="h3">{s.get.heading}</h2>
+        <ul class="list">{s.get.items.map((i) => <li>{i}</li>)}</ul>
+      </div>
+      <div class="card stack">
+        <h2 class="h3">{s.steps.heading}</h2>
+        <ol class="list">{s.steps.items.map((i) => <li>{i}</li>)}</ol>
+      </div>
+    </div>
+  </section>
+  <section class="section section-surface" aria-labelledby="contact-h">
+    <div class="container stack">
+      <h2 id="contact-h">{s.contact.heading}</h2>
+      <p class="lead">
+        {s.contact.email_prefix}{' '}
+        <a href={`mailto:${site.brand.email}`} data-event="email_click" data-prop-location="studios">{site.brand.email}</a>
+      </p>
+      <div><a class="btn btn-primary" href={calHref(site)} data-event="book_call_click" data-prop-location="studios">{s.contact.book}</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .h3 { font-size: var(--h3); }
+  .lead a { overflow-wrap: anywhere; }
+</style>

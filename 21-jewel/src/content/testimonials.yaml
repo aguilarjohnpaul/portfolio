@@ -1,0 +1,7 @@
+# Testimonials (Phase 2). Leave as an empty list until you have real ones.
+# Example entry:
+# - id: first-client
+#   quote: "What they said, word for word."
+#   name: Their name
+#   role: Owner, Their Business
+testimonials: []

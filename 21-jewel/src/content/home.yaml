@@ -1,0 +1,90 @@
+# Homepage copy, section by section (spec §5).
+
+hero:
+  eyebrow: Revenue strategy for owner-run service firms
+  primary: { label: How referable is your business?, href: "/scorecard" }
+  secondary: { label: See founding client spots, href: "/founding-clients" }
+  micro: "Free · 12 questions · About 3 minutes · Results on screen"
+  variants:
+    a:
+      h1: Referrals built your firm. Now build the system behind them.
+      subhead: For service businesses with 5 to 20 people. Find where referrals leak, follow up faster, and turn happy clients into steady new work.
+    b:
+      h1: Busy one month, empty the next? Turn word of mouth into steady work.
+      subhead: For service businesses with 5 to 20 people. Fix the referral and follow-up leaks behind the slow months.
+
+sample:
+  label: Sample result
+  score: 62
+  score_label: referability
+  bars:
+    - { label: Get referred, value: 70 }
+    - { label: Get hired, value: 48, weakest: true }
+    - { label: Get hired again, value: 66 }
+  footer: "Biggest leak: follow-up after the first call."
+
+pains:
+  heading: Sound familiar?
+  items:
+    - title: Referrals slowed down.
+      body: Word of mouth used to keep you busy. Lately it's quieter, and you're not sure why.
+    - title: Leads go quiet.
+      body: People reach out, you send a quote, and then nothing. No one has time to chase.
+    - title: Busy, then empty.
+      body: One month you're turning work away. The next, you're wondering where it went.
+
+how:
+  eyebrow: How it works
+  heading: Get referred. Get hired. Get hired again.
+  intro: Every referral goes through three stages. Most firms lose work at one of them without seeing it.
+  breaks_label: Where it breaks
+  fix_label: What we fix
+  stages:
+    - name: Get referred
+      breaks: Happy clients mean to mention you and forget.
+      fix: A clear, easy way for clients and partners to send work your way.
+    - name: Get hired
+      breaks: Slow follow-up, unclear offers, quotes that stall.
+      fix: A follow-up and proposal process that closes more of what comes in.
+    - name: Get hired again
+      breaks: The project ends and the client drifts away.
+      fix: Check-ins and next offers that bring past clients back and keep them referring.
+
+offers:
+  eyebrow: Offers
+  heading: Start where you are.
+  intro: Each step builds on the last. The audit fee is credited toward your next step.
+
+founding:
+  eyebrow: Founding client program
+  heading: Five spots. No fee. An honest case study in return.
+  body: I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System.
+  get_label: What you get
+  get:
+    - Referral Leak Audit
+    - 30-Day Referral System
+    - Weekly check-ins for a month
+  ask_label: What I ask
+  ask:
+    - Before and after numbers
+    - A written case study
+    - An honest testimonial
+  button: { label: Apply for a spot, href: "/founding-clients#apply" }
+
+proof:
+  eyebrow: Results
+  heading: What founding clients say
+
+about:
+  # Put a 4:5 photo at public/jp.jpg and set photo: /jp.jpg
+  photo: ""
+  photo_alt: "[PHOTO OF JP]"
+  heading: Hi, I'm JP.
+  paragraphs:
+    - "I've spent [X] years in revenue strategy: pipelines, funnels, paid media and the CRM work behind them. Now I help owner-run firms in San Antonio and beyond turn word of mouth into steady work."
+    - Honest over impressive. I'll tell you what's working, what isn't, and what to fix first.
+
+scorecard_cta:
+  heading: How referable is your business?
+  body: Twelve questions. About three minutes. Your score and your biggest leak, on screen.
+  button: { label: Start the scorecard, href: "/scorecard" }

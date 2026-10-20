@@ -1,0 +1,48 @@
+---
+import { spotsOpen, type HomeData, type SiteData } from '../lib/content';
+import SpotMeter from './SpotMeter.astro';
+interface Props { founding: HomeData['founding']; site: SiteData }
+const { founding, site } = Astro.props;
+const full = spotsOpen(site) === 0;
+---
+<section id="founding" class="section band" aria-labelledby="founding-h">
+  <div class="container inner">
+    <div class="intro">
+      <p class="eyebrow">{founding.eyebrow}</p>
+      <h2 id="founding-h">{founding.heading}</h2>
+      <p class="body">{founding.body}</p>
+      <SpotMeter site={site} />
+    </div>
+    <div class="lists">
+      <div class="box">
+        <h3>{founding.get_label}</h3>
+        <ul class="list">{founding.get.map((g) => <li>{g}</li>)}</ul>
+      </div>
+      <div class="box">
+        <h3>{founding.ask_label}</h3>
+        <ul class="list">{founding.ask.map((a) => <li>{a}</li>)}</ul>
+      </div>
+    </div>
+    <div>
+      <a class="btn cta" href={founding.button.href} data-event="founding_apply_click" data-prop-location="home-band">
+        {full ? site.spots.waitlist : founding.button.label}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band { background: var(--band-bg); color: var(--band-fg); }
+  .band h2, .band h3 { color: var(--band-fg); }
+  .band .eyebrow { color: var(--band-accent); }
+  .inner { display: grid; gap: var(--space-6); }
+  .intro { display: grid; gap: var(--space-4); }
+  .intro .eyebrow { margin-bottom: 0; }
+  .body { color: var(--band-muted); font-size: var(--lead); }
+  .lists { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .box { border: 1px solid var(--band-line); border-radius: var(--radius-card); padding: var(--space-5); display: grid; gap: var(--space-3); align-content: start; }
+  .box li { color: var(--band-muted); }
+  .cta { background: var(--band-fg); color: var(--band-bg); }
+  .cta:hover { filter: brightness(0.94); }
+  .band :focus-visible { outline-color: var(--band-accent); }
+</style>

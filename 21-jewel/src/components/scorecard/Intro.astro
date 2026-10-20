@@ -1,0 +1,11 @@
+---
+import type { ScorecardContent } from '../../lib/content';
+interface Props { intro: ScorecardContent['intro'] }
+const { intro } = Astro.props;
+---
+<div class="sc-intro stack" data-state="intro">
+  <h1>{intro.heading}</h1>
+  <p class="lead">{intro.body}</p>
+  <div><button type="button" class="btn btn-primary" data-action="start">{intro.start}</button></div>
+  <p class="micro">{intro.micro}</p>
+</div>

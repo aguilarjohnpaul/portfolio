@@ -1,0 +1,40 @@
+---
+import { calHref, type SiteData } from '../lib/content';
+import ThemeToggle from './ThemeToggle.astro';
+interface Props { site: SiteData }
+const { site } = Astro.props;
+const { brand, footer } = site;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container inner">
+    <div class="top">
+      <p class="name">{brand.name}</p>
+      <ul role="list" class="links">
+        <li>
+          <a href={`mailto:${brand.email}`} data-event="email_click" data-prop-location="footer">{brand.email}</a>
+        </li>
+        <li><a href={calHref(site)} data-event="book_call_click" data-prop-location="footer">{footer.book_call}</a></li>
+        <li>{footer.studios_prefix} <a href="/studios">{footer.studios_label}</a></li>
+        <li><a href="/privacy">{footer.privacy}</a></li>
+      </ul>
+    </div>
+    <p class="values small">{brand.values.join(' · ')}</p>
+    <div class="bottom">
+      <p class="small muted">{brand.location} · © {year} {brand.name}</p>
+      <ThemeToggle footer={footer} />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--space-7); }
+  .inner { display: grid; gap: var(--space-5); }
+  .top { display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-7); align-items: baseline; }
+  .name { font-family: var(--font-display); font-weight: 600; font-size: 22px; }
+  .links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+  .links li { font-size: var(--small); color: var(--muted); min-height: 44px; display: flex; align-items: center; flex-wrap: wrap; gap: 0 0.3em; }
+  .links a { overflow-wrap: anywhere; }
+  .values { color: var(--muted); }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); }
+</style>

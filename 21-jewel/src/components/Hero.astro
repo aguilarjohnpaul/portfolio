@@ -1,0 +1,39 @@
+---
+import type { HomeData, SiteData } from '../lib/content';
+import HeroVariant from './HeroVariant.astro';
+import SampleResultCard from './SampleResultCard.astro';
+interface Props {
+  hero: HomeData['hero'];
+  sample: HomeData['sample'];
+  test: SiteData['heroTest'];
+  /** Phase 2 hook: router paths. Unused while router.enabled is false. */
+  paths?: { label: string; href: string }[];
+}
+const { hero, sample, test } = Astro.props;
+const tested = test.enabled && !test.winner;
+const ids: ('a' | 'b')[] = tested ? ['a', 'b'] : [test.winner || 'a'];
+---
+<section class="hero container">
+  <div class="copy">
+    <p class="eyebrow">{hero.eyebrow}</p>
+    {ids.map((id) => <HeroVariant id={id} tested={tested} {...hero.variants[id]} />)}
+    <div class="btn-row">
+      <a class="btn btn-primary" href={hero.primary.href} data-event="hero_cta_click" data-prop-cta="scorecard">{hero.primary.label}</a>
+      <a class="btn btn-ghost" href={hero.secondary.href} data-event="hero_cta_click" data-prop-cta="founding">{hero.secondary.label}</a>
+    </div>
+    <p class="micro">{hero.micro}</p>
+  </div>
+  <SampleResultCard sample={sample} />
+</section>
+
+<style>
+  .hero {
+    display: grid; gap: var(--space-7); align-items: center;
+    padding-block: var(--space-8) var(--section);
+  }
+  .copy { display: grid; gap: var(--space-5); }
+  .copy .eyebrow { margin-bottom: calc(var(--space-2) * -1); }
+  @media (min-width: 760px) {
+    .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--space-8); }
+  }
+</style>

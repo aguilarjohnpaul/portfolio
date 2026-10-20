@@ -1,0 +1,31 @@
+# Copy for the small pages: privacy, thanks and 404.
+
+privacy:
+  heading: Privacy
+  updated_label: Last updated
+  intro: This site collects as little as it needs. Here's what each service stores and why.
+  services:
+    - name: PostHog (analytics)
+      body: Counts page views and button clicks, such as starting or finishing the scorecard, so I can see what's working. It stores a random ID in your browser. It does not record your screen, and it respects your browser's Do Not Track setting.
+    - name: Kit (email)
+      body: "If you ask for your scorecard breakdown, Kit stores your email, the optional first name, business name and team size you gave, and your scores. I use it to send your breakdown and occasional notes. Every email has an unsubscribe link."
+    - name: Tally (applications)
+      body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
+    - name: Cloudflare Turnstile (spam protection)
+      body: Checks that the scorecard email form is filled in by a person. It does not use your answers.
+    - name: Cloudflare (hosting)
+      body: Hosts this site and keeps standard server logs, such as IP addresses, for security.
+  storage: "Your browser also keeps your scorecard progress for this visit, your theme choice and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
+  deletion: "To see or delete anything I hold about you, email me at"
+  deletion_suffix: and I'll take care of it within 30 days.
+
+thanks:
+  heading: Thanks. Your application is in.
+  body: I read every application myself and reply within two business days. If it looks like a fit, I'll send a link for a 20-minute call.
+  home: Back to the homepage
+
+notfound:
+  heading: That page doesn't exist.
+  body: The link may be old, or the address may have a typo.
+  home: Go to the homepage
+  scorecard: Take the scorecard

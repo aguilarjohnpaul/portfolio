@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import OfferDetail from '../components/OfferDetail.astro';
+import FAQ from '../components/FAQ.astro';
+import { calHref, doc, ladder } from '../lib/content';
+import { faqPage } from '../lib/schema';
+
+const [site, data] = await Promise.all([doc('site'), doc('offers')]);
+const cal = calHref(site);
+---
+<Base page="offers" jsonLd={[faqPage(data.faq)]}>
+  <div class="container page-head">
+    <h1>{data.page.heading}</h1>
+    <p class="lead">{data.page.intro}</p>
+  </div>
+  <section class="section">
+    <div class="container offers">
+      {ladder(data).map((o) => <OfferDetail offer={o} labels={data.page.labels} cal={cal} />)}
+    </div>
+  </section>
+  <FAQ heading={data.page.faq_heading} items={data.faq} />
+</Base>
+
+<style>
+  .offers { display: grid; gap: var(--space-5); max-width: 960px; }
+</style>

@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects. www → apex is set as a Cloudflare redirect rule (see TODO-JP.md).
+/index /  301
+/founding /founding-clients 301
+/studio /studios 301

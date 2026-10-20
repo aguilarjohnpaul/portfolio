@@ -1,0 +1,125 @@
+# The scorecard (spec §6). Questions, options, scoring bands and fixes were
+# chosen deliberately. Change wording here; scoring rules live in src/lib/scorecard.ts.
+
+intro:
+  heading: How referable is your business?
+  body: 12 quick questions about how new work finds you. You'll see your score and your biggest leak right away.
+  start: Start
+  micro: "Free · 12 questions · About 3 minutes"
+
+question_ui:
+  progress: "Question {n} of {total}"
+  back: Back
+  next: Next
+  keyboard_hint: "Tip: press 1 to 4 to answer, Enter to continue."
+
+standard_options:
+  - { label: Always, score: 3 }
+  - { label: Usually, score: 2 }
+  - { label: Sometimes, score: 1 }
+  - { label: Rarely or never, score: 0 }
+
+stages:
+  - { id: referred, name: Get referred, slug: get-referred }
+  - { id: hired, name: Get hired, slug: get-hired }
+  - { id: again, name: Get hired again, slug: get-hired-again }
+
+questions:
+  - id: 1
+    stage: referred
+    text: When a project wraps up well, do you ask the client for a referral?
+    fix: 'Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?"'
+  - id: 2
+    stage: referred
+    text: Do your clients know exactly what kind of client you'd like referred?
+    fix: Write a one-sentence "ideal referral" description and put it in your email signature and wrap-up message.
+  - id: 3
+    stage: referred
+    text: Do other businesses (partners, vendors, peers) send you work regularly?
+    fix: List five businesses that serve your clients before or after you. Offer each a simple two-way referral arrangement.
+  - id: 4
+    stage: referred
+    text: Do you thank or reward people who refer you?
+    fix: Send a handwritten note or a small thank-you within 48 hours of every referral, whether or not it turns into work.
+  - id: 5
+    stage: hired
+    text: How fast do you usually reply to a new inquiry?
+    options:
+      - { label: Within the hour, score: 3 }
+      - { label: Same day, score: 2 }
+      - { label: Within 1–2 days, score: 1 }
+      - { label: Longer, score: 0 }
+    fix: Set an auto-reply that confirms receipt and books a call slot. Aim to reply personally the same business day.
+  - id: 6
+    stage: hired
+    text: Do you follow up on quotes or proposals that haven't been answered?
+    fix: Follow up on day 2, day 7 and day 14 with a short, useful note, not a "just checking in."
+  - id: 7
+    stage: hired
+    text: Can a new prospect tell what you offer and roughly what it costs from your website?
+    fix: Add a plain "What we do and starting prices" section. Clear ranges filter out poor fits and speed up yeses.
+  - id: 8
+    stage: hired
+    text: Do you track where each new lead came from?
+    fix: Add "How did you hear about us?" to your inquiry form and log the answer for every lead.
+  - id: 9
+    stage: again
+    text: Do you check in with past clients after the work ends?
+    fix: Put a 30-, 90- and 180-day check-in on your calendar for every finished project.
+  - id: 10
+    stage: again
+    text: When a project ends, do you offer a clear next step or service?
+    fix: Write one natural follow-on offer for your most common project and mention it at wrap-up.
+  - id: 11
+    stage: again
+    text: Do you ask happy clients for reviews or testimonials?
+    fix: Send a review link with two prompt questions within a week of a strong finish.
+  - id: 12
+    stage: again
+    text: Do you know which clients have referred you before?
+    fix: Keep a simple list of referrers and what they sent. Your best referrers deserve the most attention.
+
+bands:
+  - { min: 0, max: 39, name: Running on luck, slug: running-on-luck, meaning: Work comes in when it comes in. A few basics would change that fast. }
+  - { min: 40, max: 69, name: "Working, but leaking", slug: working-but-leaking, meaning: "Referrals happen, but you're losing good work at one or two stages." }
+  - { min: 70, max: 100, name: Built to be referred, slug: built-to-be-referred, meaning: Your system works. The gains now come from new lead sources and consistency. }
+
+result:
+  eyebrow: Your result
+  score_suffix: / 100
+  leak_label: Your biggest leak
+  fix_label: Start here
+  restart: Start over
+
+email:
+  heading: "Get your full breakdown: all three stage scores and your top 3 fixes, sent to your inbox."
+  first_name: First name (optional)
+  email: Email
+  business: Business name (optional)
+  team_size: Team size
+  team_size_placeholder: Choose one
+  team_sizes:
+    - { value: "1", label: Just me }
+    - { value: 2-4, label: 2–4 }
+    - { value: 5-20, label: 5–20 }
+    - { value: 21-50, label: 21–50 }
+    - { value: 50+, label: 50+ }
+  honeypot: Leave this field empty
+  submit: Send my breakdown
+  sending: Sending…
+  privacy_note: "I'll only use your email to send your breakdown and occasional notes from 21 Jewel. Unsubscribe any time."
+  privacy_link: Privacy
+
+after:
+  sent: Sent. Check your inbox in a few minutes.
+  stages_heading: Your three stages
+  founding: { label: "Want help fixing it? See founding client spots", href: "/founding-clients" }
+  book: Book a call
+
+errors:
+  email_required: Enter your email so I can send your breakdown.
+  team_required: Choose your team size.
+  invalid_email: That email doesn't look right. Check it and try again.
+  verification_failed: "We couldn't confirm you're not a bot. Refresh the check below and try again."
+  list_unavailable: "We couldn't reach our email service. Your score is still on this page. Try again in a minute."
+  network: "Something went wrong sending your breakdown. Your score is still on this page. Try again in a minute."

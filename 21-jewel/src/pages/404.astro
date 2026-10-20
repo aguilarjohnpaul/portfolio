@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { doc } from '../lib/content';
+const t = (await doc('pages')).notfound;
+---
+<Base page="notfound" noindex>
+  <div class="container page-head section">
+    <h1>{t.heading}</h1>
+    <p class="lead">{t.body}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/">{t.home}</a>
+      <a class="btn btn-ghost" href="/scorecard">{t.scorecard}</a>
+    </div>
+  </div>
+</Base>

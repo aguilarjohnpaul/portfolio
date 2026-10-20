@@ -1,0 +1,115 @@
+# The offer ladder (spec §3). Display order is the ladder order.
+# price_from: set to a number like "$750". Leave it "" to show "Pricing on request".
+# checkout_url: Phase 2 hook for payment links. Leave empty in Phase 1.
+
+page:
+  heading: Offers
+  intro: Start with the free scorecard, or pick the step that fits where you are. The audit fee is credited toward your next step.
+  ladder_rule: The audit fee is credited toward your next step.
+  labels:
+    for: Who it's for
+    get: What you get
+    timeline: Timeline
+    scorecard_button: Take the scorecard
+    book_button: Book a call
+    founding_link: Or apply as a founding client
+    starting_at: Starting at
+    on_request: Pricing on request
+  faq_heading: Questions
+
+offers:
+  - id: scorecard
+    name: How Referable Is Your Business?
+    type: Free
+    free: true
+    price_from: ""
+    one_liner: A 3-minute scorecard. See your score and your biggest leak.
+    for: Any owner who wants a quick, honest read on how new work finds them.
+    get:
+      - 12 questions
+      - Instant score
+      - Biggest leak on screen
+      - Full breakdown by email
+    timeline: About 3 minutes
+    checkout_url: ""
+
+  - id: audit
+    name: Referral Leak Audit
+    type: Paid diagnostic
+    price_from: "[PRICE]"
+    one_liner: We trace where referrals and leads get lost and rank the fixes.
+    for: Firms that know something's off but not where.
+    get:
+      - A 60-minute working session
+      - A review of your website, inquiry handling, follow-up and past-client contact
+      - A written leak report with fixes ranked by effort and payoff
+      - A 30-minute walkthrough
+    timeline: About 2 weeks. The fee is credited toward the 30-Day Referral System if booked within 30 days.
+    checkout_url: ""
+
+  - id: system
+    name: 30-Day Referral System
+    type: Sprint
+    price_from: "[PRICE]"
+    one_liner: We build your referral asks, follow-up and tracking in 30 days.
+    for: Firms ready to fix the leaks.
+    get:
+      - Referral ask scripts and timing
+      - A partner referral plan
+      - Inquiry response and quote follow-up templates
+      - A simple lead-source tracker in the tools you already use
+      - A past-client check-in plan
+      - Weekly 30-minute check-ins
+    timeline: 30 days
+    checkout_url: ""
+
+  - id: roadmap
+    name: Lead Growth Roadmap
+    type: Plan
+    price_from: "[PRICE]"
+    one_liner: A 90-day plan for new lead sources beyond word of mouth.
+    for: Firms whose referrals work but aren't enough.
+    get:
+      - A channel plan sized to your budget
+      - Messaging for your best-fit clients
+      - A 90-day calendar
+      - The numbers to watch
+    timeline: About 3 weeks to build
+    checkout_url: ""
+
+  - id: advisor
+    name: Monthly Growth Advisor
+    type: Retainer
+    price_from: "[PRICE]"
+    price_suffix: /month
+    one_liner: A monthly review of your numbers and a steady hand on what's next.
+    for: Firms that want accountability after a sprint or roadmap.
+    get:
+      - A monthly 60-minute review
+      - Async questions
+      - A quarterly plan refresh
+      - Help directing your vendors and designers
+    note: You keep execution in-house or with your partners.
+    timeline: Ongoing, month to month
+    checkout_url: ""
+
+  - id: studio-sprint
+    name: White-label Strategy Sprint
+    type: Studio partners only
+    studio_only: true
+    price_from: ""
+    one_liner: Strategy delivered under your studio's name.
+    for: Design studios of 2 to 10 people.
+    get: []
+    timeline: 2 to 3 weeks
+    checkout_url: ""
+
+faq:
+  - q: Do I need to start with the audit?
+    a: No. The scorecard is free and points you to the right step.
+  - q: Do you run ads or post content for me?
+    a: No. I build the plan and the system, and your team or partners carry it out. I can recommend vetted partners.
+  - q: Do you work outside San Antonio?
+    a: Yes, everything works remotely.
+  - q: What if my score is already high?
+    a: Then the Lead Growth Roadmap is usually the next step.

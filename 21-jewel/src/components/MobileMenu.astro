@@ -1,0 +1,48 @@
+---
+import type { SiteData } from '../lib/content';
+interface Props { nav: SiteData['nav'] }
+const { nav } = Astro.props;
+---
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
+  data-open={nav.menu_open} data-close={nav.menu_close}>{nav.menu_open}</button>
+<nav id="mobile-menu" class="panel" aria-label="Mobile" hidden>
+  <ul role="list" class="container">
+    {nav.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  </ul>
+</nav>
+
+<style>
+  .menu-btn {
+    min-height: 44px; min-width: 44px; padding: 0 var(--space-3);
+    background: transparent; border: 1px solid var(--line); border-radius: var(--radius-btn);
+    font-weight: 600; font-size: 14px; cursor: pointer;
+  }
+  .panel {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .panel ul { display: grid; padding-block: var(--space-3) var(--space-5); }
+  .panel a {
+    display: flex; align-items: center; min-height: 52px;
+    color: var(--ink); text-decoration: none; font-weight: 500; font-size: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 760px) { .menu-btn, .panel { display: none; } }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const panel = document.getElementById('mobile-menu');
+  if (btn && panel) {
+    const set = (open: boolean, focusBtn = false) => {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = (open ? btn.dataset.close : btn.dataset.open) ?? '';
+      panel.hidden = !open;
+      if (focusBtn) btn.focus();
+    };
+    btn.addEventListener('click', () => set(!!panel.hidden));
+    panel.addEventListener('click', (e) => { if ((e.target as Element).closest('a')) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) set(false, true); });
+    matchMedia('(min-width: 760px)').addEventListener('change', (m) => { if (m.matches) set(false); });
+  }
+</script>

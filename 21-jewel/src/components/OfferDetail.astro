@@ -1,0 +1,49 @@
+---
+import { priceLabel, type Offer, type OffersData } from '../lib/content';
+interface Props { offer: Offer; labels: OffersData['page']['labels']; cal: string }
+const { offer, labels, cal } = Astro.props;
+---
+<article id={offer.id} class="card detail" aria-labelledby={`${offer.id}-h`}>
+  <header class="head">
+    <p class="price">{offer.type} · {priceLabel(offer, labels)}</p>
+    <h2 id={`${offer.id}-h`}>{offer.name}</h2>
+    <p class="lead">{offer.one_liner}</p>
+  </header>
+  <div class="body">
+    <div>
+      <h3>{labels.for}</h3>
+      <p>{offer.for}</p>
+    </div>
+    {offer.get.length > 0 && (
+      <div>
+        <h3>{labels.get}</h3>
+        <ul class="list">{offer.get.map((g) => <li>{g}</li>)}</ul>
+        {offer.note && <p class="muted note">{offer.note}</p>}
+      </div>
+    )}
+    <div>
+      <h3>{labels.timeline}</h3>
+      <p>{offer.timeline}</p>
+    </div>
+  </div>
+  <div class="btn-row actions">
+    {offer.id === 'scorecard'
+      ? <a class="btn btn-primary" href="/scorecard">{labels.scorecard_button}</a>
+      : <>
+          <a class="btn btn-primary" href={cal} data-event="book_call_click" data-prop-location={`offers-${offer.id}`}>{labels.book_button}</a>
+          <a class="secondary" href="/founding-clients" data-event="founding_apply_click" data-prop-location={`offers-${offer.id}`}>{labels.founding_link}</a>
+        </>}
+  </div>
+</article>
+
+<style>
+  .detail { display: grid; gap: var(--space-5); padding: var(--space-6); scroll-margin-top: 96px; }
+  .head { display: grid; gap: var(--space-3); }
+  .price { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-text); }
+  h2 { font-size: var(--h3); }
+  h3 { font-family: var(--font-body); font-size: var(--small); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: var(--space-2); }
+  .body { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .note { margin-top: var(--space-3); font-size: var(--small); }
+  .actions { align-items: center; }
+  .secondary { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; padding-inline: var(--space-2); }
+</style>

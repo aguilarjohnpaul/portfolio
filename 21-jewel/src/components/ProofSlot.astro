@@ -1,0 +1,35 @@
+---
+// Hidden in Phase 1. Renders only when case studies or testimonials exist.
+import { proofItems, type HomeData } from '../lib/content';
+interface Props { proof: HomeData['proof'] }
+const { proof } = Astro.props;
+const { studies, testimonials } = await proofItems();
+const show = studies.length > 0 || testimonials.length > 0;
+---
+{show && (
+  <section id="proof" class="section" aria-labelledby="proof-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{proof.eyebrow}</p>
+        <h2 id="proof-h">{proof.heading}</h2>
+      </div>
+      <ul role="list" class="grid">
+        {studies.map((s) => (
+          <li class="card stack">
+            <h3>{s.data.title}</h3>
+            <p class="muted">{s.data.client}</p>
+            <p>{s.data.summary}</p>
+          </li>
+        ))}
+        {testimonials.map((t) => (
+          <li class="card">
+            <figure class="stack">
+              <blockquote><p>“{t.quote}”</p></blockquote>
+              <figcaption class="small muted">{t.name}{t.role && `, ${t.role}`}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

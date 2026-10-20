@@ -1,0 +1,22 @@
+---
+import { ladder, priceLabel, type HomeData, type OffersData } from '../lib/content';
+import OfferCard from './OfferCard.astro';
+interface Props { intro: HomeData['offers']; data: OffersData }
+const { intro, data } = Astro.props;
+---
+<section id="offers" class="section section-surface" aria-labelledby="offers-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{intro.eyebrow}</p>
+      <h2 id="offers-h">{intro.heading}</h2>
+      <p class="lead">{intro.intro}</p>
+    </div>
+    <ol role="list" class="ladder">
+      {ladder(data).map((o) => <OfferCard offer={o} price={priceLabel(o, data.page.labels)} />)}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .ladder { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+</style>

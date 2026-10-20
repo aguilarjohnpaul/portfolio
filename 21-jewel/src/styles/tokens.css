@@ -1,0 +1,86 @@
+/* Design tokens. Change the look here. Palette "Evergreen" (spec §10.1).
+   Any new text/background pair needs a 4.5:1 contrast check. */
+
+:root {
+  color-scheme: light;
+  --bg: #F3EFE6;
+  --surface: #FBF9F6;
+  --ink: #1E3B2F;
+  --muted: #606D63;
+  --line: #D5D6CC;
+  --accent: #B5643C;       /* fills, borders, weakest bar. Never text. */
+  --accent-text: #9F5835;
+  --data: #2F7D5B;
+  --btn-bg: #1E3B2F;
+  --btn-fg: #F3EFE6;
+  --band-bg: #1E3B2F;
+  --band-fg: #F3EFE6;
+  --band-muted: #C9CEC6;
+  --band-accent: #D9A07F;
+  --band-line: #3A5A4C;
+  --focus: #9F5835;
+  --error: #A3352B;
+
+  --font-display: 'Fraunces Variable', 'Fraunces Fallback', Georgia, serif;
+  --font-body: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+  --h1: 36px; --h2: 30px; --h3: 20px; --lead: 17px;
+  --body: 16px; --small: 14px; --micro: 13px;
+
+  --container: 1200px;
+  --gutter: max(24px, env(safe-area-inset-left), env(safe-area-inset-right));
+  --section: 56px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+
+  --radius-btn: 8px;
+  --radius-card: 12px;
+  --radius-hero: 14px;
+
+  --ease: 150ms ease-out;
+}
+
+@media (min-width: 760px) {
+  :root {
+    --h1: 56px; --h2: 40px; --h3: 24px; --lead: 19px;
+    --section: 80px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0B1612;
+    --surface: #11221B;
+    --ink: #F3EFE6;
+    --muted: #9EA79D;
+    --line: #303934;
+    --accent-text: #C98A68;
+    --data: #5FB58C;
+    --btn-bg: #F3EFE6;
+    --btn-fg: #1E3B2F;
+    --band-bg: #173A2D;
+    --band-accent: #E0AE8F;
+    --band-line: #2F5446;
+    --focus: #E0AE8F;
+    --error: #F0A196;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0B1612;
+  --surface: #11221B;
+  --ink: #F3EFE6;
+  --muted: #9EA79D;
+  --line: #303934;
+  --accent-text: #C98A68;
+  --data: #5FB58C;
+  --btn-bg: #F3EFE6;
+  --btn-fg: #1E3B2F;
+  --band-bg: #173A2D;
+  --band-accent: #E0AE8F;
+  --band-line: #2F5446;
+  --focus: #E0AE8F;
+  --error: #F0A196;
+}

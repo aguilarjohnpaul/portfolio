@@ -1,0 +1,21 @@
+---
+import type { Offer } from '../lib/content';
+interface Props { offer: Offer; price: string }
+const { offer, price } = Astro.props;
+const href = offer.id === 'scorecard' ? '/scorecard' : `/offers#${offer.id}`;
+---
+<li class="card offer">
+  <a href={href} data-event="offer_card_click" data-prop-offer_id={offer.id}>
+    <p class="price">{price}</p>
+    <h3>{offer.name}</h3>
+    <p class="muted">{offer.one_liner}</p>
+  </a>
+</li>
+
+<style>
+  .offer { padding: 0; transition: border-color var(--ease); }
+  .offer:hover { border-color: var(--accent); }
+  a { display: grid; gap: var(--space-3); padding: var(--space-5); height: 100%; color: inherit; text-decoration: none; align-content: start; border-radius: inherit; }
+  .price { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-text); }
+  h3 { font-size: 20px; }
+</style>

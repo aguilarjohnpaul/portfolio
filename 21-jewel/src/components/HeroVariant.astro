@@ -1,0 +1,12 @@
+---
+interface Props { id: 'a' | 'b'; h1: string; subhead: string; tested: boolean }
+const { id, h1, subhead, tested } = Astro.props;
+---
+<div class="variant" data-hero-variant={tested ? id : undefined}>
+  <h1>{h1}</h1>
+  <p class="lead">{subhead}</p>
+</div>
+
+<style>
+  .variant h1 { margin-bottom: var(--space-4); }
+</style>

@@ -1,0 +1,34 @@
+---
+import { calHref, doc, warn } from '../lib/content';
+import Intro from './scorecard/Intro.astro';
+import Questions from './scorecard/Questions.astro';
+import Result from './scorecard/Result.astro';
+import EmailForm from './scorecard/EmailForm.astro';
+import './scorecard/scorecard.css';
+
+const [sc, site] = await Promise.all([doc('scorecard'), doc('site')]);
+// Cloudflare's "always passes" test key keeps local builds working.
+const TEST_KEY = '1x00000000000000000000AA';
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || TEST_KEY;
+if (siteKey === TEST_KEY) warn('PUBLIC_TURNSTILE_SITE_KEY is not set. Using the Turnstile test key.');
+
+const clientData = {
+  questions: sc.questions.map((q) => ({ id: q.id, stage: q.stage, text: q.text, fix: q.fix, options: q.options })),
+  standard_options: sc.standard_options,
+  stages: sc.stages,
+  bands: sc.bands,
+  errors: sc.errors,
+};
+---
+<div class="scorecard container" data-scorecard>
+  <Intro intro={sc.intro} />
+  <Questions sc={sc} />
+  <Result sc={sc} />
+  <EmailForm sc={sc} siteKey={siteKey} calHref={calHref(site)} />
+  <script type="application/json" id="scorecard-data" set:html={JSON.stringify(clientData)} />
+</div>
+
+<script>
+  import { initScorecard } from '../scripts/scorecard-client';
+  initScorecard();
+</script>

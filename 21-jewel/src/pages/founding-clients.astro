@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import SpotMeter from '../components/SpotMeter.astro';
+import TallyEmbed from '../components/TallyEmbed.astro';
+import { doc, spotsOpen } from '../lib/content';
+
+const [site, f] = await Promise.all([doc('site'), doc('founding')]);
+const full = spotsOpen(site) === 0;
+---
+<Base page="founding">
+  <div class="container page-head">
+    <h1>{f.heading}</h1>
+    {f.intro.map((p, i) => <p class:list={{ lead: i === 0 }}>{p}</p>)}
+    <SpotMeter site={site} tone="page" />
+    <div>
+      <a class="btn btn-primary" href="#apply" data-event="founding_apply_click" data-prop-location="founding-top">
+        {full ? site.spots.waitlist : site.spots.apply}
+      </a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container grid">
+      <div class="card stack">
+        <h2 class="h3">{f.for.heading}</h2>
+        <p>{f.for.body}</p>
+      </div>
+      <div class="card stack">
+        <h2 class="h3">{f.deal.heading}</h2>
+        <div class="deal">
+          <div>
+            <h3 class="label">{f.deal.get_label}</h3>
+            <ul class="list">{f.deal.get.map((g) => <li>{g}</li>)}</ul>
+          </div>
+          <div>
+            <h3 class="label">{f.deal.ask_label}</h3>
+            <ul class="list">{f.deal.ask.map((a) => <li>{a}</li>)}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-surface" aria-labelledby="steps-h">
+    <div class="container">
+      <h2 id="steps-h" class="section-head">{f.steps.heading}</h2>
+      <ol role="list" class="steps">
+        {f.steps.items.map((s, i) => <li><span class="n" aria-hidden="true">{i + 1}</span>{s}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section id="apply" class="section" aria-labelledby="apply-h">
+    <div class="container apply">
+      <h2 id="apply-h">{full ? f.apply.waitlist_heading : f.apply.heading}</h2>
+      <TallyEmbed url={site.links.tally} title={f.apply.iframe_title} loading={f.apply.loading}
+        fallback={f.apply.fallback} waitlist={full} email={site.brand.email} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .h3 { font-size: var(--h3); }
+  .deal { display: grid; gap: var(--space-4); }
+  .label { font-family: var(--font-body); font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: var(--space-2); }
+  .steps { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); }
+  .steps li { display: flex; align-items: center; gap: var(--space-3); font-weight: 600; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-card); padding: var(--space-4); }
+  .n { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent-text); display: grid; place-items: center; font-size: var(--small); }
+  .apply { display: grid; gap: var(--space-5); max-width: 760px; scroll-margin-top: 88px; }
+</style>

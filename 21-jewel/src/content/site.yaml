@@ -1,0 +1,91 @@
+# Brand, contact, nav, footer, feature flags and founding spot counts.
+# Edit values here. Components read everything from this file.
+
+brand:
+  name: 21 Jewel
+  url: https://21jeweladvisory.com
+  email: johnpaul@21jeweladvisory.com
+  location: San Antonio, TX
+  founder: JP
+  values:
+    - Honest over impressive
+    - Serve the person, not the project
+    - Build brands that outlast their owners
+
+links:
+  # Paste your Cal.com "20-minute fit call" link here.
+  cal: "[CAL_LINK]"
+  # Paste your Tally application form URL here (for example https://tally.so/r/abc123).
+  tally: "[TALLY_FORM_URL]"
+
+founding:
+  total: 5
+  filled: 0
+
+heroTest:
+  enabled: true
+  # Set to "a" or "b" to end the test and show only that hero.
+  winner: ""
+
+router:
+  # Phase 2 hook: two-path router (service owners / founders). Leave false.
+  enabled: false
+
+nav:
+  skip: Skip to content
+  home_label: 21 Jewel home
+  menu_open: Menu
+  menu_close: Close
+  links:
+    - { label: How it works, href: "/#how" }
+    - { label: Offers, href: "/offers" }
+    - { label: Founding clients, href: "/founding-clients" }
+    - { label: About, href: "/#about" }
+  cta: { label: Take the scorecard, href: "/scorecard" }
+  # Shown in the header on phones narrower than 400px.
+  cta_short: Scorecard
+
+footer:
+  book_call: Book a call
+  studios_prefix: "For design studios:"
+  studios_label: White-label Strategy Sprint
+  privacy: Privacy
+  theme_label: Theme
+  theme_options:
+    - { value: light, label: Light }
+    - { value: dark, label: Dark }
+    - { value: system, label: System }
+
+spots:
+  open_label: "{n} of {total} spots open"
+  full_label: All founding spots are taken. Join the waitlist.
+  apply: Apply for a spot
+  waitlist: Join the waitlist
+
+seo:
+  og_image: /og.png
+  pages:
+    home:
+      title: "21 Jewel · Turn referrals into steady work."
+      description: "Revenue strategy for owner-run service firms. Take the free 3-minute scorecard: How referable is your business?"
+    scorecard:
+      title: "How referable is your business? · 21 Jewel"
+      description: "Twelve questions. About three minutes. See your referability score and your biggest leak, on screen."
+    offers:
+      title: "Offers · 21 Jewel"
+      description: "From a free scorecard to a monthly growth advisor. Start where you are. The audit fee is credited toward your next step."
+    founding:
+      title: "Founding client program · 21 Jewel"
+      description: "Five owner-run service firms. No fee. The full Referral Leak Audit and 30-Day Referral System, in exchange for an honest case study."
+    studios:
+      title: "White-label Strategy Sprint · 21 Jewel"
+      description: "For design studios of 2 to 10 people. Strategy delivered under your studio's name."
+    privacy:
+      title: "Privacy · 21 Jewel"
+      description: "What this site collects, which services store it and how to ask for deletion."
+    thanks:
+      title: "Thanks for applying · 21 Jewel"
+      description: "Your founding client application is in."
+    notfound:
+      title: "Page not found · 21 Jewel"
+      description: "That page doesn't exist."

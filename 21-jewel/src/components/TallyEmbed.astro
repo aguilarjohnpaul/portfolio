@@ -1,0 +1,54 @@
+---
+import { isPlaceholder, warn } from '../lib/content';
+interface Props { url: string; title: string; loading: string; fallback: string; waitlist: boolean; email: string }
+const { url, title, loading, fallback, waitlist, email } = Astro.props;
+const ready = !isPlaceholder(url);
+if (!ready) warn('site.yaml links.tally is still a placeholder. The application shows an email link instead.');
+const params = 'alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1' + (waitlist ? '&waitlist=1' : '');
+const embed = ready ? `${url.replace('/r/', '/embed/')}${url.includes('?') ? '&' : '?'}${params}` : '';
+const direct = ready ? `${url}${waitlist ? (url.includes('?') ? '&' : '?') + 'waitlist=1' : ''}` : `mailto:${email}`;
+---
+<div class="tally" data-tally-wrap>
+  {ready && <p class="loading muted" data-tally-loading>{loading}</p>}
+  {ready && <iframe data-tally-src={embed} loading="lazy" width="100%" height="600" title={title}></iframe>}
+  <p class="small fallback">
+    <a href={direct} target={ready ? '_blank' : undefined} rel="noopener" data-event="founding_apply_click" data-prop-location="tally-fallback">{ready ? fallback : email}</a>
+  </p>
+</div>
+
+<style>
+  .tally { display: grid; gap: var(--space-3); }
+  iframe { border: 0; width: 100%; min-height: 600px; }
+  .loading { padding: var(--space-5) 0; }
+</style>
+
+<script>
+  import { track } from '../lib/analytics';
+  const wrap = document.querySelector<HTMLElement>('[data-tally-wrap]');
+  const frame = wrap?.querySelector<HTMLIFrameElement>('iframe');
+  if (wrap && frame) {
+    let tracked = false;
+    // Count one apply interaction: focus moving into the form.
+    addEventListener('blur', () => {
+      if (!tracked && document.activeElement === frame) {
+        tracked = true;
+        track('founding_apply_click', { location: 'tally-embed' });
+      }
+    });
+    const hideLoading = () => wrap.querySelector('[data-tally-loading]')?.remove();
+    frame.addEventListener('load', () => { if (frame.src) hideLoading(); });
+    const load = () => {
+      const w = window as unknown as { Tally?: { loadEmbeds: () => void } };
+      if (w.Tally) return w.Tally.loadEmbeds();
+      const s = document.createElement('script');
+      s.src = 'https://tally.so/widgets/embed.js';
+      s.async = true;
+      s.onload = () => w.Tally?.loadEmbeds();
+      s.onerror = () => { frame.src = frame.dataset.tallySrc!; };
+      document.body.append(s);
+    };
+    new IntersectionObserver((entries, obs) => {
+      if (entries.some((e) => e.isIntersecting)) { obs.disconnect(); load(); }
+    }, { rootMargin: '400px' }).observe(wrap);
+  }
+</script>

@@ -1,0 +1,31 @@
+---
+import type { ScorecardContent } from '../../lib/content';
+interface Props { sc: ScorecardContent }
+const { sc } = Astro.props;
+---
+<div class="sc-result" data-state="result" hidden>
+  <section class="card result-card" aria-labelledby="result-h" tabindex="-1" data-result-focus>
+    <p class="eyebrow" id="result-h">{sc.result.eyebrow}</p>
+    <p class="score"><span class="num" data-total>0</span><span class="of">{sc.result.score_suffix}</span></p>
+    <h2 class="band" data-band></h2>
+    <p class="muted" data-band-meaning></p>
+    <div class="leak">
+      <p class="label">{sc.result.leak_label}</p>
+      <p class="leak-stage" data-leak></p>
+      <p class="label">{sc.result.fix_label}</p>
+      <p data-fix></p>
+    </div>
+    <div class="stages" data-stages hidden>
+      <h3>{sc.after.stages_heading}</h3>
+      <ul role="list" class="bars">
+        {sc.stages.map((s) => (
+          <li data-stage={s.id}>
+            <div class="row"><span>{s.name}</span><span class="val" data-stage-val></span></div>
+            <div class="track" aria-hidden="true"><div class="fill" data-stage-fill></div></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <button type="button" class="link-btn restart" data-action="restart">{sc.result.restart}</button>
+</div>

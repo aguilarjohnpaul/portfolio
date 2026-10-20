@@ -1,0 +1,23 @@
+---
+import { fill, spotsOpen, type SiteData } from '../lib/content';
+interface Props { site: SiteData; tone?: 'band' | 'page' }
+const { site, tone = 'band' } = Astro.props;
+const { total, filled } = site.founding;
+const open = spotsOpen(site);
+const label = open > 0 ? fill(site.spots.open_label, { n: open, total }) : site.spots.full_label;
+---
+<div class:list={['meter', tone]}>
+  <span class="dots" aria-hidden="true">
+    {Array.from({ length: total }, (_, i) => <span class:list={['dot', { taken: i < filled }]}></span>)}
+  </span>
+  <span class="label">{label}</span>
+</div>
+
+<style>
+  .meter { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; font-weight: 600; }
+  .dots { display: inline-flex; gap: 6px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--dot); }
+  .dot.taken { background: var(--dot); }
+  .band { --dot: var(--band-accent); color: var(--band-fg); }
+  .page { --dot: var(--accent); color: var(--ink); }
+</style>

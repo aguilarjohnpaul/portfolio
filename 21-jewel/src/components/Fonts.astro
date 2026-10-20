@@ -1,0 +1,14 @@
+---
+// Self-hosted variable fonts, latin subset only, with size-adjusted fallbacks.
+import fraunces from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
+import inter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+
+const css = `
+@font-face{font-family:'Fraunces Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(${fraunces}) format('woff2-variations')}
+@font-face{font-family:'Inter Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(${inter}) format('woff2-variations')}
+@font-face{font-family:'Fraunces Fallback';src:local('Georgia');size-adjust:104%;ascent-override:94%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107%;ascent-override:90%;descent-override:22.4%;line-gap-override:0%}`;
+---
+<link rel="preload" href={fraunces} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter} as="font" type="font/woff2" crossorigin />
+<style is:inline set:html={css}></style>
