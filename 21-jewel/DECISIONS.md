@@ -2,7 +2,7 @@
 
 Judgment calls made while building Phase 1. One line each, newest first.
 
-- 2026-10-20 · Launch prices set by JP: audit $950, system $2,500, roadmap $2,000, advisor $750/month with a 3-month minimum (shown in the advisor timeline). "Starting at" labels kept. Founding page intro now states the bundle is "a $3,450 value" (audit + system).
+- 2026-10-20 · Launch prices set by JP: audit $950, system $2,500, roadmap $2,000, advisor $750/month with a 3-month minimum (shown in the advisor timeline). "Starting at" labels kept. Founding page intro and the homepage founding band now state the bundle is "a $3,450 value" (audit + system).
 - 2026-10-20 · The Tally form sits in a frame that stays light in dark mode (`--embed-*` tokens), because the embedded form can't follow the site's theme.
 - 2026-10-20 · Added `nav.cta_short` ("Scorecard"): the full header button wrapped onto two lines on 360px phones.
 - 2026-10-20 · Analytics loads `posthog-js/dist/module.slim` (about 50KB gzipped, loaded after first interaction or idle) instead of the full build, to protect Lighthouse.

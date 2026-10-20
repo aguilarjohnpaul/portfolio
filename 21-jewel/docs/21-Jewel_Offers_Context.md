@@ -1,6 +1,6 @@
 # 21 Jewel: Offers & Business Context
 
-Portable context file for use across Claude projects. Compiled October 20, 2026 from the 21 Jewel website build (`PHASE1_SPEC.md`, `src/content/*.yaml`, `DECISIONS.md`, `TODO-JP.md`).
+Portable context file for use across Claude projects. Compiled October 20, 2026 (prices updated the same day) from the 21 Jewel website build (`PHASE1_SPEC.md`, `src/content/*.yaml`, `DECISIONS.md`, `TODO-JP.md`).
 
 **How to use this file:** the website content files (`src/content/*.yaml`) are the source of truth. If this file and the site disagree, the site wins. Items tagged `[TBD]` are not set yet, so never fill them in with guesses. Items tagged `[DRAFT]` were written by Claude during the build and are waiting on JP's approval. Never invent stats, client names, logos or testimonials.
 
@@ -56,15 +56,15 @@ Portable context file for use across Claude projects. Compiled October 20, 2026 
 
 Display order is the ladder. Each step builds on the last.
 
-**Pricing rule:** "The audit fee is credited toward your next step." The credit applies to the 30-Day Referral System if it's booked within 30 days. Prices show as "Starting at [PRICE]" until JP sets them.
+**Pricing rule:** "The audit fee is credited toward your next step." The credit applies to the 30-Day Referral System if it's booked within 30 days. Prices are launch prices, shown with "Starting at" labels.
 
 | # | Offer | Type | Price | One-liner | Timeline |
 |---|---|---|---|---|---|
 | 0 | How Referable Is Your Business? | Free lead magnet | Free | A 3-minute scorecard. See your score and your biggest leak. | About 3 minutes |
-| 1 | Referral Leak Audit | Paid diagnostic | Starting at `[TBD]` | We trace where referrals and leads get lost and rank the fixes. | About 2 weeks |
-| 2 | 30-Day Referral System | Sprint | Starting at `[TBD]` | We build your referral asks, follow-up and tracking in 30 days. | 30 days |
-| 3 | Lead Growth Roadmap | Plan | Starting at `[TBD]` | A 90-day plan for new lead sources beyond word of mouth. | About 3 weeks to build |
-| 4 | Monthly Growth Advisor | Retainer | Starting at `[TBD]`/month | A monthly review of your numbers and a steady hand on what's next. | `[DRAFT]` Ongoing, month to month |
+| 1 | Referral Leak Audit | Paid diagnostic | Starting at $950 | We trace where referrals and leads get lost and rank the fixes. | About 2 weeks |
+| 2 | 30-Day Referral System | Sprint | Starting at $2,500 | We build your referral asks, follow-up and tracking in 30 days. | 30 days |
+| 3 | Lead Growth Roadmap | Plan | Starting at $2,000 | A 90-day plan for new lead sources beyond word of mouth. | About 3 weeks to build |
+| 4 | Monthly Growth Advisor | Retainer | Starting at $750/month | A monthly review of your numbers and a steady hand on what's next. | 3-month minimum, then month to month |
 | — | White-label Strategy Sprint | Studio partners only | Pricing on request | Strategy delivered under your studio's name. | 2–3 weeks |
 
 ### 3.0 How Referable Is Your Business? (free scorecard)
@@ -110,6 +110,7 @@ Display order is the ladder. Each step builds on the last.
   - Async questions
   - A quarterly plan refresh
   - Help directing your vendors and designers
+- **Minimum:** 3 months, then month to month.
 - **Boundary:** you keep execution in-house or with your partners.
 
 ### 3.5 White-label Strategy Sprint (design studios only)
@@ -135,7 +136,7 @@ Display order is the ladder. Each step builds on the last.
 
 **Headline:** Five spots. No fee. An honest case study in return.
 
-**Pitch:** I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System.
+**Pitch:** I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System, a $3,450 value.
 
 | The deal | |
 |---|---|
@@ -234,8 +235,7 @@ Display order is the ladder. Each step builds on the last.
 
 ## 9. Open items
 
-- Prices for the audit, system, roadmap and advisor `[TBD]`.
 - Years of experience for the About blurb `[TBD]`.
 - JP's photo `[TBD]`.
-- Approve the `[DRAFT]` copy: the scorecard "Who it's for," the advisor timeline, the thanks page ("reply within two business days") and the privacy page ("within 30 days" for deletion).
+- Approve the `[DRAFT]` copy: the scorecard "Who it's for," the thanks page ("reply within two business days") and the privacy page ("within 30 days" for deletion).
 - Confirm the spec assumptions: the score and leak show free with the breakdown emailed, the founding program bundles the audit and the system, and the roadmap is a 90-day plan.
