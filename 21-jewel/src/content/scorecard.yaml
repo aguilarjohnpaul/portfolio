@@ -107,7 +107,7 @@ email:
   honeypot: Leave this field empty
   submit: Send my breakdown
   sending: Sending…
-  privacy_note: "I'll only use your email to send your breakdown and occasional notes from 21 Jewel. Unsubscribe any time."
+  privacy_note: "I'll only use your email to send your breakdown and occasional notes from 21 Jewel. Reply \"stop\" any time and I'll remove you."
   privacy_link: Privacy
 
 after:

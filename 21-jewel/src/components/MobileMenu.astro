@@ -6,9 +6,11 @@ const { nav } = Astro.props;
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
   data-open={nav.menu_open} data-close={nav.menu_close}>{nav.menu_open}</button>
 <nav id="mobile-menu" class="panel" aria-label="Mobile" hidden>
-  <ul role="list" class="container">
-    {nav.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-  </ul>
+  <div class="container">
+    <ul role="list">
+      {nav.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </div>
 </nav>
 
 <style>
