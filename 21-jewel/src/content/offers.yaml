@@ -36,7 +36,7 @@ offers:
   - id: audit
     name: Referral Leak Audit
     type: Paid diagnostic
-    price_from: "[PRICE]"
+    price_from: "$950"
     one_liner: We trace where referrals and leads get lost and rank the fixes.
     for: Firms that know something's off but not where.
     get:
@@ -50,7 +50,7 @@ offers:
   - id: system
     name: 30-Day Referral System
     type: Sprint
-    price_from: "[PRICE]"
+    price_from: "$2,500"
     one_liner: We build your referral asks, follow-up and tracking in 30 days.
     for: Firms ready to fix the leaks.
     get:
@@ -66,7 +66,7 @@ offers:
   - id: roadmap
     name: Lead Growth Roadmap
     type: Plan
-    price_from: "[PRICE]"
+    price_from: "$2,000"
     one_liner: A 90-day plan for new lead sources beyond word of mouth.
     for: Firms whose referrals work but aren't enough.
     get:
@@ -80,7 +80,7 @@ offers:
   - id: advisor
     name: Monthly Growth Advisor
     type: Retainer
-    price_from: "[PRICE]"
+    price_from: "$750"
     price_suffix: /month
     one_liner: A monthly review of your numbers and a steady hand on what's next.
     for: Firms that want accountability after a sprint or roadmap.
@@ -90,7 +90,7 @@ offers:
       - A quarterly plan refresh
       - Help directing your vendors and designers
     note: You keep execution in-house or with your partners.
-    timeline: Ongoing, month to month
+    timeline: 3-month minimum, then month to month
     checkout_url: ""
 
   - id: studio-sprint

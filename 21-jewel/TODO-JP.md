@@ -4,7 +4,6 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 
 ## 1. Fill the placeholders
 
-- [ ] **Prices.** `src/content/offers.yaml` → `price_from` for `audit`, `system`, `roadmap`, `advisor` (now `"[PRICE]"`). Use something like `"$750"`, or `""` for "Pricing on request".
 - [ ] **Years of experience.** `src/content/home.yaml` → `about.paragraphs` → replace `[X]`.
 - [ ] **Your photo.** Add `public/jp.jpg` (4:5, about 960×1200). In `home.yaml` set `about.photo: /jp.jpg` and `about.photo_alt: JP, founder of 21 Jewel`.
 - [x] **Cal.com link.** Set to `https://cal.com/21jewel/20min`.
@@ -14,7 +13,6 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 ## 2. Confirm copy I wrote (the spec didn't cover these)
 
 - [ ] Offers page, scorecard "Who it's for": "Any owner who wants a quick, honest read on how new work finds them." (`offers.yaml`)
-- [ ] Offers page, advisor timeline: "Ongoing, month to month." (`offers.yaml`)
 - [ ] Thanks page promises a reply "within two business days." (`pages.yaml`)
 - [ ] Privacy page, including "within 30 days" for deletion requests. (`pages.yaml`)
 - [ ] Email form privacy note and error messages. (`scorecard.yaml` → `email.privacy_note`, `errors`)
