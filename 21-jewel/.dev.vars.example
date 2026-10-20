@@ -1,4 +1,7 @@
 # Copy to .dev.vars for `npx wrangler pages dev dist`. These are Cloudflare's test keys.
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
-KIT_API_KEY=your_kit_v4_api_key
-# KIT_TAG_IDS={"scorecard-complete":123}
+# Google Sheet + Gmail (see docs/google-sheet-setup.md)
+SHEET_WEBHOOK_URL=https://script.google.com/macros/s/your-deployment-id/exec
+SHEET_WEBHOOK_SECRET=your-long-random-secret
+# Optional fallback if SHEET_WEBHOOK_URL is not set:
+# KIT_API_KEY=your_kit_v4_api_key

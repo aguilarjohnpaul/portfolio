@@ -4,7 +4,7 @@ Marketing site for 21 Jewel, a revenue-strategy advisory for owner-run service f
 
 - Build spec: `PHASE1_SPEC.md`. Project rules: `CLAUDE.md`.
 - Your launch checklist: `TODO-JP.md`. Judgment calls: `DECISIONS.md`.
-- Stack: Astro (static), plain CSS, Cloudflare Pages + one Pages Function, Kit, Turnstile, PostHog, Tally, Cal.com.
+- Stack: Astro (static), plain CSS, Cloudflare Pages + one Pages Function, Google Sheet + Gmail (Apps Script), Turnstile, PostHog, Tally, Cal.com.
 
 ## Commands
 
@@ -37,4 +37,4 @@ More in `docs/updating-content.md`. Then run `npm run check && npm run build`, c
 | `src/lib/scorecard-api.ts`, `src/lib/kit.ts` | `/api/scorecard` logic (tested in `scorecard-api.test.ts`) |
 | `functions/api/scorecard.ts` | The Cloudflare Pages Function |
 | `public/_headers` | Security headers and CSP |
-| `docs/` | Kit email copy, reading the hero test, updating content |
+| `docs/` | Google Sheet setup and script, reading the hero test, updating content, Kit fallback |

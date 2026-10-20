@@ -25,24 +25,22 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 
 ## 4. Email address
 
-- [ ] Cloudflare → `21jeweladvisory.com` → Email → Email Routing → forward `johnpaul@` to your Gmail.
-- [ ] Optional: Gmail → Settings → Accounts → "Send mail as" `johnpaul@21jeweladvisory.com`, so replies come from that address.
+- [x] You already own the johnpaul@21jeweladvisory.com mailbox (no Cloudflare Email Routing needed).
+- [ ] If it isn't a Google Workspace account, add it in Gmail → Settings → Accounts → "Send mail as", so scorecard emails come from johnpaul@ (see `docs/google-sheet-setup.md`).
 
 ## 5. Accounts and keys
 
 Add each key in Pages project → Settings → Variables and secrets (Production and Preview). Redeploy after adding.
 
-- [ ] **PostHog** (US Cloud, free). Project settings → copy the project API key.
+- [ ] **PostHog** (later; the site runs fine without it) (US Cloud, free). Project settings → copy the project API key.
   - `PUBLIC_POSTHOG_KEY` = `phc_...`
   - `PUBLIC_POSTHOG_HOST` = `https://us.i.posthog.com`
   - If you choose EU Cloud instead, the CSP in `public/_headers` needs the EU hosts too.
-- [ ] **Turnstile.** Cloudflare → Turnstile → Add widget for `21jeweladvisory.com`, mode "Invisible" or "Managed".
+- [x] **Turnstile.** Widget created and keys added.
   - `PUBLIC_TURNSTILE_SITE_KEY` = site key
   - `TURNSTILE_SECRET` = secret key (mark as secret)
-- [ ] **Kit.** Settings → Developer → create a **V4** API key (V3 keys won't work).
-  - `KIT_API_KEY` = the key (mark as secret)
-  - On your computer, run once: `KIT_API_KEY=... node scripts/kit-setup.mjs`. It creates the 10 custom fields and all tags, and prints a `KIT_TAG_IDS` value. Paste it in as an environment variable too (optional, saves API calls).
-  - Build the results email automation from `docs/kit-results-email.md`.
+- [ ] **Google Sheet + Gmail** (scorecard emails). Follow `docs/google-sheet-setup.md`. It ends with two Secrets in Cloudflare: `SHEET_WEBHOOK_URL` and `SHEET_WEBHOOK_SECRET`.
+- Kit is no longer needed. The site still supports it (`KIT_API_KEY`, `scripts/kit-setup.mjs`, `docs/kit-results-email.md`) if you switch later.
 
 ## 6. Tally application form
 
@@ -59,7 +57,7 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 
 ## 8. Test the live site
 
-- [ ] Take the scorecard with your own email. Check Kit has the subscriber, the 10 fields and the tags, and that the results email arrives.
+- [ ] Take the scorecard with your own email. Check a row appears in the Sheet's `Leads` tab, the breakdown email arrives, and you get the "New scorecard" alert.
 - [ ] Submit the Tally form once. Check you get the notification.
 - [ ] Check PostHog → Activity shows `scorecard_start`, `scorecard_complete` and `scorecard_email_submit`, each with `hero_variant`.
 - [ ] Build the hero test funnel (`docs/reading-the-hero-test.md`).

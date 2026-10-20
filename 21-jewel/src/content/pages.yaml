@@ -7,8 +7,8 @@ privacy:
   services:
     - name: PostHog (analytics)
       body: Counts page views and button clicks, such as starting or finishing the scorecard, so I can see what's working. It stores a random ID in your browser. It does not record your screen, and it respects your browser's Do Not Track setting.
-    - name: Kit (email)
-      body: "If you ask for your scorecard breakdown, Kit stores your email, the optional first name, business name and team size you gave, and your scores. I use it to send your breakdown and occasional notes. Every email has an unsubscribe link."
+    - name: Google Sheets and Gmail (email)
+      body: "If you ask for your scorecard breakdown, your email, the optional first name, business name and team size you gave, and your scores are saved in a private Google Sheet. I use them to send your breakdown from Gmail and the occasional note. Reply \"stop\" to any email and I'll remove you."
     - name: Tally (applications)
       body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
     - name: Cloudflare Turnstile (spam protection)

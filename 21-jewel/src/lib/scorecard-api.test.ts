@@ -109,3 +109,69 @@ describe('POST /api/scorecard', () => {
     expect(tagNames).not.toContain('team-5-20');
   });
 });
+
+describe('POST /api/scorecard with the Google Sheet', () => {
+  const SHEET = 'https://script.google.com/macros/s/TEST/exec';
+  const sheetEnv = { TURNSTILE_SECRET: 'secret', SHEET_WEBHOOK_URL: SHEET, SHEET_WEBHOOK_SECRET: 'shh' };
+
+  function sheetFetch(reply: { status?: number; body?: unknown } = {}) {
+    const calls: { url: string; init?: RequestInit; body: any }[] = [];
+    const fn = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
+      const u = String(url);
+      const body = typeof init?.body === 'string' ? JSON.parse(init.body) : init?.body;
+      calls.push({ url: u, init, body });
+      if (u.includes('siteverify')) return new Response(JSON.stringify({ success: true }));
+      if (u === SHEET) return new Response(JSON.stringify(reply.body ?? { ok: true }), { status: reply.status ?? 200 });
+      return new Response(JSON.stringify({ subscriber: { id: 1 }, tag: { id: 1 } }), { status: 201 });
+    });
+    return { fn: fn as unknown as typeof fetch, calls };
+  }
+
+  it('sends the server-computed lead to the sheet', async () => {
+    const f = sheetFetch();
+    const res = await handleScorecard(req({ ...good, business: 'Acme Plumbing' }), sheetEnv, async () => data, f.fn);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ ok: true });
+    const sheet = f.calls.filter((c) => c.url === SHEET);
+    expect(sheet).toHaveLength(1);
+    const lead = sheet[0].body;
+    expect(lead.secret).toBe('shh');
+    expect(lead.email).toBe('owner@example.com');
+    expect(lead.firstName).toBe('Ana');
+    expect(lead.business).toBe('Acme Plumbing');
+    expect(lead.teamSize).toBe('5-20');
+    expect(lead.total).toBe(83); // recomputed, not 999
+    expect(lead.hired).toBe(50);
+    expect(lead.band).toBe('Built to be referred');
+    expect(lead.weakestStage).toBe('Get hired');
+    expect(lead.topFixes).toHaveLength(3);
+    expect(lead.heroVariant).toBe('b');
+    expect(lead.tags.split(',').sort()).toEqual(['band-built-to-be-referred', 'hero-b', 'scorecard-complete', 'team-5-20', 'weakest-get-hired']);
+    expect(Number.isNaN(Date.parse(lead.timestamp))).toBe(false);
+    expect(sheet[0].init?.redirect).toBe('follow');
+  });
+
+  it('prefers the sheet when Kit is also configured', async () => {
+    const f = sheetFetch();
+    await handleScorecard(req(good), { ...sheetEnv, KIT_API_KEY: 'kit' }, async () => data, f.fn);
+    expect(f.calls.some((c) => c.url.includes('api.kit.com'))).toBe(false);
+    expect(f.calls.some((c) => c.url === SHEET)).toBe(true);
+  });
+
+  it('returns list_unavailable when the script says no', async () => {
+    const res = await handleScorecard(req(good), sheetEnv, async () => data, sheetFetch({ body: { ok: false, error: 'bad_secret' } }).fn);
+    expect(res.status).toBe(502);
+    expect(await res.json()).toEqual({ error: 'list_unavailable' });
+  });
+
+  it('returns list_unavailable when the script errors', async () => {
+    const res = await handleScorecard(req(good), sheetEnv, async () => data, sheetFetch({ status: 500, body: 'oops' }).fn);
+    expect(res.status).toBe(502);
+  });
+
+  it('returns list_unavailable when nothing is configured', async () => {
+    const res = await handleScorecard(req(good), { TURNSTILE_SECRET: 'secret' }, async () => data, sheetFetch().fn);
+    expect(res.status).toBe(502);
+    expect(await res.json()).toEqual({ error: 'list_unavailable' });
+  });
+});

@@ -1,8 +1,11 @@
 // Handler for POST /api/scorecard (spec §6.4). Kept separate from the Function file so it can be unit-tested.
 import { computeResult, isValidAnswers, type ScorecardData, type StageId } from './scorecard';
 import { kitClient, KitError } from './kit';
+import { sendToSheet, type Lead } from './sheet';
 
 export interface Env {
+  SHEET_WEBHOOK_URL?: string;
+  SHEET_WEBHOOK_SECRET?: string;
   KIT_API_KEY?: string;
   KIT_TAG_IDS?: string;
   TURNSTILE_SECRET?: string;
@@ -74,31 +77,53 @@ export async function handleScorecard(
   const team = data.team_sizes.some((t) => t.value === teamSize) ? teamSize : '';
   const hero = body.heroVariant === 'b' ? 'b' : 'a';
 
+  // 5. Build the lead once. Every value comes from the server-side result.
+  const firstName = clean(body.firstName, 80);
+  const business = clean(body.business, 120);
+  const weakestName = data.stages.find((s) => s.id === r.weakestStage)!.name;
+  const fixes = r.topFixes.map((q) => q.fix);
+  const tags = ['scorecard-complete', `band-${r.band.slug}`, `weakest-${slug(r.weakestStage)}`, `hero-${hero}`];
+  if (team === '5-20') tags.push('team-5-20');
+
+  // 6. Save it: Google Sheet + Gmail if configured, else Kit (Phase 2 fallback).
+  if (env.SHEET_WEBHOOK_URL) {
+    const lead: Lead = {
+      timestamp: new Date().toISOString(),
+      email, firstName, business, teamSize: team,
+      total: r.total, referred: r.stages.referred, hired: r.stages.hired, again: r.stages.again,
+      band: r.band.name, weakestStage: weakestName, topFixes: fixes, heroVariant: hero, tags: tags.join(','),
+    };
+    try {
+      await sendToSheet(env.SHEET_WEBHOOK_URL, env.SHEET_WEBHOOK_SECRET ?? '', lead, fetcher);
+    } catch (err) {
+      console.error(err instanceof Error ? err.message : err);
+      return json(502, { error: 'list_unavailable' });
+    }
+    return json(200, { ok: true });
+  }
+
   if (!env.KIT_API_KEY) {
-    console.error('KIT_API_KEY is not set');
+    console.error('Neither SHEET_WEBHOOK_URL nor KIT_API_KEY is set');
     return json(502, { error: 'list_unavailable' });
   }
   let tagIds: Record<string, number> = {};
   try { tagIds = env.KIT_TAG_IDS ? JSON.parse(env.KIT_TAG_IDS) : {}; } catch { console.error('KIT_TAG_IDS is not valid JSON'); }
 
-  // 5–7. Kit subscriber, custom fields and tags.
   const kit = kitClient(env.KIT_API_KEY, tagIds, fetcher);
-  const tags = ['scorecard-complete', `band-${r.band.slug}`, `weakest-${slug(r.weakestStage)}`, `hero-${hero}`];
-  if (team === '5-20') tags.push('team-5-20');
   try {
     await kit.upsert({
       email,
-      firstName: clean(body.firstName, 80) || undefined,
+      firstName: firstName || undefined,
       fields: {
         score_total: String(r.total),
         score_referred: String(r.stages.referred),
         score_hired: String(r.stages.hired),
         score_again: String(r.stages.again),
         band: r.band.name,
-        weakest_stage: data.stages.find((s) => s.id === r.weakestStage)!.name,
-        top_fixes: r.topFixes.map((q) => q.fix).join('||'),
+        weakest_stage: weakestName,
+        top_fixes: fixes.join('||'),
         team_size: team,
-        business_name: clean(body.business, 120),
+        business_name: business,
         hero_variant: hero,
       },
     });

@@ -21,7 +21,7 @@ Marketing site for **21 Jewel**, a solo revenue-strategy advisory run by JP (Joh
 | Fonts | `@fontsource-variable/fraunces`, `@fontsource-variable/inter` (self-hosted) | No third-party font requests |
 | Hosting | Cloudflare Pages, deployed from GitHub `main` | Free; DNS already on Cloudflare |
 | Server code | Cloudflare Pages Functions in `/functions` | Scorecard email capture only |
-| Email list | Kit (ConvertKit) API v4, called only from the Pages Function | Free tier; API key never reaches the browser |
+| Email list | Google Sheet + Gmail via JP's Apps Script web app (`docs/google-sheet/`), called only from the Pages Function. Kit API v4 still supported as a fallback. | Free; JP uses Gmail; secrets never reach the browser |
 | Spam control | Cloudflare Turnstile on the scorecard email form | Free, invisible |
 | Analytics + hero test | PostHog Cloud (free tier), events only | Funnel by hero variant |
 | Founding application | Tally form, embedded | Free; emails JP on submit |
@@ -55,11 +55,12 @@ src/
     content.ts             ← doc() loader, price label, placeholders
     scorecard.ts           ← pure scoring functions (unit-tested)
     scorecard-api.ts       ← /api/scorecard logic (unit-tested)
-    kit.ts                 ← Kit v4 client
+    sheet.ts               ← Google Sheet webhook client (default)
+    kit.ts                 ← Kit v4 client (fallback)
     analytics.ts           ← PostHog wrapper + event names
     hero.ts                ← hero variant assignment
 functions/
-  api/scorecard.ts         ← POST: Turnstile check → Kit subscriber + tags
+  api/scorecard.ts         ← POST: Turnstile check → Google Sheet (or Kit)
 public/                    ← favicon, og image, robots.txt, _redirects, _headers
 scripts/                   ← csp.mjs (runs after build), kit-setup.mjs, og/ image maker
 ```

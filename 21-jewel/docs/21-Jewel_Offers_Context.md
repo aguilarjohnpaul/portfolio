@@ -70,7 +70,7 @@ Display order is the ladder. Each step builds on the last.
 ### 3.0 How Referable Is Your Business? (free scorecard)
 - **Who it's for:** Any owner who wants a quick, honest read on how new work finds them.
 - **What you get:** 12 questions, an instant score, the biggest leak on screen, and the full breakdown by email.
-- **Job in the funnel:** the main call to action. It captures emails into Kit and routes people toward the audit or a founding spot. Details are in §5.
+- **Job in the funnel:** the main call to action. It captures emails into a Google Sheet (with an automatic Gmail breakdown) and routes people toward the audit or a founding spot. Details are in §5.
 
 ### 3.1 Referral Leak Audit
 - **Who it's for:** firms that know something's off but not where.
@@ -185,10 +185,10 @@ Display order is the ladder. Each step builds on the last.
 | 40–69 | Working, but leaking | Referrals happen, but you're losing good work at one or two stages. |
 | 70–100 | Built to be referred | Your system works. The gains now come from new lead sources and consistency. |
 
-**What gets saved in Kit**
-- Custom fields: `score_total`, `score_referred`, `score_hired`, `score_again`, `band`, `weakest_stage`, `top_fixes` (joined by `||`), `team_size`, `business_name`, `hero_variant`.
-- Tags: `scorecard-complete`, `band-<slug>`, `weakest-<slug>`, `hero-a|b`, `team-5-20`.
-- The results email ends with an invitation to the founding program.
+**What gets saved (Google Sheet, `Leads` tab)**
+- Columns: Timestamp, Email, First name, Business, Team size, Score, Get referred, Get hired, Get hired again, Band, Biggest leak, Fix 1–3, Headline (hero variant), Tags, Email status.
+- Tags (ready for a later move to Kit): `scorecard-complete`, `band-<slug>`, `weakest-<slug>`, `hero-a|b`, `team-5-20`.
+- The breakdown email is sent from johnpaul@21jeweladvisory.com via Gmail and ends with an invitation to the founding program. JP gets a "New scorecard" alert for each lead.
 
 **Suggested next offer by result** (inferred from the FAQ; not stated on the site)
 - Below 70 → Referral Leak Audit, or a founding spot while open.
