@@ -23,7 +23,7 @@ describe('scorecard scoring', () => {
     const r = computeResult(all(3), data);
     expect(r.total).toBe(100);
     expect(r.stages).toEqual({ referred: 100, hired: 100, again: 100 });
-    expect(r.band.slug).toBe('built-to-be-referred');
+    expect(r.band.slug).toBe('built-to-win-work');
     expect(r.topFixes).toEqual([]);
   });
 
@@ -42,17 +42,17 @@ describe('scorecard scoring', () => {
     expect(r.topFixes.map((q) => q.id)).toEqual([10, 11]);
   });
 
-  it('Q5 uses its own options, scored 3 to 0', () => {
-    const q5 = data.questions[4];
-    const opts = optionsFor(q5, data);
+  it('Q7 uses its own reply-speed options, scored 3 to 0', () => {
+    const q7 = data.questions[6];
+    const opts = optionsFor(q7, data);
     expect(opts.map((o) => o.label)).toEqual(['Within the hour', 'Same day', 'Within 1–2 days', 'Longer']);
     expect(opts.map((o) => o.score)).toEqual([3, 2, 1, 0]);
     const a = all(3);
-    a[4] = opts.find((o) => o.label === 'Longer')!.score;
+    a[6] = opts.find((o) => o.label === 'Longer')!.score;
     const r = computeResult(a, data);
     expect(r.stages.hired).toBe(75);
     expect(r.weakestStage).toBe('hired');
-    expect(r.onScreenFix.id).toBe(5);
+    expect(r.onScreenFix.id).toBe(7);
   });
 
   it('top fixes sort by score, then question order', () => {

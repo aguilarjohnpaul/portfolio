@@ -82,7 +82,7 @@ function sendBreakdown_(lead, fixes, props) {
   var site = props.getProperty('SITE_URL') || 'https://21jeweladvisory.com';
   var founding = site + '/founding-clients';
   var name = lead.firstName || 'there';
-  var subject = 'Your referability score: ' + lead.total + '/100';
+  var subject = 'Is your website losing you work? Your score: ' + lead.total + '/100';
 
   var text = [
     'Hi ' + name + ',',

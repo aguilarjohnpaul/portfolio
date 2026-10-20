@@ -1,5 +1,7 @@
 # Reading the hero test
 
+**Comparison window starts Oct 20, 2026, the day the Change 01 hero copy went live. Ignore data from before that date.**
+
 The homepage shows one of two headlines (A: referrals, B: feast or famine). Each visitor keeps the same one. Every PostHog event carries `hero_variant`.
 
 ## Build the funnel in PostHog

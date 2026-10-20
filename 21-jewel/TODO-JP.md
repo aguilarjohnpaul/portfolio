@@ -2,6 +2,13 @@
 
 Work top to bottom. Each step says where to click or what to edit. Copy edits are all in `src/content/`.
 
+## 0. After Change 01 (website-led ladder, Oct 20, 2026)
+
+- [ ] **Re-paste the Apps Script.** Copy the updated `docs/google-sheet/Code.gs` into your Sheet's Apps Script (the email subject now says "Is your website losing you work?"). Then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL stays the same.
+- [ ] **Tally form wording (optional).** If the form mentions referrals, the audit or the old offer names, update it to "Website Review" and "The 30-Day Fix".
+- [x] **Hero test restarted** with the new A/B copy. Count results from Oct 20, 2026 only (`docs/reading-the-hero-test.md`).
+- [ ] **Raise prices after 3 case studies:** Website Review $1,500, The 30-Day Fix $3,500, Lead Pipelines $5,000, Growth Advisor $1,250/month (`offers.yaml` → `price_from`).
+
 ## 1. Fill the placeholders
 
 - [ ] **Your photo.** (On hold.) Add `public/jp.jpg` (4:5, about 960×1200). In `home.yaml` set `about.photo: /jp.jpg` and `about.photo_alt: JP, founder of 21 Jewel`.
@@ -65,8 +72,8 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 
 ## 9. Assumptions to confirm (spec §15)
 
-- [ ] The meter launches at 5 of 5 open, and the audit fee credit lasts 30 days. (Marked confirmed in the spec.)
+- [x] The meter launches at 5 of 5 open, and the Website Review fee credit lasts 30 days.
 - [ ] The scorecard is 12 questions, about 3 minutes.
 - [ ] The score and biggest leak show free; the full breakdown and top 3 fixes are emailed.
-- [ ] The founding program bundles the Referral Leak Audit and the 30-Day Referral System.
-- [ ] The Lead Growth Roadmap is a 90-day plan.
+- [x] The founding program bundles the Website Review and The 30-Day Fix (Change 01).
+- [x] Lead Pipelines runs 60 to 90 days (Change 01).

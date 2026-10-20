@@ -47,11 +47,11 @@ describe('POST /api/scorecard', () => {
     expect(sub.body.fields.score_total).toBe('83'); // recomputed, not 999
     expect(sub.body.fields.score_hired).toBe('50');
     expect(sub.body.fields.weakest_stage).toBe('Get hired');
-    expect(sub.body.fields.band).toBe('Built to be referred');
+    expect(sub.body.fields.band).toBe('Built to win work');
     expect(sub.body.fields.top_fixes.split('||')).toHaveLength(3);
     expect(sub.body.fields.hero_variant).toBe('b');
     const tagNames = f.calls.filter((c) => c.url.endsWith('/v4/tags')).map((c) => c.body.name);
-    expect(tagNames.sort()).toEqual(['band-built-to-be-referred', 'hero-b', 'scorecard-complete', 'team-5-20', 'weakest-get-hired'].sort());
+    expect(tagNames.sort()).toEqual(['band-built-to-win-work', 'hero-b', 'scorecard-complete', 'team-5-20', 'weakest-get-hired'].sort());
     expect(f.calls.filter((c) => /tags\/\d+\/subscribers/.test(c.url))).toHaveLength(5);
   });
 
@@ -65,7 +65,7 @@ describe('POST /api/scorecard', () => {
 
   it('uses tag ids from KIT_TAG_IDS without creating tags', async () => {
     const f = mockFetch();
-    const ids = { 'scorecard-complete': 1, 'band-built-to-be-referred': 2, 'weakest-get-hired': 3, 'hero-b': 4, 'team-5-20': 5 };
+    const ids = { 'scorecard-complete': 1, 'band-built-to-win-work': 2, 'weakest-get-hired': 3, 'hero-b': 4, 'team-5-20': 5 };
     await run(good, f, { ...env, KIT_TAG_IDS: JSON.stringify(ids) });
     expect(f.calls.some((c) => c.url.endsWith('/v4/tags'))).toBe(false);
     expect(f.calls.some((c) => c.url.endsWith('/v4/tags/1/subscribers'))).toBe(true);
@@ -142,11 +142,11 @@ describe('POST /api/scorecard with the Google Sheet', () => {
     expect(lead.teamSize).toBe('5-20');
     expect(lead.total).toBe(83); // recomputed, not 999
     expect(lead.hired).toBe(50);
-    expect(lead.band).toBe('Built to be referred');
+    expect(lead.band).toBe('Built to win work');
     expect(lead.weakestStage).toBe('Get hired');
     expect(lead.topFixes).toHaveLength(3);
     expect(lead.heroVariant).toBe('b');
-    expect(lead.tags.split(',').sort()).toEqual(['band-built-to-be-referred', 'hero-b', 'scorecard-complete', 'team-5-20', 'weakest-get-hired']);
+    expect(lead.tags.split(',').sort()).toEqual(['band-built-to-win-work', 'hero-b', 'scorecard-complete', 'team-5-20', 'weakest-get-hired']);
     expect(Number.isNaN(Date.parse(lead.timestamp))).toBe(false);
     expect(sheet[0].init?.redirect).toBe('follow');
   });

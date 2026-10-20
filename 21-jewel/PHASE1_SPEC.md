@@ -32,18 +32,31 @@ Phase 1 is not trying to close paid work online. There are no payments, CRM, lea
 
 ## 3. Offers (content in `src/content/offers.yaml`)
 
-Display order is the ladder. Prices are placeholders until JP sets them. If `price_from` is empty, render "Pricing on request" and add a build warning.
+Updated by Change 01 (Oct 20, 2026): the ladder leads with the website. Display order is the ladder. If `price_from` is empty, render "Pricing on request" and add a build warning.
 
-| id | Name | Type | Price label | One-line description | Details for /offers |
-|---|---|---|---|---|---|
-| `scorecard` | How Referable Is Your Business? | Free | Free | A 3-minute scorecard. See your score and your biggest leak. | 12 questions, instant score, biggest leak on screen, full breakdown by email. |
-| `audit` | Referral Leak Audit | Paid diagnostic | Starting at [PRICE] | We trace where referrals and leads get lost and rank the fixes. | Who it's for: firms that know something's off but not where. You get a 60-minute working session, a review of your website, inquiry handling, follow-up and past-client contact, a written leak report with fixes ranked by effort and payoff, and a 30-minute walkthrough. Timeline: about 2 weeks. The fee is credited toward the 30-Day Referral System if booked within 30 days. |
-| `system` | 30-Day Referral System | Sprint | Starting at [PRICE] | We build your referral asks, follow-up and tracking in 30 days. | Who it's for: firms ready to fix the leaks. You get referral ask scripts and timing, a partner referral plan, inquiry response and quote follow-up templates, a simple lead-source tracker in the tools you already use, a past-client check-in plan, and weekly 30-minute check-ins. Timeline: 30 days. |
-| `roadmap` | Lead Growth Roadmap | Plan | Starting at [PRICE] | A 90-day plan for new lead sources beyond word of mouth. | Who it's for: firms whose referrals work but aren't enough. You get a channel plan sized to your budget, messaging for your best-fit clients, a 90-day calendar, and the numbers to watch. Timeline: about 3 weeks to build. |
-| `advisor` | Monthly Growth Advisor | Retainer | Starting at [PRICE]/month | A monthly review of your numbers and a steady hand on what's next. | Who it's for: firms that want accountability after a sprint or roadmap. You get a monthly 60-minute review, async questions, a quarterly plan refresh, and help directing your vendors and designers. You keep execution in-house or with your partners. |
-| `studio-sprint` | White-label Strategy Sprint | Studio partners only | Pricing on request | Strategy delivered under your studio's name. | Shown only on `/studios` and never in the main offers list. |
+**Execution rule:** JP executes only what is one-time, templated and under about 10 hours per client. Recurring or custom work (posting, ad management, design, full rebuilds) goes to partners, who quote separately and bill the client directly. JP edits on any common platform himself.
 
-Rule shown under the ladder: "The audit fee is credited toward your next step."
+| id | Name | Type | Price label | One-line description |
+|---|---|---|---|---|
+| `scorecard` | Is Your Website Losing You Work? | Free | Free | A 3-minute scorecard. See your score and your biggest leak. |
+| `website-review` | Website Review | Paid diagnostic | Starting at $950 | An outside-in review of your site, search presence and inquiry path, with fixes ranked. |
+| `thirty-day-fix` | The 30-Day Fix | Sprint | Starting at $2,500 | We fix your website's message, inquiry path and tracking in 30 days. |
+| `lead-pipelines` | Lead Pipelines | Build | Starting at $3,500 | Pages, follow-up emails and tracking that turn visits and past clients into steady leads. |
+| `growth-advisor` | Growth Advisor | Retainer | Starting at $750/month | A monthly review of your leads and numbers, and a steady hand on what's next. |
+| `studio-sprint` | White-label Strategy Sprint | Studio partners only | Pricing on request | Strategy delivered under your studio's name. Shown only on `/studios`. |
+
+Rule shown under the ladder: "The Website Review fee is credited toward The 30-Day Fix if booked within 30 days."
+
+**Pricing and terms** (only launch prices and terms appear on the site)
+
+| id | Launch | After 3 case studies | Terms |
+|---|---|---|---|
+| `website-review` | $950 | $1,500 | 50% upfront, 50% on delivery |
+| `thirty-day-fix` | $2,500 | $3,500 | 50% upfront, 50% on delivery; review fee credited within 30 days |
+| `lead-pipelines` | $3,500 | $5,000 | 50% upfront, 50% on delivery |
+| `growth-advisor` | $750/month | $1,250/month | Billed monthly in advance; 3-month minimum |
+
+Full `/offers` details (who it's for, what you get, notes, timelines) live in `offers.yaml`.
 
 ## 4. Sitemap
 
@@ -70,19 +83,19 @@ Follow the approved wireframe ("Homepage Wireframe," template A) section by sect
 
 Both variants share the layout: two columns on desktop, stacked on mobile. Copy is on the left; the sample result card is on the right, and below the copy on mobile.
 
-| Field | Variant A (referrals) | Variant B (feast or famine) |
+| Field | Variant A (website) | Variant B (steady leads) |
 |---|---|---|
-| Eyebrow | Revenue strategy for owner-run service firms | same |
-| H1 | Referrals built your firm. Now build the system behind them. | Busy one month, empty the next? Turn word of mouth into steady work. |
-| Subhead | For service businesses with 5 to 20 people. Find where referrals leak, follow up faster, and turn happy clients into steady new work. | For service businesses with 5 to 20 people. Fix the referral and follow-up leaks behind the slow months. |
-| Primary button | How referable is your business? → `/scorecard` | same |
+| Eyebrow | Website and lead strategy for owner-run service firms | same |
+| H1 | Your next client is checking your website right now. Does it give them a reason to call? | Busy one month, empty the next? Turn your website into a steady source of leads. |
+| Subhead | For service businesses with 5 to 20 people. Fix the message, the inquiry path and the follow-up that decide whether a visit becomes a job. | For service businesses with 5 to 20 people. Find where your website and follow-up lose good leads, then fix them in 30 days. |
+| Primary button | Is your website losing you work? → `/scorecard` | same |
 | Secondary button | See founding client spots → `/founding-clients` | same |
 | Micro line | Free · 12 questions · About 3 minutes · Results on screen | same |
 
 **Sample result card** (static, labeled "Sample result"):
-- Score: 62 / 100 referability.
+- Score: 62 / 100 website score.
 - Bars: Get referred 70, Get hired 48 (accent color, the weakest stage), Get hired again 66.
-- Footer line: "Biggest leak: follow-up after the first call."
+- Footer line: "Biggest leak: no clear next step on mobile."
 
 ### 5.2 "Sound familiar?" (surface band)
 
@@ -99,23 +112,23 @@ Three items in a row, stacked on mobile:
 
 | Stage | Where it breaks | What we fix |
 |---|---|---|
-| 1. Get referred | Happy clients mean to mention you and forget. | A clear, easy way for clients and partners to send work your way. |
-| 2. Get hired | Slow follow-up, unclear offers, quotes that stall. | A follow-up and proposal process that closes more of what comes in. |
+| 1. Get referred | Happy clients mean to mention you and forget. | A website and search presence that confirms you the moment someone is referred. |
+| 2. Get hired | Slow follow-up, unclear offers, quotes that stall. | A clear site, fast replies and follow-up that turn visits into booked work. |
 | 3. Get hired again | The project ends and the client drifts away. | Check-ins and next offers that bring past clients back and keep them referring. |
 
 The numbers are a real sequence, so keep them.
 
 ### 5.4 Offers (`#offers`, surface band)
 
-- Eyebrow "Offers". H2 "Start where you are." Intro "Each step builds on the last. The audit fee is credited toward your next step."
+- Eyebrow "Offers". H2 "Start where you are." Intro "Each step builds on the last. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days."
 - Five cards from `offers.yaml` (excluding `studio-sprint`), each showing the price label, name and one-liner. Every card links to `/offers#<id>`. The scorecard card links to `/scorecard`.
 
 ### 5.5 Founding client program (`#founding`, dark ink band)
 
 - Eyebrow "Founding client program". H2 "Five spots. No fee. An honest case study in return."
-- Body: "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System."
+- Body: "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Website Review and The 30-Day Fix, a $3,450 value."
 - **Spot meter:** 5 dots, filled = taken. Label "[N] of 5 spots open". Values come from `site.yaml` (`founding.total: 5`, `founding.filled: 0`, so launch shows "5 of 5 spots open"). When `filled` reaches 5, the label changes to "All founding spots are taken. Join the waitlist." and the button goes to the Tally form with `?waitlist=1`.
-- **What you get:** Referral Leak Audit · 30-Day Referral System · Weekly check-ins for a month.
+- **What you get:** Website Review · The 30-Day Fix · Weekly check-ins for a month.
 - **What I ask:** Before and after numbers · A written case study · An honest testimonial.
 - Button: Apply for a spot → `/founding-clients#apply`.
 
@@ -132,7 +145,7 @@ Build the component now and render it only when `case-studies/` or `testimonials
 
 ### 5.8 Scorecard call to action (`#scorecard`)
 
-- H2 "How referable is your business?"
+- H2 "Is your website losing you work?"
 - Body: "Twelve questions. About three minutes. Your score and your biggest leak, on screen."
 - Button: Start the scorecard → `/scorecard`.
 
@@ -147,8 +160,8 @@ Build the component now and render it only when `case-studies/` or `testimonials
 ### 6.1 Flow (one page, three states, no page reloads)
 
 1. **Intro:**
-   - H1 "How referable is your business?"
-   - "12 quick questions about how new work finds you. You'll see your score and your biggest leak right away."
+   - H1 "Is your website losing you work?"
+   - "12 quick questions about how people find you, contact you and come back. You'll see your score and your biggest leak right away."
    - Start button.
 2. **Questions:**
    - One question per screen, four answer buttons, progress "Question 4 of 12" plus a bar.
@@ -171,22 +184,22 @@ State lives in memory, mirrored to `sessionStorage` (`scorecard-v1`) so a refres
 
 ### 6.2 Questions
 
-Standard options score: **Always = 3 · Usually = 2 · Sometimes = 1 · Rarely or never = 0.** Q5 has custom options.
+Standard options score: **Always = 3 · Usually = 2 · Sometimes = 1 · Rarely or never = 0.** Q7 has custom options. (Questions replaced by Change 01.)
 
 | # | Stage | Question | Fix shown or emailed when the answer scores ≤ 1 |
 |---|---|---|---|
-| 1 | Get referred | When a project wraps up well, do you ask the client for a referral? | Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?" |
-| 2 | Get referred | Do your clients know exactly what kind of client you'd like referred? | Write a one-sentence "ideal referral" description and put it in your email signature and wrap-up message. |
-| 3 | Get referred | Do other businesses (partners, vendors, peers) send you work regularly? | List five businesses that serve your clients before or after you. Offer each a simple two-way referral arrangement. |
-| 4 | Get referred | Do you thank or reward people who refer you? | Send a handwritten note or a small thank-you within 48 hours of every referral, whether or not it turns into work. |
-| 5 | Get hired | How fast do you usually reply to a new inquiry? Options: Within the hour (3) · Same day (2) · Within 1–2 days (1) · Longer (0) | Set an auto-reply that confirms receipt and books a call slot. Aim to reply personally the same business day. |
-| 6 | Get hired | Do you follow up on quotes or proposals that haven't been answered? | Follow up on day 2, day 7 and day 14 with a short, useful note, not a "just checking in." |
-| 7 | Get hired | Can a new prospect tell what you offer and roughly what it costs from your website? | Add a plain "What we do and starting prices" section. Clear ranges filter out poor fits and speed up yeses. |
-| 8 | Get hired | Do you track where each new lead came from? | Add "How did you hear about us?" to your inquiry form and log the answer for every lead. |
+| 1 | Get referred | When someone searches your business name, does your website come up first? | Make sure your homepage title includes your business name and what you do, and link your site from your Google Business Profile. |
+| 2 | Get referred | Is your Google Business Profile complete and updated in the last 3 months? | Fill every field, add 10 recent photos, and post a short update each month. |
+| 3 | Get referred | Does your website show recent reviews, work or client stories? | Add three recent reviews and one short project story to your homepage. |
+| 4 | Get referred | When a project wraps up well, do you ask the client for a referral? | Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?" |
+| 5 | Get hired | Can a visitor tell what you do, who it's for and roughly what it costs within 10 seconds? | Rewrite your homepage headline to say what you do and for whom, and add "starting at" prices. |
+| 6 | Get hired | Does every page have one clear next step that works on a phone? | Give every page one button ("Request a quote" or "Book a call") and test your form on your phone. |
+| 7 | Get hired | How fast do you usually reply to a new inquiry? Options: Within the hour (3) · Same day (2) · Within 1–2 days (1) · Longer (0) | Set an auto-reply that confirms receipt and offers a call time. Aim to reply personally the same business day. |
+| 8 | Get hired | Do you follow up on quotes or proposals that haven't been answered? | Follow up on day 2, day 7 and day 14 with a short, useful note, not a "just checking in." |
 | 9 | Get hired again | Do you check in with past clients after the work ends? | Put a 30-, 90- and 180-day check-in on your calendar for every finished project. |
 | 10 | Get hired again | When a project ends, do you offer a clear next step or service? | Write one natural follow-on offer for your most common project and mention it at wrap-up. |
-| 11 | Get hired again | Do you ask happy clients for reviews or testimonials? | Send a review link with two prompt questions within a week of a strong finish. |
-| 12 | Get hired again | Do you know which clients have referred you before? | Keep a simple list of referrers and what they sent. Your best referrers deserve the most attention. |
+| 11 | Get hired again | Do you ask happy clients for a Google review? | Send a review link with two prompt questions within a week of a strong finish. |
+| 12 | Get hired again | Do you know where each new lead came from, including who referred them? | Add "How did you hear about us? Who referred you?" to your inquiry form and log the answer for every lead. |
 
 ### 6.3 Scoring (pure functions in `src/lib/scorecard.ts`, unit-tested with Vitest)
 
@@ -201,10 +214,10 @@ Standard options score: **Always = 3 · Usually = 2 · Sometimes = 1 · Rarely o
 | Score | Band name | Meaning |
 |---|---|---|
 | 0–39 | Running on luck | Work comes in when it comes in. A few basics would change that fast. |
-| 40–69 | Working, but leaking | Referrals happen, but you're losing good work at one or two stages. |
-| 70–100 | Built to be referred | Your system works. The gains now come from new lead sources and consistency. |
+| 40–69 | Working, but leaking | People find you, but you're losing good work at one or two stages. |
+| 70–100 | Built to win work | Your site and follow-up work. The gains now come from new lead sources and consistency. |
 
-Tests must cover: all-zero, all-max, ties, the Q5 custom options, and the top-fix fill rule.
+Tests must cover: all-zero, all-max, ties, the Q7 custom options, and the top-fix fill rule.
 
 ### 6.4 Email capture backend (`functions/api/scorecard.ts`)
 
@@ -223,7 +236,7 @@ Tests must cover: all-zero, all-max, ties, the Q5 custom options, and the top-fi
 
 **Results email** (JP builds this in Kit as an automation triggered by the `scorecard-complete` tag; put this copy in `docs/kit-results-email.md`):
 
-> Subject: Your referability score: {{ subscriber.score_total }}/100
+> Subject: Is your website losing you work? Your score: {{ subscriber.score_total }}/100
 >
 > Hi {{ subscriber.first_name | default: "there" }},
 >
@@ -241,20 +254,21 @@ Tests must cover: all-zero, all-max, ties, the Q5 custom options, and the top-fi
 
 ### `/offers`
 
-- H1 "Offers". Intro: "Start with the free scorecard, or pick the step that fits where you are. The audit fee is credited toward your next step."
-- One section per offer (anchor = id): name, price label, who it's for, what you get (list), timeline, and a button. The scorecard's button is "Take the scorecard." Every other button is "Book a call" (`[CAL_LINK]`) with the secondary link "Or apply as a founding client."
+- H1 "Offers". Intro: "Start with the free scorecard, or pick the step that fits where you are. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days."
+- One section per offer (anchor = id): name, price label, who it's for, what you get (list), note, timeline, terms, and a button. The scorecard's button is "Take the scorecard." Every other button is "Book a call" (`[CAL_LINK]`) with the secondary link "Or apply as a founding client."
 - FAQ (from `offers.yaml`):
-  - "Do I need to start with the audit?" No. The scorecard is free and points you to the right step.
-  - "Do you run ads or post content for me?" No. I build the plan and the system, and your team or partners carry it out. I can recommend vetted partners.
+  - "Do I need to start with the Website Review?" No. The scorecard is free and points you to the right step.
+  - "Do you build websites?" I rewrite and restructure your site and make the edits on your current platform. Full rebuilds go to a vetted partner, quoted separately.
+  - "Do you run ads or post content for me?" No. I build the plan and the systems. Ongoing posting or ads go to your team or vetted partners.
   - "Do you work outside San Antonio?" Yes, everything works remotely.
-  - "What if my score is already high?" Then the Lead Growth Roadmap is usually the next step.
+  - "What if my score is already high?" Then Lead Pipelines is usually the next step.
 
 ### `/founding-clients`
 
 - H1 "Founding client program". Body from `founding.yaml`; reuse the spot meter.
 - **Who it's for:** owner-run service businesses with 5 to 20 people, where the owner can meet weekly for a month and share before and after numbers.
 - **The deal:** what you get and what I ask, as in §5.5.
-- **How it works:** Apply (5 minutes) → 20-minute fit call → Audit → 30-Day Referral System → Case study.
+- **How it works:** Apply (5 minutes) → 20-minute fit call → Website Review → The 30-Day Fix → Case study.
 - **Apply (`#apply`):** an embedded Tally form (`[TALLY_FORM_URL]`) via Tally's official embed script, lazy-loaded with a "Loading the application…" placeholder. If it fails, show a link to open the form directly.
   - Fields for JP to set up in Tally: name, email, business, website, team size, industry, "Where does most of your new work come from today?", "What's your biggest growth frustration right now?", "Why now?"
   - Track `founding_apply_click` when the section scrolls into view and the visitor interacts.
@@ -357,8 +371,8 @@ All text pairs were checked at ≥ 4.5:1, for example ink on ground 10.6:1 light
 ## 11. SEO, performance and accessibility
 
 - **Titles and meta descriptions** in `site.yaml` per page:
-  - Home title: "21 Jewel · Turn referrals into steady work."
-  - Home description: "Revenue strategy for owner-run service firms. Take the free 3-minute scorecard: How referable is your business?"
+  - Home title: "21 Jewel · Turn your website into steady work"
+  - Home description: "Website and lead strategy for owner-run service firms. Take the free 3-minute scorecard: Is your website losing you work?"
 - **Open Graph:** one static 1200×630 OG image in brand colors with the H1 of variant A (build it as SVG and convert to PNG at build time, or commit a PNG).
 - **JSON-LD:** `ProfessionalService` with name, url, email, areaServed "San Antonio, TX" and "United States", founder "JP". Add an `FAQPage` on `/offers`.
 - `sitemap.xml` (via `@astrojs/sitemap`), `robots.txt`, canonical URLs on `https://21jeweladvisory.com`.
@@ -422,8 +436,8 @@ All text pairs were checked at ≥ 4.5:1, for example ink on ground 10.6:1 light
 
 ## 15. Assumptions to confirm (also in `TODO-JP.md`)
 
-- Confirmed: the meter launches at 5 of 5 open, and the audit fee credit lasts 30 days.
+- Confirmed: the meter launches at 5 of 5 open, and the Website Review fee credit lasts 30 days.
 - Scorecard length is 12 questions, about 3 minutes.
 - The score and biggest leak are shown free; the full breakdown and top 3 fixes are emailed.
-- The founding program bundles the Referral Leak Audit and 30-Day Referral System.
-- The Lead Growth Roadmap is a 90-day plan.
+- The founding program bundles the Website Review and The 30-Day Fix (Change 01).
+- Lead Pipelines runs 60 to 90 days.

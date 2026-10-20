@@ -2,7 +2,7 @@
 
 heading: Founding client program
 intro:
-  - "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System, a $3,450 value."
+  - "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Website Review and The 30-Day Fix, a $3,450 value."
   - In return, I ask for your before and after numbers, a written case study and an honest testimonial.
 
 for:
@@ -13,8 +13,8 @@ deal:
   heading: The deal
   get_label: What you get
   get:
-    - Referral Leak Audit
-    - 30-Day Referral System
+    - Website Review
+    - The 30-Day Fix
     - Weekly check-ins for a month
   ask_label: What I ask
   ask:
@@ -27,8 +27,8 @@ steps:
   items:
     - Apply (5 minutes)
     - 20-minute fit call
-    - Audit
-    - 30-Day Referral System
+    - Website Review
+    - The 30-Day Fix
     - Case study
 
 apply:

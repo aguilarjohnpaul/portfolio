@@ -9,7 +9,7 @@ Custom fields the site writes (run `scripts/kit-setup.mjs` once to create them):
 
 ---
 
-**Subject:** Your referability score: {{ subscriber.score_total }}/100
+**Subject:** Is your website losing you work? Your score: {{ subscriber.score_total }}/100
 
 Hi {{ subscriber.first_name | default: "there" }},
 

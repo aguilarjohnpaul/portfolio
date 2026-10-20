@@ -2,8 +2,8 @@
 # chosen deliberately. Change wording here; scoring rules live in src/lib/scorecard.ts.
 
 intro:
-  heading: How referable is your business?
-  body: 12 quick questions about how new work finds you. You'll see your score and your biggest leak right away.
+  heading: Is your website losing you work?
+  body: 12 quick questions about how people find you, contact you and come back. You'll see your score and your biggest leak right away.
   start: Start
   micro: "Free · 12 questions · About 3 minutes"
 
@@ -27,21 +27,29 @@ stages:
 questions:
   - id: 1
     stage: referred
-    text: When a project wraps up well, do you ask the client for a referral?
-    fix: 'Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?"'
+    text: When someone searches your business name, does your website come up first?
+    fix: Make sure your homepage title includes your business name and what you do, and link your site from your Google Business Profile.
   - id: 2
     stage: referred
-    text: Do your clients know exactly what kind of client you'd like referred?
-    fix: Write a one-sentence "ideal referral" description and put it in your email signature and wrap-up message.
+    text: Is your Google Business Profile complete and updated in the last 3 months?
+    fix: Fill every field, add 10 recent photos, and post a short update each month.
   - id: 3
     stage: referred
-    text: Do other businesses (partners, vendors, peers) send you work regularly?
-    fix: List five businesses that serve your clients before or after you. Offer each a simple two-way referral arrangement.
+    text: Does your website show recent reviews, work or client stories?
+    fix: Add three recent reviews and one short project story to your homepage.
   - id: 4
     stage: referred
-    text: Do you thank or reward people who refer you?
-    fix: Send a handwritten note or a small thank-you within 48 hours of every referral, whether or not it turns into work.
+    text: When a project wraps up well, do you ask the client for a referral?
+    fix: 'Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?"'
   - id: 5
+    stage: hired
+    text: Can a visitor tell what you do, who it's for and roughly what it costs within 10 seconds?
+    fix: Rewrite your homepage headline to say what you do and for whom, and add "starting at" prices.
+  - id: 6
+    stage: hired
+    text: Does every page have one clear next step that works on a phone?
+    fix: Give every page one button ("Request a quote" or "Book a call") and test your form on your phone.
+  - id: 7
     stage: hired
     text: How fast do you usually reply to a new inquiry?
     options:
@@ -49,19 +57,11 @@ questions:
       - { label: Same day, score: 2 }
       - { label: Within 1–2 days, score: 1 }
       - { label: Longer, score: 0 }
-    fix: Set an auto-reply that confirms receipt and books a call slot. Aim to reply personally the same business day.
-  - id: 6
+    fix: Set an auto-reply that confirms receipt and offers a call time. Aim to reply personally the same business day.
+  - id: 8
     stage: hired
     text: Do you follow up on quotes or proposals that haven't been answered?
     fix: Follow up on day 2, day 7 and day 14 with a short, useful note, not a "just checking in."
-  - id: 7
-    stage: hired
-    text: Can a new prospect tell what you offer and roughly what it costs from your website?
-    fix: Add a plain "What we do and starting prices" section. Clear ranges filter out poor fits and speed up yeses.
-  - id: 8
-    stage: hired
-    text: Do you track where each new lead came from?
-    fix: Add "How did you hear about us?" to your inquiry form and log the answer for every lead.
   - id: 9
     stage: again
     text: Do you check in with past clients after the work ends?
@@ -72,17 +72,17 @@ questions:
     fix: Write one natural follow-on offer for your most common project and mention it at wrap-up.
   - id: 11
     stage: again
-    text: Do you ask happy clients for reviews or testimonials?
+    text: Do you ask happy clients for a Google review?
     fix: Send a review link with two prompt questions within a week of a strong finish.
   - id: 12
     stage: again
-    text: Do you know which clients have referred you before?
-    fix: Keep a simple list of referrers and what they sent. Your best referrers deserve the most attention.
+    text: Do you know where each new lead came from, including who referred them?
+    fix: Add "How did you hear about us? Who referred you?" to your inquiry form and log the answer for every lead.
 
 bands:
   - { min: 0, max: 39, name: Running on luck, slug: running-on-luck, meaning: Work comes in when it comes in. A few basics would change that fast. }
-  - { min: 40, max: 69, name: "Working, but leaking", slug: working-but-leaking, meaning: "Referrals happen, but you're losing good work at one or two stages." }
-  - { min: 70, max: 100, name: Built to be referred, slug: built-to-be-referred, meaning: Your system works. The gains now come from new lead sources and consistency. }
+  - { min: 40, max: 69, name: "Working, but leaking", slug: working-but-leaking, meaning: "People find you, but you're losing good work at one or two stages." }
+  - { min: 70, max: 100, name: Built to win work, slug: built-to-win-work, meaning: Your site and follow-up work. The gains now come from new lead sources and consistency. }
 
 result:
   eyebrow: Your result

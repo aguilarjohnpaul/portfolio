@@ -1,27 +1,27 @@
 # Homepage copy, section by section (spec §5).
 
 hero:
-  eyebrow: Revenue strategy for owner-run service firms
-  primary: { label: How referable is your business?, href: "/scorecard" }
+  eyebrow: Website and lead strategy for owner-run service firms
+  primary: { label: Is your website losing you work?, href: "/scorecard" }
   secondary: { label: See founding client spots, href: "/founding-clients" }
   micro: "Free · 12 questions · About 3 minutes · Results on screen"
   variants:
     a:
-      h1: Referrals built your firm. Now build the system behind them.
-      subhead: For service businesses with 5 to 20 people. Find where referrals leak, follow up faster, and turn happy clients into steady new work.
+      h1: Your next client is checking your website right now. Does it give them a reason to call?
+      subhead: For service businesses with 5 to 20 people. Fix the message, the inquiry path and the follow-up that decide whether a visit becomes a job.
     b:
-      h1: Busy one month, empty the next? Turn word of mouth into steady work.
-      subhead: For service businesses with 5 to 20 people. Fix the referral and follow-up leaks behind the slow months.
+      h1: Busy one month, empty the next? Turn your website into a steady source of leads.
+      subhead: For service businesses with 5 to 20 people. Find where your website and follow-up lose good leads, then fix them in 30 days.
 
 sample:
   label: Sample result
   score: 62
-  score_label: referability
+  score_label: website score
   bars:
     - { label: Get referred, value: 70 }
     - { label: Get hired, value: 48, weakest: true }
     - { label: Get hired again, value: 66 }
-  footer: "Biggest leak: follow-up after the first call."
+  footer: "Biggest leak: no clear next step on mobile."
 
 pains:
   heading: Sound familiar?
@@ -42,10 +42,10 @@ how:
   stages:
     - name: Get referred
       breaks: Happy clients mean to mention you and forget.
-      fix: A clear, easy way for clients and partners to send work your way.
+      fix: A website and search presence that confirms you the moment someone is referred.
     - name: Get hired
       breaks: Slow follow-up, unclear offers, quotes that stall.
-      fix: A follow-up and proposal process that closes more of what comes in.
+      fix: A clear site, fast replies and follow-up that turn visits into booked work.
     - name: Get hired again
       breaks: The project ends and the client drifts away.
       fix: Check-ins and next offers that bring past clients back and keep them referring.
@@ -53,16 +53,16 @@ how:
 offers:
   eyebrow: Offers
   heading: Start where you are.
-  intro: Each step builds on the last. The audit fee is credited toward your next step.
+  intro: Each step builds on the last. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days.
 
 founding:
   eyebrow: Founding client program
   heading: Five spots. No fee. An honest case study in return.
-  body: I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Referral Leak Audit and 30-Day Referral System, a $3,450 value.
+  body: I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Website Review and The 30-Day Fix, a $3,450 value.
   get_label: What you get
   get:
-    - Referral Leak Audit
-    - 30-Day Referral System
+    - Website Review
+    - The 30-Day Fix
     - Weekly check-ins for a month
   ask_label: What I ask
   ask:
@@ -85,6 +85,6 @@ about:
     - Honest over impressive. I'll tell you what's working, what isn't, and what to fix first.
 
 scorecard_cta:
-  heading: How referable is your business?
+  heading: Is your website losing you work?
   body: Twelve questions. About three minutes. Your score and your biggest leak, on screen.
   button: { label: Start the scorecard, href: "/scorecard" }

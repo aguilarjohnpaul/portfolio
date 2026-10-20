@@ -72,7 +72,7 @@ const offers = defineCollection({
     page: z.object({
       heading: text, intro: text, ladder_rule: text, faq_heading: text,
       labels: z.object({
-        for: text, get: text, timeline: text, scorecard_button: text, book_button: text,
+        for: text, get: text, timeline: text, terms: text, scorecard_button: text, book_button: text,
         founding_link: text, starting_at: text, on_request: text,
       }),
     }),
@@ -85,6 +85,7 @@ const offers = defineCollection({
       studio_only: z.boolean().optional(),
       get: z.array(text),
       note: z.string().optional(),
+      terms: z.string().optional(),
       checkout_url: z.string(),
     })),
     faq: z.array(z.object({ q: text, a: text })),

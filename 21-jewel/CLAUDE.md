@@ -6,8 +6,12 @@ Read this file first, then `PHASE1_SPEC.md` (the build spec). The spec is the so
 
 Marketing site for **21 Jewel**, a solo revenue-strategy advisory run by JP (John Paul) in San Antonio, TX. It sells to owner-run service businesses (roughly 5–20 people) whose referrals have slowed. Phase 1 has two jobs:
 
-1. Get visitors to take the free scorecard, **How Referable Is Your Business?**, and leave an email.
+1. Get visitors to take the free scorecard, **Is Your Website Losing You Work?**, and leave an email.
 2. Fill five free **founding client** spots in exchange for case studies.
+
+**Offer ladder (Change 01):** Website Review → The 30-Day Fix → Lead Pipelines → Growth Advisor. The website leads; referral conversations stay inside the work.
+
+**Execution rule:** JP executes only what is one-time, templated and under about 10 hours per client. Recurring or custom work (posting, ad management, design, full rebuilds) goes to partners, who quote separately and bill the client directly. JP edits on any common platform himself.
 
 - Domain: `21jeweladvisory.com` (DNS on Cloudflare). `meet21j.com` 301-redirects to it.
 - Public email: `johnpaul@21jeweladvisory.com`
