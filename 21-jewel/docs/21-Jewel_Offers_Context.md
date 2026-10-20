@@ -68,7 +68,7 @@ Display order is the ladder. Each step builds on the last.
 | — | White-label Strategy Sprint | Studio partners only | Pricing on request | Strategy delivered under your studio's name. | 2–3 weeks |
 
 ### 3.0 How Referable Is Your Business? (free scorecard)
-- **Who it's for:** `[DRAFT]` Any owner who wants a quick, honest read on how new work finds them.
+- **Who it's for:** Any owner who wants a quick, honest read on how new work finds them.
 - **What you get:** 12 questions, an instant score, the biggest leak on screen, and the full breakdown by email.
 - **Job in the funnel:** the main call to action. It captures emails into Kit and routes people toward the audit or a founding spot. Details are in §5.
 
@@ -205,7 +205,7 @@ Display order is the ladder. Each step builds on the last.
 
 - Both variants are running as an A/B test. JP picks the winner after about 300 homepage visitors per variant, based on the scorecard-start rate.
 - The SEO title is "21 Jewel · Turn referrals into steady work."
-- **About blurb:** "I've spent `[TBD: years]` years in revenue strategy: pipelines, funnels, paid media and the CRM work behind them. Now I help owner-run firms in San Antonio and beyond turn word of mouth into steady work." The career context file lists 8 years in paid and performance marketing since 2018; JP still has to approve the wording.
+- **About blurb:** "I've spent 8 years in performance marketing and revenue strategy: pipelines, funnels, paid media and the tracking behind them. Now I help owner-run firms in San Antonio and beyond turn word of mouth into steady work."
 
 ---
 
@@ -235,7 +235,5 @@ Display order is the ladder. Each step builds on the last.
 
 ## 9. Open items
 
-- Years of experience for the About blurb `[TBD]`.
-- JP's photo `[TBD]`.
-- Approve the `[DRAFT]` copy: the scorecard "Who it's for," the thanks page ("reply within two business days") and the privacy page ("within 30 days" for deletion).
+- JP's photo `[TBD]` (on hold).
 - Confirm the spec assumptions: the score and leak show free with the breakdown emailed, the founding program bundles the audit and the system, and the roadmap is a 90-day plan.
