@@ -7,7 +7,7 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 - [ ] **Prices.** `src/content/offers.yaml` → `price_from` for `audit`, `system`, `roadmap`, `advisor` (now `"[PRICE]"`). Use something like `"$750"`, or `""` for "Pricing on request".
 - [ ] **Years of experience.** `src/content/home.yaml` → `about.paragraphs` → replace `[X]`.
 - [ ] **Your photo.** Add `public/jp.jpg` (4:5, about 960×1200). In `home.yaml` set `about.photo: /jp.jpg` and `about.photo_alt: JP, founder of 21 Jewel`.
-- [ ] **Cal.com link.** `src/content/site.yaml` → `links.cal` (now `"[CAL_LINK]"`; until then "Book a call" opens an email).
+- [x] **Cal.com link.** Set to `https://cal.com/21jewel/20min`.
 - [ ] **Tally form URL.** `src/content/site.yaml` → `links.tally` (now `"[TALLY_FORM_URL]"`; until then the application shows your email).
 - [ ] **Founding spots filled.** `src/content/site.yaml` → `founding.filled` (launches at 0 = "5 of 5 spots open").
 
@@ -54,6 +54,7 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 ## 6. Tally application form
 
 - [ ] Create the form with these fields: name, email, business, website, team size, industry, "Where does most of your new work come from today?", "What's your biggest growth frustration right now?", "Why now?"
+- [ ] Design → colors: background `#FBF9F6`, text `#1E3B2F`, buttons `#1E3B2F` with text `#F3EFE6`, accent `#9F5835`, input borders `#D5D6CC`. Font: Inter (Fraunces for headings if offered). Corner radius about 8px.
 - [ ] Settings → notifications → email you on each submission.
 - [ ] Optional: Settings → redirect on completion → `https://21jeweladvisory.com/thanks`.
 - [ ] Optional: add a hidden field `waitlist` so you can tell waitlist sign-ups apart.
@@ -61,7 +62,7 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 
 ## 7. Cal.com
 
-- [ ] Create an event "20-minute fit call" and paste its link into `site.yaml` → `links.cal`.
+- [x] Event "20-minute fit call" created and linked.
 
 ## 8. Test the live site
 

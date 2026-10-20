@@ -9,8 +9,12 @@ const embed = ready ? `${url.replace('/r/', '/embed/')}${url.includes('?') ? '&'
 const direct = ready ? `${url}${waitlist ? (url.includes('?') ? '&' : '?') + 'waitlist=1' : ''}` : `mailto:${email}`;
 ---
 <div class="tally" data-tally-wrap>
-  {ready && <p class="loading muted" data-tally-loading>{loading}</p>}
-  {ready && <iframe data-tally-src={embed} loading="lazy" width="100%" height="600" title={title}></iframe>}
+  {ready && (
+    <div class="frame">
+      <p class="loading" data-tally-loading>{loading}</p>
+      <iframe data-tally-src={embed} loading="lazy" width="100%" height="600" title={title}></iframe>
+    </div>
+  )}
   <p class="small fallback">
     <a href={direct} target={ready ? '_blank' : undefined} rel="noopener" data-event="founding_apply_click" data-prop-location="tally-fallback">{ready ? fallback : email}</a>
   </p>
@@ -18,7 +22,8 @@ const direct = ready ? `${url}${waitlist ? (url.includes('?') ? '&' : '?') + 'wa
 
 <style>
   .tally { display: grid; gap: var(--space-3); }
-  iframe { border: 0; width: 100%; min-height: 600px; }
+  iframe { border: 0; width: 100%; min-height: 600px; display: block; }
+  .frame { background: var(--embed-bg); border: 1px solid var(--embed-line); border-radius: var(--radius-card); padding: var(--space-5); color: var(--embed-muted); }
   .loading { padding: var(--space-5) 0; }
 </style>
 

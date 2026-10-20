@@ -14,7 +14,7 @@ brand:
 
 links:
   # Paste your Cal.com "20-minute fit call" link here.
-  cal: "[CAL_LINK]"
+  cal: "https://cal.com/21jewel/20min"
   # Paste your Tally application form URL here (for example https://tally.so/r/abc123).
   tally: "[TALLY_FORM_URL]"
 

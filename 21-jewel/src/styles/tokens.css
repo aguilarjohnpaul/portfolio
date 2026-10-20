@@ -20,6 +20,10 @@
   --band-line: #3A5A4C;
   --focus: #9F5835;
   --error: #A3352B;
+  /* The Tally form doesn't follow dark mode, so its frame stays light in both themes. */
+  --embed-bg: #FBF9F6;
+  --embed-line: #D5D6CC;
+  --embed-muted: #606D63;
 
   --font-display: 'Fraunces Variable', 'Fraunces Fallback', Georgia, serif;
   --font-body: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
