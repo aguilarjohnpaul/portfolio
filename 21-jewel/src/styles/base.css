@@ -82,6 +82,20 @@ a:hover { text-decoration-thickness: 2px; }
 
 .list { padding-left: 1.2em; display: grid; gap: var(--space-2); }
 
+/* Card rows become swipeable carousels on phones. Desktop keeps the grid. */
+@media (max-width: 759.98px) {
+  .carousel, ul.carousel, ol.carousel {
+    display: flex; gap: var(--space-3);
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+    margin-inline: calc(var(--gutter) * -1); padding: 2px var(--gutter) var(--space-4);
+    scrollbar-width: none;
+  }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel > * { flex: 0 0 84%; scroll-snap-align: start; position: relative; }
+  .carousel:focus-visible { outline-offset: -2px; }
+}
+
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);

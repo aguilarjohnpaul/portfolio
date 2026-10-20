@@ -10,7 +10,7 @@ const { how } = Astro.props;
       <h2 id="how-h">{how.heading}</h2>
       <p class="lead">{how.intro}</p>
     </div>
-    <ol role="list" class="grid">
+    <ol role="list" class="grid carousel" tabindex="0" aria-labelledby="how-h">
       {how.stages.map((s, i) => (
         <li class="card stage">
           <p class="n" aria-hidden="true">{i + 1}</p>
