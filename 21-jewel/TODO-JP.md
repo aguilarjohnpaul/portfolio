@@ -8,7 +8,7 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 - [ ] **Years of experience.** `src/content/home.yaml` → `about.paragraphs` → replace `[X]`.
 - [ ] **Your photo.** Add `public/jp.jpg` (4:5, about 960×1200). In `home.yaml` set `about.photo: /jp.jpg` and `about.photo_alt: JP, founder of 21 Jewel`.
 - [x] **Cal.com link.** Set to `https://cal.com/21jewel/20min`.
-- [ ] **Tally form URL.** `src/content/site.yaml` → `links.tally` (now `"[TALLY_FORM_URL]"`; until then the application shows your email).
+- [x] **Tally form URL.** Set to `https://tally.so/r/7XRqva`.
 - [ ] **Founding spots filled.** `src/content/site.yaml` → `founding.filled` (launches at 0 = "5 of 5 spots open").
 
 ## 2. Confirm copy I wrote (the spec didn't cover these)
@@ -58,7 +58,7 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 - [ ] Settings → notifications → email you on each submission.
 - [ ] Optional: Settings → redirect on completion → `https://21jeweladvisory.com/thanks`.
 - [ ] Optional: add a hidden field `waitlist` so you can tell waitlist sign-ups apart.
-- [ ] Paste the share link (`https://tally.so/r/...`) into `site.yaml` → `links.tally`.
+- [x] Share link added to `site.yaml`.
 
 ## 7. Cal.com
 
