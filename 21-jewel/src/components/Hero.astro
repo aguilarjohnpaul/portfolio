@@ -11,12 +11,13 @@ interface Props {
 }
 const { hero, sample, test } = Astro.props;
 const tested = test.enabled && !test.winner;
-const ids: ('a' | 'b')[] = tested ? ['a', 'b'] : [test.winner || 'a'];
+// Testing: A in the HTML, B swapped in for B visitors. Winner set: render only the winner.
+const shown = hero.variants[test.winner || 'a'];
 ---
 <section class="hero container">
   <div class="copy">
     <p class="eyebrow">{hero.eyebrow}</p>
-    {ids.map((id) => <HeroVariant id={id} tested={tested} {...hero.variants[id]} />)}
+    <HeroVariant a={shown} b={tested ? hero.variants.b : undefined} />
     <div class="btn-row">
       <a class="btn btn-primary" href={hero.primary.href} data-event="hero_cta_click" data-prop-cta="scorecard">{hero.primary.label}</a>
       <a class="btn btn-ghost" href={hero.secondary.href} data-event="hero_cta_click" data-prop-cta="founding">{hero.secondary.label}</a>

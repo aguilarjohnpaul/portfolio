@@ -64,6 +64,8 @@ spots:
 
 seo:
   og_image: /og.png
+  # Describes the share image (it shows hero variant A's headline).
+  og_image_alt: "21 Jewel: Your next client is checking your website right now. Does it give them a reason to call?"
   pages:
     home:
       title: "21 Jewel · Turn your website into steady work"

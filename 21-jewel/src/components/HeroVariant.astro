@@ -1,11 +1,19 @@
 ---
-interface Props { id: 'a' | 'b'; h1: string; subhead: string; tested: boolean }
-const { id, h1, subhead, tested } = Astro.props;
+// One H1 and one subhead. The HTML carries variant A (what crawlers and
+// no-JS visitors see). When the hero test is on, variant B's text rides in
+// data attributes and a tiny inline script swaps it in before first paint.
+interface Props {
+  a: { h1: string; subhead: string };
+  b?: { h1: string; subhead: string };
+}
+const { a, b } = Astro.props;
+const swap = `(function(){if(document.documentElement.dataset.hero!=='b')return;document.querySelectorAll('[data-hero-b]').forEach(function(el){el.textContent=el.getAttribute('data-hero-b')})})()`;
 ---
-<div class="variant" data-hero-variant={tested ? id : undefined}>
-  <h1>{h1}</h1>
-  <p class="lead">{subhead}</p>
+<div class="variant">
+  <h1 data-hero-b={b?.h1}>{a.h1}</h1>
+  <p class="lead" data-hero-b={b?.subhead}>{a.subhead}</p>
 </div>
+{b && <script is:inline set:html={swap}></script>}
 
 <style>
   .variant h1 { margin-bottom: var(--space-4); }

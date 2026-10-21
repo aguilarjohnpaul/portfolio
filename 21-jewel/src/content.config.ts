@@ -33,6 +33,7 @@ const site = defineCollection({
     spots: z.object({ open_label: text, full_label: text, apply: text, waitlist: text }),
     seo: z.object({
       og_image: text,
+      og_image_alt: text,
       pages: z.record(z.string(), z.object({ title: text, description: text })),
     }),
   }),

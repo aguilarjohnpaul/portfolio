@@ -9,11 +9,11 @@ import ProofSlot from '../components/ProofSlot.astro';
 import AboutBlock from '../components/AboutBlock.astro';
 import ScorecardCTA from '../components/ScorecardCTA.astro';
 import { doc } from '../lib/content';
-import { professionalService } from '../lib/schema';
+import { professionalService, website } from '../lib/schema';
 
 const [site, home, offers] = await Promise.all([doc('site'), doc('home'), doc('offers')]);
 ---
-<Base page="home" jsonLd={[professionalService(site)]}>
+<Base page="home" jsonLd={[professionalService(site, offers), website(site)]}>
   <Hero hero={home.hero} sample={home.sample} test={site.heroTest} />
   <PainList pains={home.pains} />
   <StageCards how={home.how} />

@@ -111,10 +111,6 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .btn[disabled] { opacity: 0.6; cursor: progress; }
 
-/* Hero A/B: both variants ship in the HTML; CSS shows one. No JS shows A. */
-[data-hero-variant="b"] { display: none; }
-html[data-hero="b"] [data-hero-variant="a"] { display: none; }
-html[data-hero="b"] [data-hero-variant="b"] { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
