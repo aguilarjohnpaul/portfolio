@@ -16,7 +16,7 @@ const direct = ready ? `${url}${waitlist ? (url.includes('?') ? '&' : '?') + 'wa
     </div>
   )}
   <p class="small fallback">
-    <a href={direct} target={ready ? '_blank' : undefined} rel="noopener" data-event="founding_apply_click" data-prop-location="tally-fallback">{ready ? fallback : email}</a>
+    <a href={direct} target={ready ? '_blank' : undefined} rel="noopener" data-event="cta_click" data-prop-location="tally-fallback" data-prop-target="tally">{ready ? fallback : email}</a>
   </p>
 </div>
 
@@ -32,12 +32,13 @@ const direct = ready ? `${url}${waitlist ? (url.includes('?') ? '&' : '?') + 'wa
   const wrap = document.querySelector<HTMLElement>('[data-tally-wrap]');
   const frame = wrap?.querySelector<HTMLIFrameElement>('iframe');
   if (wrap && frame) {
-    let tracked = false;
-    // Count one apply interaction: focus moving into the form.
-    addEventListener('blur', () => {
-      if (!tracked && document.activeElement === frame) {
-        tracked = true;
-        track('founding_apply_click', { location: 'tally-embed' });
+    // Tally posts a "Tally.FormSubmitted" message to the page when the application is sent.
+    let submitted = false;
+    addEventListener('message', (e) => {
+      if (submitted || !/^https:\/\/tally\.so$/.test(e.origin)) return;
+      if (String(e.data).includes('Tally.FormSubmitted')) {
+        submitted = true;
+        track('founding_apply_submit', { location: 'tally-embed' });
       }
     });
     const hideLoading = () => wrap.querySelector('[data-tally-loading]')?.remove();

@@ -7,24 +7,17 @@ const { sc } = Astro.props;
   <section class="card result-card" aria-labelledby="result-h" tabindex="-1" data-result-focus>
     <p class="eyebrow" id="result-h">{sc.result.eyebrow}</p>
     <p class="score"><span class="num" data-total>0</span><span class="of">{sc.result.score_suffix}</span></p>
+    <div class="track score-track" aria-hidden="true"><div class="fill" data-score-fill></div></div>
     <h2 class="band" data-band></h2>
-    <p class="muted" data-band-meaning></p>
+    <p class="muted" data-band-body></p>
     <div class="leak">
-      <p class="label">{sc.result.leak_label}</p>
-      <p class="leak-stage" data-leak></p>
-      <p class="label">{sc.result.fix_label}</p>
-      <p data-fix></p>
+      <p class="label" data-fixes-label>{sc.result.fixes_label}</p>
+      <ol class="fixes" data-fixes></ol>
+      <p class="perfect" data-perfect hidden>{sc.result.perfect}</p>
     </div>
-    <div class="stages" data-stages hidden>
-      <h3>{sc.after.stages_heading}</h3>
-      <ul role="list" class="bars">
-        {sc.stages.map((s) => (
-          <li data-stage={s.id}>
-            <div class="row"><span>{s.name}</span><span class="val" data-stage-val></span></div>
-            <div class="track" aria-hidden="true"><div class="fill" data-stage-fill></div></div>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <a class="btn btn-primary" href={sc.result.review_button.href}
+        data-event="cta_click" data-prop-location="scorecard-result" data-prop-target="/review">{sc.result.review_button.label}</a>
     </div>
   </section>
   <button type="button" class="link-btn restart" data-action="restart">{sc.result.restart}</button>

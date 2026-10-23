@@ -1,29 +1,30 @@
 // Scorecard behavior: one page, three states (intro, questions, result + email).
+// Screen 0 is the unscored business-type question; screens 1–12 are scored 2 / 1 / 0.
 // Progress is kept in sessionStorage so a refresh doesn't lose answers.
-import { computeResult, type Band, type Question, type ScorecardData, type StageId } from '../lib/scorecard';
+import { computeResult, type ScorecardData } from '../lib/scorecard';
 import { heroVariant, track } from '../lib/analytics';
 import { loadTurnstile, type TurnstileHandle } from './turnstile';
 
 type Step = 'intro' | 'questions' | 'result';
-interface State { step: Step; index: number; answers: (number | null)[]; sent: boolean; completed: boolean }
-interface Data extends ScorecardData {
-  questions: Question[];
-  stages: { id: StageId; name: string; slug: string }[];
-  bands: Band[];
-  errors: Record<string, string>;
-}
+type Answer = string | number | null;
+interface State { step: Step; index: number; answers: Answer[]; sent: boolean; completed: boolean }
+interface Data extends ScorecardData { errors: Record<string, string> }
 
-const KEY = 'scorecard-v1';
+const KEY = 'scorecard-v2';
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = <T extends Element = HTMLElement>(root: ParentNode, sel: string) => root.querySelector<T>(sel)!;
 const $$ = <T extends Element = HTMLElement>(root: ParentNode, sel: string) => [...root.querySelectorAll<T>(sel)];
+
+function fresh(n: number): State {
+  return { step: 'intro', index: 0, answers: Array(n).fill(null), sent: false, completed: false };
+}
 
 function load(n: number): State {
   try {
     const s = JSON.parse(sessionStorage.getItem(KEY) ?? 'null') as State | null;
     if (s && Array.isArray(s.answers) && s.answers.length === n) return s;
   } catch {}
-  return { step: 'intro', index: 0, answers: Array(n).fill(null), sent: false, completed: false };
+  return fresh(n);
 }
 
 function source(): string {
@@ -39,7 +40,7 @@ export function initScorecard() {
   if (!found) return;
   const root: HTMLElement = found;
   const data = JSON.parse($(root, '#scorecard-data').textContent!) as Data;
-  const n = data.questions.length;
+  const n = data.questions.length + 1; // + the business-type screen
   let state = load(n);
   let lastKeyNav = false;
   let advanceTimer = 0;
@@ -50,6 +51,8 @@ export function initScorecard() {
   const nextBtn = $<HTMLButtonElement>(root, '[data-action="next"]');
   const backBtn = $<HTMLButtonElement>(root, '[data-action="back"]');
   const progress = $(root, '[data-progress]');
+  const scores = () => state.answers.slice(1) as number[];
+  const parse = (f: HTMLFieldSetElement, v: string): Answer => (f.dataset.kind === 'industry' ? v : Number(v));
 
   function show(step: Step, focus = true) {
     state.step = step;
@@ -62,20 +65,20 @@ export function initScorecard() {
   function showQuestion(focus: boolean) {
     const i = state.index;
     fieldsets.forEach((f, j) => (f.hidden = j !== i));
-    progress.textContent = progress.dataset.template!.replace('{n}', String(i + 1)).replace('{total}', String(n));
+    progress.textContent = fieldsets[i].dataset.label ?? '';
     $(root, '[data-progress-bar]').style.width = `${(i / n) * 100}%`;
     const a = state.answers[i];
-    $$<HTMLInputElement>(fieldsets[i], 'input').forEach((r) => (r.checked = a !== null && Number(r.value) === a));
+    $$<HTMLInputElement>(fieldsets[i], 'input').forEach((r) => (r.checked = a !== null && parse(fieldsets[i], r.value) === a));
     nextBtn.disabled = a === null;
     backBtn.disabled = i === 0;
     if (focus) $(fieldsets[i], '.q-text').focus({ preventScroll: true });
   }
 
-  function answer(i: number, score: number, auto: boolean) {
-    state.answers[i] = score;
+  function answer(i: number, value: Answer, auto: boolean) {
+    state.answers[i] = value;
     save();
     nextBtn.disabled = false;
-    track('scorecard_answer', { q: data.questions[i].id, score });
+    if (i > 0) track('scorecard_answer', { q: data.questions[i - 1].id, score: value as number });
     if (!auto) return;
     clearTimeout(advanceTimer);
     advanceTimer = window.setTimeout(next, reduced() ? 0 : 250);
@@ -87,39 +90,26 @@ export function initScorecard() {
     else show('result');
   }
 
-  function result() {
-    return computeResult(state.answers as number[], data);
-  }
-
   function showResult(focus: boolean) {
-    const r = result();
-    const stageName = (id: StageId) => data.stages.find((s) => s.id === id)!.name;
-    $(root, '[data-total]').textContent = String(r.total);
-    $(root, '[data-band]').textContent = r.band.name;
-    $(root, '[data-band-meaning]').textContent = r.band.meaning;
-    $(root, '[data-leak]').textContent = stageName(r.weakestStage);
-    $(root, '[data-fix]').textContent = r.onScreenFix.fix;
+    const r = computeResult(scores(), data);
+    $(root, '[data-total]').textContent = String(r.points);
+    $(root, '[data-band]').textContent = r.band.headline;
+    $(root, '[data-band-body]').textContent = r.band.body;
+    requestAnimationFrame(() => ($(root, '[data-score-fill]').style.width = `${(r.points / r.max) * 100}%`));
+    const list = $(root, '[data-fixes]');
+    list.replaceChildren(...r.topFixes.map((q) => Object.assign(document.createElement('li'), { textContent: q.fix })));
+    const perfect = r.topFixes.length === 0;
+    list.hidden = perfect;
+    $(root, '[data-fixes-label]').hidden = perfect;
+    $(root, '[data-perfect]').hidden = !perfect;
     if (!state.completed) {
       state.completed = true;
-      const slug = data.stages.find((s) => s.id === r.weakestStage)!.slug;
-      track('scorecard_complete', { total: r.total, band: r.band.slug, weakest_stage: slug });
+      track('scorecard_complete', { total: r.points, band: r.band.slug, industry: String(state.answers[0]) });
     }
-    if (state.sent) revealStages();
-    else turnstile ??= loadTurnstile($(root, '[data-turnstile]'));
+    if (!state.sent) turnstile ??= loadTurnstile($(root, '[data-turnstile]'));
     $<HTMLFormElement>(root, '[data-email-form]').hidden = state.sent;
     $(root, '[data-sent]').hidden = !state.sent;
     if (focus) $(root, '[data-result-focus]').focus();
-  }
-
-  function revealStages() {
-    const r = result();
-    $(root, '[data-stages]').hidden = false;
-    $$(root, '[data-stage]').forEach((li) => {
-      const id = li.dataset.stage as StageId;
-      li.classList.toggle('weakest', id === r.weakestStage);
-      $(li, '[data-stage-val]').textContent = String(r.stages[id]);
-      requestAnimationFrame(() => ($(li, '[data-stage-fill]').style.width = `${r.stages[id]}%`));
-    });
   }
 
   // Events
@@ -127,22 +117,19 @@ export function initScorecard() {
     const action = (e.target as Element).closest<HTMLElement>('[data-action]')?.dataset.action;
     if (action === 'start') {
       track('scorecard_start', { source: source() });
-      state.index = state.answers.findIndex((a) => a === null);
-      if (state.index < 0) state.index = 0;
+      state.index = Math.max(0, state.answers.findIndex((a) => a === null));
       show('questions');
     } else if (action === 'next') next();
     else if (action === 'back' && state.index > 0) { clearTimeout(advanceTimer); state.index--; show('questions'); }
     else if (action === 'restart') {
-      state = { step: 'intro', index: 0, answers: Array(n).fill(null), sent: false, completed: false };
-      $(root, '[data-stages]').hidden = true;
+      state = fresh(n);
       show('intro', false);
       $(root, '[data-action="start"]').focus();
     }
   });
 
   fieldsets.forEach((f, i) => f.addEventListener('change', (e) => {
-    const input = e.target as HTMLInputElement;
-    answer(i, Number(input.value), !lastKeyNav);
+    answer(i, parse(f, (e.target as HTMLInputElement).value), !lastKeyNav);
     lastKeyNav = false;
   }));
 
@@ -150,13 +137,13 @@ export function initScorecard() {
     if (state.step !== 'questions' || e.metaKey || e.ctrlKey || e.altKey) return;
     lastKeyNav = e.key.startsWith('Arrow');
     const k = Number(e.key);
-    if (k >= 1 && k <= 4) {
-      const input = $$<HTMLInputElement>(fieldsets[state.index], 'input')[k - 1];
-      if (!input) return;
+    const inputs = $$<HTMLInputElement>(fieldsets[state.index], 'input');
+    if (k >= 1 && k <= inputs.length) {
+      const input = inputs[k - 1];
       e.preventDefault();
       input.checked = true;
       input.focus({ preventScroll: true });
-      answer(state.index, Number(input.value), true);
+      answer(state.index, parse(fieldsets[state.index], input.value), true);
     } else if (e.key === 'Enter' && !(e.target as Element).closest('button, a')) {
       e.preventDefault();
       next();
@@ -165,19 +152,11 @@ export function initScorecard() {
 
   import('./scorecard-email').then(({ bindEmailForm }) =>
     bindEmailForm(root, data.errors, () => {
-      const r = result();
-      return {
-        answers: state.answers as number[],
-        total: r.total,
-        stages: r.stages,
-        band: r.band.slug,
-        weakestStage: data.stages.find((s) => s.id === r.weakestStage)!.slug,
-        heroVariant: heroVariant(),
-      };
+      const r = computeResult(scores(), data);
+      return { answers: state.answers, heroVariant: heroVariant(), band: r.band.slug };
     }, () => turnstile, () => {
       state.sent = true;
       save();
-      revealStages();
     }),
   );
 

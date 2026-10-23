@@ -1,6 +1,6 @@
 # 21 Jewel website
 
-Marketing site for 21 Jewel, a revenue-strategy advisory for owner-run service firms. Phase 1 has two jobs: get visitors to take the free scorecard, **How Referable Is Your Business?**, and fill five founding client spots.
+Marketing site for 21 Jewel: more calls from Google for owner-run local service businesses. Phase 1 has two jobs: get free Website Review requests (and scorecard emails, **Is Your Website Losing You Work?**), and later fill five founding client spots (hidden for now).
 
 - Build spec: `PHASE1_SPEC.md`. Project rules: `CLAUDE.md`.
 - Your launch checklist: `TODO-JP.md`. Judgment calls: `DECISIONS.md`.
@@ -21,6 +21,7 @@ npm run preview   # serve dist/ (no /api; use `npx wrangler pages dev dist` with
 - **Change a price:** `src/content/offers.yaml` → set `price_from` on the offer, for example `"$750"`.
 - **Change hero copy:** `src/content/home.yaml` → `hero.variants.a` or `hero.variants.b`.
 - **Mark a founding spot filled:** `src/content/site.yaml` → raise `founding.filled` by one.
+- **Show or hide a section or page:** `src/content/site.yaml` → `flags` (founding, results, HVAC, roofing, FAQ, terms).
 - **Pick the hero winner:** `src/content/site.yaml` → `heroTest.winner: "a"` (or `"b"`).
 - **Add a testimonial:** `src/content/testimonials.yaml` → add `{ id, quote, name, role }` to the list. The proof section appears on the homepage automatically.
 

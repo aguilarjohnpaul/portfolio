@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import { doc } from '../../lib/content';
+const t = (await doc('pages')).thanks_review;
+---
+<Base page="thanks-review" noindex>
+  <div class="container page-head section">
+    <h1>{t.heading}</h1>
+    <p class="lead">{t.body}</p>
+    <div><a class="btn btn-primary" href={t.link.href} data-event="cta_click" data-prop-location="thanks-review" data-prop-target={t.link.href}>{t.link.label}</a></div>
+  </div>
+</Base>

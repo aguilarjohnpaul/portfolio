@@ -1,4 +1,4 @@
-// POST /api/scorecard: Turnstile check, then Kit subscriber, fields and tags.
+// POST /api/scorecard: Turnstile check, then save the result (Google Sheet + Gmail, or Kit).
 // Logic lives in src/lib/scorecard-api.ts so it can be tested.
 import { handleScorecard, type ApiData, type Env } from '../../src/lib/scorecard-api';
 

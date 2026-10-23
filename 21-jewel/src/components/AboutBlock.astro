@@ -1,28 +1,23 @@
 ---
 import type { HomeData } from '../lib/content';
+import Headshot from './Headshot.astro';
 interface Props { about: HomeData['about'] }
 const { about } = Astro.props;
-const photo = about.photo.trim();
 ---
 <section id="about" class="section" aria-labelledby="about-h">
   <div class="container inner">
-    {photo
-      ? <img class="photo" src={photo} alt={about.photo_alt.replace(/^\[|\]$/g, "")} width="480" height="600" loading="lazy" />
-      : <div class="photo placeholder" role="img" aria-label={about.photo_alt}><span>{about.photo_alt}</span></div>}
+    <Headshot photo={about.photo} alt={about.photo_alt} />
     <div class="stack">
       <h2 id="about-h">{about.heading}</h2>
       {about.paragraphs.map((p, i) => <p class:list={{ lead: i === 0 }}>{p}</p>)}
+      <p><a class="more" href={about.link.href} data-event="cta_click" data-prop-location="home-about" data-prop-target={about.link.href}>{about.link.label}</a></p>
     </div>
   </div>
 </section>
 
 <style>
   .inner { display: grid; gap: var(--space-7); align-items: center; }
-  .photo { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; border-radius: var(--radius-card); object-fit: cover; }
-  .placeholder {
-    background: var(--surface); border: 1px dashed var(--line);
-    display: grid; place-items: center; color: var(--muted); font-size: var(--small); font-weight: 600;
-  }
   .lead { color: var(--ink); }
+  .more { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
   @media (min-width: 760px) { .inner { grid-template-columns: 360px 1fr; } }
 </style>

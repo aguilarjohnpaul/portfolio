@@ -1,0 +1,30 @@
+---
+// Must stay labeled as an example. It is not a real client.
+import type { HomeData } from '../lib/content';
+interface Props { example: HomeData['example'] }
+const { example } = Astro.props;
+---
+<figure class="example" aria-labelledby="example-label">
+  <p class="tag" id="example-label">{example.label}</p>
+  <ol role="list" class="items">
+    {example.items.map((t, i) => (
+      <li><span class="n" aria-hidden="true">{i + 1}</span><span>{t}</span></li>
+    ))}
+  </ol>
+  <figcaption class="small">{example.footer}</figcaption>
+</figure>
+
+<style>
+  .example {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-hero);
+    padding: var(--space-6); display: grid; gap: var(--space-5);
+  }
+  .tag { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .items { display: grid; gap: var(--space-4); }
+  .items li { display: flex; gap: var(--space-3); align-items: flex-start; font-weight: 500; }
+  .n {
+    flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--accent);
+    color: var(--accent-text); display: grid; place-items: center; font-size: var(--small); font-weight: 600;
+  }
+  figcaption { border-top: 1px solid var(--line); padding-top: var(--space-4); color: var(--muted); }
+</style>

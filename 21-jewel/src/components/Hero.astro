@@ -1,15 +1,15 @@
 ---
 import type { HomeData, SiteData } from '../lib/content';
 import HeroVariant from './HeroVariant.astro';
-import SampleResultCard from './SampleResultCard.astro';
+import ExampleReviewCard from './ExampleReviewCard.astro';
 interface Props {
   hero: HomeData['hero'];
-  sample: HomeData['sample'];
+  example: HomeData['example'];
   test: SiteData['heroTest'];
   /** Phase 2 hook: router paths. Unused while router.enabled is false. */
   paths?: { label: string; href: string }[];
 }
-const { hero, sample, test } = Astro.props;
+const { hero, example, test } = Astro.props;
 const tested = test.enabled && !test.winner;
 // Testing: A in the HTML, B swapped in for B visitors. Winner set: render only the winner.
 const shown = hero.variants[test.winner || 'a'];
@@ -18,13 +18,12 @@ const shown = hero.variants[test.winner || 'a'];
   <div class="copy">
     <p class="eyebrow">{hero.eyebrow}</p>
     <HeroVariant a={shown} b={tested ? hero.variants.b : undefined} />
-    <div class="btn-row">
-      <a class="btn btn-primary" href={hero.primary.href} data-event="hero_cta_click" data-prop-cta="scorecard">{hero.primary.label}</a>
-      <a class="btn btn-ghost" href={hero.secondary.href} data-event="hero_cta_click" data-prop-cta="founding">{hero.secondary.label}</a>
+    <div class="actions">
+      <a class="btn btn-primary" href={hero.primary.href} data-event="cta_click" data-prop-location="hero" data-prop-target={hero.primary.href}>{hero.primary.label}</a>
+      <a class="text-link" href={hero.secondary.href} data-event="cta_click" data-prop-location="hero" data-prop-target={hero.secondary.href}>{hero.secondary.label}</a>
     </div>
-    <p class="micro">{hero.micro}</p>
   </div>
-  <SampleResultCard sample={sample} />
+  <ExampleReviewCard example={example} />
 </section>
 
 <style>
@@ -34,6 +33,8 @@ const shown = hero.variants[test.winner || 'a'];
   }
   .copy { display: grid; gap: var(--space-5); }
   .copy .eyebrow { margin-bottom: calc(var(--space-2) * -1); }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); }
+  .text-link { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
   @media (min-width: 760px) {
     .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--space-8); }
   }

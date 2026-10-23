@@ -1,11 +1,13 @@
-// PostHog wrapper and event names (spec §9). Browser-only.
+// PostHog wrapper and event names (spec §9, Change 02 §6). Browser-only.
 // Loads PostHog after the first interaction or when the browser is idle.
 // In dev, events are logged to the console instead of sent.
 
+// Change 02 (§6): cta_click replaces hero_cta_click, nav_scorecard_click and offer_card_click.
 export type EventName =
-  | 'hero_cta_click' | 'nav_scorecard_click' | 'scorecard_start' | 'scorecard_answer'
-  | 'scorecard_complete' | 'scorecard_email_submit' | 'scorecard_email_error'
-  | 'offer_card_click' | 'founding_apply_click' | 'book_call_click' | 'email_click' | 'theme_toggle';
+  | 'cta_click' | 'scorecard_start' | 'scorecard_answer' | 'scorecard_complete'
+  | 'scorecard_email_submit' | 'scorecard_email_error'
+  | 'review_form_submit' | 'review_form_error' | 'founding_apply_submit' | 'offer_view' | 'industry_page_view'
+  | 'book_call_click' | 'email_click' | 'theme_toggle';
 
 type Props = Record<string, string | number | boolean | undefined>;
 type Client = { capture: (e: string, p?: Props) => void };

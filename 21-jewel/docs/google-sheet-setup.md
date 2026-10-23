@@ -1,6 +1,12 @@
 # Google Sheet + Gmail setup
 
-The scorecard's email form saves each lead to a Google Sheet. It also emails the visitor their breakdown and sends you an alert. This takes about 10 minutes, and a computer is easier than a phone for the Apps Script steps.
+Two forms save to one Google Sheet:
+- **Free Website Review requests** (`/review`) go to the `Reviews` tab. The requester gets a confirmation email, and you get an alert.
+- **Scorecard results** (`/scorecard`) go to the `Leads` tab. The visitor gets their score and fix list, and you get an alert.
+
+Setup takes about 10 minutes, and a computer is easier than a phone for the Apps Script steps.
+
+**Already set this up before Change 02?** Paste the new `Code.gs` over the old one, run `setup` once (it adds the `Reviews` tab), then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL and secrets stay the same.
 
 ## Which Google account?
 
@@ -14,8 +20,9 @@ The scorecard's email form saves each lead to a Google Sheet. It also emails the
 3. **Make a secret.** Pick a long random string, about 32 or more letters and numbers. A password manager's generator works. This is a password for the connection, not something to remember.
 4. **Add Script Properties.** In Apps Script, go to Project Settings (gear icon) → Script Properties → Add:
    - `WEBHOOK_SECRET` = your secret
-   - `ALERT_TO` = the address that should get "New scorecard" alerts (optional)
-5. **Run setup once.** Back in the Editor, pick `setup` in the function dropdown and click **Run**. Approve the permission prompts: Google warns "unverified app" because it's your own script. Choose Advanced → Go to project → Allow. This creates the `Leads` tab and header row.
+   - `ALERT_TO` = the address that should get alerts (optional)
+   - `REVIEW_DAYS` = your review turnaround in business days (optional, default 5)
+5. **Run setup once.** Back in the Editor, pick `setup` in the function dropdown and click **Run**. Approve the permission prompts: Google warns "unverified app" because it's your own script. Choose Advanced → Go to project → Allow. This creates the `Leads` and `Reviews` tabs with header rows.
 6. **Deploy as a web app.** Click Deploy → New deployment → type **Web app**:
    - Execute as: **Me**
    - Who has access: **Anyone**
@@ -26,16 +33,15 @@ The scorecard's email form saves each lead to a Google Sheet. It also emails the
    - `SHEET_WEBHOOK_SECRET` = the same secret from step 3 (**Secret**)
 
    Then open Deployments, and from the latest deployment's **⋯** menu choose **Retry deployment**.
-8. **Test.** Take the scorecard on the site with your own email. Within a minute you should see:
-   - a new row in the `Leads` tab,
-   - the breakdown email in your inbox,
-   - a "New scorecard" alert.
+8. **Test.**
+   - Request a free Website Review on the site with your own email. Within a minute you should see a row in `Reviews`, the confirmation email and a "New Website Review request" alert.
+   - Take the scorecard with your own email. You should see a row in `Leads`, the results email and a "New scorecard" alert.
 
 ## Good to know
 
-- **Limits:** a free Gmail account can send to about 100 recipients a day, and Workspace allows about 1,500. Each lead uses 2 (the breakdown plus your alert). To stop alerts, delete the `sendAlert_(...)` call in `doPost`.
+- **Limits:** a free Gmail account can send to about 100 recipients a day, and Workspace allows about 1,500. Each lead uses 2 (the visitor's email plus your alert). To stop alerts, delete the `sendAlert_(...)` call in `doPost`.
 - **If an email fails,** the row is still saved with "failed: …" in the Email status column, and the visitor sees "try again in a minute."
 - **Changing the script:** after editing, go to Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL stays the same.
-- **Changing the email wording:** it's in `sendBreakdown_` in the script.
+- **Changing the email wording:** it's in `sendResults_` (scorecard) and `sendReviewConfirmation_` (review) in the script.
 - **Deleting someone's data:** delete their row in the Sheet. That's all the site stores.
-- **Moving to Kit later:** set `KIT_API_KEY` and remove `SHEET_WEBHOOK_URL`. The site switches automatically, and the Tags column already matches Kit's tags.
+- **Moving to Kit later:** set `KIT_API_KEY` and remove `SHEET_WEBHOOK_URL`. The site switches automatically, and the Tags column already matches Kit's tags. See `docs/kit-results-email.md`.

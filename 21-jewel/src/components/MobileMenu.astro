@@ -1,14 +1,14 @@
 ---
 import type { SiteData } from '../lib/content';
-interface Props { nav: SiteData['nav'] }
-const { nav } = Astro.props;
+interface Props { nav: SiteData['nav']; links: { label: string; href: string }[] }
+const { nav, links } = Astro.props;
 ---
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
   data-open={nav.menu_open} data-close={nav.menu_close}>{nav.menu_open}</button>
 <nav id="mobile-menu" class="panel" aria-label="Mobile" hidden>
   <div class="container">
     <ul role="list">
-      {nav.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
     </ul>
   </div>
 </nav>

@@ -4,14 +4,23 @@ Read this file first, then `PHASE1_SPEC.md` (the build spec). The spec is the so
 
 ## What this is
 
-Marketing site for **21 Jewel**, a solo revenue-strategy advisory run by JP (John Paul) in San Antonio, TX. It sells to owner-run service businesses (roughly 5–20 people) whose referrals have slowed. Phase 1 has two jobs:
+Marketing site for **21 Jewel**, run by JP (John Paul) in San Antonio, TX. Since **Change 02** (Oct 23, 2026; full text in `docs/changes/CHANGE_02_local_ladder.md`) it sells to **owner-run local service businesses** (about 1–20 staff): sign and print shops first, then HVAC, roofing and other trades, anywhere in the US.
 
-1. Get visitors to take the free scorecard, **Is Your Website Losing You Work?**, and leave an email.
-2. Fill five free **founding client** spots in exchange for case studies.
+**One-liner:** I help local service businesses get more calls from Google: a cleaner Google profile, steady reviews, and a website that turns visits into quote requests.
 
-**Offer ladder (Change 01):** Website Review → The 30-Day Fix → Lead Pipelines → Growth Advisor. The website leads; referral conversations stay inside the work.
+Phase 1 has two jobs:
 
-**Execution rule:** JP executes only what is one-time, templated and under about 10 hours per client. Recurring or custom work (posting, ad management, design, full rebuilds) goes to partners, who quote separately and bill the client directly. JP edits on any common platform himself.
+1. Get **free Website Review** requests (`/review`) and scorecard emails (**Is Your Website Losing You Work?**).
+2. Fill five free **founding client** spots (The 30-Day Fix, free). Hidden at launch behind `flags.showFounding`.
+
+**Offer ladder (Change 02):** Website Review (free) → Google Profile Tune-Up ($450) → The 30-Day Fix ($1,250) → Growth Advisor ($500/month). Add-ons: extra service page ($750), Lead Pipelines (ask me), advisory hour ($200/hour).
+
+**Execution rule:**
+- JP does one-time, templated work himself, plus the light monthly work inside Growth Advisor (about 3 hours per client per month).
+- Ads management, social posting, design, logo work and full site rebuilds go to partners, who quote separately and bill the client directly.
+- JP edits on any common platform himself: Wix, Squarespace, WordPress, GoDaddy, Shopify, Google Sites.
+
+**Feature flags** (`site.yaml` → `flags`): `showFounding`, `showResults`, `showHvac`, `showRoofing`, `showFaq`, `showTerms`. A page whose flag is off isn't built at all.
 
 - Domain: `21jeweladvisory.com` (DNS on Cloudflare). `meet21j.com` 301-redirects to it.
 - Public email: `johnpaul@21jeweladvisory.com`
@@ -23,13 +32,13 @@ Marketing site for **21 Jewel**, a solo revenue-strategy advisory run by JP (Joh
 | Framework | Astro, static output, latest stable | Content lives in small files; cheap to edit |
 | Styling | Plain CSS + custom properties in `src/styles/tokens.css` | One file to change the look |
 | Fonts | `@fontsource-variable/fraunces`, `@fontsource-variable/inter` (self-hosted) | No third-party font requests |
-| Hosting | Cloudflare Pages, deployed from GitHub `main` | Free; DNS already on Cloudflare |
-| Server code | Cloudflare Pages Functions in `/functions` | Scorecard email capture only |
+| Hosting | Cloudflare Pages (project `21jewel`, root `21-jewel/`) | Free; DNS already on Cloudflare |
+| Server code | Cloudflare Pages Functions in `/functions` | Scorecard email and Website Review requests |
 | Email list | Google Sheet + Gmail via JP's Apps Script web app (`docs/google-sheet/`), called only from the Pages Function. Kit API v4 still supported as a fallback. | Free; JP uses Gmail; secrets never reach the browser |
-| Spam control | Cloudflare Turnstile on the scorecard email form | Free, invisible |
+| Spam control | Cloudflare Turnstile on the scorecard and Website Review forms | Free, invisible |
 | Analytics + hero test | PostHog Cloud (free tier), events only | Funnel by hero variant |
 | Founding application | Tally form, embedded | Free; emails JP on submit |
-| Booking | Cal.com link (`[CAL_LINK]`) | Free |
+| Booking | Cal.com link (`site.yaml` → `links.cal`) | Free |
 
 Do not add Tailwind, React, a CMS, a CRM, Stripe, Zapier or a database in Phase 1.
 
@@ -38,33 +47,38 @@ Do not add Tailwind, React, a CMS, a CRM, Stripe, Zapier or a database in Phase 
 ```
 src/
   content/                 ← ALL copy lives here. Edit these, not components.
-    site.yaml              ← brand, contact, nav, footer, feature flags, founding spot counts
+    site.yaml              ← brand, contact, nav, footer, feature flags, founding spot counts, SEO
     home.yaml              ← homepage sections, both hero variants
-    offers.yaml            ← the five offers + studio sprint, prices
+    offers.yaml            ← the 4-step ladder, add-ons, studio sprint, prices, FAQ
     scorecard.yaml         ← 12 questions, options, scoring bands, fixes
     founding.yaml          ← founding program copy
     studios.yaml           ← white-label page copy
     case-studies/          ← empty in Phase 1 (one .md per study later)
     testimonials.yaml      ← empty list in Phase 1
-    pages.yaml             ← privacy, thanks and 404 copy
+    pages.yaml             ← review, about, results, privacy, terms, thanks and 404 copy
+    industries.yaml        ← /industries/* pages (one template)
   styles/
     tokens.css             ← color, type, spacing, radius tokens (light + dark)
     base.css               ← reset, typography, layout primitives
   components/              ← small .astro components, one job each
   layouts/Base.astro
-  pages/                   ← index, scorecard, founding-clients, offers, studios, privacy, 404
+  pages/                   ← index, review, scorecard, offers, about, studios, privacy, 404,
+                             industries/[slug], thanks/*, [gated] (founding-clients, terms, results)
   content.config.ts        ← content schemas (Astro 7 location)
   scripts/                 ← browser code for the scorecard, Turnstile
   lib/
     content.ts             ← doc() loader, price label, placeholders
     scorecard.ts           ← pure scoring functions (unit-tested)
     scorecard-api.ts       ← /api/scorecard logic (unit-tested)
+    review-api.ts          ← /api/review logic (unit-tested)
+    api-common.ts          ← Turnstile check, save to Sheet or Kit
     sheet.ts               ← Google Sheet webhook client (default)
     kit.ts                 ← Kit v4 client (fallback)
     analytics.ts           ← PostHog wrapper + event names
     hero.ts                ← hero variant assignment
 functions/
   api/scorecard.ts         ← POST: Turnstile check → Google Sheet (or Kit)
+  api/review.ts            ← POST: Turnstile check → Google Sheet Reviews tab (or Kit)
 public/                    ← favicon, og image, robots.txt, _redirects, _headers
 scripts/                   ← csp.mjs (runs after build), kit-setup.mjs, og/ image maker
 ```
@@ -86,10 +100,13 @@ These rules matter more than style preferences. JP updates this site through Cla
 
 ## Voice (for any copy you must write)
 
-- Plain words an owner would use: referrals, word of mouth, leads, follow-up, steady work, slow months.
-- Avoid jargon: RevOps, GTM, funnel optimization, synergy, leverage, "unlock," "supercharge," "seamless."
-- Short sentences, active voice. Second person ("you"). JP speaks in first person ("I") on founding, about and studios pages.
-- Brand values: **Honest over impressive. Serve the person, not the project. Build brands that outlast their owners.**
+- Plain words an owner would use: calls, quote requests, jobs, reviews, showing up on Google, the map, slow months, word of mouth, the shop down the street.
+- Never say: "#1 on Google," "guaranteed rankings," "guaranteed leads" or any revenue guarantee. The only guarantee is the build guarantee.
+- Avoid jargon: SEO strategy, funnel, RevOps, GTM, leverage, "unlock," "supercharge," "seamless." Say "showing up on Google," not "local SEO," in headlines. Spell out "Google Business Profile" once per page; "Google profile" after that.
+- Short sentences, active voice. Second person ("you"). JP speaks as "I" on every page.
+- Brand values: **Honest over impressive. Serve the person, not the project. Build things that outlast me.**
+- Tagline: **Precise work. More calls.**
+- Brand names (Mailchimp, Saatva, Howler Brothers, Sendero Provisions) appear only on `/about`, as JP's past experience, text only, never as 21 Jewel clients.
 - No invented stats, client logos or testimonials. Missing facts stay as `[PLACEHOLDER]` and are listed in `TODO-JP.md`.
 - No emoji. No em-dash-heavy writing.
 

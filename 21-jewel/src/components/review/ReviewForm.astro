@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import './review.css';
+interface Props { form: CollectionEntry<'pages'>['data']['review']['form']; errors: Record<string, string>; siteKey: string }
+const { form: f, errors, siteKey } = Astro.props;
+const req = (id: string) => ({ id, required: true, 'aria-describedby': `${id}-err` });
+---
+<form class="card review-form" novalidate data-review-form data-errors={JSON.stringify(errors)}>
+  <h2 class="h3">{f.heading}</h2>
+  <div class="fields">
+    <div class="field">
+      <label for="rv-name">{f.name}</label>
+      <input {...req('rv-name')} name="name" type="text" autocomplete="name" maxlength="120" />
+      <p class="err" id="rv-name-err" data-err="name"></p>
+    </div>
+    <div class="field">
+      <label for="rv-email">{f.email}</label>
+      <input {...req('rv-email')} name="email" type="email" autocomplete="email" maxlength="254" />
+      <p class="err" id="rv-email-err" data-err="email"></p>
+    </div>
+    <div class="field">
+      <label for="rv-phone">{f.phone}</label>
+      <input id="rv-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+    </div>
+    <div class="field">
+      <label for="rv-business">{f.business}</label>
+      <input {...req('rv-business')} name="business" type="text" autocomplete="organization" maxlength="160" />
+      <p class="err" id="rv-business-err" data-err="business"></p>
+    </div>
+    <div class="field">
+      <label for="rv-site">{f.website}</label>
+      <input id="rv-site" name="siteUrl" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder={f.website_placeholder} />
+      <label class="check"><input type="checkbox" name="noWebsite" data-no-website /> <span>{f.no_website}</span></label>
+    </div>
+    <div class="field">
+      <label for="rv-city">{f.city}</label>
+      <input {...req('rv-city')} name="city" type="text" autocomplete="address-level2" maxlength="160" />
+      <p class="err" id="rv-city-err" data-err="city"></p>
+    </div>
+    <div class="field wide">
+      <label for="rv-services">{f.services}</label>
+      <input {...req('rv-services')} name="services" type="text" maxlength="500" aria-describedby="rv-services-hint rv-services-err" />
+      <p class="hint small muted" id="rv-services-hint">{f.services_hint}</p>
+      <p class="err" id="rv-services-err" data-err="services"></p>
+    </div>
+    <fieldset class="field wide choices" aria-describedby="rv-source-err">
+      <legend>{f.source}</legend>
+      <div class="opts">
+        {f.sources.map((o) => <label class="choice"><input type="radio" name="source" value={o.value} required /><span>{o.label}</span></label>)}
+      </div>
+      <p class="err" id="rv-source-err" data-err="source"></p>
+    </fieldset>
+    <div class="field wide">
+      <label for="rv-notes">{f.notes}</label>
+      <textarea id="rv-notes" name="notes" rows="3" maxlength="2000"></textarea>
+    </div>
+    <fieldset class="field wide choices">
+      <legend>{f.format}</legend>
+      <div class="opts">
+        {f.formats.map((o, i) => <label class="choice"><input type="radio" name="format" value={o.value} checked={i === 0} /><span>{o.label}</span></label>)}
+      </div>
+    </fieldset>
+  </div>
+  <div class="hp" aria-hidden="true">
+    <label for="rv-hp">{f.honeypot}</label>
+    <input id="rv-hp" name="website_hp" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <div class="turnstile" data-turnstile data-sitekey={siteKey}></div>
+  <p class="err form-err" role="alert" data-err="form"></p>
+  <div><button type="submit" class="btn btn-primary" data-submit data-sending={f.sending}>{f.submit}</button></div>
+  <p class="micro">{f.privacy_note} <a href="/privacy">{f.privacy_link}</a></p>
+</form>
+
+<script>
+  import { initReviewForm } from '../../scripts/review-form';
+  initReviewForm();
+</script>

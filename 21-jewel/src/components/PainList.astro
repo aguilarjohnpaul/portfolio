@@ -6,19 +6,16 @@ const { pains } = Astro.props;
 <section class="section section-surface" aria-labelledby="pains-h">
   <div class="container">
     <h2 id="pains-h" class="section-head">{pains.heading}</h2>
-    <ul role="list" class="grid carousel" tabindex="0" aria-labelledby="pains-h">
-      {pains.items.map((p) => (
-        <li class="stack pain">
-          <h3>{p.title}</h3>
-          <p class="muted">{p.body}</p>
-        </li>
-      ))}
+    <ul role="list" class="pains">
+      {pains.items.map((p) => <li>{p}</li>)}
     </ul>
   </div>
 </section>
 
 <style>
-  @media (max-width: 759.98px) {
-    .pain { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-card); padding: var(--space-5); }
+  .pains { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .pains li {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-card);
+    padding: var(--space-4) var(--space-5); font-weight: 500; font-size: var(--lead); line-height: 1.4;
   }
 </style>

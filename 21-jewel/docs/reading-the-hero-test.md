@@ -1,6 +1,6 @@
 # Reading the hero test
 
-**Comparison window starts Oct 20, 2026, the day the Change 01 hero copy went live. Ignore data from before that date.**
+**Comparison window starts Oct 23, 2026, the day the Change 02 hero copy went live (A: "More calls from Google. No new software." B: "Be the shop people call first."). Ignore data from before that date. If PostHog has an experiment set up, reset it.**
 
 The homepage shows one of two headlines (A: referrals, B: feast or famine). Each visitor keeps the same one. Every PostHog event carries `hero_variant`.
 
@@ -9,9 +9,10 @@ The homepage shows one of two headlines (A: referrals, B: feast or famine). Each
 1. Product analytics → New insight → **Funnel**.
 2. Steps:
    1. `$pageview` with filter *Current URL path* = `/`
-   2. `scorecard_start`
-   3. `scorecard_complete`
-   4. `scorecard_email_submit`
+   2. `cta_click` (location `hero`)
+   3. `review_form_submit`
+
+   Build a second funnel for the scorecard: `$pageview` → `scorecard_start` → `scorecard_complete` → `scorecard_email_submit`.
 3. **Breakdown** by event property `hero_variant`.
 4. Conversion window: 1 day. Date range: since launch.
 5. Save it as "Hero test funnel".

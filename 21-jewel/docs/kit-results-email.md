@@ -1,33 +1,32 @@
-# Kit results email
+# Kit results email (fallback only)
 
-Build this in Kit as an automation: **Trigger:** tag added, `scorecard-complete`. **Action:** send this email.
+The site sends emails through the Google Sheet + Gmail script (`docs/google-sheet/Code.gs`). Use this only if you switch to Kit (set `KIT_API_KEY` and remove `SHEET_WEBHOOK_URL`).
+
+Build it in Kit as an automation. **Trigger:** any tag starting `scorecard-` is added (`scorecard-losing-work`, `scorecard-leaking-calls`, `scorecard-built-to-win-work`). **Action:** send this email.
 
 Custom fields the site writes (run `scripts/kit-setup.mjs` once to create them):
-`score_total`, `score_referred`, `score_hired`, `score_again`, `band`, `weakest_stage`, `top_fixes`, `team_size`, `business_name`, `hero_variant`.
+`score_total`, `score_max`, `band`, `industry`, `top_fixes`, `hero_variant`.
 
-`top_fixes` holds the three fixes joined by `||`. Kit uses Liquid, so split it into a list as shown below.
+`top_fixes` holds up to three fixes joined by `||`. Kit uses Liquid, so split it into a list as shown below.
 
 ---
 
-**Subject:** Is your website losing you work? Your score: {{ subscriber.score_total }}/100
+**Subject:** Is your website losing you work? Your score: {{ subscriber.score_total }}/{{ subscriber.score_max }}
 
 Hi {{ subscriber.first_name | default: "there" }},
 
-Here's your breakdown.
-
-Get referred: {{ subscriber.score_referred }} · Get hired: {{ subscriber.score_hired }} · Get hired again: {{ subscriber.score_again }}
-
-Your biggest leak is **{{ subscriber.weakest_stage }}**. Start with these three fixes:
+Your score: {{ subscriber.score_total }} / {{ subscriber.score_max }} ({{ subscriber.band }})
 
 {% assign fixes = subscriber.top_fixes | split: "||" %}
+{% if fixes.size > 0 %}
+Your top fixes:
 {% for fix in fixes %}
 - {{ fix }}
 {% endfor %}
+{% else %}
+No leaks found. Keep doing what you're doing.
+{% endif %}
 
-If you'd like help putting these in place, I'm taking on a few founding clients at no cost in exchange for a case study: 21jeweladvisory.com/founding-clients
+Want me to check this for you? I'll look at your website and Google profile and send you the top 3 things costing you calls. It's free: 21jeweladvisory.com/review
 
 JP · 21 Jewel · johnpaul@21jeweladvisory.com
-
----
-
-Test it: take the scorecard on the live site with your own email, then check the subscriber in Kit has the fields and tags filled in and that the email arrives.

@@ -1,7 +1,7 @@
 // JSON-LD builders (spec §11).
 import { ladder, type Offer, type OffersData, type SiteData } from './content';
 
-/** "$2,500" → 2500. Placeholders or empty prices give null. */
+/** "$1,250" → 1250. Placeholders or empty prices give null. */
 function amount(price: string): number | null {
   const n = Number(price.replace(/[^0-9.]/g, ''));
   return price.trim() && Number.isFinite(n) && n > 0 ? n : null;
@@ -11,7 +11,7 @@ function offerLd(o: Offer, site: SiteData) {
   const price = o.free ? 0 : amount(o.price_from);
   const out: Record<string, unknown> = {
     '@type': 'Offer',
-    url: new URL(o.id === 'scorecard' ? '/scorecard' : `/offers#${o.id}`, site.brand.url).href,
+    url: new URL(`/offers#${o.id}`, site.brand.url).href,
     itemOffered: { '@type': 'Service', name: o.name, description: o.one_liner },
   };
   if (price !== null) {
@@ -39,7 +39,7 @@ export function professionalService(site: SiteData, offers: OffersData) {
     email: site.brand.email,
     logo: new URL('/apple-touch-icon.png', site.brand.url).href,
     image: new URL(site.seo.og_image, site.brand.url).href,
-    description: site.seo.pages.home?.description,
+    description: site.brand.one_liner,
     ...(paid.length ? { priceRange: `${usd(Math.min(...paid))}–${usd(Math.max(...paid))}` } : {}),
     address: { '@type': 'PostalAddress', addressLocality: 'San Antonio', addressRegion: 'TX', addressCountry: 'US' },
     areaServed: [

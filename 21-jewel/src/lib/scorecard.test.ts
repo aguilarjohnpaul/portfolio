@@ -1,103 +1,67 @@
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { describe, expect, it } from 'vitest';
-import {
-  computeResult, isValidAnswers, optionsFor, topFixes, weakestStage, type ScorecardData,
-} from './scorecard';
+import { bandFor, computeResult, isValidAnswers, maxPoints, topFixes, type ScorecardData } from './scorecard';
 
 const data = parse(readFileSync(new URL('../content/scorecard.yaml', import.meta.url), 'utf8')) as ScorecardData;
-const all = (n: number) => Array(12).fill(n);
+const all = (n: number) => Array(12).fill(n) as number[];
 
-describe('scorecard scoring', () => {
-  it('all zero: score 0, lowest band, first stage weakest, first three fixes', () => {
+describe('scorecard scoring (24 points)', () => {
+  it('has 12 questions with 2/1/0 options and a 24-point max', () => {
+    expect(data.questions).toHaveLength(12);
+    for (const q of data.questions) expect(q.options.map((o) => o.score)).toEqual([2, 1, 0]);
+    expect(maxPoints(data)).toBe(24);
+  });
+
+  it('all zero: 0 points, lowest band, first three fixes', () => {
     const r = computeResult(all(0), data);
-    expect(r.total).toBe(0);
-    expect(r.stages).toEqual({ referred: 0, hired: 0, again: 0 });
-    expect(r.band.slug).toBe('running-on-luck');
-    expect(r.weakestStage).toBe('referred');
-    expect(r.onScreenFix.id).toBe(1);
+    expect(r.points).toBe(0);
+    expect(r.max).toBe(24);
+    expect(r.band.slug).toBe('losing-work');
     expect(r.topFixes.map((q) => q.id)).toEqual([1, 2, 3]);
   });
 
-  it('all max: score 100, top band, no fixes needed', () => {
-    const r = computeResult(all(3), data);
-    expect(r.total).toBe(100);
-    expect(r.stages).toEqual({ referred: 100, hired: 100, again: 100 });
+  it('perfect score: 24 points, top band, no fixes', () => {
+    const r = computeResult(all(2), data);
+    expect(r.points).toBe(24);
     expect(r.band.slug).toBe('built-to-win-work');
     expect(r.topFixes).toEqual([]);
   });
 
-  it('ties between stages go to the earlier stage', () => {
-    expect(weakestStage({ referred: 50, hired: 50, again: 50 })).toBe('referred');
-    expect(weakestStage({ referred: 80, hired: 40, again: 40 })).toBe('hired');
-    expect(weakestStage({ referred: 80, hired: 90, again: 40 })).toBe('again');
-  });
-
-  it('ties between questions go to the earlier question', () => {
-    const a = all(3);
-    a[9] = 1; a[10] = 1; // Q10 and Q11 tie in "again"
-    const r = computeResult(a, data);
-    expect(r.weakestStage).toBe('again');
-    expect(r.onScreenFix.id).toBe(10);
-    expect(r.topFixes.map((q) => q.id)).toEqual([10, 11]);
-  });
-
-  it('Q7 uses its own reply-speed options, scored 3 to 0', () => {
-    const q7 = data.questions[6];
-    const opts = optionsFor(q7, data);
-    expect(opts.map((o) => o.label)).toEqual(['Within the hour', 'Same day', 'Within 1–2 days', 'Longer']);
-    expect(opts.map((o) => o.score)).toEqual([3, 2, 1, 0]);
-    const a = all(3);
-    a[6] = opts.find((o) => o.label === 'Longer')!.score;
-    const r = computeResult(a, data);
-    expect(r.stages.hired).toBe(75);
-    expect(r.weakestStage).toBe('hired');
-    expect(r.onScreenFix.id).toBe(7);
-  });
-
-  it('top fixes sort by score, then question order', () => {
-    const a = all(3);
-    a[11] = 0; a[2] = 1; a[6] = 0; a[0] = 1;
-    expect(computeResult(a, data).topFixes.map((q) => q.id)).toEqual([7, 12, 1]);
-  });
-
-  it('fills top fixes with score-2 questions from the weakest stage', () => {
-    const a = all(3);
-    a[5] = 1;            // Q6 in "hired" is the only low score
-    a[6] = 2; a[7] = 2;  // Q7, Q8 in "hired" at 2
-    a[0] = 2;            // Q1 at 2 is in another stage, so not used
-    const r = computeResult(a, data);
-    expect(r.weakestStage).toBe('hired');
-    expect(r.topFixes.map((q) => q.id)).toEqual([6, 7, 8]);
-  });
-
-  it('fill rule stops when the weakest stage has no more score-2 questions', () => {
-    const a = all(3);
-    a[8] = 2; // Q9 in "again"
-    const r = computeResult(a, data);
-    expect(r.weakestStage).toBe('again');
-    expect(topFixes(a, data, r.weakestStage).map((q) => q.id)).toEqual([9]);
-  });
-
-  it('rounds stage and total scores', () => {
-    const a = all(0);
-    a[0] = 1; // referred 1/12 = 8.33 → 8; total 1/36 = 2.78 → 3
-    const r = computeResult(a, data);
-    expect(r.stages.referred).toBe(8);
-    expect(r.total).toBe(3);
-  });
-
   it('band edges', () => {
-    const a = all(1); // 12/36 = 33
-    expect(computeResult(a, data).band.slug).toBe('running-on-luck');
-    expect(computeResult([...all(2)], data).band.slug).toBe('working-but-leaking'); // 67
+    expect(bandFor(8, data.bands).slug).toBe('losing-work');
+    expect(bandFor(9, data.bands).slug).toBe('leaking-calls');
+    expect(bandFor(16, data.bands).slug).toBe('leaking-calls');
+    expect(bandFor(17, data.bands).slug).toBe('built-to-win-work');
+    expect(() => bandFor(25, data.bands)).toThrow();
   });
 
-  it('validates answers', () => {
-    expect(isValidAnswers(all(2), data)).toBe(true);
-    expect(isValidAnswers(all(4), data)).toBe(false);
-    expect(isValidAnswers([1, 2], data)).toBe(false);
+  it('fixes sort by score, then question order (tie-break)', () => {
+    const s = all(2);
+    s[11] = 0; s[2] = 1; s[6] = 0; s[0] = 1;
+    expect(topFixes(s, data).map((q) => q.id)).toEqual([7, 12, 1]);
+  });
+
+  it('shows fewer than 3 fixes when fewer answers miss', () => {
+    const s = all(2);
+    s[9] = 1;
+    const r = computeResult(s, data);
+    expect(r.points).toBe(23);
+    expect(r.topFixes.map((q) => q.id)).toEqual([10]);
+  });
+
+  it('only answers below 2 count as leaks', () => {
+    const s = all(1);
+    expect(computeResult(s, data).points).toBe(12);
+    expect(topFixes(s, data).map((q) => q.id)).toEqual([1, 2, 3]);
+  });
+
+  it('validates the industry answer plus 12 scores', () => {
+    expect(isValidAnswers(['sign-print', ...all(2)], data)).toBe(true);
+    expect(isValidAnswers(['plumbing', ...all(2)], data)).toBe(false);
+    expect(isValidAnswers(all(2), data)).toBe(false);
+    expect(isValidAnswers(['hvac', ...all(3)], data)).toBe(false);
+    expect(isValidAnswers(['hvac', ...all(2).slice(1)], data)).toBe(false);
     expect(isValidAnswers('x', data)).toBe(false);
-    expect(isValidAnswers([...all(2).slice(0, 11), 1.5], data)).toBe(false);
   });
 });

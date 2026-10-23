@@ -1,0 +1,21 @@
+---
+// Pages behind feature flags in site.yaml. A page whose flag is off isn't built,
+// so Cloudflare serves the real 404 for it and it never reaches the sitemap.
+import FoundingPage from '../components/pages/FoundingPage.astro';
+import TermsPage from '../components/pages/TermsPage.astro';
+import ResultsPage from '../components/pages/ResultsPage.astro';
+import { doc } from '../lib/content';
+
+export async function getStaticPaths() {
+  const { flags } = await doc('site');
+  return [
+    { slug: 'founding-clients', on: flags.showFounding },
+    { slug: 'terms', on: flags.showTerms },
+    { slug: 'results', on: flags.showResults },
+  ].filter((p) => p.on).map((p) => ({ params: { gated: p.slug } }));
+}
+const { gated } = Astro.params;
+---
+{gated === 'founding-clients' && <FoundingPage />}
+{gated === 'terms' && <TermsPage />}
+{gated === 'results' && <ResultsPage />}

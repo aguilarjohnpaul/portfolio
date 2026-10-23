@@ -3,23 +3,35 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import PainList from '../components/PainList.astro';
 import StageCards from '../components/StageCards.astro';
+import YourPart from '../components/YourPart.astro';
 import OfferLadder from '../components/OfferLadder.astro';
+import PromiseStrip from '../components/PromiseStrip.astro';
+import MeasureBlock from '../components/MeasureBlock.astro';
 import FoundingBand from '../components/FoundingBand.astro';
 import ProofSlot from '../components/ProofSlot.astro';
 import AboutBlock from '../components/AboutBlock.astro';
-import ScorecardCTA from '../components/ScorecardCTA.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
 import { doc } from '../lib/content';
-import { professionalService, website } from '../lib/schema';
+import { faqPage, professionalService, website } from '../lib/schema';
 
 const [site, home, offers] = await Promise.all([doc('site'), doc('home'), doc('offers')]);
+const { flags } = site;
+const homeFaq = offers.faq.filter((f) => f.home);
+// FAQ structured data only when the FAQ is visible.
+const jsonLd = [professionalService(site, offers), website(site), ...(flags.showFaq ? [faqPage(homeFaq)] : [])];
 ---
-<Base page="home" jsonLd={[professionalService(site, offers), website(site)]}>
-  <Hero hero={home.hero} sample={home.sample} test={site.heroTest} />
+<Base page="home" jsonLd={jsonLd}>
+  <Hero hero={home.hero} example={home.example} test={site.heroTest} />
   <PainList pains={home.pains} />
   <StageCards how={home.how} />
+  <YourPart part={home.your_part} />
   <OfferLadder intro={home.offers} data={offers} />
-  <FoundingBand founding={home.founding} site={site} />
-  <ProofSlot proof={home.proof} />
+  <PromiseStrip promise={home.promise} />
+  <MeasureBlock measure={home.measure} />
+  {flags.showFounding && <FoundingBand founding={home.founding} site={site} />}
+  <ProofSlot proof={home.proof} enabled={flags.showResults} />
   <AboutBlock about={home.about} />
-  <ScorecardCTA cta={home.scorecard_cta} />
+  {flags.showFaq && <FAQ heading={home.faq_heading} items={homeFaq} />}
+  <FinalCTA cta={home.final_cta} />
 </Base>

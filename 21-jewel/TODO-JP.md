@@ -2,19 +2,35 @@
 
 Work top to bottom. Each step says where to click or what to edit. Copy edits are all in `src/content/`.
 
-## 0. After Change 01 (website-led ladder, Oct 20, 2026)
+## 0. After Change 02 (local services ladder, Oct 23, 2026)
 
-- [ ] **Re-paste the Apps Script.** Copy the updated `docs/google-sheet/Code.gs` into your Sheet's Apps Script (the email subject now says "Is your website losing you work?"). Then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL stays the same.
-- [ ] **Tally form wording (optional).** If the form mentions referrals, the audit or the old offer names, update it to "Website Review" and "The 30-Day Fix".
-- [x] **Hero test restarted** with the new A/B copy. Count results from Oct 20, 2026 only (`docs/reading-the-hero-test.md`).
-- [ ] **Raise prices after 3 case studies:** Website Review $1,500, The 30-Day Fix $3,500, Lead Pipelines $5,000, Growth Advisor $1,250/month (`offers.yaml` → `price_from`).
+**Open**
+- [ ] **Re-paste the Apps Script.** Copy the new `docs/google-sheet/Code.gs` over the old one, run `setup` once (it adds the `Reviews` tab), then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. Until you do, Website Review requests fail to save. Steps are in `docs/google-sheet-setup.md`.
+- [ ] **Headshot** for `/about` and the homepage: add `public/jp.jpg` (4:5), then set `photo: /jp.jpg` in `home.yaml` → `about` and in `pages.yaml` → `about`.
+- [ ] **Lawyer review of the terms** (`pages.yaml` → `terms`), then set `flags.showTerms: true` in `site.yaml`. Not legal advice.
+- [ ] **Taylor'd Prints:** written permission to name him on the sign-print page. Until then it says "Case study in progress." Never name his corporate clients. He is not a founding spot.
+- [ ] **When to show the founding program:** set `flags.showFounding: true`. The homepage band, nav link, `/founding-clients` and `/thanks/founding` all come back.
+- [ ] **Tally application form:** before turning founding on, update its fields to name, email, phone, business name, website, Google profile link (or business name and city), top 3 services, "How do most customers find you today?" and "Why now?" Set its redirect to `https://21jeweladvisory.com/thanks/founding`.
+- [ ] **FAQ:** built and hidden. Set `flags.showFaq: true` to show it on the homepage and `/offers`.
+- [ ] **HVAC and roofing pages:** set `flags.showHvac` / `flags.showRoofing` to build them. They stay noindexed until you set `indexed: true` in `industries.yaml` (after a first client).
+- [ ] **Raise prices after 3 case studies:** Tune-Up $600, The 30-Day Fix $1,500, Growth Advisor $650/month (`offers.yaml` → `price_from`).
+
+**Decided on Oct 23, 2026** (logged in `DECISIONS.md`)
+- [x] Framework line: "Get found → Get hired → Get hired again."
+- [x] Tagline: "Precise work. More calls."
+- [x] Growth Advisor: $650/month after 3 case studies; early exit before month 4 owes $1,250 − $250 × months paid.
+- [x] Advisory hour: $200/hour.
+- [x] Website Review turnaround 5 business days, 5 reviews a week. Founding reply 3 business days.
+- [x] Offer name: Google Profile Tune-Up.
+- [x] No-website FAQ answer: as proposed (hidden with the FAQ).
+- [x] Bio: 8 years. Brand names only on `/about`.
 
 ## 1. Fill the placeholders
 
-- [ ] **Your photo.** (On hold.) Add `public/jp.jpg` (4:5, about 960×1200). In `home.yaml` set `about.photo: /jp.jpg` and `about.photo_alt: JP, founder of 21 Jewel`.
+- [ ] **Your photo.** (On hold; see section 0.)
 - [x] **Cal.com link.** Set to `https://cal.com/21jewel/20min`.
 - [x] **Tally form URL.** Set to `https://tally.so/r/7XRqva`.
-- [ ] **Founding spots filled.** `src/content/site.yaml` → `founding.filled` (launches at 0 = "5 of 5 spots open").
+- [x] **Founding spots filled:** 0 (Taylor'd Prints is not a founding spot). Raise `founding.filled` in `site.yaml` as spots fill.
 
 ## 2. Copy I wrote
 

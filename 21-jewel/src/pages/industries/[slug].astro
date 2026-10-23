@@ -1,0 +1,73 @@
+---
+// Industry pages from industries.yaml. A page is built only when its flag is on;
+// pages with indexed: false carry noindex and stay out of the sitemap.
+import Base from '../../layouts/Base.astro';
+import { doc, flagOn } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const [site, data] = await Promise.all([doc('site'), doc('industries')]);
+  return data.industries
+    .filter((i) => flagOn(site.flags, i.flag))
+    .map((i) => ({ params: { slug: i.slug }, props: { industry: i } }));
+}
+type Industry = Awaited<ReturnType<typeof doc<'industries'>>>['industries'][number];
+const { industry: ind } = Astro.props as { industry: Industry };
+const { labels } = await doc('industries');
+---
+<Base page={ind.slug} noindex={!ind.indexed}>
+  <div class="container page-head" data-industry={ind.slug}>
+    <h1>{ind.h1}</h1>
+    <p class="lead">{ind.sub}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={labels.review_button.href} data-event="cta_click" data-prop-location={`industry-${ind.slug}`} data-prop-target={labels.review_button.href}>{labels.review_button.label}</a>
+      <a class="btn btn-ghost" href={labels.offers_link.href}>{labels.offers_link.label}</a>
+    </div>
+  </div>
+
+  {ind.searches.length > 0 && (
+    <section class="section" aria-labelledby="searches-h">
+      <div class="container stack narrow">
+        <h2 id="searches-h">{labels.searches_heading}</h2>
+        <ul role="list" class="chips">{ind.searches.map((s) => <li>“{s}”</li>)}</ul>
+        <p class="small muted">{labels.searches_note}</p>
+      </div>
+    </section>
+  )}
+
+  <section class="section section-surface" aria-labelledby="fixes-h">
+    <div class="container stack narrow">
+      <h2 id="fixes-h">{labels.fixes_heading}</h2>
+      <ul class="list">{ind.fixes.map((f) => <li>{f}</li>)}</ul>
+      {ind.addon && <p class="addon"><strong>{labels.addon_label}:</strong> <a href={ind.addon.href}>{ind.addon.name}</a>. {ind.addon.body}</p>}
+    </div>
+  </section>
+
+  {ind.proof && (
+    <section class="section" aria-labelledby="proof-h">
+      <div class="container stack narrow">
+        <h2 id="proof-h">{labels.proof_heading}</h2>
+        <p class="muted">{ind.proof}</p>
+      </div>
+    </section>
+  )}
+
+  <section class="section section-surface">
+    <div class="container cta">
+      <a class="btn btn-primary" href={labels.review_button.href} data-event="cta_click" data-prop-location={`industry-${ind.slug}-bottom`} data-prop-target={labels.review_button.href}>{labels.review_button.label}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .narrow { max-width: 860px; gap: var(--space-4); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .chips li { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: var(--space-2) var(--space-4); font-weight: 500; }
+  .addon { margin-top: var(--space-3); }
+  .cta { display: flex; justify-content: center; }
+</style>
+
+<script>
+  import { track } from '../../lib/analytics';
+  const el = document.querySelector<HTMLElement>('[data-industry]');
+  if (el) track('industry_page_view', { industry: el.dataset.industry });
+</script>

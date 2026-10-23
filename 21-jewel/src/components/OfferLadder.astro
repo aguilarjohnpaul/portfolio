@@ -1,6 +1,7 @@
 ---
 import { ladder, priceLabel, type HomeData, type OffersData } from '../lib/content';
 import OfferCard from './OfferCard.astro';
+import AddOns from './AddOns.astro';
 interface Props { intro: HomeData['offers']; data: OffersData }
 const { intro, data } = Astro.props;
 ---
@@ -9,16 +10,18 @@ const { intro, data } = Astro.props;
     <div class="section-head">
       <p class="eyebrow">{intro.eyebrow}</p>
       <h2 id="offers-h">{intro.heading}</h2>
-      <p class="lead">{intro.intro}</p>
     </div>
     <ol role="list" class="ladder carousel" tabindex="0" aria-labelledby="offers-h">
-      {ladder(data).map((o) => <OfferCard offer={o} price={priceLabel(o, data.page.labels)} />)}
+      {ladder(data).map((o) => <OfferCard offer={o} price={priceLabel(o, data.page.labels)} seeDetails={data.page.labels.see_details} />)}
     </ol>
+    <p class="rule">{data.page.ladder_rule}</p>
+    <AddOns heading={data.page.addons_heading} addons={data.addons} />
   </div>
 </section>
 
 <style>
   @media (min-width: 760px) {
-    .ladder { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .ladder { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   }
+  .rule { margin-top: var(--space-5); font-weight: 600; }
 </style>

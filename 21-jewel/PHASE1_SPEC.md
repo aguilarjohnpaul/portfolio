@@ -2,6 +2,8 @@
 
 Version 1.0 · October 2026 · Owner: JP · Builder: Claude Code
 
+> **Read first:** Change 01 (`docs/changes/CHANGE_01_website_ladder.md`) and Change 02 (`docs/changes/CHANGE_02_local_ladder.md`) override this spec where they conflict. Change 02 is current.
+
 Read `CLAUDE.md` first for stack, file layout and editing rules. This document covers what to build.
 
 ---
@@ -21,6 +23,8 @@ Phase 1 is not trying to close paid work online. There are no payments, CRM, lea
 
 ## 2. Audience and positioning
 
+> **Superseded by Change 02 (Oct 23, 2026).** Audience is now owner-run local service businesses (sign and print first, then HVAC and roofing), §1 of the change doc. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
+
 - **Primary buyer:** an owner of a B2B or local service business with 5 to 20 people (agencies, trades, accounting and bookkeeping, IT services, consultancies, clinics, design studios). Most new work comes from referrals, and referrals have slowed.
 - **Their words:** "referrals slowed down," "word of mouth," "leads go quiet," "busy one month, empty the next," "no time to follow up."
 - **Promise:** turn word of mouth into steady work by fixing the leaks in how a firm gets referred, gets hired and gets hired again.
@@ -31,6 +35,8 @@ Phase 1 is not trying to close paid work online. There are no payments, CRM, lea
 - **Values (footer and about):** Honest over impressive · Serve the person, not the project · Build brands that outlast their owners.
 
 ## 3. Offers (content in `src/content/offers.yaml`)
+
+> **Superseded by Change 02 (Oct 23, 2026).** Ladder: Website Review (free) → Google Profile Tune-Up ($450) → The 30-Day Fix ($1,250) → Growth Advisor ($500/month), plus add-ons. Prices after 3 case studies: $600 / $1,500 / $650 per month. The tables below are Change 01 history. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
 
 Updated by Change 01 (Oct 20, 2026): the ladder leads with the website. Display order is the ladder. If `price_from` is empty, render "Pricing on request" and add a build warning.
 
@@ -60,6 +66,8 @@ Full `/offers` details (who it's for, what you get, notes, timelines) live in `o
 
 ## 4. Sitemap
 
+> **Superseded by Change 02 (Oct 23, 2026).** New routes: `/review`, `/about`, `/industries/*`, `/thanks/review`; flag-gated `/founding-clients`, `/terms`, `/results`, `/thanks/founding`. Header button is Free Website Review → `/review`. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
+
 | Route | Purpose | In nav |
 |---|---|---|
 | `/` | Homepage (hero A/B test) | — |
@@ -76,6 +84,8 @@ Full `/offers` details (who it's for, what you get, notes, timelines) live in `o
 On mobile (< 760px), the nav collapses to the wordmark plus a "Menu" button that opens a full-width panel. The scorecard button stays visible in the header.
 
 ## 5. Homepage (`src/content/home.yaml`)
+
+> **Superseded by Change 02 (Oct 23, 2026).** Hero A "More calls from Google. No new software.", Hero B "Be the shop people call first." New sections: example review card, pains, Review/Fix/Prove, what you'll need to do, offers + add-ons, promise strip, how I measure, short about, final CTA. Founding band and FAQ hidden by flags. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
 
 Follow the approved wireframe ("Homepage Wireframe," template A) section by section. Copy below is final unless JP edits it.
 
@@ -156,6 +166,8 @@ Build the component now and render it only when `case-studies/` or `testimonials
 - Theme toggle: Light / Dark / System.
 
 ## 6. The scorecard (`/scorecard`, `src/content/scorecard.yaml`, `src/lib/scorecard.ts`)
+
+> **Superseded by Change 02 (Oct 23, 2026).** Now 12 questions scored 2 / 1 / 0 (24 max) plus an unscored business-type question; bands 0–8 Losing work, 9–16 Leaking calls, 17–24 Built to win work; result shows up to 3 fixes. No stages. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
 
 ### 6.1 Flow (one page, three states, no page reloads)
 
@@ -252,6 +264,8 @@ Tests must cover: all-zero, all-max, ties, the Q7 custom options, and the top-fi
 
 ## 7. Other pages
 
+> **Superseded by Change 02 (Oct 23, 2026).** Offers FAQ is hidden by `showFaq`. Founding program copy and fit rules changed; the page is hidden by `showFounding`. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
+
 ### `/offers`
 
 - H1 "Offers". Intro: "Start with the free scorecard, or pick the step that fits where you are. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days."
@@ -298,6 +312,8 @@ Plain-language policy listing PostHog (analytics), Kit (email), Tally (applicati
 - **Stop rule:** the test stops when a variant has ≥ 300 homepage visitors and the gap in scorecard-start rate is clear. Then JP picks the winner by setting `heroTest.winner: "a"` in `site.yaml`, which renders only that variant and stops assigning. Add `heroTest.enabled: true/false` too.
 
 ## 9. Analytics events (`src/lib/analytics.ts`)
+
+> **Superseded by Change 02 (Oct 23, 2026).** `cta_click` replaces `hero_cta_click`, `nav_scorecard_click` and `offer_card_click`. New: `review_form_submit`, `founding_apply_submit`, `offer_view`, `industry_page_view`. See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
 
 PostHog Cloud (US) with `PUBLIC_POSTHOG_KEY` and `PUBLIC_POSTHOG_HOST`:
 - Settings: autocapture off, pageviews on, session recording off, `persistence: 'localStorage'`, `respect_dnt: true`.
@@ -369,6 +385,8 @@ All text pairs were checked at ≥ 4.5:1, for example ink on ground 10.6:1 light
 - **Motion:** only a 150ms fade or slide between scorecard questions and the bar fill on result, both disabled under `prefers-reduced-motion`.
 
 ## 11. SEO, performance and accessibility
+
+> **Superseded by Change 02 (Oct 23, 2026).** Titles and descriptions per §6 of the change doc (home: "21 Jewel · More calls from Google for local service businesses"). See `docs/changes/CHANGE_02_local_ladder.md` and `DECISIONS.md`.
 
 - **Titles and meta descriptions** in `site.yaml` per page:
   - Home title: "21 Jewel · Turn your website into steady work"

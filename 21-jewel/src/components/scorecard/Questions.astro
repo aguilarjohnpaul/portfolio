@@ -1,27 +1,30 @@
 ---
+// Screen 0 is the unscored business-type question; screens 1–12 are scored.
 import { fill, type ScorecardContent } from '../../lib/content';
 interface Props { sc: ScorecardContent }
 const { sc } = Astro.props;
 const total = sc.questions.length;
-const stageName = Object.fromEntries(sc.stages.map((s) => [s.id, s.name]));
+const screens = [
+  { name: 'q0', label: sc.question_ui.intro_label, text: sc.industry.text, kind: 'industry',
+    options: sc.industry.options.map((o) => ({ label: o.label, value: o.value })) },
+  ...sc.questions.map((q, i) => ({
+    name: `q${q.id}`, label: fill(sc.question_ui.progress, { n: i + 1, total }), text: q.text, kind: 'score',
+    options: q.options.map((o) => ({ label: o.label, value: String(o.score) })),
+  })),
+];
 ---
 <div class="sc-questions" data-state="questions" hidden>
   <div class="progress">
-    <p class="small" aria-live="polite" data-progress data-template={sc.question_ui.progress}>
-      {fill(sc.question_ui.progress, { n: 1, total })}
-    </p>
+    <p class="small" aria-live="polite" data-progress>{screens[0].label}</p>
     <div class="bar" aria-hidden="true"><div class="bar-fill" data-progress-bar></div></div>
   </div>
-  {sc.questions.map((q, i) => (
-    <fieldset class="q" data-q={i} hidden={i > 0}>
-      <legend>
-        <span class="stage">{stageName[q.stage]}</span>
-        <span class="q-text" tabindex="-1">{q.text}</span>
-      </legend>
+  {screens.map((s, i) => (
+    <fieldset class="q" data-q={i} data-kind={s.kind} data-label={s.label} hidden={i > 0}>
+      <legend><span class="q-text" tabindex="-1">{s.text}</span></legend>
       <div class="options">
-        {(q.options ?? sc.standard_options).map((o, j) => (
+        {s.options.map((o, j) => (
           <label class="opt">
-            <input type="radio" name={`q${q.id}`} value={o.score} data-index={j} />
+            <input type="radio" name={s.name} value={o.value} />
             <span class="key" aria-hidden="true">{j + 1}</span>
             <span>{o.label}</span>
           </label>

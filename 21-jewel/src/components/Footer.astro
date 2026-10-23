@@ -1,27 +1,32 @@
 ---
-import { calHref, type SiteData } from '../lib/content';
+import { fill, flagOn, type SiteData } from '../lib/content';
 import ThemeToggle from './ThemeToggle.astro';
 interface Props { site: SiteData }
 const { site } = Astro.props;
-const { brand, footer } = site;
-const year = new Date().getFullYear();
+const { brand, footer, flags } = site;
+const industries = footer.industries.filter((l) => flagOn(flags, l.flag));
+const links = footer.links.filter((l) => flagOn(flags, l.flag));
 ---
 <footer class="site-footer">
   <div class="container inner">
-    <div class="top">
-      <p class="name">{brand.name}</p>
-      <ul role="list" class="links">
-        <li>
-          <a href={`mailto:${brand.email}`} data-event="email_click" data-prop-location="footer">{brand.email}</a>
-        </li>
-        <li><a href={calHref(site)} data-event="book_call_click" data-prop-location="footer">{footer.book_call}</a></li>
-        <li>{footer.studios_prefix} <a href="/studios">{footer.studios_label}</a></li>
-        <li><a href="/privacy">{footer.privacy}</a></li>
-      </ul>
+    <div class="cols">
+      <div class="col brand">
+        <p class="name">{brand.name}</p>
+        <p class="tagline">{brand.tagline}</p>
+        <p class="small muted">{brand.location}</p>
+        <p class="small"><a href={`mailto:${brand.email}`} data-event="email_click" data-prop-location="footer">{brand.email}</a></p>
+      </div>
+      <nav class="col" aria-labelledby="ft-who">
+        <p class="col-h" id="ft-who">{footer.who_heading}</p>
+        <ul role="list">{industries.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+      <nav class="col" aria-labelledby="ft-more">
+        <p class="col-h" id="ft-more">{footer.links_heading}</p>
+        <ul role="list">{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
     </div>
-    <p class="values small">{brand.values.join(' · ')}</p>
     <div class="bottom">
-      <p class="small muted">{brand.location} · © {year} {brand.name}</p>
+      <p class="small muted">{fill(footer.bottom, { year: new Date().getFullYear() })}</p>
       <ThemeToggle footer={footer} />
     </div>
   </div>
@@ -29,12 +34,14 @@ const year = new Date().getFullYear();
 
 <style>
   .site-footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--space-7); }
-  .inner { display: grid; gap: var(--space-5); }
-  .top { display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-7); align-items: baseline; }
+  .inner { display: grid; gap: var(--space-6); }
+  .cols { display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+  .col { display: grid; gap: var(--space-2); align-content: start; }
   .name { font-family: var(--font-display); font-weight: 600; font-size: 22px; }
-  .links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
-  .links li { font-size: var(--small); color: var(--muted); min-height: 44px; display: flex; align-items: center; flex-wrap: wrap; gap: 0 0.3em; }
-  .links a { overflow-wrap: anywhere; }
-  .values { color: var(--muted); }
-  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); }
+  .tagline { font-weight: 600; color: var(--accent-text); }
+  .col-h { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .col ul { display: grid; }
+  .col li a { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--small); }
+  .brand a { overflow-wrap: anywhere; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); border-top: 1px solid var(--line); padding-top: var(--space-5); }
 </style>

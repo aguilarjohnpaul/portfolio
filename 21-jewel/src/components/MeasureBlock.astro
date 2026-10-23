@@ -1,0 +1,17 @@
+---
+import type { HomeData } from '../lib/content';
+interface Props { measure: HomeData['measure'] }
+const { measure } = Astro.props;
+---
+<section class="section" aria-labelledby="measure-h">
+  <div class="container inner">
+    <h2 id="measure-h">{measure.heading}</h2>
+    <p class="lead">{measure.body}</p>
+    <p><a href={measure.link.href} data-event="cta_click" data-prop-location="measure" data-prop-target={measure.link.href}>{measure.link.label}</a></p>
+  </div>
+</section>
+
+<style>
+  .inner { display: grid; gap: var(--space-4); max-width: 860px; }
+  .inner a { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+</style>

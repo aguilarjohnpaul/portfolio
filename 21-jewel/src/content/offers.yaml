@@ -1,102 +1,103 @@
-# The offer ladder (spec §3). Display order is the ladder order.
-# price_from: set to a number like "$750". Leave it "" to show "Pricing on request".
-# checkout_url: Phase 2 hook for payment links. Leave empty in Phase 1.
+# The offer ladder (Change 02 §2 and §4.2). Display order is the ladder order.
+# price_from: a number like "$450". Leave it "" to show "Pricing on request".
+# checkout_url: Phase 2 hook for payment links. Leave empty.
+# Prices after 3 case studies (not shown on the site): Tune-Up $600, The 30-Day Fix $1,500, Growth Advisor $650/month.
 
 page:
-  heading: Offers
-  intro: Start with the free scorecard, or pick the step that fits where you are. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days.
-  ladder_rule: The Website Review fee is credited toward The 30-Day Fix if booked within 30 days.
+  heading: Offers and prices
+  intro: Four steps. Start anywhere. What you pay for one step is credited toward the next if you upgrade within 30 days.
+  ladder_rule: Start anywhere. What you pay for one step is credited toward the next if you upgrade within 30 days.
   labels:
     for: Who it's for
     get: What you get
+    needs: What I need from you
+    your_time: Your time
     timeline: Timeline
     terms: Terms
-    scorecard_button: Take the scorecard
+    guarantee: Guarantee
+    see_details: See details
     book_button: Book a call
     founding_link: Or apply as a founding client
     starting_at: Starting at
     on_request: Pricing on request
+  addons_heading: Add-ons
+  dont_do:
+    heading: What I don't do myself
+    body: "Ads management, social media posting (Facebook, Instagram and similar), logo or design work, and full website rebuilds. If you need one, I'll introduce you to a partner who quotes and bills you directly."
   faq_heading: Questions
 
 offers:
-  - id: scorecard
-    name: Is Your Website Losing You Work?
-    type: Free
-    free: true
-    price_from: ""
-    one_liner: A 3-minute scorecard. See your score and your biggest leak.
-    for: Any owner who wants a quick, honest read on how new work finds them.
-    get:
-      - 12 questions
-      - Instant score
-      - Biggest leak on screen
-      - Full breakdown by email
-    timeline: About 3 minutes
-    checkout_url: ""
-
   - id: website-review
     name: Website Review
-    type: Paid diagnostic
-    price_from: "$950"
-    one_liner: An outside-in review of your site, search presence and inquiry path, with fixes ranked.
-    for: Owners whose website gets visits but few inquiries, or who aren't sure what it's doing for them.
+    type: Free diagnostic
+    free: true
+    price_from: ""
+    one_liner: I look at your website and Google profile and send you the top 3 things costing you calls.
+    for: Owners who want to know why the phone isn't ringing more, without paying to find out.
     get:
-      - An outside-in review of your website, search presence and Google Business Profile
-      - A 60-minute working session, including how your work finds you today
-      - A written report with fixes ranked by effort and payoff
-      - A 30-minute walkthrough
-    timeline: About 2 weeks
-    terms: 50% upfront, 50% on delivery.
+      - An outside-in look at your website, your Google profile, and how you show up for 3 searches your customers make.
+      - The top 3 fixes, ranked by the calls they're likely costing you.
+      - A short video walkthrough or PDF, your choice.
+      - A do-it-yourself checklist that's yours to keep.
+    needs: Your website address, and the 3 services that earn you the most.
+    timeline: Within 5 business days.
+    note: No sales pitch. If you'd rather fix things yourself, the checklist is yours.
+    button: { label: Get my free Website Review, href: "/review" }
+    checkout_url: ""
+
+  - id: profile-tune-up
+    name: Google Profile Tune-Up
+    type: Quick win
+    price_from: "$450"
+    one_liner: I clean up your Google profile and set up a simple way to get reviews after every job.
+    for: Owners who want a quick, visible win before a bigger project.
+    get:
+      - "A full Google Business Profile cleanup: categories, services, service area, hours, description, photos and Q&A."
+      - Your review link turned into a short link and a QR code for invoices, your counter and your trucks.
+      - A review request message loaded into the invoicing or booking tool you already use.
+      - A before-and-after check of your profile numbers and review count at 30 days.
+    your_time: About 30 minutes.
+    timeline: Work done within 1 week, results checked at 30 days.
+    terms: Paid upfront. Credited toward The 30-Day Fix if you upgrade within 30 days.
+    guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
   - id: thirty-day-fix
     name: The 30-Day Fix
-    type: Sprint
-    price_from: "$2,500"
-    one_liner: We fix your website's message, inquiry path and tracking in 30 days.
-    for: Firms ready to fix what the review found.
+    type: Core project
+    price_from: "$1,250"
+    one_liner: Your Google profile, reviews and a service page that turns searches into quote requests, done in 30 days.
+    for: Owners ready to turn Google searches into quote requests.
     get:
-      - New page structure and copy for your homepage and up to 3 service pages
-      - Google Business Profile cleanup
-      - 'An inquiry form with a "How did you hear about us? Who referred you?" field'
-      - "Tracking set up: GA4, Search Console and call tracking"
-      - Weekly 30-minute check-ins
-    note: Edits are made on your current platform. A full rebuild goes to a vetted partner, quoted separately.
-    timeline: 30 days
-    terms: 50% upfront, 50% on delivery. The Website Review fee is credited if booked within 30 days.
-    checkout_url: ""
-
-  - id: lead-pipelines
-    name: Lead Pipelines
-    type: Build
-    price_from: "$3,500"
-    one_liner: Pages, follow-up emails and tracking that turn visits and past clients into steady leads.
-    for: Firms whose website works and who want steady new leads.
-    get:
-      - A lead offer and landing page
-      - Inquiry and quote follow-up emails
-      - A post-job email asking for a review and a referral
-      - A past-client reactivation sequence
-      - A local search plan and a paid test plan
-    note: Ongoing posting or ad management goes to your team or vetted partners.
-    timeline: 60 to 90 days
-    terms: 50% upfront, 50% on delivery.
+      - Everything in the Tune-Up.
+      - One service page for the service that earns you the most, written and built on your current website, with reviews, photos, one-tap calling and a short quote form.
+      - Review reply templates for good and bad reviews, plus a one-line script your team can use to ask.
+      - A "How did you hear about us?" question added to your booking or invoicing tool, so you can see where jobs come from.
+      - Results checked at 30, 60 and 90 days.
+    your_time: About 45 minutes in total.
+    timeline: Installed in 30 days.
+    terms: 50% upfront and 50% on day 30, or 3 equal monthly payments. Tune-Up fee credited within 30 days.
+    guarantee: If anything in your plan isn't done by day 30, I keep working at no charge until it is.
     checkout_url: ""
 
   - id: growth-advisor
     name: Growth Advisor
-    type: Retainer
-    price_from: "$750"
+    type: Monthly
+    price_from: "$500"
     price_suffix: /month
-    one_liner: A monthly review of your leads and numbers, and a steady hand on what's next.
-    for: Firms that want accountability and someone watching the numbers.
+    one_liner: The 30-Day Fix with $0 upfront, then I keep your profile, reviews and pages working every month.
+    for: Owners who want this handled every month without thinking about it.
     get:
-      - A monthly 60-minute review of a simple lead dashboard
-      - Async questions
-      - A quarterly plan refresh
-      - Help directing your vendors and designers
-    timeline: 3-month minimum, then month to month
-    terms: Billed monthly in advance. 3-month minimum.
+      - The 30-Day Fix, with $0 upfront.
+      - heading: "Then every month:"
+        items:
+          - Google profile posts and photo updates.
+          - Replies to your reviews.
+          - One new page or website edit.
+          - A short report of calls, clicks and reviews, with your history saved past Google's six-month limit.
+          - A 30-minute call.
+    terms: Billed monthly in advance with a 6-month minimum. If you cancel before month 4, the rest of The 30-Day Fix is due ($1,250 minus $250 for each month paid).
+    guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
   - id: studio-sprint
@@ -110,14 +111,46 @@ offers:
     timeline: 2 to 3 weeks
     checkout_url: ""
 
+addons:
+  - id: extra-page
+    name: Extra service page
+    price_label: Starting at $750
+    one_liner: One more page for a service or area you want to show up for.
+  - id: lead-pipelines
+    name: Lead Pipelines
+    price_label: Ask me
+    one_liner: Quote follow-up and past-customer emails that run in the tools you already use.
+  - id: advisory-hour
+    name: Advisory hour
+    price_label: $200/hour
+    one_liner: An hour on whatever is stuck. Vendors, a redesign, a new service.
+
+# FAQ. Hidden while site.yaml flags.showFaq is false. home: true also shows the item on the homepage.
 faq:
-  - q: Do I need to start with the Website Review?
-    a: No. The scorecard is free and points you to the right step.
-  - q: Do you build websites?
-    a: I rewrite and restructure your site and make the edits on your current platform. Full rebuilds go to a vetted partner, quoted separately.
-  - q: Do you run ads or post content for me?
-    a: No. I build the plan and the systems. Ongoing posting or ads go to your team or vetted partners.
-  - q: Do you work outside San Antonio?
-    a: Yes, everything works remotely.
-  - q: What if my score is already high?
-    a: Then Lead Pipelines is usually the next step.
+  - q: Do I have to do anything?
+    a: About 30–45 minutes in total. Add me as a manager, one short call, approve the words, and send photos. I do the rest.
+    home: true
+  - q: Do you need my passwords?
+    a: No. You add me as a manager on your Google profile and your website, and you can remove me anytime.
+    home: true
+  - q: "Will I be #1 on Google?"
+    a: Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and you see the numbers.
+    home: true
+  - q: How will I know it worked?
+    a: Before I start, I save your profile numbers, review count and map position. Google only shows about six months of profile history, so I keep yours from day one. You see the change at 30, 60 and 90 days. In The 30-Day Fix, I also add a "How did you hear about us?" question so you can tie calls to real jobs.
+    home: true
+  - q: Do I need to buy new software?
+    a: No. Everything runs on the tools you already pay for.
+    home: true
+  - q: I already have a web person. Is that a problem?
+    a: No. I can make the changes myself, or hand your web person exactly what to change.
+  - q: What website platforms do you work on?
+    a: Wix, Squarespace, WordPress, GoDaddy, Shopify and Google Sites. If yours isn't listed, ask.
+  - q: I don't have a website.
+    a: Start with the Google Profile Tune-Up. If you need a site, I'll introduce you to a partner who builds simple ones, and I'll write the words.
+  - q: Do you only work in San Antonio?
+    a: I'm based in San Antonio and work with local service businesses anywhere in the US.
+  - q: Can I cancel Growth Advisor?
+    a: After the 6-month minimum, yes, anytime with 30 days' notice. Project work has no contract beyond the project itself.
+  - q: Who owns the work?
+    a: You do. Your profile, your pages, your reviews and your data. When we're done, you remove my access.

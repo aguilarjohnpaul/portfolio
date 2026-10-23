@@ -1,90 +1,98 @@
-# Homepage copy, section by section (spec §5).
+# Homepage copy, section by section (Change 02 §4.1).
 
 hero:
-  eyebrow: Website and lead strategy for owner-run service firms
-  primary: { label: Is your website losing you work?, href: "/scorecard" }
-  secondary: { label: See founding client spots, href: "/founding-clients" }
-  micro: "Free · 12 questions · About 3 minutes · Results on screen"
+  eyebrow: For local service businesses
+  primary: { label: Get my free Website Review, href: "/review" }
+  secondary: { label: Or take the 3-minute scorecard, href: "/scorecard" }
   variants:
     a:
-      h1: Your next client is checking your website right now. Does it give them a reason to call?
-      subhead: For service businesses with 5 to 20 people. Fix the message, the inquiry path and the follow-up that decide whether a visit becomes a job.
+      h1: More calls from Google. No new software.
+      subhead: I fix your Google profile, reviews and website so more searches turn into calls. You spend about 30–45 minutes. I show you your numbers before and after.
     b:
-      h1: Busy one month, empty the next? Turn your website into a steady source of leads.
-      subhead: For service businesses with 5 to 20 people. Find where your website and follow-up lose good leads, then fix them in 30 days.
+      h1: Be the shop people call first.
+      subhead: I fix your Google profile, reviews and website so more searches turn into calls. You spend about 30–45 minutes. I show you your numbers before and after.
 
-sample:
-  label: Sample result
-  score: 62
-  score_label: website score
-  bars:
-    - { label: Get referred, value: 70 }
-    - { label: Get hired, value: 48, weakest: true }
-    - { label: Get hired again, value: 66 }
-  footer: "Biggest leak: no clear next step on mobile."
+# Example card. Must stay labeled as an example. It is not a real client.
+example:
+  label: Example Website Review
+  items:
+    - Your Google profile's main category doesn't match the service that earns you the most.
+    - Requesting a quote on a phone takes 5 taps. It should take 1.
+    - Your last Google review was 7 months ago.
+  footer: Every review ends with the top 3 fixes, ranked by the calls they're likely costing you.
 
 pains:
   heading: Sound familiar?
   items:
-    - title: Referrals slowed down.
-      body: Word of mouth used to keep you busy. Lately it's quieter, and you're not sure why.
-    - title: Leads go quiet.
-      body: People reach out, you send a quote, and then nothing. No one has time to chase.
-    - title: Busy, then empty.
-      body: One month you're turning work away. The next, you're wondering where it went.
+    - The phone is quieter than it should be for how good your work is.
+    - Customers find you by word of mouth, almost never Google.
+    - Your website looks fine, but hardly anyone fills out the form.
+    - Your last Google review was months ago.
+    - You've paid someone for "SEO" and never saw what they did.
 
 how:
   eyebrow: How it works
-  heading: Get referred. Get hired. Get hired again.
-  intro: Every referral goes through three stages. Most firms lose work at one of them without seeing it.
-  breaks_label: Where it breaks
-  fix_label: What we fix
-  stages:
-    - name: Get referred
-      breaks: Happy clients mean to mention you and forget.
-      fix: A website and search presence that confirms you the moment someone is referred.
-    - name: Get hired
-      breaks: Slow follow-up, unclear offers, quotes that stall.
-      fix: A clear site, fast replies and follow-up that turn visits into booked work.
-    - name: Get hired again
-      breaks: The project ends and the client drifts away.
-      fix: Check-ins and next offers that bring past clients back and keep them referring.
+  heading: Review. Fix. Prove.
+  steps:
+    - name: Review
+      body: I look at your website and Google profile from the outside and send you the top 3 things costing you calls. Free.
+    - name: Fix
+      body: I fix them myself, using the tools you already have. You spend about 30–45 minutes with me in total.
+    - name: Prove
+      body: I save your numbers before I start and show you what changed at 30, 60 and 90 days.
+  framework: Get found → Get hired → Get hired again.
+
+your_part:
+  heading: What you'll need to do
+  items:
+    - Add me as a manager on your Google profile. It takes 2 minutes, and no passwords are shared.
+    - One 20-minute call so I understand your best jobs and customers.
+    - Approve the words before anything goes live.
+    - Text me some photos of your work.
+  closing: That's it. I handle the rest.
 
 offers:
   eyebrow: Offers
-  heading: Start where you are.
-  intro: Each step builds on the last. The Website Review fee is credited toward The 30-Day Fix if booked within 30 days.
+  heading: Start anywhere.
 
+promise:
+  label: My promise
+  items:
+    - No new software to pay for
+    - No passwords shared
+    - No contracts on project work
+    - You own everything I set up
+
+measure:
+  heading: You'll see the numbers, not just a report.
+  body: Before I touch anything, I save your Google profile numbers (calls, direction requests, website clicks), your review count and where you show up on the map for your top searches. Google only shows about six months of profile history, so I keep yours from day one. Then I show you the change at 30, 60 and 90 days.
+  # The doc links this to the offers FAQ; while the FAQ is hidden it goes to the offers page.
+  link: { label: See offers and prices, href: "/offers" }
+
+# Hidden while site.yaml flags.showFounding is false.
 founding:
-  eyebrow: Founding client program
-  heading: Five spots. No fee. An honest case study in return.
-  body: I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Website Review and The 30-Day Fix, a $3,450 value.
-  get_label: What you get
-  get:
-    - Website Review
-    - The 30-Day Fix
-    - Weekly check-ins for a month
-  ask_label: What I ask
-  ask:
-    - Before and after numbers
-    - A written case study
-    - An honest testimonial
-  button: { label: Apply for a spot, href: "/founding-clients#apply" }
+  eyebrow: Founding clients
+  heading: "5 founding spots: The 30-Day Fix, free."
+  body: I'm building my first case studies. If your business is a fit, I'll do The 30-Day Fix at no cost in exchange for permission to share the results.
+  button: { label: See if you're a fit, href: "/founding-clients" }
 
 proof:
   eyebrow: Results
-  heading: What founding clients say
+  heading: What clients say
 
 about:
   # Put a 4:5 photo at public/jp.jpg and set photo: /jp.jpg
   photo: ""
-  photo_alt: "[PHOTO OF JP]"
+  photo_alt: "[PLACEHOLDER: headshot]"
   heading: Hi, I'm JP.
   paragraphs:
-    - "I've spent 8 years in performance marketing and revenue strategy: pipelines, funnels, paid media and the tracking behind them. Now I help owner-run firms in San Antonio and beyond turn word of mouth into steady work."
-    - Honest over impressive. I'll tell you what's working, what isn't, and what to fix first.
+    - I spent 8 years in agency and in-house marketing and analytics, measuring what campaigns actually did.
+    - I started 21 Jewel because owner-run shops get sold marketing they can't see. I do the work myself, I use the tools you already pay for, and I show you the numbers.
+  link: { label: More about me, href: "/about" }
 
-scorecard_cta:
-  heading: Is your website losing you work?
-  body: Twelve questions. About three minutes. Your score and your biggest leak, on screen.
-  button: { label: Start the scorecard, href: "/scorecard" }
+faq_heading: Questions
+
+final_cta:
+  heading: Find out what's costing you calls.
+  body: The Website Review is free, takes about 3 minutes to request, and you keep the checklist either way.
+  button: { label: Get my free Website Review, href: "/review" }

@@ -1,0 +1,40 @@
+---
+// /results. Built only when site.yaml flags.showResults is true. Never show estimates as results.
+import Base from '../../layouts/Base.astro';
+import { doc, proofItems } from '../../lib/content';
+const r = (await doc('pages')).results;
+const { studies } = await proofItems();
+---
+<Base page="results">
+  <div class="container page-head">
+    <h1>{r.heading}</h1>
+    <p class="lead">{r.intro}</p>
+  </div>
+  <section class="section">
+    <div class="container stack studies">
+      {studies.length === 0 && <p class="muted">{r.empty}</p>}
+      {studies.map((s) => (
+        <article class="card stack" aria-labelledby={`cs-${s.id}`}>
+          <h2 id={`cs-${s.id}`} class="h3">{s.data.title}</h2>
+          <p class="muted">{s.data.business}</p>
+          <p>{s.data.starting_point}</p>
+          <ul class="list">{s.data.what_i_did.map((w) => <li>{w}</li>)}</ul>
+          {s.data.results && (
+            <table>
+              <thead><tr><td></td>{r.columns.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+              <tbody>{s.data.results.map((x) => <tr><th scope="row">{x.label}</th><td>{x.day0}</td><td>{x.day30}</td><td>{x.day60}</td><td>{x.day90}</td></tr>)}</tbody>
+            </table>
+          )}
+          {s.data.quote && <blockquote><p>“{s.data.quote}”</p></blockquote>}
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .studies { max-width: 860px; gap: var(--space-5); }
+  .h3 { font-size: var(--h3); }
+  table { border-collapse: collapse; width: 100%; font-size: var(--small); }
+  th, td { text-align: left; padding: var(--space-2); border-bottom: 1px solid var(--line); }
+</style>

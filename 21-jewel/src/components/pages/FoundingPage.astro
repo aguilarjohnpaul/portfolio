@@ -1,0 +1,62 @@
+---
+// /founding-clients. Built only when site.yaml flags.showFounding is true (see src/pages/[gated].astro).
+import Base from '../../layouts/Base.astro';
+import SpotMeter from '../SpotMeter.astro';
+import TallyEmbed from '../TallyEmbed.astro';
+import { doc, spotsOpen } from '../../lib/content';
+
+const [site, f] = await Promise.all([doc('site'), doc('founding')]);
+const full = spotsOpen(site) === 0;
+---
+<Base page="founding">
+  <div class="container page-head">
+    <h1>{f.heading}</h1>
+    {f.intro.map((p) => <p class="lead">{p}</p>)}
+    <SpotMeter site={site} tone="page" />
+    <div>
+      <a class="btn btn-primary" href="#apply" data-event="cta_click" data-prop-location="founding-top" data-prop-target="#apply">
+        {full ? site.spots.waitlist : site.spots.apply}
+      </a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container grid">
+      <div class="card stack">
+        <h2 class="h3">{f.deal.get_label}</h2>
+        <ul class="list">{f.deal.get.map((g) => <li>{g}</li>)}</ul>
+      </div>
+      <div class="card stack">
+        <h2 class="h3">{f.deal.ask_label}</h2>
+        <ul class="list">{f.deal.ask.map((a) => <li>{a}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-surface" aria-labelledby="fit-h">
+    <div class="container grid">
+      <div class="stack">
+        <h2 id="fit-h" class="h3">{f.fit.heading}</h2>
+        <ul class="list">{f.fit.items.map((i) => <li>{i}</li>)}</ul>
+      </div>
+      <div class="stack">
+        <h2 class="h3">{f.not_fit.heading}</h2>
+        <ul class="list">{f.not_fit.items.map((i) => <li>{i}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply" class="section" aria-labelledby="apply-h">
+    <div class="container apply">
+      <h2 id="apply-h">{full ? f.apply.waitlist_heading : f.apply.heading}</h2>
+      <TallyEmbed url={site.links.tally} title={f.apply.iframe_title} loading={f.apply.loading}
+        fallback={f.apply.fallback} waitlist={full} email={site.brand.email} />
+      <p class="small muted">{f.apply.small_print}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .h3 { font-size: var(--h3); }
+  .apply { display: grid; gap: var(--space-5); max-width: 760px; scroll-margin-top: 88px; }
+</style>

@@ -26,15 +26,11 @@ export function bindEmailForm(
     e.preventDefault();
     const fd = new FormData(form);
     const email = String(fd.get('email') ?? '').trim();
-    const teamSize = String(fd.get('teamSize') ?? '');
     const emailInput = form.elements.namedItem('email') as HTMLInputElement;
-    const teamInput = form.elements.namedItem('teamSize') as HTMLSelectElement;
 
     setErr('email', emailInput, !email ? errors.email_required : EMAIL.test(email) ? '' : errors.invalid_email);
-    setErr('team', teamInput, teamSize ? '' : errors.team_required);
     setErr('form', null, '');
     if (errEl('email').textContent) return emailInput.focus();
-    if (errEl('team').textContent) return teamInput.focus();
 
     submit.disabled = true;
     submit.textContent = submit.dataset.sending ?? label;
@@ -46,16 +42,14 @@ export function bindEmailForm(
         body: JSON.stringify({
           ...payload(),
           firstName: String(fd.get('firstName') ?? '').trim() || undefined,
-          business: String(fd.get('business') ?? '').trim() || undefined,
           email,
-          teamSize,
           website: String(fd.get('website') ?? ''),
           turnstileToken: (await turnstile()?.token()) ?? '',
         }),
       });
       const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (res.ok && body.ok) {
-        track('scorecard_email_submit', { team_size: teamSize, band: String(payload().band) });
+        track('scorecard_email_submit', { band: String(payload().band) });
         onSent();
         form.hidden = true;
         const sent = root.querySelector<HTMLElement>('[data-sent]')!;

@@ -1,0 +1,31 @@
+---
+import type { OffersData } from '../lib/content';
+interface Props { heading: string; addons: OffersData['addons']; level?: 'h3' | 'h2' }
+const { heading, addons, level = 'h3' } = Astro.props;
+const H = level;
+---
+<div class="addons">
+  <H class="h">{heading}</H>
+  <ul role="list">
+    {addons.map((a) => (
+      <li id={`addon-${a.id}`}>
+        <span class="name">{a.name}</span>
+        <span class="price">{a.price_label}</span>
+        <span class="muted desc">{a.one_liner}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .addons { margin-top: var(--space-6); display: grid; gap: var(--space-3); max-width: 860px; }
+  .h { font-size: 20px; }
+  ul { display: grid; border-top: 1px solid var(--line); }
+  li {
+    display: grid; grid-template-columns: 1fr auto; gap: var(--space-1) var(--space-4);
+    padding-block: var(--space-3); border-bottom: 1px solid var(--line); max-width: none;
+  }
+  .name { font-weight: 600; }
+  .price { font-weight: 600; color: var(--accent-text); text-align: right; }
+  .desc { grid-column: 1 / -1; font-size: var(--small); }
+</style>

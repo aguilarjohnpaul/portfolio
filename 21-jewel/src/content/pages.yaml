@@ -1,31 +1,130 @@
-# Copy for the small pages: privacy, thanks and 404.
+# Copy for the smaller pages (Change 02 §4.3, §4.6, §4.8, §4.10–§4.12).
+
+review:
+  heading: Your free Website Review
+  intro: Tell me about your business. Within 5 business days, I'll send you the top 3 things costing you calls, ranked, and a checklist you keep.
+  how_heading: How it works
+  steps:
+    - Fill out the form, which takes about 3 minutes.
+    - I review your website and Google profile from the outside.
+    - You get a short video or PDF. If you want, we can talk it through on a 20-minute call.
+  capacity: I take 5 reviews a week so each one gets real attention.
+  form:
+    heading: Tell me about your business
+    name: Name
+    email: Email
+    phone: Phone (optional)
+    business: Business name
+    website: Website (optional)
+    website_placeholder: yourbusiness.com
+    no_website: No website yet
+    city: City or area you serve
+    services: The 3 services that earn you the most
+    services_hint: For example, banners, yard signs, vehicle graphics.
+    source: How do most of your customers find you today?
+    sources:
+      - { value: word-of-mouth, label: Word of mouth }
+      - { value: google, label: Google }
+      - { value: repeat, label: Repeat customers }
+      - { value: ads, label: Ads }
+      - { value: not-sure, label: Not sure }
+    notes: Anything else I should know? (optional)
+    format: How would you like it?
+    formats:
+      - { value: video, label: Video }
+      - { value: pdf, label: PDF }
+    honeypot: Leave this field empty
+    submit: Send my request
+    sending: Sending…
+    privacy_note: "I'll only use your details to do your review and follow up about it. Reply \"stop\" any time and I'll remove you."
+    privacy_link: Privacy
+  errors:
+    required: This one's needed.
+    invalid_email: That email doesn't look right. Check it and try again.
+    verification_failed: "We couldn't confirm you're not a bot. Refresh the check below and try again."
+    list_unavailable: "I couldn't save your request just now. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
+    network: "Something went wrong sending your request. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
+
+about:
+  heading: "Hi, I'm JP. Texas born and raised."
+  intro: "I've spent 8 years running marketing for national names like Mailchimp and Saatva, and Texas brands like Howler Brothers and Sendero Provisions. Now I use what I learned to help local shops get more calls from Google."
+  paragraphs:
+    - "My job was always measuring what campaigns actually did, not what they claimed."
+    - "I started 21 Jewel because owner-run shops get sold marketing they can't see. Monthly fees, vague reports, no idea what changed."
+  differently_heading: I work differently
+  differently:
+    - I do the work myself.
+    - I use the tools you already pay for.
+    - I save your numbers before I start, so we both know what changed.
+    - I'm based in San Antonio and work with a small number of businesses at a time.
+  values_heading: What I believe
+  values:
+    - { title: Honest over impressive., body: "I'll tell you what will and won't help, even if it means a smaller project." }
+    - { title: "Serve the person, not the project.", body: "Your time matters, so I keep your part to minutes." }
+    - { title: Build things that outlast me., body: "You own everything, and it keeps working after we're done." }
+  photo: ""
+  photo_alt: "[PLACEHOLDER: headshot]"
+  button: { label: Get my free Website Review, href: "/review" }
+
+results:
+  heading: Results
+  intro: Before-and-after numbers from local service businesses. Only real results, never estimates.
+  empty: The first case studies are in progress.
+  columns: [Day 0, Day 30, Day 60, Day 90]
 
 privacy:
   heading: Privacy
   updated_label: Last updated
   intro: This site collects as little as it needs. Here's what each service stores and why.
   services:
-    - name: PostHog (analytics)
-      body: Counts page views and button clicks, such as starting or finishing the scorecard, so I can see what's working. It stores a random ID in your browser. It does not record your screen, and it respects your browser's Do Not Track setting.
-    - name: Google Sheets and Gmail (email)
-      body: "If you ask for your scorecard breakdown, your email, the optional first name, business name and team size you gave, and your scores are saved in a private Google Sheet. I use them to send your breakdown from Gmail and the occasional note. Reply \"stop\" to any email and I'll remove you."
+    - name: The Website Review form
+      body: "If you request a free Website Review, your name, email, phone (if given), business details, website, the area you serve, your top services, how customers find you and any notes are saved in a private Google Sheet. I use them to do your review and follow up about it. You get a confirmation from my Gmail."
+    - name: Google Sheets and Gmail (scorecard email)
+      body: "If you ask for your scorecard results, your email, optional first name, business type and score are saved in a private Google Sheet. I use them to send your results from Gmail and the occasional note. Reply \"stop\" to any email and I'll remove you."
+    - name: Cal.com (bookings)
+      body: If you book a call, Cal.com stores your name, email and the time you chose, and sends us both a calendar invite.
     - name: Tally (applications)
       body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
+    - name: PostHog (analytics)
+      body: Counts page views and button clicks, such as starting the scorecard or requesting a review, so I can see what's working. It stores a random ID in your browser. It does not record your screen, and it respects your browser's Do Not Track setting.
     - name: Cloudflare Turnstile (spam protection)
-      body: Checks that the scorecard email form is filled in by a person. It does not use your answers.
+      body: Checks that the review and scorecard forms are filled in by a person. It does not use your answers.
     - name: Cloudflare (hosting)
       body: Hosts this site and keeps standard server logs, such as IP addresses, for security.
+    - name: Client work access
+      body: "When we work together, manager access to your Google profile and website is used only for the agreed work and removed when the work ends. The performance numbers I save are stored privately and never shared without your permission."
   storage: "Your browser also keeps your scorecard progress for this visit, your theme choice and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
   deletion: "To see or delete anything I hold about you, email me at"
   deletion_suffix: and I'll take care of it within 30 days.
 
-thanks:
-  heading: Thanks. Your application is in.
-  body: I read every application myself and reply within two business days. If it looks like a fit, I'll send a link for a 20-minute call.
+# Hidden while site.yaml flags.showTerms is false. Needs a lawyer review before publishing. Not legal advice.
+terms:
+  heading: Terms
+  updated_label: Last updated
+  intro: Plain-language terms for working with me.
+  sections:
+    - { title: What I provide, body: "The offer as described on the Offers page at the time you buy it." }
+    - { title: Payment, body: "Each offer's terms are on the Offers page. What you pay for one step is credited toward the next if you upgrade within 30 days. Growth Advisor has a 6-month minimum. If you cancel before month 4, the rest of The 30-Day Fix is due ($1,250 minus $250 for each month paid)." }
+    - { title: The guarantee, body: "If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is. That's a guarantee on the work getting built. There's no guarantee of rankings, calls, leads or revenue." }
+    - { title: Your part, body: "Manager access, approvals and photos. If something on your side is delayed, the dates move with it." }
+    - { title: Ownership, body: "You own your profile, pages, content and data." }
+    - { title: Access, body: "I only use manager access, never your passwords. You remove my access at the end." }
+    - { title: Partners, body: "Partner work is quoted and billed by the partner directly." }
+    - { title: Cancellation, body: "Project work is paid as described. Growth Advisor needs 30 days' notice after the minimum." }
+  contact: "Questions? Email me at"
+
+thanks_review:
+  heading: Got it. Your review is on the way.
+  body: I'll send it within 5 business days to the email you gave me. While you wait, the 3-minute scorecard shows where you stand.
+  link: { label: Take the scorecard, href: "/scorecard" }
+
+thanks_founding:
+  heading: Thanks for applying.
+  body: I read every application myself and will reply within 3 business days, yes or no, with a reason.
   home: Back to the homepage
 
 notfound:
-  heading: That page doesn't exist.
-  body: The link may be old, or the address may have a typo.
-  home: Go to the homepage
-  scorecard: Take the scorecard
+  heading: This page isn't here.
+  body: But your free Website Review is.
+  review: Get my free Website Review
+  home: Go home

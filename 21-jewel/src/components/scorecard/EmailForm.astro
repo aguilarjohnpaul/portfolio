@@ -1,7 +1,7 @@
 ---
 import type { ScorecardContent } from '../../lib/content';
-interface Props { sc: ScorecardContent; siteKey: string; calHref: string }
-const { sc, siteKey, calHref } = Astro.props;
+interface Props { sc: ScorecardContent; siteKey: string }
+const { sc, siteKey } = Astro.props;
 const e = sc.email;
 ---
 <div class="sc-email" data-state="result" hidden>
@@ -9,26 +9,14 @@ const e = sc.email;
     <h2 class="h3">{e.heading}</h2>
     <div class="fields">
       <div class="field">
-        <label for="sc-first">{e.first_name}</label>
-        <input id="sc-first" name="firstName" type="text" autocomplete="given-name" maxlength="80" />
-      </div>
-      <div class="field">
         <label for="sc-email">{e.email}</label>
         <input id="sc-email" name="email" type="email" autocomplete="email" required maxlength="254"
           aria-describedby="sc-email-err" />
         <p class="err" id="sc-email-err" data-err="email"></p>
       </div>
       <div class="field">
-        <label for="sc-business">{e.business}</label>
-        <input id="sc-business" name="business" type="text" autocomplete="organization" maxlength="120" />
-      </div>
-      <div class="field">
-        <label for="sc-team">{e.team_size}</label>
-        <select id="sc-team" name="teamSize" required aria-describedby="sc-team-err">
-          <option value="">{e.team_size_placeholder}</option>
-          {e.team_sizes.map((t) => <option value={t.value}>{t.label}</option>)}
-        </select>
-        <p class="err" id="sc-team-err" data-err="team"></p>
+        <label for="sc-first">{e.first_name}</label>
+        <input id="sc-first" name="firstName" type="text" autocomplete="given-name" maxlength="80" />
       </div>
     </div>
     <div class="hp" aria-hidden="true">
@@ -44,9 +32,5 @@ const e = sc.email;
   </form>
   <div class="card sent" data-sent hidden tabindex="-1">
     <p class="sent-msg" role="status">{sc.after.sent}</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href={sc.after.founding.href} data-event="founding_apply_click" data-prop-location="scorecard">{sc.after.founding.label}</a>
-      <a class="btn btn-ghost" href={calHref} data-event="book_call_click" data-prop-location="scorecard">{sc.after.book}</a>
-    </div>
   </div>
 </div>

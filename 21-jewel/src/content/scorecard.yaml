@@ -1,125 +1,145 @@
-# The scorecard (spec §6). Questions, options, scoring bands and fixes were
-# chosen deliberately. Change wording here; scoring rules live in src/lib/scorecard.ts.
+# The scorecard (Change 02 §4.4). 12 scored questions, 2 / 1 / 0 points each, 24 max.
+# Q0 is not scored; it only tags the lead with the business type.
+# Scoring rules live in src/lib/scorecard.ts.
 
 intro:
   heading: Is your website losing you work?
-  body: 12 quick questions about how people find you, contact you and come back. You'll see your score and your biggest leak right away.
+  body: 12 quick questions about your Google profile, your website and how you follow up. It takes about 3 minutes. You get your score and your biggest leaks.
   start: Start
   micro: "Free · 12 questions · About 3 minutes"
 
 question_ui:
   progress: "Question {n} of {total}"
+  intro_label: First, a quick one
   back: Back
   next: Next
-  keyboard_hint: "Tip: press 1 to 4 to answer, Enter to continue."
+  keyboard_hint: "Tip: press a number to answer, Enter to continue."
 
-standard_options:
-  - { label: Always, score: 3 }
-  - { label: Usually, score: 2 }
-  - { label: Sometimes, score: 1 }
-  - { label: Rarely or never, score: 0 }
-
-stages:
-  - { id: referred, name: Get referred, slug: get-referred }
-  - { id: hired, name: Get hired, slug: get-hired }
-  - { id: again, name: Get hired again, slug: get-hired-again }
+industry:
+  id: 0
+  text: What kind of business do you run?
+  options:
+    - { label: Sign and print, value: sign-print }
+    - { label: HVAC, value: hvac }
+    - { label: Roofing, value: roofing }
+    - { label: Other trade, value: other-trade }
+    - { label: Other service, value: other-service }
 
 questions:
   - id: 1
-    stage: referred
-    text: When someone searches your business name, does your website come up first?
-    fix: Make sure your homepage title includes your business name and what you do, and link your site from your Google Business Profile.
-  - id: 2
-    stage: referred
-    text: Is your Google Business Profile complete and updated in the last 3 months?
-    fix: Fill every field, add 10 recent photos, and post a short update each month.
-  - id: 3
-    stage: referred
-    text: Does your website show recent reviews, work or client stories?
-    fix: Add three recent reviews and one short project story to your homepage.
-  - id: 4
-    stage: referred
-    text: When a project wraps up well, do you ask the client for a referral?
-    fix: 'Ask at the moment of praise. Add one line to your wrap-up call: "Who else do you know who deals with this?"'
-  - id: 5
-    stage: hired
-    text: Can a visitor tell what you do, who it's for and roughly what it costs within 10 seconds?
-    fix: Rewrite your homepage headline to say what you do and for whom, and add "starting at" prices.
-  - id: 6
-    stage: hired
-    text: Does every page have one clear next step that works on a phone?
-    fix: Give every page one button ("Request a quote" or "Book a call") and test your form on your phone.
-  - id: 7
-    stage: hired
-    text: How fast do you usually reply to a new inquiry?
+    text: When someone searches your main service and your area, do you show up in the map results?
     options:
-      - { label: Within the hour, score: 3 }
-      - { label: Same day, score: 2 }
-      - { label: Within 1–2 days, score: 1 }
-      - { label: Longer, score: 0 }
-    fix: Set an auto-reply that confirms receipt and offers a call time. Aim to reply personally the same business day.
+      - { label: "Yes, top 3", score: 2 }
+      - { label: Somewhere further down, score: 1 }
+      - { label: "Not sure, or no", score: 0 }
+    fix: Tune your Google profile's categories, services and service area so you show up for the searches that matter.
+  - id: 2
+    text: Is your Google profile's main category the exact service that earns you the most?
+    options:
+      - { label: "Yes", score: 2 }
+      - { label: "Close, but not exact", score: 1 }
+      - { label: Not sure, score: 0 }
+    fix: Set your main category to the service that earns you the most. It's the single biggest profile setting.
+  - id: 3
+    text: When did you get your last Google review?
+    options:
+      - { label: This month, score: 2 }
+      - { label: 1–6 months ago, score: 1 }
+      - { label: "Longer, or never", score: 0 }
+    fix: Ask for a review after every job, with a link or QR code, so reviews keep coming.
+  - id: 4
+    text: Do you ask every customer for a review?
+    options:
+      - { label: "Every job, automatically", score: 2 }
+      - { label: Sometimes, score: 1 }
+      - { label: Rarely or never, score: 0 }
+    fix: Put the review request in the tool you already use so it goes out on its own.
+  - id: 5
+    text: Do you reply to your Google reviews?
+    options:
+      - { label: All of them, score: 2 }
+      - { label: Some, score: 1 }
+      - { label: "No", score: 0 }
+    fix: Reply to every review. Short and personal is fine, and templates make it fast.
+  - id: 6
+    text: Does your Google profile have recent photos of your actual work?
+    options:
+      - { label: Added in the last 3 months, score: 2 }
+      - { label: Older photos, score: 1 }
+      - { label: Few or none, score: 0 }
+    fix: Add real job photos monthly. They show people what they'll get.
+  - id: 7
+    text: On a phone, can someone call you or request a quote from your homepage in one tap?
+    options:
+      - { label: "Yes", score: 2 }
+      - { label: It takes a few steps, score: 1 }
+      - { label: "No, or not sure", score: 0 }
+    fix: Add a one-tap call button and a short quote form at the top of your homepage.
   - id: 8
-    stage: hired
-    text: Do you follow up on quotes or proposals that haven't been answered?
-    fix: Follow up on day 2, day 7 and day 14 with a short, useful note, not a "just checking in."
+    text: Does your website have its own page for each main service?
+    options:
+      - { label: "Yes", score: 2 }
+      - { label: One page lists everything, score: 1 }
+      - { label: No website, score: 0 }
+    fix: Give your top service its own page. That's what shows up when people search for it.
   - id: 9
-    stage: again
-    text: Do you check in with past clients after the work ends?
-    fix: Put a 30-, 90- and 180-day check-in on your calendar for every finished project.
+    text: Does the first line of your homepage say what you do and where?
+    options:
+      - { label: "Yes", score: 2 }
+      - { label: Sort of, score: 1 }
+      - { label: "No", score: 0 }
+    fix: 'Make your first line say what you do and where, for example "Custom signs and banners in San Antonio."'
   - id: 10
-    stage: again
-    text: When a project ends, do you offer a clear next step or service?
-    fix: Write one natural follow-on offer for your most common project and mention it at wrap-up.
+    text: After a job, do past customers hear from you again?
+    options:
+      - { label: "Yes, on a schedule", score: 2 }
+      - { label: Now and then, score: 1 }
+      - { label: Not really, score: 0 }
+    fix: A simple check-in after the job brings repeat work and referrals.
   - id: 11
-    stage: again
-    text: Do you ask happy clients for a Google review?
-    fix: Send a review link with two prompt questions within a week of a strong finish.
+    text: Do you know how many calls or quote requests you got last month?
+    options:
+      - { label: Exact number, score: 2 }
+      - { label: Rough idea, score: 1 }
+      - { label: No idea, score: 0 }
+    fix: Check your Google profile's numbers monthly and keep them, since Google only shows about six months.
   - id: 12
-    stage: again
-    text: Do you know where each new lead came from, including who referred them?
-    fix: Add "How did you hear about us? Who referred you?" to your inquiry form and log the answer for every lead.
+    text: Do you ask new customers how they found you?
+    options:
+      - { label: "Every time, and I write it down", score: 2 }
+      - { label: Sometimes, score: 1 }
+      - { label: Never, score: 0 }
+    fix: Add "How did you hear about us?" to your booking or invoice form.
 
 bands:
-  - { min: 0, max: 39, name: Running on luck, slug: running-on-luck, meaning: Work comes in when it comes in. A few basics would change that fast. }
-  - { min: 40, max: 69, name: "Working, but leaking", slug: working-but-leaking, meaning: "People find you, but you're losing good work at one or two stages." }
-  - { min: 70, max: 100, name: Built to win work, slug: built-to-win-work, meaning: Your site and follow-up work. The gains now come from new lead sources and consistency. }
+  - { min: 0, max: 8, name: Losing work, slug: losing-work, headline: "You're probably losing calls to the shop down the street.", body: "The good news: the biggest fixes are usually quick. Start with the top 3 below." }
+  - { min: 9, max: 16, name: Leaking calls, slug: leaking-calls, headline: "You're doing some things right, but calls are slipping through.", body: "A few fixes would close the gaps. Here are your top 3." }
+  - { min: 17, max: 24, name: Built to win work, slug: built-to-win-work, headline: "You're set up to win work.", body: "Keep it up. Here's where you could still tighten up." }
 
 result:
   eyebrow: Your result
-  score_suffix: / 100
-  leak_label: Your biggest leak
-  fix_label: Start here
+  score_suffix: / 24
+  fixes_label: Your top fixes
+  perfect: No leaks found. Keep doing what you're doing.
+  review_button: { label: "Want me to check this for you? Get a free Website Review", href: "/review" }
   restart: Start over
 
 email:
-  heading: "Get your full breakdown: all three stage scores and your top 3 fixes, sent to your inbox."
+  heading: Send me my results and the fix list.
   first_name: First name (optional)
   email: Email
-  business: Business name (optional)
-  team_size: Team size
-  team_size_placeholder: Choose one
-  team_sizes:
-    - { value: "1", label: Just me }
-    - { value: 2-4, label: 2–4 }
-    - { value: 5-20, label: 5–20 }
-    - { value: 21-50, label: 21–50 }
-    - { value: 50+, label: 50+ }
   honeypot: Leave this field empty
-  submit: Send my breakdown
+  submit: Send my results
   sending: Sending…
-  privacy_note: "I'll only use your email to send your breakdown and occasional notes from 21 Jewel. Reply \"stop\" any time and I'll remove you."
+  privacy_note: "I'll only use your email to send your results and occasional notes from 21 Jewel. Reply \"stop\" any time and I'll remove you."
   privacy_link: Privacy
 
 after:
   sent: Sent. Check your inbox in a few minutes.
-  stages_heading: Your three stages
-  founding: { label: "Want help fixing it? See founding client spots", href: "/founding-clients" }
-  book: Book a call
 
 errors:
-  email_required: Enter your email so I can send your breakdown.
-  team_required: Choose your team size.
+  email_required: Enter your email so I can send your results.
   invalid_email: That email doesn't look right. Check it and try again.
   verification_failed: "We couldn't confirm you're not a bot. Refresh the check below and try again."
   list_unavailable: "We couldn't reach our email service. Your score is still on this page. Try again in a minute."
-  network: "Something went wrong sending your breakdown. Your score is still on this page. Try again in a minute."
+  network: "Something went wrong sending your results. Your score is still on this page. Try again in a minute."

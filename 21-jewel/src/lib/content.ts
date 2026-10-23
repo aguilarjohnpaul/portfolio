@@ -1,7 +1,7 @@
 // One place to read each content document. Pages call these instead of getEntry.
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 
-type Single = 'site' | 'home' | 'offers' | 'scorecard' | 'founding' | 'studios' | 'pages' | 'testimonials';
+type Single = 'site' | 'home' | 'offers' | 'scorecard' | 'founding' | 'studios' | 'pages' | 'industries' | 'testimonials';
 
 export async function doc<K extends Single>(name: K): Promise<CollectionEntry<K>['data']> {
   const entry = (await getEntry(name, 'main')) as CollectionEntry<K> | undefined;
@@ -47,9 +47,9 @@ export function spotsOpen(site: SiteData) {
   return Math.max(0, site.founding.total - site.founding.filled);
 }
 
-/** "Free", "Starting at $750/month" or "Pricing on request" (spec §3). */
+/** "Free", "Starting at $500/month" or "Pricing on request". */
 export function priceLabel(offer: Offer, labels: OffersData['page']['labels']): string {
-  if (offer.free) return offer.type;
+  if (offer.free) return 'Free';
   if (!offer.price_from.trim()) {
     if (!offer.studio_only) warn(`offers.yaml "${offer.id}" has no price_from. Showing "${labels.on_request}".`);
     return labels.on_request;
@@ -59,3 +59,18 @@ export function priceLabel(offer: Offer, labels: OffersData['page']['labels']): 
 }
 
 export const ladder = (o: OffersData) => o.offers.filter((x) => !x.studio_only);
+
+export type Flags = SiteData['flags'];
+export type FlagName = keyof Flags | '';
+/** True when an item has no flag, or its flag is on. */
+export const flagOn = (flags: Flags, name: FlagName) => name === '' || flags[name];
+
+/** Header links, with "Founding clients" inserted before About when the founding program is on. */
+export function navLinks(site: SiteData) {
+  const links = [...site.nav.links];
+  if (site.flags.showFounding) {
+    const about = links.findIndex((l) => l.href === '/about');
+    links.splice(about < 0 ? links.length : about, 0, site.nav.founding_link);
+  }
+  return links;
+}

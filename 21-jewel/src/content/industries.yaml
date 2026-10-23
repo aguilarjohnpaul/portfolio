@@ -1,0 +1,59 @@
+# Industry pages (Change 02 §4.7). One template: hero → searches → what I fix → proof → call to action.
+# flag: the site.yaml flag that builds the page ("" = always built).
+# indexed: false keeps the page out of Google and the sitemap (until a first client).
+
+labels:
+  searches_heading: What your customers search for
+  searches_note: These are examples, not search volumes.
+  fixes_heading: What I fix
+  proof_heading: Proof
+  addon_label: Related add-on
+  offers_link: { label: See offers and prices, href: "/offers" }
+  review_button: { label: Get my free Website Review, href: "/review" }
+
+industries:
+  - slug: sign-print
+    flag: ""
+    indexed: true
+    name: Sign and print shops
+    h1: More quote requests for sign and print shops.
+    sub: Your customers search for banners, yard signs, vehicle graphics and storefront signs, often with an event date coming up. I make sure they find you and can ask for a quote in one tap.
+    searches:
+      - custom banners near me
+      - vehicle wraps San Antonio
+      - yard signs fast
+    fixes:
+      - A Google profile that lists your real products.
+      - A page for your top product.
+      - A quote form that asks for size, quantity and due date.
+      - Reviews after every order.
+    proof: Case study in progress.
+    addon: { name: Lead Pipelines, body: "Quote follow-up that runs in the tools you already use.", href: "/offers" }
+
+  - slug: hvac
+    flag: showHvac
+    indexed: false
+    name: HVAC companies
+    h1: More calls from Google for HVAC companies.
+    sub: When the AC quits, people search on their phone and call the first company that looks trustworthy. I make sure that's you.
+    searches: []
+    fixes:
+      - Service area and services on your Google profile.
+      - A page for your top service (repair, install or maintenance).
+      - Review requests after every call, sent from the field software you already use.
+      - One-tap calling.
+    proof: ""
+
+  - slug: roofing
+    flag: showRoofing
+    indexed: false
+    name: Roofing companies
+    h1: More inspection requests for roofing companies.
+    sub: Homeowners compare roofers on reviews and photos. I make sure yours are current and that requesting an inspection is easy.
+    searches: []
+    fixes:
+      - Photos of real jobs.
+      - Steady reviews.
+      - A page for your top service (repair, replacement or inspection).
+      - A short inspection request form.
+    proof: ""

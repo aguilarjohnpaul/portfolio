@@ -3,6 +3,7 @@
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { parse } from 'yaml';
 
 const dist = new URL('../dist/', import.meta.url).pathname;
 const files = readdirSync(dist, { recursive: true }).filter((f) => String(f).endsWith('.html'));
@@ -22,3 +23,12 @@ const headers = readFileSync(path, 'utf8');
 if (!headers.includes('{{SCRIPT_HASHES}}')) throw new Error('dist/_headers is missing {{SCRIPT_HASHES}}');
 writeFileSync(path, headers.replaceAll('{{SCRIPT_HASHES}}', [...hashes].sort().join(' ')));
 console.log(`CSP: ${hashes.size} inline script hash(es) written to dist/_headers`);
+
+// Old /thanks route: send it to /thanks/founding when the founding program is on, otherwise home.
+// /founding → /founding-clients only exists while the founding program is on.
+const site = parse(readFileSync(new URL('../src/content/site.yaml', import.meta.url), 'utf8'));
+const target = site.flags.showFounding ? '/thanks/founding' : '/';
+const redirects = join(dist, '_redirects');
+const extra = [`/thanks ${target} 301`, ...(site.flags.showFounding ? ['/founding /founding-clients 301'] : [])];
+writeFileSync(redirects, readFileSync(redirects, 'utf8').trimEnd() + '\n' + extra.join('\n') + '\n');
+console.log(`Redirects: /thanks → ${target}`);

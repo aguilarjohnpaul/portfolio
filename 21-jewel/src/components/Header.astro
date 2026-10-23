@@ -1,21 +1,22 @@
 ---
-import type { SiteData } from '../lib/content';
+import { navLinks, type SiteData } from '../lib/content';
 import MobileMenu from './MobileMenu.astro';
 interface Props { site: SiteData }
 const { site } = Astro.props;
 const { nav } = site;
+const links = navLinks(site);
 ---
 <header class="site-header">
   <div class="container bar">
     <a class="wordmark" href="/" aria-label={nav.home_label}>{site.brand.name}</a>
     <nav class="desktop-nav" aria-label="Main">
       <ul role="list">
-        {nav.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
       </ul>
     </nav>
     <div class="actions">
-      <a class="btn btn-primary cta" href={nav.cta.href} data-event="nav_scorecard_click"><span class="long">{nav.cta.label}</span><span class="short" aria-hidden="true">{nav.cta_short}</span></a>
-      <MobileMenu nav={nav} />
+      <a class="btn btn-primary cta" href={nav.cta.href} data-event="cta_click" data-prop-location="header" data-prop-target={nav.cta.href}><span class="long">{nav.cta.label}</span><span class="short" aria-hidden="true">{nav.cta_short}</span></a>
+      <MobileMenu nav={nav} links={links} />
     </div>
   </div>
 </header>
@@ -48,7 +49,7 @@ const { nav } = site;
     .cta { padding: 10px 12px; font-size: 14px; white-space: nowrap; }
   }
   .short { display: none; }
-  @media (max-width: 399.98px) {
+  @media (max-width: 459.98px) {
     .long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .short { display: inline; }
   }

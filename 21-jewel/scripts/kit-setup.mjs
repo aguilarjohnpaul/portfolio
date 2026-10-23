@@ -18,12 +18,16 @@ const call = async (method, path, body) => {
   return json;
 };
 
-const FIELDS = ['score_total', 'score_referred', 'score_hired', 'score_again', 'band', 'weakest_stage',
-  'top_fixes', 'team_size', 'business_name', 'hero_variant'];
+// Fields the site writes when Kit is the fallback (no SHEET_WEBHOOK_URL).
+const FIELDS = ['score_total', 'score_max', 'band', 'industry', 'top_fixes', 'hero_variant',
+  'business_name', 'phone', 'website', 'city', 'top_services', 'review_format'];
 
 const sc = parse(readFileSync(new URL('../src/content/scorecard.yaml', import.meta.url), 'utf8'));
-const TAGS = ['scorecard-complete', 'hero-a', 'hero-b', 'team-5-20',
-  ...sc.bands.map((b) => `band-${b.slug}`), ...sc.stages.map((s) => `weakest-${s.slug}`)];
+const pages = parse(readFileSync(new URL('../src/content/pages.yaml', import.meta.url), 'utf8'));
+const TAGS = ['hero-a', 'hero-b', 'review-requested',
+  ...sc.bands.map((b) => `scorecard-${b.slug}`),
+  ...sc.industry.options.map((o) => `industry-${o.value}`),
+  ...pages.review.form.sources.map((o) => `source-${o.value}`)];
 
 const existing = new Set((await call('GET', '/custom_fields?per_page=1000')).custom_fields.map((f) => f.key));
 for (const label of FIELDS) {

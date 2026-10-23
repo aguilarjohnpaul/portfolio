@@ -1,25 +1,45 @@
 // Google Sheet + Gmail lead store. Server-only: runs inside the Pages Function.
-// Posts each scorecard lead to JP's Google Apps Script web app (docs/google-sheet/Code.gs),
-// which adds a row, emails the visitor their breakdown and alerts JP.
+// Posts each lead to JP's Google Apps Script web app (docs/google-sheet/Code.gs), which adds a row
+// (Leads tab for the scorecard, Reviews tab for Website Review requests), emails the visitor and alerts JP.
 
 export class SheetError extends Error {}
 
-export interface Lead {
+/** Scorecard result (type "scorecard") goes to the Leads tab. */
+export interface ScorecardLead {
+  type: 'scorecard';
   timestamp: string;
   email: string;
   firstName: string;
-  business: string;
-  teamSize: string;
-  total: number;
-  referred: number;
-  hired: number;
-  again: number;
+  industry: string;
+  points: number;
+  max: number;
   band: string;
-  weakestStage: string;
+  headline: string;
   topFixes: string[];
   heroVariant: 'a' | 'b';
   tags: string;
 }
+
+/** Website Review request (type "review") goes to the Reviews tab. */
+export interface ReviewRequest {
+  type: 'review';
+  timestamp: string;
+  name: string;
+  email: string;
+  phone: string;
+  business: string;
+  website: string;
+  noWebsite: boolean;
+  city: string;
+  services: string;
+  source: string;
+  notes: string;
+  format: string;
+  heroVariant: 'a' | 'b';
+  tags: string;
+}
+
+export type Lead = ScorecardLead | ReviewRequest;
 
 export async function sendToSheet(url: string, secret: string, lead: Lead, fetcher: typeof fetch = fetch) {
   let res: Response;

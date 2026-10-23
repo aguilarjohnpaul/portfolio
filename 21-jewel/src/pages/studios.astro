@@ -27,7 +27,7 @@ const [site, s] = await Promise.all([doc('site'), doc('studios')]);
         {s.contact.email_prefix}{' '}
         <a href={`mailto:${site.brand.email}`} data-event="email_click" data-prop-location="studios">{site.brand.email}</a>
       </p>
-      <div><a class="btn btn-primary" href={calHref(site)} data-event="book_call_click" data-prop-location="studios">{s.contact.book}</a></div>
+      <div><a class="btn btn-primary" href={calHref(site)} data-event="book_call_click" data-prop-location="studios" data-prop-target="cal">{s.contact.book}</a></div>
     </div>
   </section>
 </Base>

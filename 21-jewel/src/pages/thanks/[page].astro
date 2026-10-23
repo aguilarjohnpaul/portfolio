@@ -1,0 +1,18 @@
+---
+// /thanks/founding. Built only when site.yaml flags.showFounding is true.
+import Base from '../../layouts/Base.astro';
+import { doc } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const { flags } = await doc('site');
+  return flags.showFounding ? [{ params: { page: 'founding' } }] : [];
+}
+const t = (await doc('pages')).thanks_founding;
+---
+<Base page="thanks-founding" noindex>
+  <div class="container page-head section">
+    <h1>{t.heading}</h1>
+    <p class="lead">{t.body}</p>
+    <div><a class="btn btn-primary" href="/">{t.home}</a></div>
+  </div>
+</Base>

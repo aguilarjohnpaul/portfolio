@@ -1,35 +1,34 @@
-# Founding client program page (spec §7, /founding-clients).
+# Founding client program (Change 02 §4.5). Hidden while site.yaml flags.showFounding is false.
 
-heading: Founding client program
+heading: "5 founding spots: The 30-Day Fix, free."
 intro:
-  - "I'm taking on five owner-run service firms at no cost while I build my portfolio. You get the full Website Review and The 30-Day Fix, a $3,450 value."
-  - In return, I ask for your before and after numbers, a written case study and an honest testimonial.
-
-for:
-  heading: Who it's for
-  body: Owner-run service businesses with 5 to 20 people, where the owner can meet weekly for a month and share before and after numbers.
+  - I'm building my first case studies. For 5 local service businesses, I'll do The 30-Day Fix, normally starting at $1,250, at no cost.
 
 deal:
   heading: The deal
   get_label: What you get
   get:
-    - Website Review
-    - The 30-Day Fix
-    - Weekly check-ins for a month
-  ask_label: What I ask
+    - Everything in The 30-Day Fix.
+    - Results checked at 30, 60 and 90 days.
+  ask_label: What I ask in return
   ask:
-    - Before and after numbers
-    - A written case study
-    - An honest testimonial
+    - Manager access to your Google profile and website.
+    - About 45 minutes of your time.
+    - Permission to share your before-and-after numbers. You approve the write-up before anything is published.
+    - An honest testimonial if it worked, and honest feedback either way.
 
-steps:
-  heading: How it works
+fit:
+  heading: Good fit
   items:
-    - Apply (5 minutes)
-    - 20-minute fit call
-    - Website Review
-    - The 30-Day Fix
-    - Case study
+    - Owner-run local service business.
+    - You have a Google profile and a website, even if they need work.
+    - You can reply to a text within a day or two.
+not_fit:
+  heading: Not a fit
+  items:
+    - Franchises with corporate-controlled profiles.
+    - Businesses that mainly need ads managed.
+    - Anyone who wants guaranteed rankings.
 
 apply:
   heading: Apply for a spot
@@ -37,3 +36,4 @@ apply:
   loading: Loading the application…
   fallback: "Trouble loading the form? Open the application in a new tab."
   iframe_title: Founding client application
+  small_print: Spots are filled in the order applications fit. If yours isn't a fit, I'll tell you why and send you a free Website Review instead.
