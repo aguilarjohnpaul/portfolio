@@ -1,5 +1,7 @@
-// PostHog wrapper and event names (spec §9, Change 02 §6). Browser-only.
-// Loads PostHog after the first interaction or when the browser is idle.
+// Google Analytics 4 wrapper and event names (spec §9, Change 02 §6). Browser-only.
+// gtag.js loads after the first interaction or when the browser is idle, so it
+// never slows the first paint. Events before that wait in window.dataLayer.
+// Nothing loads when the visitor sends Global Privacy Control or Do Not Track.
 // In dev, events are logged to the console instead of sent.
 
 // Change 02 (§6): cta_click replaces hero_cta_click, nav_scorecard_click and offer_card_click.
@@ -10,16 +12,22 @@ export type EventName =
   | 'book_call_click' | 'email_click' | 'theme_toggle';
 
 type Props = Record<string, string | number | boolean | undefined>;
-type Client = { capture: (e: string, p?: Props) => void };
 
-const KEY = import.meta.env.PUBLIC_POSTHOG_KEY as string | undefined;
-const HOST = (import.meta.env.PUBLIC_POSTHOG_HOST as string | undefined) || 'https://us.i.posthog.com';
-const queue: [EventName, Props | undefined][] = [];
-let client: Client | null = null;
+declare global {
+  interface Window { dataLayer: unknown[]; gtag: (...args: unknown[]) => void }
+  interface Navigator { globalPrivacyControl?: boolean }
+}
+
+const GA_ID = import.meta.env.PUBLIC_GA_ID as string | undefined;
+let enabled = false;
 let started = false;
 
 export function heroVariant(): 'a' | 'b' {
   return document.documentElement.dataset.hero === 'b' ? 'b' : 'a';
+}
+
+function optedOut(): boolean {
+  return navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
 }
 
 export function track(event: EventName, props?: Props): void {
@@ -27,26 +35,30 @@ export function track(event: EventName, props?: Props): void {
     console.info('[analytics]', event, { ...props, hero_variant: heroVariant() });
     return;
   }
-  if (!KEY) return;
-  if (client) client.capture(event, props);
-  else queue.push([event, props]);
+  if (!enabled) return;
+  window.gtag('event', event, { ...props, hero_variant: heroVariant() });
 }
 
-async function load() {
-  const { default: posthog } = await import('posthog-js/dist/module.slim');
-  posthog.init(KEY!, {
-    api_host: HOST,
-    autocapture: false,
-    capture_pageview: true,
-    capture_pageleave: false,
-    disable_session_recording: true,
-    disable_surveys: true,
-    persistence: 'localStorage',
-    respect_dnt: true,
-  });
-  posthog.register({ hero_variant: heroVariant() });
-  client = posthog;
-  queue.splice(0).forEach(([e, p]) => posthog.capture(e, p));
+function setup() {
+  window.dataLayer = window.dataLayer || [];
+  // gtag.js reads the Arguments object, so this must be a plain function.
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments);
+  };
+  const variant = heroVariant();
+  const debug = new URLSearchParams(location.search).has('ga_debug');
+  window.gtag('js', new Date());
+  window.gtag('set', 'user_properties', { hero_variant: variant });
+  window.gtag('config', GA_ID, { hero_variant: variant, ...(debug ? { debug_mode: true } : {}) });
+  enabled = true;
+}
+
+function load() {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID!)}`;
+  document.head.append(s);
 }
 
 /** Track clicks on any element with data-event="name" and data-prop-*="value". */
@@ -66,12 +78,13 @@ export function initAnalytics(): void {
   if (started) return;
   started = true;
   bindClicks();
-  if (import.meta.env.DEV || !KEY) return;
+  if (import.meta.env.DEV || !GA_ID || optedOut()) return;
+  setup();
   let fired = false;
   const go = () => {
     if (fired) return;
     fired = true;
-    load().catch(() => {});
+    load();
   };
   for (const ev of ['pointerdown', 'keydown', 'scroll', 'touchstart']) {
     addEventListener(ev, go, { once: true, passive: true });

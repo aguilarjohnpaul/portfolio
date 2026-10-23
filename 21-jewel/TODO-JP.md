@@ -55,10 +55,9 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 
 Add each key in Pages project → Settings → Variables and secrets (Production and Preview). Redeploy after adding.
 
-- [ ] **PostHog** (later; the site runs fine without it) (US Cloud, free). Project settings → copy the project API key.
-  - `PUBLIC_POSTHOG_KEY` = `phc_...`
-  - `PUBLIC_POSTHOG_HOST` = `https://us.i.posthog.com`
-  - If you choose EU Cloud instead, the CSP in `public/_headers` needs the EU hosts too.
+- [ ] **Google Analytics 4 + Search Console.** Follow `docs/analytics-setup.md` (about 30 minutes). It ends with one Text variable in Cloudflare:
+  - `PUBLIC_GA_ID` = `G-...` (public, not a secret), then retry the latest deployment.
+  - Create the custom dimensions and key events the same day (steps 3 and 4).
 - [x] **Turnstile.** Widget created and keys added.
   - `PUBLIC_TURNSTILE_SITE_KEY` = site key
   - `TURNSTILE_SECRET` = secret key (mark as secret)
@@ -82,7 +81,7 @@ Add each key in Pages project → Settings → Variables and secrets (Production
 
 - [ ] Take the scorecard with your own email. Check a row appears in the Sheet's `Leads` tab, the breakdown email arrives, and you get the "New scorecard" alert.
 - [ ] Submit the Tally form once. Check you get the notification.
-- [ ] Check PostHog → Activity shows `scorecard_start`, `scorecard_complete` and `scorecard_email_submit`, each with `hero_variant`.
+- [ ] Open the site with `?ga_debug=1` in Chrome and check GA4 → DebugView shows `scorecard_start`, `scorecard_complete` and `scorecard_email_submit`, each with `hero_variant`.
 - [ ] Build the hero test funnel (`docs/reading-the-hero-test.md`).
 - [ ] Visit `meet21j.com` and `www.21jeweladvisory.com` and confirm both land on `https://21jeweladvisory.com`.
 

@@ -85,8 +85,8 @@ privacy:
       body: If you book a call, Cal.com stores your name, email and the time you chose, and sends us both a calendar invite.
     - name: Tally (applications)
       body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
-    - name: PostHog (analytics)
-      body: Counts page views and button clicks, such as starting the scorecard or requesting a review, so I can see what's working. It stores a random ID in your browser. It does not record your screen, and it respects your browser's Do Not Track setting.
+    - name: Google Analytics (analytics)
+      body: "Counts page views and button clicks, such as starting the scorecard or requesting a review, so I can see what's working. It sets first-party cookies with a random ID and uses an approximate location (city level). It does not get your answers, your email or anything you type into a form. It isn't used for ads. It doesn't load at all if your browser sends Global Privacy Control or Do Not Track. You can also block it with Google's opt-out add-on at tools.google.com/dlpage/gaoptout."
     - name: Cloudflare Turnstile (spam protection)
       body: Checks that the review and scorecard forms are filled in by a person. It does not use your answers.
     - name: Cloudflare (hosting)

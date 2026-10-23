@@ -4,7 +4,7 @@ Marketing site for 21 Jewel: more calls from Google for owner-run local service 
 
 - Build spec: `PHASE1_SPEC.md`. Project rules: `CLAUDE.md`.
 - Your launch checklist: `TODO-JP.md`. Judgment calls: `DECISIONS.md`.
-- Stack: Astro (static), plain CSS, Cloudflare Pages + one Pages Function, Google Sheet + Gmail (Apps Script), Turnstile, PostHog, Tally, Cal.com.
+- Stack: Astro (static), plain CSS, Cloudflare Pages + one Pages Function, Google Sheet + Gmail (Apps Script), Turnstile, Google Analytics 4, Tally, Cal.com.
 
 ## Commands
 

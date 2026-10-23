@@ -219,4 +219,4 @@ Portable context file for use across Claude projects. Compiled October 23, 2026,
 - A lawyer review of `/terms` before it's turned on.
 - Taylor'd Prints' written permission to be named.
 - When to turn on the founding program.
-- PostHog isn't connected yet, so the hero test isn't measured.
+- Google Analytics 4 and Search Console need setting up (`docs/analytics-setup.md`); until then the hero test isn't measured.

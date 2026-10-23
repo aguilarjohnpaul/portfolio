@@ -36,7 +36,7 @@ Phase 1 has two jobs:
 | Server code | Cloudflare Pages Functions in `/functions` | Scorecard email and Website Review requests |
 | Email list | Google Sheet + Gmail via JP's Apps Script web app (`docs/google-sheet/`), called only from the Pages Function. Kit API v4 still supported as a fallback. | Free; JP uses Gmail; secrets never reach the browser |
 | Spam control | Cloudflare Turnstile on the scorecard and Website Review forms | Free, invisible |
-| Analytics + hero test | PostHog Cloud (free tier), events only | Funnel by hero variant |
+| Analytics + hero test | Google Analytics 4 (`PUBLIC_GA_ID`), loaded lazily, off under GPC/DNT. Search Console for search terms. | Free; JP knows it; funnel by hero variant |
 | Founding application | Tally form, embedded | Free; emails JP on submit |
 | Booking | Cal.com link (`site.yaml` → `links.cal`) | Free |
 
@@ -74,7 +74,7 @@ src/
     api-common.ts          ← Turnstile check, save to Sheet or Kit
     sheet.ts               ← Google Sheet webhook client (default)
     kit.ts                 ← Kit v4 client (fallback)
-    analytics.ts           ← PostHog wrapper + event names
+    analytics.ts           ← Google Analytics 4 wrapper + event names
     hero.ts                ← hero variant assignment
 functions/
   api/scorecard.ts         ← POST: Turnstile check → Google Sheet (or Kit)
