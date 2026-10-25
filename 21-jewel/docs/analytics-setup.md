@@ -1,6 +1,6 @@
 # Analytics setup: Google Analytics 4 + Search Console
 
-About 30 minutes, all free. Do the steps in order. The site is already wired: it sends events as soon as you add the ID in step 2.
+About 30 minutes, all free. Do the steps in order. The site is already wired with your ID and is tracking the live domain.
 
 **What each tool answers**
 - **Google Analytics 4 (GA4):** who visits, where they came from, and what they do (scorecard, review requests, booking clicks, hero A vs B).
@@ -21,14 +21,14 @@ About 30 minutes, all free. Do the steps in order. The site is already wired: it
    - Leave **Enhanced measurement** on, then tap the gear next to it and **turn off "Form interactions"**. The site already sends its own form events, and this avoids double counting.
 5. **Create stream**. Copy the **Measurement ID** (starts with `G-`). It's public, not a secret.
 
-## 2. Add the ID to Cloudflare
+## 2. Add the ID to the site (done)
 
-1. Cloudflare dashboard → **Workers & Pages** → **21jewel** → **Settings** → **Variables and secrets** → **Add**.
-   - Type: **Text** (not Secret)
-   - Name: `PUBLIC_GA_ID`
-   - Value: your `G-…` ID
-   - Environment: **Production** (add it to Preview too if you want test builds tracked)
-2. **Deployments** → latest production deployment → **⋯** → **Retry deployment**. The ID is read when the site builds, so this step is required.
+Your ID `G-ZMJHTN6297` is built into the site code (`src/lib/analytics.ts`). No Cloudflare step needed.
+
+- **Don't paste Google's "Install manually" snippet** anywhere. The site already does the same thing; a second copy would count every visit twice.
+- **Ignore GA's "Test installation" button** if it says the tag isn't detected. The tag loads after the visitor's first scroll or tap (to keep the site fast), and Google's tester doesn't scroll. Use step 8 instead.
+- Only the live domain is tracked. Preview links (`*.pages.dev`) and test builds are ignored.
+- To change the ID later, either edit it in `src/lib/analytics.ts` or set a Cloudflare Text variable `PUBLIC_GA_ID` and retry the deployment.
 
 ## 3. Tell GA4 about the site's details (do this the same day)
 

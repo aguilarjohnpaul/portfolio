@@ -18,7 +18,10 @@ declare global {
   interface Navigator { globalPrivacyControl?: boolean }
 }
 
-const GA_ID = import.meta.env.PUBLIC_GA_ID as string | undefined;
+// The Measurement ID is public (it ships in every page). PUBLIC_GA_ID overrides it.
+const GA_ID = (import.meta.env.PUBLIC_GA_ID as string | undefined) || 'G-ZMJHTN6297';
+// Only the live site is tracked, so previews (*.pages.dev) and local builds stay out of the data.
+const LIVE_HOSTS = ['21jeweladvisory.com', 'www.21jeweladvisory.com'];
 let enabled = false;
 let started = false;
 
@@ -78,7 +81,7 @@ export function initAnalytics(): void {
   if (started) return;
   started = true;
   bindClicks();
-  if (import.meta.env.DEV || !GA_ID || optedOut()) return;
+  if (import.meta.env.DEV || !GA_ID || !LIVE_HOSTS.includes(location.hostname) || optedOut()) return;
   setup();
   let fired = false;
   const go = () => {

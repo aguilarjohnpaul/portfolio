@@ -2,6 +2,7 @@
 
 Judgment calls made while building Phase 1. One line each, newest first.
 
+- 2026-10-25 · GA4 ID `G-ZMJHTN6297` lives in `src/lib/analytics.ts` (public value; `PUBLIC_GA_ID` still overrides), so JP skips the Cloudflare variable. Tracking runs only on `21jeweladvisory.com` and `www.`, so previews and local builds don't pollute the data. Google's pasted snippet is not used (it would double-count and break the CSP).
 - 2026-10-23 · **Analytics switched from PostHog to Google Analytics 4** (JP's choice; PostHog was never connected). Same event names and `hero_variant` (user property + event param). gtag.js is set up from the bundled script (no new inline script or CSP hash) and loads after the first interaction or idle, as PostHog did. Off entirely when the visitor sends Global Privacy Control or Do Not Track. No cookie banner: US audience, no ads features, GPC honored, privacy page updated. `?ga_debug=1` turns on DebugView. Search Console added (no code change; DNS verify through Cloudflare). Setup steps in `docs/analytics-setup.md`.
 - 2026-10-23 · **Change 02 applied** (local services ladder; `docs/changes/CHANGE_02_local_ladder.md`). JP's answers in this session override the doc where they differ, as listed below.
 - 2026-10-23 · Website Review form is native, saved to the Google Sheet (`Reviews` tab) by the same Apps Script, with a confirmation email to the requester and an alert to JP. The doc said Tally/Kit; JP uses the Sheet. Kit tags `review-requested` and `source-{answer}` go in the Tags column (and to Kit if it's ever the fallback).

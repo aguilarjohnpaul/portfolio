@@ -55,9 +55,8 @@ Work top to bottom. Each step says where to click or what to edit. Copy edits ar
 
 Add each key in Pages project → Settings → Variables and secrets (Production and Preview). Redeploy after adding.
 
-- [ ] **Google Analytics 4 + Search Console.** Follow `docs/analytics-setup.md` (about 30 minutes). It ends with one Text variable in Cloudflare:
-  - `PUBLIC_GA_ID` = `G-...` (public, not a secret), then retry the latest deployment.
-  - Create the custom dimensions and key events the same day (steps 3 and 4).
+- [x] **Google Analytics 4 property created.** ID `G-ZMJHTN6297` is built into the site; no Cloudflare variable needed.
+- [ ] **Finish GA4 + Search Console:** `docs/analytics-setup.md` steps 3–8. Do the custom dimensions and key events (steps 3 and 4) first; they only collect from the day they're created.
 - [x] **Turnstile.** Widget created and keys added.
   - `PUBLIC_TURNSTILE_SITE_KEY` = site key
   - `TURNSTILE_SECRET` = secret key (mark as secret)
