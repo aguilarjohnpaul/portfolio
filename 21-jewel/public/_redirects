@@ -6,3 +6,4 @@
 /offers /pricing 301
 /review /audit 301
 /thanks/review /thanks/audit 301
+/sitemap.xml /sitemap-index.xml 301
