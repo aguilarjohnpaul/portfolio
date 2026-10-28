@@ -53,6 +53,9 @@ function doPost(e) {
   var expected = props.getProperty('WEBHOOK_SECRET');
   if (!expected || lead.secret !== expected) return reply_({ ok: false, error: 'bad_secret' });
   if (!lead.email || !EMAIL_RE.test(lead.email)) return reply_({ ok: false, error: 'bad_email' });
+  // The pre-Change-03 site posts type "review" from /review. Treat it as an audit request so the live form
+  // keeps working until the new site is deployed.
+  if (lead.type === 'review') lead = reviewToAudit_(lead);
   var type = lead.type === 'audit' ? 'audit' : 'scorecard';
 
   var status = 'sent';
@@ -142,6 +145,29 @@ function sendResults_(lead, props) {
     '<p>' + esc_(SIGNATURE) + '</p></div>';
 
   send_(lead.email, subject, text, html);
+}
+
+/** Maps an old /review request onto the audit fields. */
+function reviewToAudit_(r) {
+  return {
+    type: 'audit',
+    id: 'r' + new Date().getTime().toString(36),
+    timestamp: r.timestamp,
+    business: r.business || '',
+    trade: r.services || '',
+    city: r.city || '',
+    website: r.website || '',
+    noWebsite: !!r.noWebsite,
+    email: r.email,
+    phone: r.phone || '',
+    situation: 'old form: ' + (r.source || '-'),
+    source: [r.name ? 'Name: ' + r.name : '', r.notes ? 'Notes: ' + r.notes : '', r.format ? 'Format: ' + r.format : ''].filter(String).join(' · '),
+    page: '/review',
+    utm_source: '', utm_medium: '', utm_campaign: '',
+    heroVariant: r.heroVariant || 'a',
+    tags: r.tags || '',
+    secret: r.secret,
+  };
 }
 
 function sendAuditConfirmation_(lead, props) {

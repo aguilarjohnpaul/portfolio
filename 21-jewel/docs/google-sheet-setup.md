@@ -6,7 +6,9 @@ Two forms save to one Google Sheet:
 
 Setup takes about 10 minutes, and a computer is easier than a phone for the Apps Script steps.
 
-**Already set this up before Change 03?** Paste the new `Code.gs` over the old one, run `setup` once (it adds the `Audits` tab; the old `Reviews` tab stays as history), run `installFollowUps` once, then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL and secrets stay the same. Add the optional `CAL_URL` script property so follow-up emails carry your booking link.
+**If Run shows "unexpected error while creating the Cloud Platform project. Error code INTERNAL":** create a Cloud project yourself and link it. console.cloud.google.com → New project (`21J Sheets`) → Google Auth Platform → Get started (Audience: Internal) → copy the 12-digit **Project number** → back in Apps Script, Project Settings → Google Cloud Platform (GCP) Project → Change project → paste → Set project. Then run again. The web app URL doesn't change.
+
+**Already set this up before Change 03?** Paste the new `Code.gs` over the old one, run `setup` once (it adds the `Audits` tab; the old `Reviews` tab stays as history), run `installFollowUps` once, then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. Edit the existing deployment; don't create a new one, or the URL changes and the site stops saving leads. The URL and secrets stay the same. The new script also accepts requests from the old `/review` form, so the live site keeps working before Change 03 is merged. Add the optional `CAL_URL` script property so follow-up emails carry your booking link.
 
 ## Which Google account?
 
