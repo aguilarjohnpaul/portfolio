@@ -10,7 +10,7 @@ Open **21J Site Content** in Google Sheets. Edit, then **21J → Publish site**.
 | Change an industry page's headline, subhead or example searches | `industries` | Edit `h1`, `sub`, or `search_terms` (separate searches with `\|`). `active` FALSE hides the page. |
 | Add a testimonial | `testimonials` | One row per quote: `id` (short, like `joe-signs`), `quote`, `name`, `role`, `city`, `active` TRUE. The first active row turns the proof section on. |
 | Turn a section or page on or off | `flags` | Set `on` to TRUE or FALSE. Flags: `showFounding`, `showResults`, `showFaq`, `showTerms`, `showAreas`, `showSpanish`, `showClarity`, `showScorecardLink`, `realExamples`. |
-| Rename a guide, change its summary, publish or unpublish it | `guides` | Edit `title`, `seo_title` (the short browser title), `description`, or set `draft` to TRUE (hidden) / FALSE (live). The guide's body text lives on GitHub (next section). |
+| Rename a guide, change its summary, publish or unpublish it | `guides` | Type in `title`, `seo_title` (the short browser title), `description`, or set `draft` to TRUE (hidden) / FALSE (live). Leave a cell blank to use the guide's own value, shown in the matching `default_` column. A filled cell wins even after the guide is rewritten, so clear it when you're done testing. The body text lives on GitHub (next section). |
 | Edit the scorecard questions or the founding program copy | `strings` | Rows starting `scorecard.` and `founding.`. |
 
 ## Editing a guide's body

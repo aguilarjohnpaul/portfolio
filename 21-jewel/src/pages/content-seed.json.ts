@@ -42,7 +42,13 @@ export const GET: APIRoute = () => {
   const guideFiles = import.meta.glob('../content/learn/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
   const guides = Object.entries(guideFiles).map(([path, text]) => {
     const fm = parse(text.split(/^---\s*$/m)[1] ?? '') as Record<string, unknown>;
-    return { slug: path.split('/').pop()!.replace(/\.md$/, ''), title: fm.title ?? '', seo_title: fm.seo_title ?? '', description: fm.description ?? '', draft: fm.draft !== false };
+    // Edit columns start blank (blank = use the guide's own frontmatter); the default_* columns show the current values.
+    // A filled edit cell pins that value, so a rewritten guide's new title can't be hidden by an old copy in the Sheet.
+    return {
+      slug: path.split('/').pop()!.replace(/\.md$/, ''), title: '', seo_title: '', description: '', draft: '',
+      default_title: fm.title ?? '', default_seo_title: fm.seo_title ?? '', default_description: fm.description ?? '',
+      default_draft: fm.draft !== false,
+    };
   });
   const body = {
     generated: new Date().toISOString(),
@@ -53,7 +59,7 @@ export const GET: APIRoute = () => {
       industries: ['slug', 'h1', 'sub', 'search_terms', 'active'],
       testimonials: ['id', 'quote', 'name', 'role', 'city', 'active'],
       flags: ['key', 'on'],
-      guides: ['slug', 'title', 'seo_title', 'description', 'draft'],
+      guides: ['slug', 'title', 'seo_title', 'description', 'draft', 'default_title', 'default_seo_title', 'default_description', 'default_draft'],
     },
     strings, offers, faqs, industries, testimonials, flags, guides,
   };

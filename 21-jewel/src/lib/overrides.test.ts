@@ -128,4 +128,12 @@ describe('guides tab', () => {
     expect(d).toEqual({ title: 'New title', description: 'Old desc', draft: false });
     expect(r.applied).toEqual(['guides.a.title', 'guides.a.draft=false']);
   });
+  it('leaves the guide alone when the edit cells are blank (defaults live in default_* columns)', () => {
+    const r = newReport();
+    const d = applyGuide('a', { title: 'New', seo_title: 'S', description: 'D', draft: false }, [
+      { slug: 'a', title: '', seo_title: '', description: '', draft: '', default_title: 'Older title', default_draft: 'TRUE' },
+    ], r) as any;
+    expect(d).toEqual({ title: 'New', seo_title: 'S', description: 'D', draft: false });
+    expect(r.applied).toEqual([]);
+  });
 });

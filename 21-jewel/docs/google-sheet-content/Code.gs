@@ -202,8 +202,29 @@ function refreshKeys() {
       added++;
     }
   });
+  // guides: blank edit columns + default_* columns. An old-layout tab (no default_title) is renamed, not deleted.
+  var ss = SpreadsheetApp.getActive();
+  var g = ss.getSheetByName('guides');
+  if (g && g.getRange(1, 1, 1, g.getLastColumn()).getValues()[0].indexOf('default_title') < 0) {
+    g.setName('guides_old_' + Utilities.formatDate(new Date(), 'America/Chicago', 'yyyyMMdd'));
+    g = null;
+  }
+  g = sheet_('guides', seed.columns.guides);
+  var gh = seed.columns.guides;
+  var gRows = {};
+  rows_('guides').forEach(function (r, i) { gRows[String(r.slug).trim()] = i + 2; });
+  seed.guides.forEach(function (row) {
+    var cells = gh.map(function (h) { var v = row[h]; return typeof v === 'boolean' ? (v ? 'TRUE' : 'FALSE') : (v === undefined ? '' : v); });
+    var at = gRows[row.slug];
+    if (!at) { g.appendRow(cells); added++; return; }
+    gh.forEach(function (h, i) {
+      if (h.indexOf('default_') !== 0) return;
+      var cell = g.getRange(at, i + 1);
+      if (String(cell.getValue()) !== String(cells[i])) { cell.setValue(cells[i]); updated++; }
+    });
+  });
   // keyed tabs: add missing rows only
-  var keyed = { offers: 'id', industries: 'slug', flags: 'key', guides: 'slug' };
+  var keyed = { offers: 'id', industries: 'slug', flags: 'key' };
   Object.keys(keyed).forEach(function (tab) {
     var k = keyed[tab];
     var t = sheet_(tab, seed.columns[tab]);
@@ -225,5 +246,7 @@ function refreshKeys() {
     added++;
   });
   sheet_('testimonials', seed.columns.testimonials);
-  say_('Refreshed. ' + added + ' row(s) added, ' + updated + ' default(s) updated. Your values were not changed.');
+  var old = ss.getSheets().filter(function (s) { return /^guides_old_/.test(s.getName()); }).length;
+  say_('Refreshed. ' + added + ' row(s) added, ' + updated + ' default(s) updated. Your values were not changed.' +
+    (old ? '\n\nThe guides tab now has blank edit columns and default_* columns. The previous copy was kept as a "guides_old" tab; delete it once you have checked it.' : ''));
 }
