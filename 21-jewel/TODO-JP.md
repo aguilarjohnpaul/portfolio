@@ -15,7 +15,11 @@ Everything the site still needs from you. Updated Oct 28, 2026, after Change 03 
 - [ ] **Search Console indexing.** URL Inspection → Request indexing for `/`, `/audit`, `/pricing`, `/services/get-found`, `/industries/roofing` and `/learn/not-showing-up-on-google-maps`. About 10 a day; the sitemap covers the rest.
 - [ ] **Google profile links.** Edit profile → Contact. Website: `https://21jeweladvisory.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Appointment link: `https://21jeweladvisory.com/audit?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
 - [ ] **Google profile location.** Edit profile → Location. Business address: your San Antonio address, hidden from customers. Service areas: remove Seguin and anything broad, add San Antonio first, then Bexar County and nearby towns (up to 20, within about 2 hours).
-- [ ] **GA4 key events.** `docs/analytics-setup.md` steps 3 and 4: custom dimensions `situation` and `percent`, and mark `audit_submit` and `call_click` as key events. They only collect from the day you create them.
+- [x] **GA4 custom dimensions.** All eight set up Oct 28.
+- [ ] **GA4 key events.** Admin → Data display → Key events → New key event: `audit_submit`, `call_click`, `scorecard_email_submit`.
+- [ ] **GA4 data retention.** Admin → Data collection and modification → Data retention → 14 months.
+- [ ] **GA4 check.** Chrome, `https://21jeweladvisory.com/?ga_debug=1`, scroll once, tap buttons, then Admin → Data display → DebugView.
+- [ ] **GA4 internal traffic (optional)** and **Search Console link**. Full steps on the checklist page.
 
 ## 2. In two weeks
 
