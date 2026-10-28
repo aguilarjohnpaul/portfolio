@@ -43,7 +43,7 @@ export type OffersData = CollectionEntry<'offers'>['data'];
 export type Offer = OffersData['offers'][number];
 export type ScorecardContent = CollectionEntry<'scorecard'>['data'];
 
-/** True for copy still waiting on JP, like "[PRICE]" or "[CAL_LINK]". */
+/** True for copy still waiting on JP, written as an all-caps token in square brackets. */
 export const isPlaceholder = (s: string) => /^\[[A-Z0-9_ ]+\]$/.test(s.trim());
 
 /** Cal.com link, or an email fallback until the link is set. */

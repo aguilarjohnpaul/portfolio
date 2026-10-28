@@ -25,7 +25,7 @@ const canonical = new URL(cleanPath, site.brand.url).href;
 const ogImage = new URL(site.seo.og_image, site.brand.url).href;
 ---
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" data-clarity={site.flags.showClarity ? '1' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

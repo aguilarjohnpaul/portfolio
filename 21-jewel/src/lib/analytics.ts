@@ -64,6 +64,20 @@ function load() {
   s.async = true;
   s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID!)}`;
   document.head.append(s);
+  loadClarity();
+}
+
+// Microsoft Clarity (Change 03 §10): only when site.yaml flags.showClarity is on (html[data-clarity]) and
+// PUBLIC_CLARITY_ID is set. Same idle trigger and the same DNT/GPC gate as GA4. Inputs are masked by Clarity's default.
+const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID as string | undefined;
+function loadClarity() {
+  if (!CLARITY_ID || document.documentElement.dataset.clarity !== '1') return;
+  const w = window as unknown as Record<string, unknown>;
+  w.clarity = w.clarity || function (...args: unknown[]) { ((w.clarity as { q?: unknown[] }).q ||= []).push(args); };
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.clarity.ms/tag/${encodeURIComponent(CLARITY_ID)}`;
+  document.head.append(s);
 }
 
 /** Track clicks on any element with data-event="name" and data-prop-*="value". */

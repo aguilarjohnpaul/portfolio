@@ -230,7 +230,7 @@ const pages = defineCollection({
     results: z.object({ heading: text, intro: text, empty: text, columns: z.array(text).length(4) }),
     privacy: z.object({
       heading: text, updated_label: text, intro: text, storage: text, deletion: text, deletion_suffix: text,
-      services: z.array(z.object({ name: text, body: text })),
+      services: z.array(z.object({ name: text, body: text, flag: flagName.optional() })),
     }),
     terms: z.object({
       heading: text, updated_label: text, intro: text, contact: text,

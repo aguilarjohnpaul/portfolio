@@ -6,13 +6,13 @@ import FAQ from '../components/FAQ.astro';
 import { doc, ladder } from '../lib/content';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CtaBlock from '../components/CtaBlock.astro';
-import { breadcrumbs, faqPage } from '../lib/schema';
+import { breadcrumbs, faqPage, professionalService } from '../lib/schema';
 
 const [site, data, faqs] = await Promise.all([doc('site'), doc('offers'), doc('faqs')]);
 const faq = faqs.pages.pricing ?? [];
 const { showFaq, showFounding } = site.flags;
 ---
-<Base page="pricing" jsonLd={[...(showFaq && faq.length ? [faqPage(faq)] : []), breadcrumbs(site, [{ name: data.page.heading, path: '/pricing' }])]}>
+<Base page="pricing" jsonLd={[professionalService(site, data), ...(showFaq && faq.length ? [faqPage(faq)] : []), breadcrumbs(site, [{ name: data.page.heading, path: '/pricing' }])]}>
   <Breadcrumbs trail={[{ name: data.page.heading }]} />
   <div class="container page-head">
     <h1>{data.page.heading}</h1>

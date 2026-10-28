@@ -1,12 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import Headshot from '../components/Headshot.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { calHref, doc } from '../lib/content';
-const [site, pages] = await Promise.all([doc('site'), doc('pages')]);
+import { breadcrumbs, personLd } from '../lib/schema';
+const [site, pages, hub] = await Promise.all([doc('site'), doc('pages'), doc('learnHub')]);
 const a = pages.about;
 const cal = calHref(site);
+const jsonLd = [personLd(site, hub.author), breadcrumbs(site, [{ name: 'About', path: '/about' }])];
 ---
-<Base page="about">
+<Base page="about" jsonLd={jsonLd}>
+  <Breadcrumbs trail={[{ name: 'About' }]} />
   <section class="container about">
     <Headshot photo={a.photo} alt={a.photo_alt} eager />
     <div class="stack text">
@@ -34,7 +38,7 @@ const cal = calHref(site);
 </Base>
 
 <style>
-  .about { display: grid; gap: var(--space-7); padding-block: var(--space-8) var(--section); align-items: start; }
+  .about { display: grid; gap: var(--space-7); padding-block: var(--space-6) var(--section); align-items: start; }
   .text { gap: var(--space-4); }
   .h3 { font-size: var(--h3); margin-top: var(--space-3); }
   .cta { display: flex; justify-content: center; }

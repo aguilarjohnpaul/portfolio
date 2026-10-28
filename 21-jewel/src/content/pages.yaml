@@ -93,6 +93,9 @@ privacy:
       body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
     - name: Google Analytics (analytics)
       body: "Counts page views and button clicks, such as requesting an audit, tapping the phone number or how far down a page people read, so I can see what's working. It sets first-party cookies with a random ID and uses an approximate location (city level). It does not get your answers, your email or anything you type into a form. It isn't used for ads. It doesn't load at all if your browser sends Global Privacy Control or Do Not Track. You can also block it with Google's opt-out add-on at tools.google.com/dlpage/gaoptout."
+    - name: Microsoft Clarity (how pages are used)
+      flag: showClarity
+      body: "Records how visitors scroll and tap around the site, as anonymous heatmaps and session replays, so I can see which parts of a page people read and where they stop. Anything you type into a form is masked before it's recorded. It sets a first-party cookie with a random ID, and it doesn't load if your browser sends Global Privacy Control or Do Not Track."
     - name: Cloudflare Turnstile (spam protection)
       body: Checks that the audit and scorecard forms are filled in by a person. It does not use your answers.
     - name: Cloudflare (hosting)

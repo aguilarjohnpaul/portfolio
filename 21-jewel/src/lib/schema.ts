@@ -146,3 +146,20 @@ export function articleLd(site: SiteData, a: { path: string; title: string; desc
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.prose > p:first-of-type'] },
   };
 }
+
+/** Person entity for /about. */
+export function personLd(site: SiteData, p: { name: string; role: string; line: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': new URL('/about#person', site.brand.url).href,
+    name: p.name,
+    jobTitle: p.role,
+    description: p.line,
+    url: new URL('/about', site.brand.url).href,
+    telephone: `+1-${site.brand.phone_href.slice(2, 5)}-${site.brand.phone_href.slice(5, 8)}-${site.brand.phone_href.slice(8)}`,
+    email: site.brand.email,
+    worksFor: { '@id': new URL('/#business', site.brand.url).href },
+    ...(sameAs(site).length ? { sameAs: sameAs(site) } : {}),
+  };
+}
