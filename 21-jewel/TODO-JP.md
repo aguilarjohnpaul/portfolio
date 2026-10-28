@@ -1,39 +1,50 @@
 # TODO for JP
 
-Everything the site still needs from you after Change 03 (Oct 27, 2026). Work top to bottom. Nothing here blocks the site from building or looking finished; each item turns something on.
+Everything the site still needs from you. Updated Oct 28, 2026, after Change 03 went live. Work top to bottom. Nothing here blocks the site from building; each item turns something on. The production branch is `claude/21-jewel-advisory-concept-i3vpz5` (not `main`).
 
-## 1. Before merging to the live branch (about 45 minutes)
+## 1. This week
 
-- [ ] **Leads Sheet script.** Open the leads Sheet → Extensions → Apps Script. Paste the new `docs/google-sheet/Code.gs` over the old one. Run `setup` once (adds the `Audits` tab), run `installFollowUps` once (daily 9am follow-up check), then Deploy → Manage deployments → pencil → New version → Deploy. Add script property `CAL_URL` = your Cal.com link. Details: `docs/google-sheet-setup.md`, `docs/follow-up-emails.md`.
-- [ ] **Content Sheet.** 15 minutes, once: `docs/google-sheet-content-setup.md`. After that you edit the site from the Sheet (`docs/how-to-edit-the-sheet.md`).
-- [ ] **Cloudflare variables.** `SHEET_CONTENT_ID` (plain text, Production and Preview). Everything else already exists.
-- [ ] **GitHub.** Secret `SHEET_CONTENT_ID` and variable `SHEET_SYNC_BRANCH` = the branch Cloudflare deploys from, so the nightly snapshot runs.
-- [ ] **Google profile links.** In `src/content/site.yaml` → `links`, paste `google_profile` (your Business Profile's public Maps URL) and `linkedin`. They feed the `sameAs` schema. Both can stay empty; nothing breaks.
-- [ ] **Google Business Profile.** Website field → `https://21jeweladvisory.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Appointment link → `https://21jeweladvisory.com/audit?utm_source=google&utm_medium=organic&utm_campaign=gbp-appt`. Business name on the profile: **21 Jewel Advisory**, phone **(737) 391-3041**, same as the site.
+- [ ] **Leads Sheet script.** Fix the INTERNAL error first: create a standard Google Cloud project, then Apps Script → Project Settings → Change project → paste its project number. Then paste `LEADS-SHEET-Code.gs.txt` over the old code, run `setup` once and `installFollowUps` once, add script property `CAL_URL` = `https://cal.com/21jewel/20min`, and Deploy → Manage deployments → pencil → New version → Deploy. Details: `docs/google-sheet-setup.md`.
+- [ ] **Test the audit form** with your own email. You should get the confirmation email, a new row in `Audits` with Status `new`, and the alert.
+- [ ] **Content Sheet script.** Paste `CONTENT-SHEET-Code.gs.txt` over the old code, reload the Sheet, then 21J → Refresh keys from site (rebuilds the `guides` tab) → 21J → Publish site. Delete the `guides_old_…` tab once the titles look right.
+- [ ] **Deploy hook.** Cloudflare → `21jewel` → Settings → Builds → Deploy hooks → `Sheet publish` on branch `claude/21-jewel-advisory-concept-i3vpz5`. Paste the URL into the content Sheet's script property `DEPLOY_HOOK_URL`. Skip the preview hook for now.
+- [ ] **Cloudflare variable.** `SHEET_CONTENT_ID` = the content Sheet id, plain text, Production and Preview. Then retry the latest deployment.
+- [ ] **GitHub.** Repo → Settings → Secrets and variables → Actions. Secret `SHEET_CONTENT_ID` = the Sheet id. Variable `SHEET_SYNC_BRANCH` = `claude/21-jewel-advisory-concept-i3vpz5`. Then Actions → Sheet snapshot → Run workflow once.
+- [ ] **Test the Sheet round trip.** Change `site.brand.tagline` in the `strings` tab, 21J → Publish site, reload the footer two minutes later, then clear it and publish again.
+- [ ] **Purge the Cloudflare cache.** `21jeweladvisory.com` → Caching → Configuration → Purge Everything.
+- [ ] **Search Console indexing.** URL Inspection → Request indexing for `/`, `/audit`, `/pricing`, `/services/get-found`, `/industries/roofing` and `/learn/not-showing-up-on-google-maps`. About 10 a day; the sitemap covers the rest.
+- [ ] **Google profile links.** Edit profile → Contact. Website: `https://21jeweladvisory.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Appointment link: `https://21jeweladvisory.com/audit?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
+- [ ] **Google profile location.** Edit profile → Location. Business address: your San Antonio address, hidden from customers. Service areas: remove Seguin and anything broad, add San Antonio first, then Bexar County and nearby towns (up to 20, within about 2 hours).
+- [ ] **GA4 key events.** `docs/analytics-setup.md` steps 3 and 4: custom dimensions `situation` and `percent`, and mark `audit_submit` and `call_click` as key events. They only collect from the day you create them.
+- [ ] **LinkedIn link.** Send Claude your LinkedIn profile URL for `site.yaml` → `links.linkedin` (feeds the business schema). Optional.
 
-## 2. After merging (same day)
+## 2. In two weeks
 
-- [ ] **Search Console.** Sitemaps → submit `https://21jeweladvisory.com/sitemap-index.xml` again. Then URL inspection → Request indexing for `/`, `/audit`, `/pricing`, the three `/services/*` pages and the six `/industries/*` pages. Two weeks later, check Pages for the old URLs (`/review`, `/offers`, `/studios`) showing as redirects.
-- [ ] **GA4.** `docs/analytics-setup.md` steps 3 and 4: add the new custom dimensions (`situation`, `percent`) and mark `audit_submit` and `call_click` as key events. They only collect from the day you create them.
-- [ ] **Test the audit form** with your own email. You should get the confirmation, see the row in `Audits` with Status `new`, and get the alert.
-- [ ] **Test the Sheet round trip.** Change `site.brand.tagline` in the `strings` tab, 21J → Publish site, reload the footer.
+- [ ] **Search Console check.** Pages report: the old URLs (`/review`, `/offers`, `/studios`) should show as redirects, and the sitemap status should say Success.
+- [ ] **Google profile check.** Search "21 Jewel Advisory" on Maps and confirm the pin sits in San Antonio, not Seguin.
 
 ## 3. When you have them
 
-- [ ] **Photo.** Put a 4:5 JPG at `public/jp.jpg`, then set `photo: /jp.jpg` in `src/content/home.yaml` → `about` and `src/content/pages.yaml` → `about`. The monogram disappears everywhere, including the author box on guides.
-- [ ] **First testimonial.** Add a row to the content Sheet's `testimonials` tab (or `src/content/testimonials.yaml`). The proof section on the homepage turns on by itself.
-- [ ] **First case study.** One Markdown file in `src/content/case-studies/` with `published: true`, then set `flags.showResults: true`. Also set `flags.realExamples: true` once the industry pages' example tables can be replaced with real numbers (edit the rows in `industries.yaml` first).
+- [ ] **Photo.** A 4:5 JPG at `public/jp.jpg`, then `photo: /jp.jpg` in `home.yaml` → `about` and `pages.yaml` → `about`. The monogram disappears everywhere.
+- [ ] **First testimonial.** A row in the content Sheet's `testimonials` tab. The homepage proof section turns on by itself.
+- [ ] **First case study.** One Markdown file in `src/content/case-studies/` with `published: true`, then `flags.showResults: true`. Set `flags.realExamples: true` once the industry example tables can use real numbers.
 - [ ] **Taylor'd Prints.** Written permission to name him, then replace "Case study in progress." in `industries.yaml` → `sign-print` → `proof`.
 - [ ] **Terms.** Lawyer review of `pages.yaml` → `terms`, then `flags.showTerms: true`.
-- [ ] **Founding program.** `flags.showFounding: true` when you want it public. Tally form fields and redirect are already set.
-- [ ] **Clarity (optional).** Create a project at clarity.microsoft.com, add `PUBLIC_CLARITY_ID` in Cloudflare, set `flags.showClarity: true`. The privacy page line and the CSP update themselves.
-- [ ] **Suburb pages (later).** `flags.showAreas` exists but the `areas` collection has no template yet. Build it only when you have a client or case study in that town.
-- [ ] **Spanish (later).** `flags.showSpanish` exists; nothing is built. Human-translated only.
+- [ ] **Founding program.** `flags.showFounding: true` when you want it public.
+- [ ] **Clarity (optional).** Project at clarity.microsoft.com, `PUBLIC_CLARITY_ID` in Cloudflare, `flags.showClarity: true`.
+- [ ] **New learn articles.** Ten topics are in the `local-visibility-essay` skill and the project doc `learn-content-backlog.md`. Write with Opus 5.5 using that skill plus `jp-voice`.
+- [ ] **Suburb pages (later).** `flags.showAreas` exists, no template yet. Only once there's a client or case study in that town.
+- [ ] **Spanish (later).** `flags.showSpanish` exists, nothing built. Human-translated only.
 
-## 4. Decided and done (for the record)
+## 4. Done
 
-- [x] Offer ladder: Free Local Search Audit → Get Found Setup $650 → Get Chosen Setup $1,450 → Keep Ranking $450/month, month-to-month. Half a setup fee credits against the first three months of Keep Ranking within 60 days.
+- [x] Change 03 merged and live (PR #1, Oct 27).
+- [x] Search Console Domain property verified for `21jeweladvisory.com`; `sitemap-index.xml` submitted; live test shows the new site.
+- [x] `/sitemap.xml` redirects to `/sitemap-index.xml`.
+- [x] Google Business Profile Maps link in the business schema (`sameAs`).
+- [x] Six learn guides rewritten as argument-led essays, no FAQ blocks, no prices.
+- [x] Content Sheet `guides` tab: blank cells use the guide's own title; defaults shown in `default_*` columns.
+- [x] Offer ladder: Free Local Search Audit → Get Found Setup → Get Chosen Setup → Keep Ranking (month-to-month).
 - [x] Industries: sign and print, roofing, plumbing, electrical, remodeling, landscaping and tree service. No HVAC, dental or med spa.
-- [x] Six guides published (edit them in the Sheet's `guides` tab for title and publish state, or on GitHub for the body).
-- [x] Cal.com link `https://cal.com/21jewel/20min`, shown on `/thanks/audit` and `/about` only.
-- [x] Dark mode removed. Phone (737) 391-3041 everywhere. Name "21 Jewel Advisory" in schema, titles and footer.
+- [x] Cal.com link `https://cal.com/21jewel/20min` on `/thanks/audit` and `/about` only.
+- [x] Dark mode removed. Phone (737) 391-3041 everywhere. "21 Jewel Advisory" in schema, titles and footer.
