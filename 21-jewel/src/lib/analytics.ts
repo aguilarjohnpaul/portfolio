@@ -5,11 +5,13 @@
 // In dev, events are logged to the console instead of sent.
 
 // Change 02 (§6): cta_click replaces hero_cta_click, nav_scorecard_click and offer_card_click.
+// Change 03 (§10): audit_* replace review_form_*; scroll_depth, learn_read and pricing_view added; theme_toggle gone.
 export type EventName =
-  | 'cta_click' | 'scorecard_start' | 'scorecard_answer' | 'scorecard_complete'
-  | 'scorecard_email_submit' | 'scorecard_email_error'
-  | 'review_form_submit' | 'review_form_error' | 'founding_apply_submit' | 'offer_view' | 'industry_page_view'
-  | 'book_call_click' | 'email_click' | 'call_click';
+  | 'cta_click' | 'call_click' | 'email_click'
+  | 'audit_start' | 'audit_submit' | 'audit_error'
+  | 'scorecard_start' | 'scorecard_answer' | 'scorecard_complete' | 'scorecard_email_submit' | 'scorecard_email_error'
+  | 'founding_apply_submit' | 'offer_view' | 'pricing_view' | 'industry_page_view' | 'learn_read' | 'scroll_depth'
+  | 'book_call_click';
 
 type Props = Record<string, string | number | boolean | undefined>;
 
@@ -77,10 +79,45 @@ function bindClicks() {
   });
 }
 
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+type Utm = Record<(typeof UTM_KEYS)[number], string>;
+
+/** Remember utm_* from the landing URL for this visit, so the audit form can report the lead source. */
+function captureUtm(): void {
+  const q = new URLSearchParams(location.search);
+  if (!UTM_KEYS.some((k) => q.has(k))) return;
+  const utm = Object.fromEntries(UTM_KEYS.map((k) => [k, (q.get(k) ?? '').slice(0, 100)]));
+  try { sessionStorage.setItem('utm', JSON.stringify(utm)); } catch {}
+}
+
+export function readUtm(): Utm {
+  const empty = { utm_source: '', utm_medium: '', utm_campaign: '' };
+  try { return { ...empty, ...JSON.parse(sessionStorage.getItem('utm') ?? '{}') }; } catch { return empty; }
+}
+
+/** scroll_depth at 25, 50, 75 and 90 percent, once each per page. */
+function bindScroll(): void {
+  const marks = [25, 50, 75, 90];
+  const hit = new Set<number>();
+  const check = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - innerHeight;
+    if (max <= 0) return;
+    const pct = Math.round(((scrollY) / max) * 100);
+    for (const m of marks) if (pct >= m && !hit.has(m)) { hit.add(m); track('scroll_depth', { percent: m }); }
+    if (hit.size === marks.length) removeEventListener('scroll', onScroll);
+  };
+  let ticking = false;
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; check(); }); } };
+  addEventListener('scroll', onScroll, { passive: true });
+}
+
 export function initAnalytics(): void {
   if (started) return;
   started = true;
+  captureUtm();
   bindClicks();
+  bindScroll();
   if (import.meta.env.DEV || !GA_ID || !LIVE_HOSTS.includes(location.hostname) || optedOut()) return;
   setup();
   let fired = false;

@@ -10,9 +10,9 @@ brand:
   phone_href: "+17373913041"
   location: San Antonio, TX
   founder: JP
-  tagline: Precise work. More calls.
+  tagline: Get found. Get chosen. Get the call.
   # One-liner used in structured data (Change 02 §1).
-  one_liner: "I help local service businesses get more calls from Google: a cleaner Google profile, steady reviews, and a website that turns visits into quote requests."
+  one_liner: "Local search for San Antonio service businesses. I set your business up to show up on Google, Bing and Maps and to get the call: profiles, listings, reviews and website pages, done by one person, month-to-month, with the numbers before and after."
   values:
     - Honest over impressive
     - Serve the person, not the project
@@ -127,14 +127,14 @@ spots:
 seo:
   og_image: /og.png
   # Describes the share image (it shows hero variant A's headline).
-  og_image_alt: "21 Jewel: More calls from Google. No new software."
+  og_image_alt: "21 Jewel Advisory: When someone nearby searches for what you do, show up. Then get the call. (737) 391-3041"
   pages:
     home:
-      title: "21 Jewel Advisory · More calls from Google for local service businesses"
-      description: "I fix your Google profile, reviews and website so more searches turn into calls. San Antonio-based. Free Website Review."
-    review:
-      title: "Free Website Review · 21 Jewel Advisory"
-      description: "Get the top 3 things costing you calls, ranked, plus a checklist you keep. Free for local service businesses."
+      title: "Local search for San Antonio service businesses · 21 Jewel Advisory"
+      description: "Show up when San Antonio searches for what you do, on Google, Bing and Maps, and get the call. One person, month-to-month, you own every login. Free audit."
+    audit:
+      title: "Free Local Search Audit · San Antonio · 21 Jewel Advisory"
+      description: "A 10-minute video and a one-page scorecard: the top 3 things costing your business calls on Google, Bing and Maps, ranked. Free, in 5 business days."
     scorecard:
       title: "Is Your Website Losing You Work? · 21 Jewel Advisory"
       description: "12 quick questions about your Google profile, website and follow-up. Get your score and biggest leaks in 3 minutes."
@@ -183,9 +183,9 @@ seo:
     terms:
       title: "Terms · 21 Jewel Advisory"
       description: "Plain-language terms for working with 21 Jewel."
-    thanks-review:
-      title: "Your review is on the way · 21 Jewel Advisory"
-      description: "Your free Website Review request is in."
+    thanks-audit:
+      title: "Your audit is on the way · 21 Jewel Advisory"
+      description: "Your free Local Search Audit request is in."
     thanks-founding:
       title: "Thanks for applying · 21 Jewel Advisory"
       description: "Your founding client application is in."

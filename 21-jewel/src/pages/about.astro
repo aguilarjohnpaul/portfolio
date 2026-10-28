@@ -1,8 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import Headshot from '../components/Headshot.astro';
-import { doc } from '../lib/content';
-const a = (await doc('pages')).about;
+import { calHref, doc } from '../lib/content';
+const [site, pages] = await Promise.all([doc('site'), doc('pages')]);
+const a = pages.about;
+const cal = calHref(site);
 ---
 <Base page="about">
   <section class="container about">
@@ -24,8 +26,9 @@ const a = (await doc('pages')).about;
     </div>
   </section>
   <section class="section">
-    <div class="container cta">
+    <div class="container cta btn-row">
       <a class="btn btn-primary" href={a.button.href} data-event="cta_click" data-prop-location="about" data-prop-target={a.button.href}>{a.button.label}</a>
+      <a class="btn btn-ghost" href={cal} data-event="cta_click" data-prop-location="about" data-prop-target="cal">{a.book_label}</a>
     </div>
   </section>
 </Base>

@@ -1,0 +1,29 @@
+---
+// After the audit form. Fires audit_submit once per submission id (?s=...). Booking link lives here on purpose (Change 03 §7.4).
+import Base from '../../layouts/Base.astro';
+import { calHref, doc } from '../../lib/content';
+const [site, pages] = await Promise.all([doc('site'), doc('pages')]);
+const t = pages.thanks_audit;
+const cal = t.book.href || calHref(site);
+---
+<Base page="thanks-audit" noindex>
+  <div class="container page-head section">
+    <h1>{t.heading}</h1>
+    <p class="lead">{t.body}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={cal} data-event="cta_click" data-prop-location="thanks-audit" data-prop-target="cal">{t.book.label}</a>
+      <a class="btn btn-ghost" href={t.link.href} data-event="cta_click" data-prop-location="thanks-audit" data-prop-target={t.link.href}>{t.link.label}</a>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { track } from '../../lib/analytics';
+  const q = new URLSearchParams(location.search);
+  const id = q.get('s');
+  if (id) {
+    let seen = false;
+    try { seen = sessionStorage.getItem(`audit:${id}`) === '1'; sessionStorage.setItem(`audit:${id}`, '1'); } catch {}
+    if (!seen) track('audit_submit', { situation: q.get('w') ?? '' });
+  }
+</script>

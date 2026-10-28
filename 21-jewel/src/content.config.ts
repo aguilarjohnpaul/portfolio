@@ -210,12 +210,12 @@ const option = z.object({ value: z.string().regex(/^[a-z0-9-]+$/), label: text }
 const pages = defineCollection({
   loader: one('pages'),
   schema: z.object({
-    review: z.object({
-      heading: text, intro: text, how_heading: text, steps: z.array(text), capacity: text,
+    audit: z.object({
+      heading: text, intro: text, get_heading: text, get: z.array(text).min(2), how_heading: text, steps: z.array(text),
+      need_heading: text, need: text, capacity: text, phone_heading: text, phone_label: text,
       form: z.object({
-        heading: text, name: text, email: text, phone: text, business: text, website: text, website_placeholder: text, no_website: text,
-        city: text, services: text, services_hint: text, source: text, sources: z.array(option).min(2),
-        notes: text, format: text, formats: z.array(option).min(2), honeypot: text,
+        heading: text, business: text, trade: text, trade_hint: text, city: text, website: text, website_placeholder: text, no_website: text,
+        email: text, phone: text, situation: text, situations: z.array(option).min(2), source: text, honeypot: text,
         submit: text, sending: text, privacy_note: text, privacy_link: text,
       }),
       errors: z.object({
@@ -225,7 +225,7 @@ const pages = defineCollection({
     about: z.object({
       heading: text, intro: text, paragraphs: z.array(text), differently_heading: text, differently: z.array(text),
       values_heading: text, values: z.array(z.object({ title: text, body: text })),
-      photo: z.string(), photo_alt: text, button: link,
+      photo: z.string(), photo_alt: text, button: link, book_label: text,
     }),
     results: z.object({ heading: text, intro: text, empty: text, columns: z.array(text).length(4) }),
     privacy: z.object({
@@ -236,9 +236,9 @@ const pages = defineCollection({
       heading: text, updated_label: text, intro: text, contact: text,
       sections: z.array(z.object({ title: text, body: text })),
     }),
-    thanks_review: z.object({ heading: text, body: text, link }),
+    thanks_audit: z.object({ heading: text, body: text, book: link, link }),
     thanks_founding: z.object({ heading: text, body: text, home: text }),
-    notfound: z.object({ heading: text, body: text, review: text, home: text }),
+    notfound: z.object({ heading: text, body: text, cta: link, home: text }),
   }),
 });
 

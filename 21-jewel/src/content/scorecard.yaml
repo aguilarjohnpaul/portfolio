@@ -120,7 +120,7 @@ result:
   score_suffix: / 24
   fixes_label: Your top fixes
   perfect: No leaks found. Keep doing what you're doing.
-  review_button: { label: "Want me to check this for you? Get a free Website Review", href: "/review" }
+  review_button: { label: "Want me to check this for you? Get a free Local Search Audit", href: "/audit" }
   restart: Start over
 
 email:

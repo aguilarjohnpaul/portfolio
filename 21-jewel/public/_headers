@@ -12,3 +12,6 @@
 
 /scorecard-data.json
   Cache-Control: public, max-age=300
+
+/audit-data.json
+  Cache-Control: public, max-age=300

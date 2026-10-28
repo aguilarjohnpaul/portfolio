@@ -17,7 +17,7 @@ const { sc } = Astro.props;
     </div>
     <div>
       <a class="btn btn-primary" href={sc.result.review_button.href}
-        data-event="cta_click" data-prop-location="scorecard-result" data-prop-target="/review">{sc.result.review_button.label}</a>
+        data-event="cta_click" data-prop-location="scorecard-result" data-prop-target={sc.result.review_button.href}>{sc.result.review_button.label}</a>
     </div>
   </section>
   <button type="button" class="link-btn restart" data-action="restart">{sc.result.restart}</button>

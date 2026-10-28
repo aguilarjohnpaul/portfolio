@@ -1,12 +1,12 @@
 # Google Sheet + Gmail setup
 
 Two forms save to one Google Sheet:
-- **Free Website Review requests** (`/review`) go to the `Reviews` tab. The requester gets a confirmation email, and you get an alert.
+- **Free Local Search Audit requests** (`/audit`) go to the `Audits` tab. The requester gets a confirmation email, you get an alert, and follow-ups run from the `Status` column (see `docs/follow-up-emails.md`).
 - **Scorecard results** (`/scorecard`) go to the `Leads` tab. The visitor gets their score and fix list, and you get an alert.
 
 Setup takes about 10 minutes, and a computer is easier than a phone for the Apps Script steps.
 
-**Already set this up before Change 02?** Paste the new `Code.gs` over the old one, run `setup` once (it adds the `Reviews` tab), then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL and secrets stay the same.
+**Already set this up before Change 03?** Paste the new `Code.gs` over the old one, run `setup` once (it adds the `Audits` tab; the old `Reviews` tab stays as history), run `installFollowUps` once, then Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL and secrets stay the same. Add the optional `CAL_URL` script property so follow-up emails carry your booking link.
 
 ## Which Google account?
 
@@ -21,8 +21,9 @@ Setup takes about 10 minutes, and a computer is easier than a phone for the Apps
 4. **Add Script Properties.** In Apps Script, go to Project Settings (gear icon) → Script Properties → Add:
    - `WEBHOOK_SECRET` = your secret
    - `ALERT_TO` = the address that should get alerts (optional)
-   - `REVIEW_DAYS` = your review turnaround in business days (optional, default 5)
-5. **Run setup once.** Back in the Editor, pick `setup` in the function dropdown and click **Run**. Approve the permission prompts: Google warns "unverified app" because it's your own script. Choose Advanced → Go to project → Allow. This creates the `Leads` and `Reviews` tabs with header rows.
+   - `AUDIT_DAYS` = your audit turnaround in business days (optional, default 5)
+   - `CAL_URL` = your Cal.com link, used in confirmation and follow-up emails (optional)
+5. **Run setup once.** Back in the Editor, pick `setup` in the function dropdown and click **Run**. Approve the permission prompts: Google warns "unverified app" because it's your own script. Choose Advanced → Go to project → Allow. This creates the `Leads` and `Audits` tabs with header rows. Then pick `installFollowUps` and click **Run** once to schedule the daily follow-up check.
 6. **Deploy as a web app.** Click Deploy → New deployment → type **Web app**:
    - Execute as: **Me**
    - Who has access: **Anyone**
@@ -34,7 +35,7 @@ Setup takes about 10 minutes, and a computer is easier than a phone for the Apps
 
    Then open Deployments, and from the latest deployment's **⋯** menu choose **Retry deployment**.
 8. **Test.**
-   - Request a free Website Review on the site with your own email. Within a minute you should see a row in `Reviews`, the confirmation email and a "New Website Review request" alert.
+   - Request a free Local Search Audit on the site with your own email. Within a minute you should see a row in `Audits`, the confirmation email and a "New audit request" alert.
    - Take the scorecard with your own email. You should see a row in `Leads`, the results email and a "New scorecard" alert.
 
 ## Good to know
@@ -42,6 +43,6 @@ Setup takes about 10 minutes, and a computer is easier than a phone for the Apps
 - **Limits:** a free Gmail account can send to about 100 recipients a day, and Workspace allows about 1,500. Each lead uses 2 (the visitor's email plus your alert). To stop alerts, delete the `sendAlert_(...)` call in `doPost`.
 - **If an email fails,** the row is still saved with "failed: …" in the Email status column, and the visitor sees "try again in a minute."
 - **Changing the script:** after editing, go to Deploy → Manage deployments → pencil icon → Version: New version → Deploy. The URL stays the same.
-- **Changing the email wording:** it's in `sendResults_` (scorecard) and `sendReviewConfirmation_` (review) in the script.
+- **Changing the email wording:** it's in `sendResults_` (scorecard), `sendAuditConfirmation_` (audit) and `sendFollowUp_` (day 12 and day 30) in the script.
 - **Deleting someone's data:** delete their row in the Sheet. That's all the site stores.
 - **Moving to Kit later:** set `KIT_API_KEY` and remove `SHEET_WEBHOOK_URL`. The site switches automatically, and the Tags column already matches Kit's tags. See `docs/kit-results-email.md`.

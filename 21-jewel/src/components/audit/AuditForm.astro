@@ -1,0 +1,67 @@
+---
+// Free Local Search Audit request form (Change 03 §7.1). 7 visible fields, one column, labels above.
+import type { CollectionEntry } from 'astro:content';
+import './audit.css';
+interface Props { form: CollectionEntry<'pages'>['data']['audit']['form']; errors: Record<string, string>; siteKey: string }
+const { form: f, errors, siteKey } = Astro.props;
+const req = (id: string) => ({ id, required: true, 'aria-describedby': `${id}-err` });
+---
+<form class="card audit-form" novalidate data-audit-form data-errors={JSON.stringify(errors)}>
+  <h2 class="h3" id="audit-form-h">{f.heading}</h2>
+  <div class="fields">
+    <div class="field">
+      <label for="au-business">{f.business}</label>
+      <input {...req('au-business')} name="business" type="text" autocomplete="organization" maxlength="160" />
+      <p class="err" id="au-business-err" data-err="business"></p>
+    </div>
+    <div class="field">
+      <label for="au-trade">{f.trade}</label>
+      <input {...req('au-trade')} name="trade" type="text" maxlength="160" aria-describedby="au-trade-hint au-trade-err" />
+      <p class="hint small muted" id="au-trade-hint">{f.trade_hint}</p>
+      <p class="err" id="au-trade-err" data-err="trade"></p>
+    </div>
+    <div class="field">
+      <label for="au-city">{f.city}</label>
+      <input {...req('au-city')} name="city" type="text" autocomplete="address-level2" maxlength="160" />
+      <p class="err" id="au-city-err" data-err="city"></p>
+    </div>
+    <div class="field">
+      <label for="au-site">{f.website}</label>
+      <input id="au-site" name="siteUrl" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder={f.website_placeholder} />
+      <label class="check"><input type="checkbox" name="noWebsite" data-no-website /> <span>{f.no_website}</span></label>
+    </div>
+    <div class="field">
+      <label for="au-email">{f.email}</label>
+      <input {...req('au-email')} name="email" type="email" autocomplete="email" maxlength="254" />
+      <p class="err" id="au-email-err" data-err="email"></p>
+    </div>
+    <div class="field">
+      <label for="au-phone">{f.phone}</label>
+      <input id="au-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+    </div>
+    <fieldset class="field choices" aria-describedby="au-situation-err">
+      <legend>{f.situation}</legend>
+      <div class="opts">
+        {f.situations.map((o) => <label class="choice"><input type="radio" name="situation" value={o.value} required /><span>{o.label}</span></label>)}
+      </div>
+      <p class="err" id="au-situation-err" data-err="situation"></p>
+    </fieldset>
+    <div class="field">
+      <label for="au-source">{f.source}</label>
+      <input id="au-source" name="source" type="text" maxlength="200" />
+    </div>
+  </div>
+  <div class="hp" aria-hidden="true">
+    <label for="au-hp">{f.honeypot}</label>
+    <input id="au-hp" name="website_hp" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <div class="turnstile" data-turnstile data-sitekey={siteKey}></div>
+  <p class="err form-err" role="alert" data-err="form"></p>
+  <div><button type="submit" class="btn btn-primary" data-submit data-sending={f.sending}>{f.submit}</button></div>
+  <p class="micro">{f.privacy_note} <a href="/privacy">{f.privacy_link}</a></p>
+</form>
+
+<script>
+  import { initAuditForm } from '../../scripts/audit-form';
+  initAuditForm();
+</script>
