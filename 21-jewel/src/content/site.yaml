@@ -24,7 +24,7 @@ links:
   # Tally founding application form.
   tally: "https://tally.so/r/7XRqva"
   # Public profiles for schema sameAs. Leave "" until live.
-  google_profile: ""
+  google_profile: "https://share.google/ABk4ZeJ1zunLsQLqZ"
   linkedin: ""
 
 # Feature flags. Flip to true to show a section or page. Nothing else needs to change.
