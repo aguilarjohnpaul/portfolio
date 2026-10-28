@@ -58,7 +58,7 @@ GA4 removed the separate Key events page in 2025. Key events are now the star ne
 - `scorecard_email_submit` (scorecard results requested)
 - `founding_apply_submit` (add later, when the founding program is on)
 
-An event only appears in Recent events after GA4 has received it once, which can take up to 24 hours. Trigger it yourself (submit the audit form, tap the phone number on your phone, finish the scorecard with your email) and check back the next day. To register one before it arrives: **+ Create event** → exact name → turn on **Mark as key event** → **Create with code** → Create. Never use **Create without code** for these: it builds a second event from page views and double counts.
+GA4 can take 24 to 48 hours to list a brand-new event name in Recent events, even while it is already receiving it. To register one before it arrives: **+ Create event** → exact name → turn on **Mark as key event** → **Create with code** → Create. Never use **Create without code** for these: it builds a second event from page views and double counts.
 
 `close_convert_lead` and `qualify_lead` are GA4 defaults for the "Generate leads" objective. The site doesn't send them; leave or unstar them.
 
