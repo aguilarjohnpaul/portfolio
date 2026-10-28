@@ -20,7 +20,6 @@ industry:
   text: What kind of business do you run?
   options:
     - { label: Sign and print, value: sign-print }
-    - { label: HVAC, value: hvac }
     - { label: Roofing, value: roofing }
     - { label: Other trade, value: other-trade }
     - { label: Other service, value: other-service }

@@ -93,7 +93,7 @@ privacy:
       body: Hosts this site and keeps standard server logs, such as IP addresses, for security.
     - name: Client work access
       body: "When we work together, manager access to your Google profile and website is used only for the agreed work and removed when the work ends. The performance numbers I save are stored privately and never shared without your permission."
-  storage: "Your browser also keeps your scorecard progress for this visit, your theme choice and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
+  storage: "Your browser also keeps your scorecard progress for this visit and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
   deletion: "To see or delete anything I hold about you, email me at"
   deletion_suffix: and I'll take care of it within 30 days.
 

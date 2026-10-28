@@ -10,20 +10,23 @@ const one = (name: string) =>
 
 const link = z.object({ label: z.string(), href: z.string() });
 const text = z.string().min(1);
-const flagName = z.enum(['', 'showFounding', 'showResults', 'showHvac', 'showRoofing', 'showFaq', 'showTerms']);
+const flagName = z.enum(['', 'showFounding', 'showResults', 'showFaq', 'showTerms', 'showAreas', 'showSpanish', 'showClarity', 'showScorecardLink', 'realExamples']);
 const flagged = z.object({ label: text, href: text, flag: flagName });
 
 const site = defineCollection({
   loader: one('site'),
   schema: z.object({
     brand: z.object({
-      name: text, url: z.url(), email: z.email(), location: text, founder: text,
+      name: text, legal_name: text, url: z.url(), email: z.email(),
+      phone: text, phone_href: z.string().regex(/^\+1\d{10}$/),
+      location: text, founder: text,
       tagline: text, one_liner: text, values: z.array(text).min(1),
     }),
-    links: z.object({ cal: text, tally: text }),
+    links: z.object({ cal: text, tally: text, google_profile: z.string(), linkedin: z.string() }),
     flags: z.object({
-      showFounding: z.boolean(), showResults: z.boolean(), showHvac: z.boolean(),
-      showRoofing: z.boolean(), showFaq: z.boolean(), showTerms: z.boolean(),
+      showFounding: z.boolean(), showResults: z.boolean(), showFaq: z.boolean(), showTerms: z.boolean(),
+      showAreas: z.boolean(), showSpanish: z.boolean(), showClarity: z.boolean(),
+      showScorecardLink: z.boolean(), realExamples: z.boolean(),
     }),
     founding: z.object({ total: z.number().int().min(1), filled: z.number().int().min(0) }),
     heroTest: z.object({ enabled: z.boolean(), winner: z.enum(['', 'a', 'b']) }),
@@ -34,8 +37,7 @@ const site = defineCollection({
     }),
     footer: z.object({
       who_heading: text, industries: z.array(flagged), links_heading: text, links: z.array(flagged),
-      bottom: text, theme_label: text,
-      theme_options: z.array(z.object({ value: z.enum(['light', 'dark', 'system']), label: text })),
+      bottom: text,
     }),
     spots: z.object({ open_label: text, full_label: text, apply: text, waitlist: text }),
     seo: z.object({
@@ -152,14 +154,6 @@ const founding = defineCollection({
   }),
 });
 
-const studios = defineCollection({
-  loader: one('studios'),
-  schema: z.object({
-    heading: text, intro: text, get: titled, steps: titled,
-    contact: z.object({ heading: text, email_prefix: text, book: text }),
-  }),
-});
-
 const option = z.object({ value: z.string().regex(/^[a-z0-9-]+$/), label: text });
 const pages = defineCollection({
   loader: one('pages'),
@@ -238,5 +232,5 @@ const caseStudies = defineCollection({
 });
 
 export const collections = {
-  site, home, offers, scorecard, founding, studios, pages, industries, testimonials, caseStudies,
+  site, home, offers, scorecard, founding, pages, industries, testimonials, caseStudies,
 };

@@ -9,7 +9,7 @@ export type EventName =
   | 'cta_click' | 'scorecard_start' | 'scorecard_answer' | 'scorecard_complete'
   | 'scorecard_email_submit' | 'scorecard_email_error'
   | 'review_form_submit' | 'review_form_error' | 'founding_apply_submit' | 'offer_view' | 'industry_page_view'
-  | 'book_call_click' | 'email_click' | 'theme_toggle';
+  | 'book_call_click' | 'email_click' | 'call_click';
 
 type Props = Record<string, string | number | boolean | undefined>;
 

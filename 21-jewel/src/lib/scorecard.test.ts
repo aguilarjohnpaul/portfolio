@@ -60,8 +60,8 @@ describe('scorecard scoring (24 points)', () => {
     expect(isValidAnswers(['sign-print', ...all(2)], data)).toBe(true);
     expect(isValidAnswers(['plumbing', ...all(2)], data)).toBe(false);
     expect(isValidAnswers(all(2), data)).toBe(false);
-    expect(isValidAnswers(['hvac', ...all(3)], data)).toBe(false);
-    expect(isValidAnswers(['hvac', ...all(2).slice(1)], data)).toBe(false);
+    expect(isValidAnswers(['roofing', ...all(3)], data)).toBe(false);
+    expect(isValidAnswers(['roofing', ...all(2).slice(1)], data)).toBe(false);
     expect(isValidAnswers('x', data)).toBe(false);
   });
 });

@@ -26,6 +26,9 @@ function offerLd(o: Offer, site: SiteData) {
   return out;
 }
 
+/** Public profile URLs that are set in site.yaml links. */
+const sameAs = (site: SiteData) => [site.links.google_profile, site.links.linkedin].filter((u) => /^https?:\/\//.test(u));
+
 export function professionalService(site: SiteData, offers: OffersData) {
   const list = ladder(offers);
   const paid = list.map((o) => (o.free ? null : amount(o.price_from))).filter((n): n is number => n !== null);
@@ -34,9 +37,11 @@ export function professionalService(site: SiteData, offers: OffersData) {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     '@id': new URL('/#business', site.brand.url).href,
-    name: site.brand.name,
+    name: site.brand.legal_name,
+    alternateName: site.brand.name,
     url: site.brand.url,
     email: site.brand.email,
+    telephone: `+1-${site.brand.phone_href.slice(2, 5)}-${site.brand.phone_href.slice(5, 8)}-${site.brand.phone_href.slice(8)}`,
     logo: new URL('/apple-touch-icon.png', site.brand.url).href,
     image: new URL(site.seo.og_image, site.brand.url).href,
     description: site.brand.one_liner,
@@ -44,9 +49,11 @@ export function professionalService(site: SiteData, offers: OffersData) {
     address: { '@type': 'PostalAddress', addressLocality: 'San Antonio', addressRegion: 'TX', addressCountry: 'US' },
     areaServed: [
       { '@type': 'City', name: 'San Antonio, TX' },
-      { '@type': 'Country', name: 'United States' },
+      ...['Bexar County', 'Comal County', 'Guadalupe County', 'Kendall County', 'Medina County'].map((name) => ({ '@type': 'AdministrativeArea', name: `${name}, TX` })),
+      { '@type': 'State', name: 'Texas' },
     ],
     founder: { '@type': 'Person', name: site.brand.founder },
+    ...(sameAs(site).length ? { sameAs: sameAs(site) } : {}),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${site.brand.name} offers`,
@@ -60,7 +67,7 @@ export function website(site: SiteData) {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': new URL('/#website', site.brand.url).href,
-    name: site.brand.name,
+    name: site.brand.legal_name,
     url: site.brand.url,
     publisher: { '@id': new URL('/#business', site.brand.url).href },
   };

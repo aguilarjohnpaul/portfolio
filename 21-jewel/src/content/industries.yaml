@@ -30,22 +30,8 @@ industries:
     proof: Case study in progress.
     addon: { name: Lead Pipelines, body: "Quote follow-up that runs in the tools you already use.", href: "/offers" }
 
-  - slug: hvac
-    flag: showHvac
-    indexed: false
-    name: HVAC companies
-    h1: More calls from Google for HVAC companies.
-    sub: When the AC quits, people search on their phone and call the first company that looks trustworthy. I make sure that's you.
-    searches: []
-    fixes:
-      - Service area and services on your Google profile.
-      - A page for your top service (repair, install or maintenance).
-      - Review requests after every call, sent from the field software you already use.
-      - One-tap calling.
-    proof: ""
-
   - slug: roofing
-    flag: showRoofing
+    flag: ""
     indexed: false
     name: Roofing companies
     h1: More inspection requests for roofing companies.

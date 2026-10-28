@@ -2,9 +2,12 @@
 # Edit values here. Components read everything from this file.
 
 brand:
-  name: 21 Jewel
+  name: 21 Jewel                      # wordmark
+  legal_name: 21 Jewel Advisory       # schema, titles, footer; matches the Google Business Profile
   url: https://21jeweladvisory.com
   email: johnpaul@21jeweladvisory.com
+  phone: (737) 391-3041
+  phone_href: "+17373913041"
   location: San Antonio, TX
   founder: JP
   tagline: Precise work. More calls.
@@ -20,15 +23,21 @@ links:
   cal: "https://cal.com/21jewel/20min"
   # Tally founding application form.
   tally: "https://tally.so/r/7XRqva"
+  # Public profiles for schema sameAs. Leave "" until live.
+  google_profile: ""
+  linkedin: ""
 
 # Feature flags. Flip to true to show a section or page. Nothing else needs to change.
 flags:
-  showFounding: false   # founding band, nav link, /founding-clients, /thanks/founding
-  showResults: false    # /results and the homepage proof slot
-  showHvac: false       # /industries/hvac and its footer link
-  showRoofing: false    # /industries/roofing and its footer link
-  showFaq: false        # FAQ on the homepage and /offers
-  showTerms: false      # /terms and its footer link (needs a lawyer review first)
+  showFounding: false      # founding band, nav link, /founding-clients, /thanks/founding
+  showResults: false       # /results and the homepage proof slot
+  showFaq: true            # FAQ blocks and their FAQPage schema
+  showTerms: false         # /terms and its footer link (needs a lawyer review first)
+  showAreas: false         # /areas/* (Change 03 §3.1). Needs entries with proof first.
+  showSpanish: false       # /es/* (Change 03 §3). Nothing built yet.
+  showClarity: false       # Microsoft Clarity (Change 03 §10). Needs a project id and a privacy line.
+  showScorecardLink: true  # scorecard link in the footer
+  realExamples: false      # industry worked examples labeled as real instead of "Example"
 
 founding:
   total: 5
@@ -62,21 +71,14 @@ footer:
   who_heading: Who I help
   industries:
     - { label: Sign and print shops, href: "/industries/sign-print", flag: "" }
-    - { label: HVAC, href: "/industries/hvac", flag: showHvac }
-    - { label: Roofing, href: "/industries/roofing", flag: showRoofing }
   links_heading: More
   links:
-    - { label: Scorecard, href: "/scorecard", flag: "" }
     - { label: Offers, href: "/offers", flag: "" }
-    - { label: For studios, href: "/studios", flag: "" }
+    - { label: About, href: "/about", flag: "" }
+    - { label: Scorecard, href: "/scorecard", flag: showScorecardLink }
     - { label: Privacy, href: "/privacy", flag: "" }
     - { label: Terms, href: "/terms", flag: showTerms }
-  bottom: "© {year} 21 Jewel. Independent. Not affiliated with Google."
-  theme_label: Theme
-  theme_options:
-    - { value: light, label: Light }
-    - { value: dark, label: Dark }
-    - { value: system, label: System }
+  bottom: "© {year} 21 Jewel Advisory. Independent. Not affiliated with Google."
 
 spots:
   open_label: "{n} of {total} spots open"
@@ -90,50 +92,44 @@ seo:
   og_image_alt: "21 Jewel: More calls from Google. No new software."
   pages:
     home:
-      title: "21 Jewel · More calls from Google for local service businesses"
+      title: "21 Jewel Advisory · More calls from Google for local service businesses"
       description: "I fix your Google profile, reviews and website so more searches turn into calls. San Antonio-based. Free Website Review."
     review:
-      title: "Free Website Review · 21 Jewel"
+      title: "Free Website Review · 21 Jewel Advisory"
       description: "Get the top 3 things costing you calls, ranked, plus a checklist you keep. Free for local service businesses."
     scorecard:
-      title: "Is Your Website Losing You Work? · 21 Jewel"
+      title: "Is Your Website Losing You Work? · 21 Jewel Advisory"
       description: "12 quick questions about your Google profile, website and follow-up. Get your score and biggest leaks in 3 minutes."
     offers:
-      title: "Offers and prices · 21 Jewel"
+      title: "Offers and prices · 21 Jewel Advisory"
       description: "Free Website Review, Google Profile Tune-Up from $450, The 30-Day Fix from $1,250, Growth Advisor from $500/month."
     founding:
-      title: "Founding clients: The 30-Day Fix, free · 21 Jewel"
+      title: "Founding clients: The 30-Day Fix, free · 21 Jewel Advisory"
       description: "5 spots for local service businesses. Free 30-Day Fix in exchange for sharing the results."
     about:
-      title: "About JP · 21 Jewel"
+      title: "About JP · 21 Jewel Advisory"
       description: "Agency and analytics background. I do the work myself, use your existing tools and show you the numbers."
     sign-print:
-      title: "More quote requests for sign and print shops · 21 Jewel"
+      title: "More quote requests for sign and print shops · 21 Jewel Advisory"
       description: "Google profile, reviews and a quote-ready page for sign and print shops."
-    hvac:
-      title: "More calls from Google for HVAC companies · 21 Jewel"
-      description: "Google profile, reviews and one-tap calling for HVAC companies."
     roofing:
-      title: "More inspection requests for roofing companies · 21 Jewel"
+      title: "More inspection requests for roofing companies · 21 Jewel Advisory"
       description: "Photos, reviews and an easy inspection request for roofing companies."
     results:
-      title: "Results · 21 Jewel"
+      title: "Results · 21 Jewel Advisory"
       description: "Before-and-after numbers from local service businesses."
-    studios:
-      title: "White-label Strategy Sprint · 21 Jewel"
-      description: "For design studios of 2 to 10 people. Strategy delivered under your studio's name."
     privacy:
-      title: "Privacy · 21 Jewel"
+      title: "Privacy · 21 Jewel Advisory"
       description: "What this site collects, which services store it and how to ask for deletion."
     terms:
-      title: "Terms · 21 Jewel"
+      title: "Terms · 21 Jewel Advisory"
       description: "Plain-language terms for working with 21 Jewel."
     thanks-review:
-      title: "Your review is on the way · 21 Jewel"
+      title: "Your review is on the way · 21 Jewel Advisory"
       description: "Your free Website Review request is in."
     thanks-founding:
-      title: "Thanks for applying · 21 Jewel"
+      title: "Thanks for applying · 21 Jewel Advisory"
       description: "Your founding client application is in."
     notfound:
-      title: "Page not found · 21 Jewel"
+      title: "Page not found · 21 Jewel Advisory"
       description: "That page doesn't exist."

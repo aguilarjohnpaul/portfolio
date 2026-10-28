@@ -100,17 +100,6 @@ offers:
     guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
-  - id: studio-sprint
-    name: White-label Strategy Sprint
-    type: Studio partners only
-    studio_only: true
-    price_from: ""
-    one_liner: Strategy delivered under your studio's name.
-    for: Design studios of 2 to 10 people.
-    get: []
-    timeline: 2 to 3 weeks
-    checkout_url: ""
-
 addons:
   - id: extra-page
     name: Extra service page
