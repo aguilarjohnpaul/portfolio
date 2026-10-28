@@ -16,7 +16,6 @@ Everything the site still needs from you. Updated Oct 28, 2026, after Change 03 
 - [ ] **Google profile links.** Edit profile → Contact. Website: `https://21jeweladvisory.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Appointment link: `https://21jeweladvisory.com/audit?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
 - [ ] **Google profile location.** Edit profile → Location. Business address: your San Antonio address, hidden from customers. Service areas: remove Seguin and anything broad, add San Antonio first, then Bexar County and nearby towns (up to 20, within about 2 hours).
 - [ ] **GA4 key events.** `docs/analytics-setup.md` steps 3 and 4: custom dimensions `situation` and `percent`, and mark `audit_submit` and `call_click` as key events. They only collect from the day you create them.
-- [ ] **LinkedIn link.** Send Claude your LinkedIn profile URL for `site.yaml` → `links.linkedin` (feeds the business schema). Optional.
 
 ## 2. In two weeks
 
@@ -28,7 +27,6 @@ Everything the site still needs from you. Updated Oct 28, 2026, after Change 03 
 - [ ] **Photo.** A 4:5 JPG at `public/jp.jpg`, then `photo: /jp.jpg` in `home.yaml` → `about` and `pages.yaml` → `about`. The monogram disappears everywhere.
 - [ ] **First testimonial.** A row in the content Sheet's `testimonials` tab. The homepage proof section turns on by itself.
 - [ ] **First case study.** One Markdown file in `src/content/case-studies/` with `published: true`, then `flags.showResults: true`. Set `flags.realExamples: true` once the industry example tables can use real numbers.
-- [ ] **Taylor'd Prints.** Written permission to name him, then replace "Case study in progress." in `industries.yaml` → `sign-print` → `proof`.
 - [ ] **Terms.** Lawyer review of `pages.yaml` → `terms`, then `flags.showTerms: true`.
 - [ ] **Founding program.** `flags.showFounding: true` when you want it public.
 - [ ] **Clarity (optional).** Project at clarity.microsoft.com, `PUBLIC_CLARITY_ID` in Cloudflare, `flags.showClarity: true`.
@@ -41,7 +39,8 @@ Everything the site still needs from you. Updated Oct 28, 2026, after Change 03 
 - [x] Change 03 merged and live (PR #1, Oct 27).
 - [x] Search Console Domain property verified for `21jeweladvisory.com`; `sitemap-index.xml` submitted; live test shows the new site.
 - [x] `/sitemap.xml` redirects to `/sitemap-index.xml`.
-- [x] Google Business Profile Maps link in the business schema (`sameAs`).
+- [x] Google Business Profile Maps link and LinkedIn in the business schema (`sameAs`).
+- [x] Taylor'd Prints named on the sign and print page as a case study in progress.
 - [x] Six learn guides rewritten as argument-led essays, no FAQ blocks, no prices.
 - [x] Content Sheet `guides` tab: blank cells use the guide's own title; defaults shown in `default_*` columns.
 - [x] Offer ladder: Free Local Search Audit → Get Found Setup → Get Chosen Setup → Keep Ranking (month-to-month).

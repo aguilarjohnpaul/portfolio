@@ -62,7 +62,7 @@ industries:
         - { label: Map rank for "vehicle wraps san antonio", before: "Not in the top 20", after: "#6 from the shop, #11 across town" }
         - { label: Profile calls and direction requests, before: "19 a month", after: "41 a month" }
       note: Numbers like these come from fixing the product list, adding a quote form and asking for reviews on every job. Yours depend on your starting point, which is what the audit shows.
-    proof: Case study in progress.
+    proof: "Case study in progress with Taylor'd Prints, a custom sign and event print shop in Alexandria, Virginia. Before and after numbers go here once they are in."
 
   - slug: roofing
     flag: ""
