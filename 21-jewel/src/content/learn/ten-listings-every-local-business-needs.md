@@ -1,77 +1,70 @@
 ---
-title: "The 10 listings every local business needs (Google, Bing, Apple Maps and the rest)"
-description: "Ten online listings decide how your business shows up on maps and in searches, and most San Antonio service businesses have three of them right. The rule is one name, one address, one phone number, everywhere. Here are the ten, why each matters, and the order to fix them in. Budget about two hours."
-seo_title: "The 10 listings every local business needs"
+title: "Why Google checks ten other websites before it trusts yours"
+description: "Google doesn't take your profile's word for who you are. It cross-checks your name, address and phone against the rest of the web, and every place they disagree costs you a little trust. Here's which places count, why the mismatches are usually old decisions nobody remembers, and how to find yours."
+seo_title: "The 10 listings Google checks against your profile"
 kind: guide
 published: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 draft: false
 related: ["/services/get-found", "/industries/electrical", "/learn/google-business-profile-checklist-san-antonio"]
-faqs:
-  - q: Do I need to be on hundreds of directories?
-    a: No. Listing services that promise 70 or 300 directories are selling volume. Ten correct listings on the sites that feed the map results beat 300 half-right ones, and the 300 often introduce the mismatches you're trying to fix.
-  - q: What if my business moved or changed its phone number?
-    a: Update the ten in the order in this guide, Google first. Then search your old number and old address in quotes and fix anything else that comes up. Old listings linger for years on small directories and feed wrong data upward.
-  - q: Is Bing worth it when everyone uses Google?
-    a: Bing powers search in Microsoft Edge, Windows, Cortana, and some voice assistants, and feeds other sites. It's a steady 5 to 10 percent of searches for most local businesses, it's free, and you can import your Google profile in a few minutes.
-  - q: Why does Apple Maps matter?
-    a: Every iPhone's default Maps app, Siri and some in-car systems use Apple Business Connect for business details. If you're not there or the data is old, iPhone users get wrong directions or a competitor. It's free to claim.
-  - q: Should I pay for BBB accreditation?
-    a: The free listing is what matters for consistency. Accreditation costs several hundred dollars a year and mostly buys the seal. Some older homeowners look for it; most don't. Decide on that, not on search.
 ---
 
-Ten online listings decide most of how your business appears on maps and in local searches, and the businesses I audit in San Antonio usually have three of them right. The rule is one name, one address, one phone number, spelled the same way on all ten. Here they are in the order to fix them, with why each matters. The whole pass takes about two hours the first time.
+Google has a problem you'd have too if you were running the world's phone book. Anyone can type anything into a business profile. So before Google puts you in the map for "electrician near me," it wants a second opinion on whether you're who you say you are, located where you say you are, reachable at the number you gave.
 
-## Why does consistency matter so much?
+It gets that second opinion from the rest of the internet. Your website, Yelp, Facebook, Apple Maps, Bing, the Better Business Bureau, the trade directories, the data brokers that feed all of them. If those places agree with your profile, Google relaxes. If they disagree, Google doesn't punish you exactly. It just trusts you a little less, and in a map that's deciding between three electricians in Leon Valley, a little less is enough.
 
-Google, Bing and Apple don't take your word for where your business is. They cross-check your profile against other sites. When your website says (737) 391-3041, Yelp says a number from three years ago and Facebook has your old address, the search engines trust your profile less, and your map position suffers. Customers hit the wrong number, too.
+Owners almost never think about this, because none of it is visible from inside the profile. The dashboard shows you your profile. It doesn't show you that Yelp still has the number from before you switched carriers in 2019.
 
-"Consistent" means character for character: "Alamo Plumbing LLC" on one site and "Alamo Plumbing" on another is a mismatch. Pick one version of your name, address and phone, write it down, and use it everywhere.
+## Consistency is a trust signal, not a ranking trick
 
-## 1. Google Business Profile
+It's worth being precise about what this does and doesn't do, because listings have been oversold for years by companies that sell listings.
 
-The one that matters most. Claim it at business.google.com, verify it, and complete it (the [checklist](/learn/google-business-profile-checklist-san-antonio) covers all 12 parts). Everything below should match what you put here.
+Consistent listings won't put you in the map on their own. Of the three things that move you once Google is already considering you, reviews do the most, photos and activity do the next most, and listings do the least. Nobody wins a neighborhood on listings alone. I'll concede that up front, because the pitch you've probably heard is the opposite.
 
-## 2. Bing Places for Business
+But you can lose on them. A profile that Google half-trusts sits lower than it should for every search, every day, and no amount of reviews fully makes up for the doubt. And unlike reviews, which take months of steady asking, listings are a one-afternoon fix once you know where the mismatches are. Low ceiling, cheap floor. That's the right way to think about them.
 
-Bing powers Microsoft Edge, Windows search and some voice assistants, and it feeds data to other sites. For most local businesses it's 5 to 10 percent of searches, and almost no competitor bothers with it. Go to bingplaces.com and choose "Import from Google." It copies your profile in a few minutes. Check the categories; they don't always map one to one.
+The other thing listings do is feed the places that aren't Google. Apple Maps is what every iPhone uses for directions, and when a customer taps your address in a text message, that's where it opens. Bing is what a lot of desktop searches in offices actually run on, whether the person knows it or not. Those two run on their own listings, and most San Antonio service businesses have never claimed either one. The customer who finds you on Google and gets a dead phone number from Apple doesn't know the difference. She knows you didn't answer.
 
-## 3. Apple Business Connect
+## The ten places that count
 
-Every iPhone's Maps app, Siri and CarPlay use Apple's business data. If you've never claimed it, Apple is guessing from old sources, which is how iPhone users end up at your previous address. Go to businessconnect.apple.com, claim the business, and fill in hours, categories, photos and the "showcase" if you have an offer. Free, about 20 minutes.
+There are hundreds of directories, and the listings companies will happily submit you to all of them for a monthly fee. Most don't matter. Roughly ten do, because they're the ones Google and the other maps actually cross-check against, and because they're the ones customers actually use.
 
-## 4. Yelp
+Your own Google Business Profile is the anchor. Then Bing Places and Apple Business Connect, the two other maps. Then Yelp and Facebook, which have been around long enough that almost every business has a listing on each whether it created one or not. The Better Business Bureau, which Google weights for trust whether or not you're accredited. Nextdoor, where the neighborhood recommendations happen. Angi, because the data behind it feeds other directories even if you've never bought a lead from them. Your trade's own directory, the one your license or association lists you in. And your own website, which is the one place you fully control and the one most often out of date.
 
-Fewer people use Yelp to find a plumber than ten years ago, but Yelp still ranks well in Google for "[trade] san antonio" searches, feeds data to other directories, and is where some customers go to leave a review. Claim the free listing at biz.yelp.com, make the name, address and phone match, add photos and hours. You'll get sales calls about Yelp Ads; the listing is free and you can say no.
+Ten places, one name, one address, one phone number, written the same way in each. That's the whole standard.
 
-## 5. Facebook business page
+What makes it hard isn't the count. It's that the mismatches are old decisions nobody remembers making.
 
-Even if you never post, the page should exist with the right details, because Facebook is where a lot of San Antonio neighborhood recommendations happen ("anyone know a good electrician?") and people tap through to the page. Match the name, address, phone and hours. Add the website link and a few photos.
+## The mismatches are always somebody's good idea
 
-## 6. Better Business Bureau
+Picture an electrician on the Northwest Side. Made up, but you'll recognize it. Fifteen years in business. Over that time the company moved from a home office to a shop on Bandera Road, changed the business phone once, added a second line for emergencies, hired a marketing company for a year that set up call tracking, and shortened the name on the new trucks from "Rodriguez Electrical Services LLC" to "Rodriguez Electric."
 
-The free BBB listing is one of the older trust signals and still ranks for your business name. Claim it at bbb.org and correct the details. Accreditation (the seal) costs money every year and is a separate decision. Reply to any complaints there the way you'd reply to a review.
+Every one of those was a reasonable decision. Together they left the internet with two addresses, four phone numbers and three spellings of the name, spread across listings nobody has logged into since they were created. The Yelp page, made by Yelp before the owner ever heard of it, still has the home office. Facebook has the tracking number the agency never removed. The BBB has the LLC name. Apple Maps has the right address and the old phone, because Apple pulled it from a data broker in 2017 and nobody told it otherwise.
 
-## 7. Nextdoor
+From the owner's side, the business has one name, one address and one phone, because that's what's on the truck. From Google's side, it's looking at a cloud of near-matches and trying to decide if they're the same business. Mostly it decides yes. The hedge it builds in while deciding is the cost.
 
-Neighborhood recommendations in San Antonio run through Nextdoor. Claim your free business page, match the details, and ask a few happy customers to recommend you there. Recommendations on Nextdoor show up in neighbors' feeds, which is close to a referral.
+Suite numbers do it. "Ste 200" vs "Suite 200" vs "#200." Street abbreviations do it. A tracking number does it worse than anything, because it's a real, working number that doesn't match, and because it's usually on the listing a lot of people see. The marketing company got clean reporting for a year. You got a mismatch for a decade.
 
-## 8. Angi (and the HomeAdvisor data behind it)
+## Who benefits from you not knowing
 
-You don't have to buy leads to have a correct listing. The free profile should match your details, because Angi's data is syndicated widely and a wrong phone number here spreads. If you do buy leads, [what a lead really costs](/learn/what-a-lead-really-costs) is worth a read first.
+The listings industry runs on this. There are services that will scan your listings for free, show you a scary red dashboard of errors, and offer to fix them for a monthly fee that never ends, because the fix is a subscription that keeps republishing your data. Stop paying, and some of those listings revert.
 
-## 9. Your trade's directory
+I'd rather you knew the actual shape of the job. The ten listings above are claimable by you, for free, with your own logins. Fixing them is tedious, not technical. Once they're right, they stay mostly right, with a check every few months for drift. There's no reason to rent that.
 
-Every trade has one or two directories that matter more than the general ones: the state license lookup for plumbers and electricians (make sure the business name and address on your license match your profile), manufacturer "find an installer" pages for roofers and HVAC, Houzz for remodelers, the Chamber directory for anyone who's a member. Pick the one or two your customers would actually find, and make them match.
+Google benefits too, in a quiet way, from you not thinking about it. A business that doesn't realize its listings disagree assumes its map position is just how things are, and is a better customer for ads. The ad credit in your dashboard is a lot more prominent than any warning about Yelp.
 
-## 10. Your own website
+## A two-minute check
 
-The forgotten listing. Your name, address (or service area), phone and hours should be in the footer of every page, as text, not an image, and they should match the profile exactly. Add the structured data (schema) for a local business so search engines can read it without guessing. If your web person doesn't know what that means, it's part of [Get Chosen Setup](/services/get-chosen).
+Put your main business phone number in Google with quotes around it, like "210-555-0100." Scroll through what comes back. You're looking for your own business under a different name, at a different address, or not at all. Then do the same with your old number if you remember it, and with your street address in quotes.
 
-## How do I find the mismatches I don't know about?
+What usually turns up is some version of the electrician above. A listing you forgot existed, with details from a different era of the business. Each one you find is a place Google is getting a second opinion that disagrees with your first.
 
-Search your old phone number in quotes. Search your old address in quotes. Search your business name with "San Antonio." Anything that comes up with wrong details goes on the fix list. Small directories you've never heard of (Yellow Pages, Manta, Superpages, MapQuest, and dozens more) often carry data from a decade ago and feed it upward. Fix the ten above first; then fix the stragglers you find, and don't pay anyone to submit you to hundreds more.
+Write them down. That list, not the red dashboard from a listings vendor, is the actual size of the problem.
 
-Do this once, carefully, and then check the ten every quarter. Data drifts: aggregators overwrite details, a well-meaning employee adds a second phone number, Yelp "corrects" your category. Fifteen minutes a quarter keeps it straight.
+## What this changes
 
-Claiming and matching the ten, plus the quarterly check, is part of [Get Found Setup](/services/get-found) and [Keep Ranking](/services/keep-ranking). If you want to know which of your ten are wrong today, the [free Local Search Audit](/audit) checks them and tells you which three fixes would move the most.
+If your check turns up two or three stale listings, fix them yourself. Claim the page, update it, done. It's a Saturday morning, and it closes a gap that's been quietly sitting under your map position for years.
+
+If it turns up a dozen, or you find a tracking number you can't trace, or Apple and Bing have never been claimed at all, that's the listings pass inside [Get Found Setup](/services/get-found). Either way, don't buy the subscription. You're paying someone to log into ten websites once.
+
+The [free Local Search Audit](/audit) runs this check across all ten and shows you where your name, address and phone disagree, next to what the three businesses above you look like. If your listings turn out to be clean, you'll know that too, and you can stop wondering whether they're the problem.

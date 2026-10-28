@@ -1,71 +1,80 @@
 ---
-title: "Why your business isn't showing up on Google Maps, and the 20-minute fix"
-description: "Most San Antonio service businesses that don't show up on Google Maps are missing one of five profile basics. Four of them take about 20 minutes to fix. Here's how to check each one, in order, and what to do if the profile is right and you still don't show."
-seo_title: "Not showing up on Google Maps? The 20-minute fix"
+title: "You haven't been outranked on Google Maps. You haven't been entered."
+description: "Most San Antonio service businesses that can't find themselves on Maps think they lost to a competitor. Usually Google never considered them at all. The difference decides what you should spend the next month fixing."
+seo_title: "Not showing up on Google Maps? You weren't entered"
 kind: guide
 published: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 draft: false
 related: ["/services/get-found", "/industries/plumbing", "/learn/google-business-profile-checklist-san-antonio"]
-faqs:
-  - q: How long after I fix my profile will I show up on Maps?
-    a: Edits to categories, hours and services usually show within a few days. Movement in the map results takes 30 to 90 days, because Google also weighs reviews, photos and how consistent your listings are across the web.
-  - q: Do I need a storefront to show up on Maps?
-    a: No. A service-area business (you go to the customer) can hide its address and still show up for searches inside the service area it sets. The address just has to be a real place where you operate, not a P.O. box.
-  - q: Why does my competitor across town show up for my neighborhood and I don't?
-    a: Usually because their primary category matches the search and yours doesn't, or because they have more recent reviews, or because their service area includes your neighborhood and yours was set too tight.
-  - q: Will paying for Google Ads help me show up on Maps?
-    a: Ads can put you above the map results while you pay. They don't change your position in the map results themselves. Fix the profile first; ads are a separate decision.
-  - q: Can I just make a second profile?
-    a: No. One business location, one profile. Duplicates get suspended, and a suspension takes weeks to undo. If you find an old duplicate, ask Google to merge it.
 ---
 
-If your business doesn't show up when someone nearby searches for what you do, the cause is almost always on your Google Business Profile, not your website. Five settings decide whether Google considers you for a search: whether the profile is verified, the primary category, the service area, the services list and the hours. Four of those take about 20 minutes to fix. Check them in this order.
+When an owner tells me the business doesn't show up on Google Maps, they usually mean they lost. Somebody across town took the spot. The web company didn't do enough. The competitor must be paying for something.
 
-## Is the profile verified and owned by you?
+Most of the time that isn't what happened. Google never put them in the running.
 
-Search your business name on Google. If the panel on the right says "Own this business?" the profile isn't claimed, and nobody is editing it. Claim it at business.google.com. Verification is usually a video walkthrough of your shop or truck now, sometimes a postcard, and it takes a few days to a week.
+That distinction sounds like a technicality. It isn't. It decides whether your next month goes to a 20-minute fix or a 90-day grind, and almost every owner I talk to is about to spend money on the wrong one.
 
-If the profile exists but someone else owns it (a former employee, a web company you stopped paying, a marketing agency), request ownership from the same place. Google emails the current owner, and if they don't respond within 7 days, you can usually take it over.
+## Google picks the field before it picks the winner
 
-One profile per location. If you find two for the same business, don't delete either. Report the duplicate from inside your profile and ask Google to merge them, so the reviews on the old one carry over.
+Every map search runs in two stages. First Google asks which businesses are even candidates for this search: who does this thing, near this person, right now. Then it orders the candidates by how much it trusts each one. Reviews, photos, years in business, how many people have clicked you before, how your name and phone number match up across the rest of the web.
 
-## Is the primary category the service that earns you the most?
+Everything owners mean by "ranking" lives in the second stage. The reviews push, the photo habit, the listings cleanup. All real, all slow.
 
-This is the single biggest setting on the profile, and the one most often wrong. Google uses the primary category to decide which searches you can appear for. A plumber whose primary category is "Contractor" competes with every contractor in Bexar County and rarely shows for "water heater repair." A roofer listed as "Construction company" is invisible for "roof repair."
+But you can't be ordered if you were never a candidate. And the first stage doesn't look at your reviews. It looks at a handful of settings on your Google Business Profile and takes them at their word.
 
-Open your profile, click Edit profile, and look at the first category. It should be the most specific category that describes the service you want more of: "Roofing contractor," "Plumber," "Electrician," "Sign shop," "Tree service," "Landscaper," "Kitchen remodeler." Add the others as additional categories, up to nine, but the first one does most of the work.
+Picture a plumber in Leon Valley. Fifteen years in, good reviews, a truck people recognize. Someone two miles away types "water heater repair" at 9 at night with an inch of water on the garage floor. The plumber's profile says the business is a "Contractor." The services section is blank. The hours say closed at 5.
 
-If you change the primary category, expect your map position to shift over the next few weeks. That's the point.
+Google reads that and sees a contractor who is closed. The guy who shows up instead has 30 reviews to the plumber's 90. His profile says "Plumber," lists "Water heater repair" by name, and says open 24 hours. He didn't beat the Leon Valley plumber. The Leon Valley plumber wasn't in the room.
 
-## Does the service area match where you actually work?
+## The settings that get you in the room
 
-Service-area businesses set the cities or ZIP codes they serve. Two mistakes are common. Too small: a landscaper in Helotes who only lists "San Antonio" won't show for Boerne or Leon Valley searches even though the crew goes there every week. Too big: listing all of Texas or a 200-mile radius dilutes you everywhere and Google tends to ignore it.
+Five things on the profile decide the first stage. Whether the profile is verified and you actually own it. The primary category. The service area. The services list. The hours.
 
-Set the area to where you take jobs today, by city or ZIP, up to 20 areas. Google's guidance is roughly a two-hour drive from your base. If you have a shop customers visit, keep the address visible and add service areas on top.
+I'll grant the obvious objection here. Prominence is real. A shop with 400 reviews and a decade of photos will sit above a two-year-old shop with 30, all else equal. If you're already appearing for your searches and you want to move from fourth to first, that is a reviews-and-photos problem, and nobody should tell you otherwise.
 
-Map results are strongest near your actual location. A service area tells Google you serve Boerne; it doesn't put you in the Boerne map pack the way a shop in Boerne would be. Honest expectation: you'll show in the suburbs more often, and strongest near home.
+But all else is rarely equal, and the gap between "considered" and "not considered" is far bigger than the gap between second and fifth. A business failing the first stage is invisible to the searches it most wants, no matter how good its reviews are. That's the situation most owners who call me are actually in, and it's the better situation to be in, because settings change in an afternoon and reputations don't.
 
-## Are your services listed, by name?
+What makes the five hard isn't the fixing. It's that each one is wrong for a reason that made sense at the time.
 
-Below the categories is a Services section. Many profiles have it empty or filled with one line like "Plumbing." Google matches searches against these names. If "tankless water heater installation" isn't listed, you're less likely to show for it.
+The category is too broad because "Contractor" felt safer than committing to one trade, or because whoever set the profile up in 2019 picked the first thing that matched. The service area is set to half of Texas because why would you turn away work. Or it's set to one ZIP code because that's where the shop is, even though the crew is in Boerne twice a week. The services section is blank because it's buried below the fold in the dashboard and nothing ever prompted anyone to fill it in. The hours are from before you started taking emergency calls.
 
-Add every service you want calls for, named the way customers search: "Water heater repair," "Drain cleaning," "Slab leak repair," not "Residential services." Each one can carry a short description and a price or price range. Twenty minutes with your invoice history gets this right.
+None of those are mistakes a careless person makes. They're mistakes a busy person makes, and the dashboard does nothing to flag them.
 
-## Are the hours correct, including the ones that matter?
+## The map is drawn around the searcher, not around you
 
-Google shows "Open now" or "Closed" next to your name in the results, and searchers choose accordingly. If you take emergency calls at 10pm but the profile says you close at 5, the person with a burst pipe sees "Closed" and calls the plumber who says "Open 24 hours."
+San Antonio makes this harder than it would be in a smaller city. The metro is 30 miles across. A search from Stone Oak and a search from the South Side return different maps, because Google draws the map around the person searching, and distance is part of the first stage.
 
-Set your real hours. If you answer the phone around the clock, set 24 hours and turn on the relevant attribute. Set holiday hours a week ahead, because Google warns searchers when hours might differ. If you run on appointments, say so in the description rather than leaving hours blank.
+That cuts two ways for a business that goes to the customer. If you've hidden your address, which is the right call for anyone working out of their house, Google still knows where you are and still measures distance from it. Your service area tells Google you're willing to go to Schertz. It doesn't move you to Schertz. You'll show strongest near home and fade as the searcher gets farther away, no matter how wide you set the area.
 
-## The profile is right and I still don't show. Now what?
+Owners feel this as inconsistency. "I show up for my neighbor and not for my brother-in-law in Helotes." That isn't a glitch. It's the shape of the thing, and it means the question is never "do I show up on Maps." It's "do I show up for the searches I want, from the parts of town I want them from."
 
-If all five basics are correct, you've moved from "not considered" to "considered but outranked." Three things move you from here, and they take longer than 20 minutes.
+Which also means the fix has a ceiling. A plumber in Converse can get the profile perfect and still lose Alamo Heights searches to a plumber who parks in Alamo Heights. Knowing where that ceiling is for your business is worth more than any single setting, because it tells you which neighborhoods are worth the review push and which ones were never yours to win.
 
-Reviews, especially recent ones. Google weighs the count, the rating and how recently the last one came in. A profile with 60 reviews and the last one 8 months ago loses to one with 30 reviews and three this month. The fix is a review ask that goes out after every job, not just the big ones.
+## Google has no reason to tell you which one is wrong
 
-Photos of your actual work. Ten or more real photos, added regularly, with the kind of job and the neighborhood in the description. Stock photos and logos don't count.
+This is the part worth sitting with. Your profile dashboard will happily tell you it's 100 percent complete while the primary category is wrong. Complete isn't correct. Google's product is the searcher's experience, not yours, and a profile that is filled in but mis-filed is, from Google's side, working fine. The searcher got a plumber. Just not you.
 
-Consistent listings. If Yelp has your old phone number and Facebook has your old address, Google trusts your profile less. The ten listings that feed the map results need one name, one address, one phone.
+The ad side of the same screen will tell you the opposite. Promote your business, reach more customers, here's a credit. Ads can put you above the map while you pay. They never put you in the map. The first stage doesn't check your ad budget.
 
-That's the work inside [Get Found Setup](/services/get-found). If you'd rather see where your own profile stands first, the [free Local Search Audit](/audit) checks all of this and tells you the three fixes that matter most for your business.
+So the information you need, which of the five is wrong for your business specifically, isn't going to come from the platform. It comes from reading the profile the way Google reads it, against the searches you actually want, from the neighborhoods you actually work.
+
+## A two-minute test for which stage you're in
+
+Take your phone. Open a private window so your own history doesn't help you. Search your trade and a neighborhood you serve, the way a customer would type it: "roof repair Stone Oak," "tree removal Alamo Heights," "sign shop near me" from wherever you're standing.
+
+Look at the three businesses in the map box, then tap "More places" and look at the next seven.
+
+If you're in the top ten somewhere, you're in the second stage. Google knows what you are. Now it's weighing you against the others, and the work is reviews, photos and listings, measured in months.
+
+If you're not in the top ten at all, for a search that is squarely your trade, in an area you serve, you're almost certainly failing the first stage. One of the five is telling Google something that isn't true about your business. That's a 20-minute fix once you know which one, and the map usually reflects it within a few weeks.
+
+Do that test for three or four searches, not one. A roofer can be in the room for "roofing contractor" and out of it for "roof leak repair." The pattern across searches tells you more than any single result.
+
+## What this changes
+
+If the test says first stage, don't buy the reviews software yet. Don't rebuild the website. Don't take the ad credit. Fix the profile. Those other things aren't wrong, they're just second-stage tools, and you'd be paying to climb a ladder you haven't been let near.
+
+If the test says second stage, the honest answer is that nothing moves fast from here. A steady review ask after every job, real photos of real work, and the same name, address and phone number on the ten listings Google checks against. 30 to 90 days before the map moves, and it keeps moving as long as you keep going.
+
+Most owners can't tell which stage they're in from the inside, because the profile looks fine to the person who set it up. That's what the [free Local Search Audit](/audit) is for. I run your searches from your neighborhoods, tell you which stage you're in, and name the one or two settings doing the damage. Ten minutes of video, one page. If it turns out to be the 20-minute kind, you'll know, and you can do it yourself that afternoon.

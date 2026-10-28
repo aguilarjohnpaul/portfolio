@@ -1,73 +1,74 @@
 ---
-title: "What a lead really costs: Angi, Thumbtack and Yelp Ads vs. your own Google profile"
-description: "A paid lead for a San Antonio home-service business typically costs $20 to $100 before you've spoken to anyone, and the same lead is usually sold to two or three competitors. A call from your own Google profile costs the time it took to set the profile up. Here's how to work out your real cost per job on each, with the math."
-seo_title: "What a lead really costs: Angi, Thumbtack vs. Google"
+title: "Angi and Thumbtack aren't selling you leads. They're renting you a customer."
+description: "Paid lead platforms work, which is why they're hard to quit. But the same lead goes to several shops at once, the customer belongs to the platform, and the number that matters is never the one on the invoice. Here's the math owners skip, and the one question to ask before buying another lead."
+seo_title: "Paid leads vs your own Google profile"
 kind: guide
 published: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 draft: false
 related: ["/services/get-found", "/industries/plumbing", "/learn/what-local-seo-costs-in-san-antonio"]
-faqs:
-  - q: Should I cancel Angi and Thumbtack today?
-    a: Not on day one. Fix your profile first, watch your own calls for 60 to 90 days, then cut the paid leads as your own calls replace them. Your Google profile's call count tells you when.
-  - q: Are Google Local Services Ads different?
-    a: They sit above the map results with a "Google Guaranteed" badge and you pay per lead, typically $25 to $100 in the trades. The lead is usually yours alone, which is better than the shared marketplaces, but it stops the day you stop paying. The map results underneath are free.
-  - q: What about Yelp?
-    a: A free Yelp listing with correct details is worth having; it feeds other directories and some people still check it. Yelp Ads charge per click, often $5 to $30 in the trades, and the click is not a lead. Most San Antonio trades see a worse cost per job on Yelp Ads than anywhere else.
-  - q: How do I know which calls came from where?
-    a: Ask every new customer "How did you hear about us?" and write it down, on the quote form, on the intake call, or on the invoice. Your Google profile also counts its own calls, direction requests and website clicks under Performance.
-  - q: Isn't a free lead source too good to be true?
-    a: The profile isn't free to set up well; it costs time or a one-time fee. After that, the calls cost nothing per call, which is the point. Paid leads cost the same on job one and job one thousand.
 ---
 
-A paid lead for a San Antonio home-service business typically costs $20 to $100 before anyone picks up the phone, and the same lead usually goes to two or three competitors at once. A call from your own Google profile costs what it took to set the profile up, once. Most owners know the first number and have never calculated the second. Here's the math on both, in a form you can do on a napkin.
+Paid leads work. That's the first thing to say, because most of what's written about Angi, Thumbtack, Yelp Ads and Google's Local Services Ads is written by people trying to sell you the alternative, and it tends to skip the part where the phone actually rings.
 
-## What does a paid lead actually cost per job?
+The phone does ring. A plumber in Schertz can sign up on a Tuesday and have a water heater job by Thursday. For a new business with no reviews, or an established one coming off a dead month, that's not nothing. I'll grant it fully.
 
-Lead marketplaces quote the price per lead. The number that matters is the price per job, which includes the leads that didn't answer, the ones who picked the other guy, and the ones who were just pricing.
+What the platforms are less eager to explain is what you're buying. You think you're buying a lead. You're renting access to a customer who belongs to them, for as long as you keep paying, at a price they set, and shared with whoever else is paying. Once you see it that way, the question of whether to keep paying gets a lot clearer.
 
-Work it out from last month:
+## The same lead goes to the shop down the street
 
-1. What you paid the platform.
-2. How many leads it sent.
-3. How many of those became jobs.
+Start with how the product works, because owners often don't find out until they've been on it a few months.
 
-Say Angi charged $1,400 for 40 roofing leads and 6 became jobs. That's $35 a lead and $233 a job. Thumbtack at $800 for 25 plumbing leads and 7 jobs is $32 a lead and $114 a job. Local Services Ads at $1,100 for 20 leads and 8 jobs is $55 a lead and $138 a job. Yelp Ads at $600 for 90 clicks, 9 calls and 2 jobs is $300 a job.
+When a homeowner in Stone Oak fills out a form for "roof repair," the platform doesn't send that to one roofer. It sends it to several, often three or four, each of whom pays for it. The homeowner gets a flurry of calls within the hour. The roofer who picks up fastest and quotes lowest tends to win. Everyone else paid for a lead that was never really theirs.
 
-Those are illustrative numbers, not quotes, and yours will differ. The pattern holds across the trades I audit: shared marketplaces convert worst because the lead is talking to three of you, and the per-job cost is three to ten times the per-lead price that was advertised.
+That's not a flaw in the system. It's the system. The platform makes more money selling the same inquiry four times than once, and it makes the most money when the four of you compete hardest, because competing hardest means answering faster and quoting lower, which makes the platform look good to the homeowner, which brings in the next form.
 
-Two more costs don't show on the invoice. Time: every shared lead is a race, so someone has to answer in minutes or lose it. And the bad-fit calls: price shoppers and out-of-area requests that the platform counts and charges for anyway.
+Notice who that structure serves. The homeowner gets choice. The platform gets paid four times. You get a race to the bottom on price with three neighbors, and you get it every single time.
 
-## What does a call from your own Google profile cost?
+Your own Google Business Profile works the opposite way. When someone searches "roof repair Stone Oak" and taps your number from the map, that call comes to you. Only you. She picked you from three options and already decided. The conversation starts at "when can you come out," not "I've got two other quotes."
 
-Setting a profile up properly takes about 8 hours if you do it yourself (the [checklist](/learn/google-business-profile-checklist-san-antonio) covers all of it) or $650 if I do it as [Get Found Setup](/services/get-found). After that, each call costs nothing.
+## The invoice shows cost per lead. You run a business on cost per job.
 
-The honest version of the math includes upkeep. Reviews need asking for, photos need adding, listings drift. Call that 3 or 4 hours a month of your time, or $450 a month for [Keep Ranking](/services/keep-ranking) if you'd rather not.
+The second thing the platforms count on is that you'll look at the wrong number.
 
-Put it next to the paid leads. A plumber whose fixed profile sends 50 calls a month, with 20 becoming jobs, on $450 of upkeep, is at $22.50 a job, and $9 a call. The same plumber's Thumbtack math above was $114 a job. The gap widens every month, because the profile's calls grow with reviews and the paid leads cost the same forever.
+The dashboard shows what each lead cost. That number is designed to look reasonable, and in isolation it is. What it doesn't show is how many of those leads turned into jobs after the four-way race, or what those jobs went for once you'd cut the quote to win them.
 
-## Why don't more owners switch?
+Picture a plumber who's been on one of these platforms for a year. He knows what he pays per month. He knows roughly what a lead costs. He's never once sat down and counted the jobs that actually closed, divided the year's spend by that number, and compared it to what a job from a referral or his own profile cost him. When he does, the per-job figure is usually several times the per-lead figure, and the margin on those jobs is thinner than the rest of his work, because he quoted them against three other guys.
 
-Three reasons, and they're all fair.
+That's the math owners skip. Not because it's hard. Because the platform shows the flattering number on every screen and the honest number on none of them.
 
-The paid leads work on day one. You pay, the phone rings. A profile takes 30 to 90 days to move after it's fixed, and nobody wants a quiet month.
+And the honest number never improves. A lead costs the same in year five as in year one, or more, because prices go up when more shops join. Meanwhile your own profile does the opposite. Every review, every photo, every month of showing up makes the next call cheaper, until the cost of a call from Google is whatever you spend keeping the profile current, spread across a growing number of calls.
 
-The profile feels like it should already be working. It exists, it's verified, there are some reviews. The gap between "exists" and "set up to rank" isn't visible until someone shows you the category is wrong and the services are empty.
+## Why owners stay anyway
 
-And nobody measured. Most owners can tell you what Angi charged last month and can't tell you how many calls the Google profile sent, because they've never opened the Performance tab. Google keeps about six months of that history and then it's gone.
+If the math is that clear, why does everyone stay on the platforms for years.
 
-## How do I switch without a quiet month?
+Partly it's that the phone rings, and a ringing phone is hard to argue with when you've got a crew to keep busy. Partly it's that quitting feels like a cliff. Turn it off and the leads stop that day. The profile takes months to build, and nobody wants a quiet month in between.
 
-Overlap them. Fix the profile while the paid leads keep running, then taper.
+And partly it's the platform's doing. The dashboard is designed to keep you. Pause your account and you'll get an email about missed opportunities in your area. Lower your budget and you'll be told you're losing to competitors. Every nudge points toward spending more, none toward asking whether the spend is working. That's not malice. It's what the business model requires. Their incentives and yours overlap less than the rep suggests.
 
-1. Save your baseline today: the profile's calls, direction requests and website clicks for the last month, your review count, and what you paid for leads. Screenshot it.
-2. Fix the profile. Category, service area, services, hours, photos, review ask. Yourself in a weekend, or [Get Found Setup](/services/get-found) in 10 business days.
-3. Ask every new customer how they found you and write it down. This is the only way to know which calls are which.
-4. At day 30, compare the profile's call count with the baseline. At day 60, if it's up, cut the paid budget by a third. At day 90, cut it again or stop.
-5. Keep the paid source you'd keep anyway. For some trades, Local Services Ads during storm season is worth it on top of a strong profile. The difference is that it's a choice, not a dependency.
+The thing worth seeing clearly is that the dependence is the product. A shop that gets most of its work from a platform has a business the platform controls. Raise the price per lead, change the matching rules, let two more competitors into the ZIP code, and the shop's revenue moves without the owner doing anything. A shop that gets most of its work from its own profile and referrals owns that pipeline. Nobody can reprice it.
 
-## The question to ask before you pay for another lead
+## The customer never learns your name
 
-How many of last month's jobs came from people who found you on their own? If the answer is "I don't know," that's the first fix, and it's free: add "How did you hear about us?" to your quote form and your intake call this week.
+There's a quieter cost that doesn't show up in any math, and it's the one that compounds.
 
-If the answer is "almost none," your profile isn't doing its job, and every paid lead is covering for it. The [free Local Search Audit](/audit) shows you exactly what's wrong with it, in a 10-minute video, with the three fixes that would move it first.
+When a homeowner in Helotes hires a plumber through a platform, she hired the platform. She went to the app, the app sent her three options, she picked one. Six months later when the disposal dies, she opens the app again. She may not remember which plumber came out. She certainly doesn't have his number. The platform does, and it sells her inquiry to four shops again, and you're one of them if you're still paying.
+
+Compare that with a customer who found you on the map, called the number on your profile, and saved it in her phone under your business name. The next job is a text. The referral to her sister in Boerne is a text. The review she leaves names you. Every one of those is work you got for free because the first job came through a channel where she learned who you were.
+
+Over five years, those two plumbers have done the same number of jobs and built completely different businesses. One has a customer list. The other has a platform account.
+
+## The question to ask before the next lead
+
+Pull up the last 90 days. Count the jobs that came through the platform. Not leads, jobs, the ones you invoiced. Divide what you spent by that count. Now think about what a job from a referral cost you, which is roughly nothing, and what a job from your own Google profile cost you, which is whatever you've spent on the profile this year divided by the calls it sent.
+
+That comparison usually ends the argument. But the more useful question is the one about direction. Is the share of your work coming from the platform going down over time, or holding steady. If it's holding steady after two years, you haven't built anything. You've rented a customer base, and the rent never ends.
+
+## What this changes
+
+If you're new, or coming off a bad stretch, use the platforms. Take the fast work. But treat it as a bridge, and start building the thing it's a bridge to on the same day, because the profile takes 60 to 90 days to start carrying its share and every month you wait is another month of rent.
+
+If you've been on a platform for more than a year and it's still most of your work, the profile is the problem to solve, not the platform budget. Don't quit cold. Fix the profile, watch the share of jobs shift over a quarter, and cut the platform spend as your own calls replace it. The shops that do this stop talking about lead cost entirely, because the calls that matter don't have one.
+
+The [free Local Search Audit](/audit) tells you whether your profile is in a position to replace those leads yet, and what's standing in the way if it isn't. Ten minutes, and you'll know whether the bridge has something on the other end.

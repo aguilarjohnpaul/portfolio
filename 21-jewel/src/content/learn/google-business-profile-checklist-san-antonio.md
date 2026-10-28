@@ -1,77 +1,72 @@
 ---
-title: "The Google Business Profile checklist for San Antonio service businesses"
-description: "A complete Google Business Profile has 12 parts filled in, and most San Antonio service businesses have about 5. Here's the full list, in the order that matters, with what to put in each one and how long it takes. Budget about 90 minutes for the whole thing."
-seo_title: "Google Business Profile checklist for San Antonio"
+title: "Your Google profile says 100 percent complete. That isn't the same as right."
+description: "Google grades your profile on whether the fields are filled in. Searchers and the map grade it on whether what's in them is true and specific. Most San Antonio service businesses pass the first test and quietly fail the second, and the dashboard will never tell them."
+seo_title: "Complete Google Business Profile vs a correct one"
 kind: guide
 published: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 draft: false
 related: ["/services/get-found", "/industries/roofing", "/learn/ten-listings-every-local-business-needs"]
-faqs:
-  - q: How often should I update my Google Business Profile?
-    a: Photos monthly, a post every two to four weeks, hours whenever they change and before holidays, and a full read-through every quarter. Profiles that go quiet for months drift down.
-  - q: Do Google posts actually do anything?
-    a: They don't move rank much, but they show in your profile and in some searches, and a profile with a post from this month looks open for business. Four short posts a month with real photos is plenty.
-  - q: Should I put my home address on the profile?
-    a: If you work from home and customers don't come to you, no. Set the profile as a service-area business and hide the address. Google still needs a real address on file for verification.
-  - q: What's the difference between the description and the services?
-    a: The description is one paragraph a human reads, 750 characters max. Services are structured data Google matches against searches. Fill both, but the services list does more for ranking.
-  - q: Can I have one profile for two cities?
-    a: One profile per physical location. If you run one crew from one yard and serve two cities, set both in the service area. A second profile needs a second real location with staff.
 ---
 
-A complete Google Business Profile has about a dozen parts, and most San Antonio service businesses I audit have five of them filled in. The empty ones are why a competitor with worse reviews outranks you. Here is the full list in the order that matters, what goes in each, and how long each one takes. The whole checklist is about 90 minutes once.
+Open your Google Business Profile dashboard and there's a good chance it congratulates you. Profile strength: complete. A green check. Nothing left to do.
 
-## 1. Business name: the real one, nothing added
+That check has never meant what owners take it to mean.
 
-Your name on the profile has to match the name on your truck, your invoice and your website. "Alamo Plumbing" is right. "Alamo Plumbing | Best Plumber San Antonio 24/7" is a policy violation that gets the profile suspended, and suspensions take weeks to fix. Five minutes, mostly to resist the temptation.
+That's not a knock on owners. It's what the check measures. Google's completeness score asks whether each field has something in it. It doesn't ask whether the category is the right one, whether the description would mean anything to a stranger, whether the photos are of your work or your logo, or whether the phone number matches the one on your truck. A profile can be full and still be telling Google, and every person who finds it, the wrong things about your business.
 
-## 2. Primary category: the service that earns the most
+## Complete is Google's test. Correct is yours.
 
-Pick the most specific category for the work you want more of: "Roofing contractor," not "Contractor." "Kitchen remodeler," not "General contractor," if kitchens are the business. Add up to nine additional categories for the rest. Ten minutes. See [why your business isn't showing up on Google Maps](/learn/not-showing-up-on-google-maps) for how much this one setting moves.
+It helps to remember whose product the profile is. Google built it so searchers get a useful answer. The completeness score exists to get you to fill the fields in, because empty fields make for bad search results. Once the fields are full, Google's job is done. Whether what's in them wins you the call is your problem, and the dashboard has no way to measure it.
 
-## 3. Service area or address
+So there are two different tests, and only one of them has a green check. The first is whether the profile is filled in. The second is whether a plumber in Converse who reads it in six seconds on his phone, next to two other plumbers, picks you. The first test takes an hour to pass. The second is the work.
 
-Storefront customers come to: show the address. Service business you go to them: hide the address and set up to 20 cities or ZIP codes you actually serve. San Antonio plus the suburbs your crews reach (Helotes, Boerne, Schertz, New Braunfels, Converse, and so on). Five minutes.
+I'll give the completeness score its due. A profile that's missing hours, services and photos is worse than one that has them filled in badly, and plenty of profiles in San Antonio are still in that first condition. If yours is, fill it in. The score is a reasonable floor. It's just a terrible ceiling, and most owners treat it as the finish line.
 
-## 4. Phone number: one, and the same everywhere
+## The fields that hurt you when you fill them in wrong
 
-The number on the profile should be the one on your website, your Yelp page, your Facebook page and your truck. Mismatched numbers across the web are one of the most common reasons a profile stalls. If you use call tracking, don't put a tracking number here. Two minutes, and then a check of the other listings (see [the 10 listings every local business needs](/learn/ten-listings-every-local-business-needs)).
+An empty field is neutral. A wrong one works against you, and some of the most common mistakes are things owners did on purpose because they seemed smart at the time.
 
-## 5. Website link: your homepage, with a tag
+Take the business name. Somewhere along the way someone told a lot of owners that adding what they do and where they are would help. So the profile says "Alamo Heights Roofing Company - Roof Repair & Replacement San Antonio" when the sign on the building says "Alamo Heights Roofing." Google's rules say the name has to be the real-world name, and it enforces them with suspensions, which take weeks to unwind. The stuffed name may work for a while. Then one day the profile is gone and the phone goes quiet, and nobody at Google will tell you why.
 
-Link to your homepage, or to the page for the service your category describes if you have one. Add a tag to the end of the link so Google Analytics can tell profile visits from search visits: `?utm_source=google&utm_medium=organic&utm_campaign=gbp`. Two minutes.
+Take the description. Most of them are written for the owner, not the searcher. Family owned and operated since 1998, committed to quality and customer satisfaction, licensed and insured. All true, all invisible, because every competitor's description says the same thing and the person reading it is trying to answer one question: do these people do the thing I need, where I am, and can I call them now. A description that answers that in the first sentence does more than three paragraphs of values.
 
-## 6. Hours: real ones, with holidays set ahead
+Take the photos. A logo, a stock image of a handshake, and a photo of the truck from 2016. Google's own data says profiles with photos get more calls and direction requests, and owners hear that and upload something. But Google is increasingly reading what's in the picture, and a searcher can tell the difference between a stock kitchen and a kitchen you actually remodeled in Stone Oak with the homeowner's dog in the corner. Ten real photos of real jobs, added as they happen, beat 50 of anything else.
 
-Your actual hours, including weekends. If you answer emergencies around the clock, set 24 hours. Set holiday hours a week before each holiday; Google warns searchers that hours might differ otherwise. Five minutes, then a calendar reminder before each holiday.
+Take the phone number. A marketing company sets up call tracking, puts the tracking number on the profile so they can report on it, and leaves. Now the profile says one number, the website says another, Yelp has a third from before the rebrand. Google reads the mismatch as doubt about whether this is one business or three. The reporting was for the agency. The doubt is yours.
 
-## 7. Services: every one, named the way customers search
+None of these show up as problems in the dashboard. All of them are things a profile can have while sitting at 100 percent.
 
-Under each category, list the services with the names customers type: "Water heater repair," "Panel upgrade," "Tree removal," "Vehicle wraps." Add a one-line description and a price or range where you can. This is the section most profiles leave empty, and it's structured data Google matches against searches. Twenty minutes with your invoice history open.
+## Specific beats impressive, in every field
 
-## 8. Description: one paragraph, 750 characters
+If there's one principle under all of it, it's that Google and searchers both reward the specific and ignore the general. A general profile is safe and says nothing. A specific one commits.
 
-What you do, who for, where, and what makes you different, in plain words. Lead with the services and the area: "Roof repair, replacement and storm inspections for homeowners in San Antonio and the Hill Country since 2011. Owner on every job." No keyword lists, no "best," no phone numbers (Google strips them). Ten minutes.
+That's why the primary category matters so much more than the eight additional ones. "Contractor" is general. "Roofing contractor" is specific, and it's what Google matches against "roof repair near me." It's why a services list that says "Residential and commercial services" is a wasted field, and one that says "Water heater replacement," "Slab leak repair" and "Drain cleaning" wins searches for each of those by name. It's why a description that opens with "Tree removal and trimming across the North Side, same-week scheduling" gets read, and one that opens with your founding story doesn't.
 
-## 9. Photos: 15 or more of real work, and keep adding
+Owners resist this because specific feels like turning work away. If I say roofing, will they still call me for gutters. If I list eight services, what about the ninth. In practice the opposite happens. The specific profile shows up for the searches that matter, gets the call, and the gutters come up in the conversation. The general profile shows up for nothing in particular.
 
-A logo, a cover photo, and at least 15 photos of actual jobs, your truck, your crew and your shop. Phone photos are fine; stock photos are worse than none. Name the files before uploading ("roof-replacement-stone-oak.jpg") and add a short description. Then add a few every month. Fifteen minutes to start.
+## The fields nobody fills in, and the one everyone forgets
 
-## 10. Reviews: a link and a habit
+Below the fields the score counts are a few it barely notices, and they're where profiles in the same trade actually separate.
 
-Get your review link from the "Ask for reviews" button and put it where every job ends: your invoice, your "job done" text, a QR code. Reply to every review within two business days. Ten minutes to set up, and the habit is the work. [How to get more Google reviews](/learn/how-to-get-more-google-reviews) covers the ask word for word.
+The questions and answers section is one. Strangers can ask questions on your profile, and if you don't answer, other strangers will, or nobody will, and the question sits there looking like you don't check your own listing. A shop that's seeded that section with the five things customers always ask, and answered them, looks like a business that picks up the phone.
 
-## 11. Attributes, Q&A and products
+The attributes are another. Whether you offer online estimates, whether you're veteran owned, whether you take emergency calls. Each one is a small filter Google can match a search against, and most profiles leave them at the default.
 
-Attributes are the checkboxes: veteran-owned, women-owned, wheelchair accessible, online estimates, and the ones specific to your category. Tick what's true. Q&A: ask and answer your own five most common questions ("Do you offer financing?" "Do you charge for estimates?"), because customers and competitors can post there otherwise. Products: for shops that sell things (sign shops, suppliers), add your top products with photos and prices. Fifteen minutes.
+And then there's the website link, which is the field everyone fills in and almost nobody thinks about. It should go to your homepage, and the homepage should say what the profile says. A profile that promises "roof repair" and sends people to a site whose first screen is about the company's history breaks the chain right where it was about to pay off. Google notices the mismatch, and so does the person who clicked. The profile and the first screen of the website are one conversation, and most of the time they were written years apart by different people.
 
-## 12. Posts: short, with a photo, every few weeks
+## A six-second test
 
-A post is a photo and two sentences: a job you finished, a seasonal reminder, a new service. It shows on your profile and tells Google and customers the business is active. Four a month is plenty; one a month is the minimum before the profile starts to look abandoned. Five minutes each.
+Hand your phone to someone who doesn't know your business. Your spouse, a neighbor, the person at the next table. Search your business name plus the service you most want more of, and let them look at the panel for six seconds. Then take the phone back and ask three questions. What does this company do. Where do they work. Would you call them or keep scrolling.
 
-## The check that tells you whether it worked
+If any of the three answers is a shrug, the profile is complete and not correct, and the field causing the shrug is where to start. Usually it's the description or the photos. Sometimes it's the name, which is the most urgent one, because that's the field that gets profiles suspended.
 
-Before you start, open Performance in your profile and write down three numbers for the last month: calls, direction requests and website clicks. Google only keeps about six months of this history, so save it somewhere. Thirty days after you finish the checklist, write them down again. If the profile was thin before, expect the numbers to move in the first month and keep moving for three.
+Then do the same search without your business name, just the service and your neighborhood, and see which three profiles Google puts in the map. Look at them for six seconds each. Whichever one answered the three questions fastest is the one you're actually competing with, and the gap between their profile and yours is usually visible in that comparison without any tools at all.
 
-This checklist is the first half of [Get Found Setup](/services/get-found), done for you in 10 business days along with Bing, Apple Maps and the listings. If you want to know which of the 12 you're missing before you spend the 90 minutes, the [free Local Search Audit](/audit) tells you.
+## What this changes
+
+If the profile really is incomplete, fill it in. That's the floor, and an afternoon gets you there.
+
+If it's complete and the six-second test comes back with shrugs, stop adding things and start fixing what's there. The green check is lying to you, kindly, and every month you trust it is a month the specific profile down the street collects your calls. Fix the name first if it's stuffed. Then the primary category. Then write a description for the stranger with the leaking water heater, not for yourself.
+
+If you'd rather not guess which fields are the problem, the [free Local Search Audit](/audit) reads your profile the way Google and a searcher do, side by side with the three above you, and names the fields doing the damage. It usually comes back with two or three. You can fix those yourself in an evening, or I can.
