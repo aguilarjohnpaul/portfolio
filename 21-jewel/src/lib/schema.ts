@@ -124,6 +124,25 @@ export function speakablePage(site: SiteData, path: string, name: string) {
     url: new URL(path, site.brand.url).href,
     name,
     isPartOf: { '@id': new URL('/#website', site.brand.url).href },
-    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-first'] },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.prose > p:first-of-type'] },
+  };
+}
+
+/** Article + Person for a guide. Dates are ISO strings. */
+export function articleLd(site: SiteData, a: { path: string; title: string; description: string; published: string; updated: string; author: { name: string; role: string } }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': new URL(`${a.path}#article`, site.brand.url).href,
+    headline: a.title,
+    description: a.description,
+    url: new URL(a.path, site.brand.url).href,
+    datePublished: a.published,
+    dateModified: a.updated,
+    inLanguage: 'en-US',
+    author: { '@type': 'Person', name: a.author.name, jobTitle: a.author.role, url: new URL('/about', site.brand.url).href, worksFor: { '@id': new URL('/#business', site.brand.url).href } },
+    publisher: { '@id': new URL('/#business', site.brand.url).href },
+    isPartOf: { '@id': new URL('/#website', site.brand.url).href },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.prose > p:first-of-type'] },
   };
 }

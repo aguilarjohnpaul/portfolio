@@ -9,14 +9,15 @@ import { doc } from '../lib/content';
 import { heroScript } from '../lib/hero';
 
 interface Props {
-  page: string;               // key in site.yaml seo.pages
+  page: string;               // key in site.yaml seo.pages, or any label when `seo` is given
+  seo?: { title: string; description: string };  // per-entry pages (guides) pass their own
   jsonLd?: object[];
   noindex?: boolean;
   stickyBar?: boolean;        // mobile call/audit bar (off on the audit page itself)
 }
 const { page, jsonLd = [], noindex = false, stickyBar = true } = Astro.props;
 const site = await doc('site');
-const seo = site.seo.pages[page];
+const seo = Astro.props.seo ?? site.seo.pages[page];
 if (!seo) throw new Error(`site.yaml seo.pages is missing "${page}"`);
 // Clean URL to match the sitemap and Cloudflare: /offers.html → /offers, /index.html → /.
 const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';

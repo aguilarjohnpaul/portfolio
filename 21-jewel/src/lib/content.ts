@@ -1,7 +1,7 @@
 // One place to read each content document. Pages call these instead of getEntry.
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 
-type Single = 'site' | 'home' | 'offers' | 'services' | 'faqs' | 'scorecard' | 'founding' | 'pages' | 'industries' | 'testimonials';
+type Single = 'site' | 'home' | 'offers' | 'services' | 'faqs' | 'scorecard' | 'founding' | 'pages' | 'industries' | 'testimonials' | 'learnHub';
 
 export async function doc<K extends Single>(name: K): Promise<CollectionEntry<K>['data']> {
   const entry = (await getEntry(name, 'main')) as CollectionEntry<K> | undefined;
@@ -13,6 +13,16 @@ export async function doc<K extends Single>(name: K): Promise<CollectionEntry<K>
 export function fill(template: string, values: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (m, k) => (k in values ? String(values[k]) : m));
 }
+
+/** Published guides, newest first. Drafts never build, except locally with SHOW_DRAFTS=1 (npm run dev:drafts). */
+export async function guides() {
+  const showDrafts = process.env.SHOW_DRAFTS === '1';
+  const all = await getCollection('learn', (e) => showDrafts || !e.data.draft);
+  return all.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
+}
+
+/** Reading time from word count, in whole minutes. */
+export const readMinutes = (body: string) => Math.max(1, Math.round(body.split(/\s+/).length / 220));
 
 export async function proofItems() {
   const [studies, t] = await Promise.all([getCollection('caseStudies'), doc('testimonials')]);
@@ -65,9 +75,10 @@ export type FlagName = keyof Flags | '';
 /** True when an item has no flag, or its flag is on. */
 export const flagOn = (flags: Flags, name: FlagName) => name === '' || flags[name];
 
-/** Header links, with "Founding clients" inserted before About when the founding program is on. */
-export function navLinks(site: SiteData) {
-  const links = [...site.nav.links];
+/** Header links, with "Founding clients" inserted before About when the founding program is on, and Learn hidden until a guide is published. */
+export async function navLinks(site: SiteData) {
+  const hasGuides = (await guides()).length > 0;
+  const links = site.nav.links.filter((l) => l.href !== '/learn' || hasGuides);
   if (site.flags.showFounding) {
     const about = links.findIndex((l) => l.href === '/about');
     links.splice(about < 0 ? links.length : about, 0, site.nav.founding_link);

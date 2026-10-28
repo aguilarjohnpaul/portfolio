@@ -1,0 +1,26 @@
+---
+// Three latest guides on the homepage (Change 03 §5.10). Renders nothing until a guide is published.
+import { doc, guides, type HomeData } from '../lib/content';
+import GuideCard from './GuideCard.astro';
+interface Props { intro: HomeData['learn'] }
+const { intro } = Astro.props;
+const [hub, list] = await Promise.all([doc('learnHub'), guides()]);
+const latest = list.slice(0, 3);
+---
+{latest.length > 0 && (
+  <section id="learn" class="section section-surface" aria-labelledby="learn-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{intro.eyebrow}</p>
+        <h2 id="learn-h">{intro.heading}</h2>
+      </div>
+      <ul role="list" class="grid">{latest.map((e) => <GuideCard entry={e} labels={hub.labels} />)}</ul>
+      <p class="all"><a href={intro.link.href} data-event="cta_click" data-prop-location="home-learn" data-prop-target={intro.link.href}>{intro.link.label}</a></p>
+    </div>
+  </section>
+)}
+
+<style>
+  .all { margin-top: var(--space-5); }
+  .all a { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+</style>

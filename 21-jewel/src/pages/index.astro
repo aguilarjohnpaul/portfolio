@@ -9,6 +9,7 @@ import MeasureBlock from '../components/MeasureBlock.astro';
 import FoundingBand from '../components/FoundingBand.astro';
 import ProofSlot from '../components/ProofSlot.astro';
 import AboutBlock from '../components/AboutBlock.astro';
+import LearnTeaser from '../components/LearnTeaser.astro';
 import FAQ from '../components/FAQ.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import { doc } from '../lib/content';
@@ -30,6 +31,7 @@ const jsonLd = [professionalService(site, offers), website(site), ...(flags.show
   {flags.showFounding && <FoundingBand founding={home.founding} site={site} />}
   <ProofSlot proof={home.proof} enabled={flags.showResults} />
   <AboutBlock about={home.about} />
+  <LearnTeaser intro={home.learn} />
   {flags.showFaq && homeFaq.length > 0 && <FAQ heading={faqs.heading} items={homeFaq} />}
   <FinalCTA cta={home.final_cta} site={site} />
 </Base>

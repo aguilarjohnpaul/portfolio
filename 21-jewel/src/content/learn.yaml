@@ -1,0 +1,27 @@
+# Learn hub labels and the author box (Change 03 §6.3). Guides live in src/content/learn/*.md.
+
+heading: Learn
+intro: Plain answers to the questions San Antonio owners ask me about showing up on Google, getting reviews and getting the call. Fix it yourself, or know exactly what you're paying for.
+labels:
+  guide: Guide
+  answer: Quick answer
+  updated: Last updated
+  minutes: min read
+  by: Written by
+  related: Related
+  faq: Questions people ask
+  all: All guides
+  back: All guides
+  teaser_link: All guides
+empty:
+  heading: The first guides are being written.
+  body: While you wait, the free audit answers the questions that matter most for your business.
+author:
+  name: JP
+  role: Founder, 21 Jewel Advisory
+  line: 8 years in agency and in-house marketing, measuring what actually worked. Now local search for San Antonio service businesses, done by one person.
+cta:
+  heading: Want me to check this for you?
+  body: The free Local Search Audit is a 10-minute video and a one-page scorecard with the top 3 things costing you calls.
+  label: Get my free Local Search Audit
+  call_label: Or call

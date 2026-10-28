@@ -5,7 +5,7 @@ import MobileMenu from './MobileMenu.astro';
 interface Props { site: SiteData }
 const { site } = Astro.props;
 const { nav, brand } = site;
-const links = navLinks(site);
+const links = await navLinks(site);
 ---
 <header class="site-header">
   <div class="container bar">

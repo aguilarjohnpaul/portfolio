@@ -12,7 +12,7 @@ export const emptySet = (): OverrideSet => ({ strings: [], offers: [], faqs: [],
 export const newReport = (): Report => ({ applied: [], warnings: [] });
 
 /** Documents whose string fields the `strings` tab may override. */
-export const STRING_DOCS = new Set(['site', 'home', 'pages', 'offers', 'industries', 'services', 'faqs']);
+export const STRING_DOCS = new Set(['site', 'home', 'pages', 'offers', 'industries', 'services', 'faqs', 'learn']);
 /** Field names the `strings` tab may never touch, wherever they appear. */
 const DENY = /(^|\.)(href|id|slug|flag|photo|value|checkout_url|url|email|phone|phone_href|google_profile|linkedin|cal|tally|og_image|kind|locale)$/;
 /** Exact "<doc>.<path>" keys that stay in the repo even though they are strings: identity, not copy. */

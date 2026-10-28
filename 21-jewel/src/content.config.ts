@@ -275,6 +275,33 @@ const testimonials = defineCollection({
   }),
 });
 
+// Learn hub labels and author box (Change 03 §6.3).
+const learnHub = defineCollection({
+  loader: one('learn'),
+  schema: z.object({
+    heading: text, intro: text,
+    labels: z.object({ guide: text, answer: text, updated: text, minutes: text, by: text, related: text, faq: text, all: text, back: text, teaser_link: text }),
+    empty: z.object({ heading: text, body: text }),
+    author: z.object({ name: text, role: text, line: text }),
+    cta: z.object({ heading: text, body: text, label: text, call_label: text }),
+  }),
+});
+
+// Guides and quick answers (Change 03 §6.3). draft: true never builds.
+const learn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/learn' }),
+  schema: z.object({
+    title: text,
+    description: z.string().min(40),
+    kind: z.enum(['guide', 'answer']),
+    published: z.coerce.date(),
+    updated: z.coerce.date(),
+    draft: z.boolean().default(true),
+    related: z.array(z.string().regex(/^\//)).max(4).default([]),
+    faqs: z.array(z.object({ q: text, a: text })).max(8).default([]),
+  }),
+});
+
 // One Markdown file per case study (Change 02 §4.8). Never show estimates as results.
 const caseStudies = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/case-studies' }),
@@ -290,5 +317,5 @@ const caseStudies = defineCollection({
 });
 
 export const collections = {
-  site, home, offers, services, faqs, scorecard, founding, pages, industries, testimonials, caseStudies,
+  site, home, offers, services, faqs, scorecard, founding, pages, industries, testimonials, caseStudies, learnHub, learn,
 };

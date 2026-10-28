@@ -1,10 +1,11 @@
 ---
-import { fill, flagOn, type SiteData } from '../lib/content';
+import { fill, flagOn, guides, type SiteData } from '../lib/content';
 interface Props { site: SiteData }
 const { site } = Astro.props;
 const { brand, footer, flags } = site;
 const industries = footer.industries.filter((l) => flagOn(flags, l.flag));
-const links = footer.links.filter((l) => flagOn(flags, l.flag));
+const hasGuides = (await guides()).length > 0;
+const links = footer.links.filter((l) => flagOn(flags, l.flag) && (l.href !== '/learn' || hasGuides));
 ---
 <footer class="site-footer">
   <div class="container inner">
