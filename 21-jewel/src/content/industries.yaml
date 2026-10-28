@@ -1,15 +1,28 @@
-# Industry pages (Change 02 §4.7). One template: hero → searches → what I fix → proof → call to action.
-# flag: the site.yaml flag that builds the page ("" = always built).
-# indexed: false keeps the page out of Google and the sitemap (until a first client).
+# Industry pages (Change 03 §6.2). One template at /industries/<slug>.
+# flag: the site.yaml flag that builds the page ("" = always built). indexed: false adds noindex and skips the sitemap.
+# The content Sheet's "industries" tab can change h1, sub, search terms and active. FAQs live in faqs.yaml under the slug.
+# example: a worked before/after. It is labeled "Example, not a client" until site.yaml flags.realExamples is true.
 
 labels:
+  eyebrow: Who I help
   searches_heading: What your customers search for
-  searches_note: These are examples, not search volumes.
-  fixes_heading: What I fix
+  searches_note: Real phrasings from San Antonio searches. Not search volumes.
+  breaks_heading: What usually breaks
+  fixes_heading: What I fix first
+  example_heading: What a first 90 days can look like
+  example_label: Example, not a client
+  example_real_label: Client results
+  example_columns: [Day 0, Day 90]
   proof_heading: Proof
-  addon_label: Related add-on
-  offers_link: { label: See offers and prices, href: "/offers" }
-  review_button: { label: Get my free Website Review, href: "/review" }
+  faq_heading: Questions owners ask
+  cta_label: Get my free Local Search Audit
+  cta_note: The audit is free and takes about 3 minutes to request. You keep the fix list either way.
+  call_label: Or call
+  breadcrumb_root: Industries
+  step_names:
+    get-found: Get Found Setup
+    get-chosen: Get Chosen Setup
+    keep-ranking: Keep Ranking
 
 industries:
   - slug: sign-print
@@ -17,31 +30,231 @@ industries:
     indexed: true
     name: Sign and print shops
     tile: Banners, yard signs, vehicle graphics, storefront signs.
-    h1: More quote requests for sign and print shops.
-    sub: Your customers search for banners, yard signs, vehicle graphics and storefront signs, often with an event date coming up. I make sure they find you and can ask for a quote in one tap.
+    h1: More quote requests for San Antonio sign and print shops.
+    sub: Sign and print buyers search by product and deadline, not by shop name. "Vinyl banner San Antonio," "yard signs fast," "vehicle wrap near me," usually with an event two weeks out. I make sure your shop shows up for the products you actually run, that your profile looks like a working shop, and that asking for a quote takes one tap and five fields.
     searches:
-      - custom banners near me
-      - vehicle wraps San Antonio
-      - yard signs fast
+      - custom banners san antonio
+      - yard signs near me
+      - vehicle wraps san antonio
+      - storefront sign company
+      - same day banner printing
+      - trade show banner stand
+      - real estate signs san antonio
+      - sign shop near me open now
+    breaks:
+      - title: 'The profile says "Print shop" and nothing else'
+        body: Your main category is right, but there's no product list, no photos of actual signs, and the services field is empty. Google can't match you to "vehicle wraps" if the word isn't on the profile.
+      - title: Quotes take a phone call
+        body: A buyer with a deadline wants to send a size, a quantity and a due date at 10pm. If the only option is "Call us," they send the request to the shop that has a form.
+      - title: Reviews come from friends, not customers
+        body: Eight reviews over four years, most from people you know. Corporate buyers read reviews for proof you deliver on time, and they look at the dates.
     fixes:
-      - A Google profile that lists your real products.
-      - A page for your top product.
-      - A quote form that asks for size, quantity and due date.
-      - Reviews after every order.
+      - step: get-found
+        body: Products and services on your profile named the way buyers search (banners, yard signs, vehicle graphics, storefront signs, trade show displays), 15 or more photos of installed work, and a review ask that goes out with every invoice.
+      - step: get-chosen
+        body: A page per top product with sizes, turnaround and a 5-field quote form that asks for size, quantity and the date you need it. Your homepage first line becomes "Signs, banners and vehicle graphics in San Antonio," not "Welcome."
+      - step: keep-ranking
+        body: Monthly posts from install photos you text me, review replies, and a new product page each quarter for the product you want more of.
+    example:
+      rows:
+        - { label: Quote requests from the site, before: "2 a month, by phone", after: "11 a month, 8 by form" }
+        - { label: Google reviews, before: "8, last one 14 months ago", after: "23, 3 in the last 30 days" }
+        - { label: Map rank for "vehicle wraps san antonio", before: "Not in the top 20", after: "#6 from the shop, #11 across town" }
+        - { label: Profile calls and direction requests, before: "19 a month", after: "41 a month" }
+      note: Numbers like these come from fixing the product list, adding a quote form and asking for reviews on every job. Yours depend on your starting point, which is what the audit shows.
     proof: Case study in progress.
-    addon: { name: Lead Pipelines, body: "Quote follow-up that runs in the tools you already use.", href: "/offers" }
 
   - slug: roofing
     flag: ""
-    indexed: false
+    indexed: true
     name: Roofing companies
     tile: Repairs, replacements, storm inspections.
-    h1: More inspection requests for roofing companies.
-    sub: Homeowners compare roofers on reviews and photos. I make sure yours are current and that requesting an inspection is easy.
-    searches: []
+    h1: More inspection requests for San Antonio roofers.
+    sub: Homeowners compare roofers on reviews, photos and whether anyone answers the phone, usually the week after a hail storm when every roofer in Bexar County is busy. I set your Google, Bing and Apple profiles up to show for repair and replacement searches year-round, keep your reviews and photos current, and make requesting an inspection a one-tap job.
+    searches:
+      - roof repair san antonio
+      - roofing companies near me
+      - roof replacement cost san antonio
+      - hail damage roof inspection
+      - emergency roof repair
+      - metal roofing san antonio
+      - roof leak repair near me
+      - free roof inspection san antonio
+    breaks:
+      - title: '"Contractor" as the main category'
+        body: Half the roofers I audit are listed as "Contractor" or "Construction company." That puts you in a crowd of thousands and out of the running for "roof repair" searches. "Roofing contractor" is the category, and the services list needs repair, replacement, inspection and the materials you install.
+      - title: Storm-season reviews, then silence
+        body: Twenty reviews from last April and nothing since. Google weighs recent reviews, and homeowners look at dates. A review ask that goes out after every job, not just the big ones, keeps the count moving in slow months.
+      - title: Photos of trucks instead of roofs
+        body: Stock photos, logo graphics and a crew shot from 2021. Homeowners want to see finished roofs in their neighborhood. Before-and-after photos, geotagged where you took them, do more than any paragraph.
     fixes:
-      - Photos of real jobs.
-      - Steady reviews.
-      - A page for your top service (repair, replacement or inspection).
-      - A short inspection request form.
+      - step: get-found
+        body: Category and services corrected, a service area that matches where you actually run crews (not all of Texas), 15 or more job photos, Bing and Apple claimed, and a review ask sent from the invoicing tool you already use.
+      - step: get-chosen
+        body: Pages for repair, replacement and inspection written the way homeowners search, with your materials, your warranty and your financing in plain words, and a 5-field inspection request form at the top of every page.
+      - step: keep-ranking
+        body: "Monthly posts from job photos, review replies within 2 business days (including the one-star from a price shopper), listings checked, and a seasonal page each quarter: hail, wind, insurance claims."
+    example:
+      rows:
+        - { label: Inspection requests from the site, before: "4 a month", after: "14 a month" }
+        - { label: Google reviews, before: "31, 2 in the last 6 months", after: "52, 9 in the last 60 days" }
+        - { label: Map rank for "roof repair san antonio", before: "#14", after: "#4 from the office, #7 from Stone Oak" }
+        - { label: Profile calls, before: "27 a month", after: "58 a month" }
+      note: Roofing is competitive in San Antonio, so a thin profile loses fastest and a fixed one gains fastest. Your starting numbers decide the pace, and the audit shows them.
+    proof: ""
+
+  - slug: plumbing
+    flag: ""
+    indexed: true
+    name: Plumbers
+    tile: Repairs, water heaters, drains, repipes.
+    h1: More calls for San Antonio plumbers, including the 7am ones.
+    sub: Plumbing searches are urgent and local. "Plumber near me," "water heater repair," "slab leak," typed on a phone by someone standing in water. The first profile that shows up, answers and looks trustworthy gets the call. I make that profile yours, on Google, Bing and Apple, and I make sure the call button is the first thing on your site.
+    searches:
+      - plumber near me
+      - emergency plumber san antonio
+      - water heater repair san antonio
+      - slab leak repair
+      - drain cleaning near me
+      - tankless water heater installation
+      - repipe san antonio
+      - 24 hour plumber
+    breaks:
+      - title: Hours say closed when you're open
+        body: Emergency calls come at 6am and 10pm. If the profile says "Closed," Google tells the searcher so and shows the competitor who's "Open now." Hours, holiday hours and the "24/7" attribute have to match reality.
+      - title: Three phone numbers across the web
+        body: The old office line on Yelp, a tracking number on a directory, your cell on Facebook. Mismatched name, address and phone is one of the most common reasons a plumber's profile stalls below the map pack.
+      - title: Leads bought instead of earned
+        body: Angi, Thumbtack and Local Services Ads send the same lead to three plumbers and charge all of you. A profile that ranks on its own sends the call only to you, for free, every month after it's fixed.
+    fixes:
+      - step: get-found
+        body: Category and services set for the jobs you want (water heaters, repipes, drains, not just "plumber"), accurate hours and the emergency attribute, one phone number across the 10 listings that matter, and a review ask tied to every closed job.
+      - step: get-chosen
+        body: Pages for your three best services, pricing ranges where you can say them, a tap-to-call bar on mobile, and a short form for the non-emergency jobs (remodels, repipes) that deserve a quote.
+      - step: keep-ranking
+        body: Monthly posts and review replies, listings watched so the old number never comes back, and a new page each quarter for a service you'd like more of.
+    example:
+      rows:
+        - { label: Profile calls, before: "44 a month", after: "97 a month" }
+        - { label: Google reviews, before: "61, rating 4.3", after: "118, rating 4.6" }
+        - { label: Map rank for "water heater repair san antonio", before: "#9", after: "#2" }
+        - { label: Paid leads needed to fill the schedule, before: "About 30 a month", after: "About 10 a month" }
+      note: Plumbers usually have more reviews than other trades and still lose to mismatched listings and wrong hours. Those are fast fixes, which is why the first 30 days often move the most.
+    proof: ""
+
+  - slug: electrical
+    flag: ""
+    indexed: true
+    name: Electricians
+    tile: Panels, EV chargers, generators, troubleshooting.
+    h1: More calls for San Antonio electricians, for the jobs you actually want.
+    sub: Electrical searches split in two. Emergencies ("electrician near me," "breaker keeps tripping") and planned work with real money in it ("panel upgrade cost," "EV charger installation," "whole house generator"). Most electricians' profiles only catch the first kind. I set yours up to show for both, with pages that answer the planned-work questions before the homeowner picks up the phone.
+    searches:
+      - electrician near me
+      - panel upgrade san antonio
+      - ev charger installation san antonio
+      - whole house generator installation
+      - electrician for ceiling fan installation
+      - breaker keeps tripping
+      - licensed electrician san antonio
+      - commercial electrician near me
+    breaks:
+      - title: 'Services say "Electrical" and stop'
+        body: Panel upgrades, EV chargers, generators, lighting, commercial work. If they aren't listed as services on the profile and named on the site, Google has no reason to show you for them, and those are the jobs with margin.
+      - title: No answer to the price question
+        body: A homeowner searching "panel upgrade cost" wants a range. The electrician who publishes "$2,500 to $4,500 depending on amperage and permit" gets the call over the one who says "Call for a quote," even when the final number is the same.
+      - title: Proof of license is buried
+        body: Homeowners and property managers check for the state license number and insurance. If it's not on the profile and the site, you look like the unlicensed guy on Nextdoor, even though you're not.
+    fixes:
+      - step: get-found
+        body: Every service you want listed on the profile with a short description, license number and insurance stated, residential and commercial separated if you do both, 15 or more photos of panels and installs, and a review ask after every job.
+      - step: get-chosen
+        body: Pages for panel upgrades, EV chargers and generators with price ranges, what affects them, and how long the job takes. One-tap calling for emergencies and a 5-field form for planned work.
+      - step: keep-ranking
+        body: Monthly posts from install photos, review replies, listings checked, and a page a quarter for the next service you want more of (lighting, surge protection, commercial).
+    example:
+      rows:
+        - { label: Planned-work quote requests, before: "3 a month", after: "12 a month" }
+        - { label: Google reviews, before: "27, 1 in the last 6 months", after: "49, 7 in the last 60 days" }
+        - { label: Map rank for "ev charger installation san antonio", before: "Not in the top 20", after: "#3" }
+        - { label: Profile calls, before: "22 a month", after: "46 a month" }
+      note: The big change for electricians is usually mix, not just volume. Showing up for planned-work searches brings quote requests worth four figures instead of only trip-charge calls.
+    proof: ""
+
+  - slug: remodeling
+    flag: ""
+    indexed: true
+    name: Remodelers and general contractors
+    tile: Kitchens, baths, additions, whole-home remodels.
+    h1: More of the right remodel inquiries for San Antonio contractors.
+    sub: Remodel buyers take weeks to decide, read everything, and compare three or four contractors on photos and reviews before they ever call. Your profile and your website are the interview. I set them up to show your real work, answer the budget question early, and route the right inquiries to a short form instead of a voicemail.
+    searches:
+      - kitchen remodel san antonio
+      - bathroom remodel contractors near me
+      - home addition contractor san antonio
+      - general contractor san antonio
+      - whole house remodel cost
+      - remodeling companies san antonio reviews
+      - garage conversion san antonio
+      - outdoor kitchen contractor
+    breaks:
+      - title: One profile, every service
+        body: Kitchens, baths, roofs, fences and "handyman services" all on one profile with "General contractor" as the category. Google can't tell what you're best at, and neither can the homeowner. Pick the two or three you want and lead with them.
+      - title: Photos without stories
+        body: Forty photos of finished kitchens and no context. A before shot, an after shot and one line ("1960s galley kitchen in Alamo Heights, 6 weeks") does more than forty afters. Reviews that mention the project type do the same job.
+      - title: No budget signal
+        body: "\"Every project is different\" is true and unhelpful. A page that says \"Most of our kitchen remodels run $45,000 to $90,000\" filters out the $8,000 budgets before they take an hour of your time, and reassures the right ones that they can afford you."
+    fixes:
+      - step: get-found
+        body: Category and services narrowed to what you want more of, before-and-after photo pairs with neighborhoods and timelines, Bing and Apple claimed, listings cleaned, and a review ask at project close that prompts for the project type.
+      - step: get-chosen
+        body: Pages for kitchens, baths and additions with budget ranges, your process from design to punch list, financing if you offer it, and a 5-field inquiry form that asks for project type, rough budget and timing.
+      - step: keep-ranking
+        body: Monthly posts built from project progress photos, review replies, listings checked, and a new project-type page each quarter.
+    example:
+      rows:
+        - { label: Inquiries from the site, before: "6 a month, half out of budget", after: "13 a month, 10 in budget" }
+        - { label: Google reviews, before: "19", after: "34, most naming the project type" }
+        - { label: Map rank for "kitchen remodel san antonio", before: "#12", after: "#5" }
+        - { label: Profile website clicks, before: "70 a month", after: "160 a month" }
+      note: For remodelers, fewer but better inquiries is the win. Budget ranges on the pages do most of that work.
+    proof: ""
+
+  - slug: landscaping-tree
+    flag: ""
+    indexed: true
+    name: Landscaping and tree service
+    tile: Tree removal, trimming, landscape installs, maintenance.
+    h1: More calls for San Antonio landscaping and tree service companies.
+    sub: Tree and landscape searches run on season and weather. "Tree removal near me" after a storm, "landscaping companies san antonio" in March, "oak wilt treatment" when the neighbor's tree goes. Most companies in this trade have a thin profile and a Facebook page, which means a fixed profile stands out fast. I set yours up to show for the jobs with margin and to keep earning reviews between seasons.
+    searches:
+      - tree removal san antonio
+      - tree trimming near me
+      - landscaping companies san antonio
+      - oak wilt treatment san antonio
+      - stump grinding near me
+      - landscape design san antonio
+      - sod installation san antonio
+      - emergency tree service
+    breaks:
+      - title: Tree service and landscaping on one thin profile
+        body: Two different buyers, two different categories, one profile that commits to neither. A tree service that also landscapes needs the primary category set for the higher-margin work and the other listed as a service, with photos of both.
+      - title: Reviews only after big jobs
+        body: A removal gets a review. Fifty maintenance visits don't. A review ask tied to the monthly invoice, not just the big ticket, keeps the count moving all year.
+      - title: 'Service area set to "San Antonio" and nothing else'
+        body: Your crews run to Boerne, Helotes and New Braunfels. If the service area doesn't say so, those searches go to someone who set it correctly, even if they're farther away.
+    fixes:
+      - step: get-found
+        body: Primary and secondary categories set on purpose, services listed by job (removal, trimming, stump grinding, oak wilt, installs, maintenance), a service area that matches your crews, 15 or more before-and-after photos, and a review ask on every invoice.
+      - step: get-chosen
+        body: Pages for tree removal, trimming and your best landscape service with price ranges and what affects them, a tap-to-call bar for storm calls, and a short form for installs and design work.
+      - step: keep-ranking
+        body: Seasonal posts (storm prep, oak wilt season, spring installs), review replies, listings checked, and a new service or area page each quarter.
+    example:
+      rows:
+        - { label: Profile calls, before: "18 a month", after: "47 a month" }
+        - { label: Google reviews, before: "12, last one 9 months ago", after: "38, 6 in the last 30 days" }
+        - { label: Map rank for "tree removal san antonio", before: "Not in the top 20", after: "#5 from the yard, #9 from Helotes" }
+        - { label: Direction requests, before: "6 a month", after: "19 a month" }
+      note: This trade has the thinnest profiles of the six, so the gap between a fixed profile and the competition is the widest. The audit shows how wide.
     proof: ""

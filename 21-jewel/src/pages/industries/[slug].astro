@@ -1,8 +1,13 @@
 ---
-// Industry pages from industries.yaml. A page is built only when its flag is on;
+// Industry pages from industries.yaml (Change 03 §6.2). A page is built only when its flag is on;
 // pages with indexed: false carry noindex and stay out of the sitemap.
 import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import FAQ from '../../components/FAQ.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
 import { doc, flagOn } from '../../lib/content';
+import { breadcrumbs, faqPage, serviceLd, speakablePage } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const [site, data] = await Promise.all([doc('site'), doc('industries')]);
@@ -12,58 +17,116 @@ export async function getStaticPaths() {
 }
 type Industry = Awaited<ReturnType<typeof doc<'industries'>>>['industries'][number];
 const { industry: ind } = Astro.props as { industry: Industry };
-const { labels } = await doc('industries');
+const [site, { labels }, faqs] = await Promise.all([doc('site'), doc('industries'), doc('faqs')]);
+const faq = site.flags.showFaq ? (faqs.pages[ind.slug] ?? []) : [];
+const path = `/industries/${ind.slug}`;
+const real = site.flags.realExamples;
+const jsonLd = [
+  serviceLd(site, { path, name: `Local search for ${ind.name.toLowerCase()}`, description: ind.sub, serviceType: 'Local search marketing' }),
+  speakablePage(site, path, ind.h1),
+  breadcrumbs(site, [{ name: labels.breadcrumb_root, path: '/#industries' }, { name: ind.name, path }]),
+  ...(faq.length ? [faqPage(faq)] : []),
+];
 ---
-<Base page={ind.slug} noindex={!ind.indexed}>
+<Base page={ind.slug} noindex={!ind.indexed} jsonLd={jsonLd}>
+  <Breadcrumbs trail={[{ name: labels.breadcrumb_root, path: '/#industries' }, { name: ind.name }]} />
   <div class="container page-head" data-industry={ind.slug}>
+    <p class="eyebrow">{labels.eyebrow}</p>
     <h1>{ind.h1}</h1>
-    <p class="lead">{ind.sub}</p>
+    <p class="lead answer-first">{ind.sub}</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href={labels.review_button.href} data-event="cta_click" data-prop-location={`industry-${ind.slug}`} data-prop-target={labels.review_button.href}>{labels.review_button.label}</a>
-      <a class="btn btn-ghost" href={labels.offers_link.href}>{labels.offers_link.label}</a>
+      <a class="btn btn-primary" href="/audit" data-event="cta_click" data-prop-location={`industry-${ind.slug}`} data-prop-target="/audit">{labels.cta_label}</a>
+      <a class="text-link" href={`tel:${site.brand.phone_href}`} data-event="call_click" data-prop-location={`industry-${ind.slug}`}>{labels.call_label} {site.brand.phone}</a>
     </div>
+    <TrustStrip trust={site.trust} />
   </div>
 
-  {ind.searches.length > 0 && (
-    <section class="section" aria-labelledby="searches-h">
-      <div class="container stack narrow">
-        <h2 id="searches-h">{labels.searches_heading}</h2>
-        <ul role="list" class="chips">{ind.searches.map((s) => <li>“{s}”</li>)}</ul>
-        <p class="small muted">{labels.searches_note}</p>
-      </div>
-    </section>
-  )}
+  <section class="section" aria-labelledby="searches-h">
+    <div class="container"><div class="stack narrow">
+      <h2 id="searches-h">{labels.searches_heading}</h2>
+      <ul role="list" class="chips">{ind.searches.map((s) => <li>“{s}”</li>)}</ul>
+      <p class="small muted">{labels.searches_note}</p>
+    </div></div>
+  </section>
 
-  <section class="section section-surface" aria-labelledby="fixes-h">
-    <div class="container stack narrow">
-      <h2 id="fixes-h">{labels.fixes_heading}</h2>
-      <ul class="list">{ind.fixes.map((f) => <li>{f}</li>)}</ul>
-      {ind.addon && <p class="addon"><strong>{labels.addon_label}:</strong> <a href={ind.addon.href}>{ind.addon.name}</a>. {ind.addon.body}</p>}
+  <section class="section section-surface" aria-labelledby="breaks-h">
+    <div class="container">
+      <h2 id="breaks-h" class="section-head">{labels.breaks_heading}</h2>
+      <ol role="list" class="grid carousel" tabindex="0" aria-labelledby="breaks-h">
+        {ind.breaks.map((b, i) => (
+          <li class="card stack">
+            <p class="n" aria-hidden="true">{i + 1}</p>
+            <h3><span class="visually-hidden">{i + 1}. </span>{b.title}</h3>
+            <p>{b.body}</p>
+          </li>
+        ))}
+      </ol>
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="fixes-h">
+    <div class="container">
+      <h2 id="fixes-h" class="section-head">{labels.fixes_heading}</h2>
+      <ol role="list" class="fixes">
+        {ind.fixes.map((f) => (
+          <li>
+            <a class="step" href={`/services/${f.step}`} data-event="cta_click" data-prop-location={`industry-${ind.slug}-fix`} data-prop-target={`/services/${f.step}`}>{labels.step_names[f.step]}</a>
+            <p>{f.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-surface" aria-labelledby="example-h">
+    <div class="container"><div class="stack narrow">
+      <h2 id="example-h">{labels.example_heading}</h2>
+      <p class="tag">{real ? labels.example_real_label : labels.example_label}</p>
+      <table class="example">
+        <thead><tr><th scope="col"><span class="visually-hidden">Measure</span></th><th scope="col">{labels.example_columns[0]}</th><th scope="col">{labels.example_columns[1]}</th></tr></thead>
+        <tbody>{ind.example.rows.map((r) => <tr><th scope="row">{r.label}</th><td>{r.before}</td><td>{r.after}</td></tr>)}</tbody>
+      </table>
+      <p class="small muted">{ind.example.note}</p>
+    </div></div>
   </section>
 
   {ind.proof && (
     <section class="section" aria-labelledby="proof-h">
-      <div class="container stack narrow">
+      <div class="container"><div class="stack narrow">
         <h2 id="proof-h">{labels.proof_heading}</h2>
         <p class="muted">{ind.proof}</p>
-      </div>
+      </div></div>
     </section>
   )}
 
-  <section class="section section-surface">
-    <div class="container cta">
-      <a class="btn btn-primary" href={labels.review_button.href} data-event="cta_click" data-prop-location={`industry-${ind.slug}-bottom`} data-prop-target={labels.review_button.href}>{labels.review_button.label}</a>
-    </div>
-  </section>
+  {faq.length > 0 && <FAQ heading={labels.faq_heading} items={faq} />}
+
+  <CtaBlock site={site} heading={labels.cta_label} body={labels.cta_note} label={labels.cta_label} callLabel={labels.call_label} location={`industry-${ind.slug}-bottom`} />
 </Base>
 
 <style>
+  .page-head { gap: var(--space-5); }
+  .page-head .eyebrow { margin-bottom: 0; }
+  .btn-row { align-items: center; gap: var(--space-3) var(--space-5); }
+  .text-link { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; }
   .narrow { max-width: 860px; gap: var(--space-4); }
   .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .chips li { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: var(--space-2) var(--space-4); font-weight: 500; }
-  .addon { margin-top: var(--space-3); }
-  .cta { display: flex; justify-content: center; }
+  .n {
+    font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--accent-text);
+    width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%; display: grid; place-items: center;
+  }
+  .fixes { display: grid; gap: var(--space-4); max-width: 860px; }
+  .fixes li { display: grid; gap: var(--space-2); padding: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); max-width: none; }
+  .fixes p { max-width: 70ch; }
+  .step { font-family: var(--font-display); font-weight: 600; font-size: var(--h3); color: var(--ink); text-decoration: none; }
+  .step:hover { color: var(--accent-text); }
+  .tag { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-text); }
+  .example { width: 100%; border-collapse: collapse; font-size: var(--small); }
+  .example th, .example td { text-align: left; padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .example thead th { font-size: var(--micro); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .example tbody th { font-weight: 600; width: 40%; }
+  .example td:last-child { font-weight: 600; color: var(--data); }
 </style>
 
 <script>

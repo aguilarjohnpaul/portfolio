@@ -246,18 +246,24 @@ const industries = defineCollection({
   loader: one('industries'),
   schema: z.object({
     labels: z.object({
-      searches_heading: text, searches_note: text, fixes_heading: text, proof_heading: text,
-      addon_label: text, offers_link: link, review_button: link,
+      eyebrow: text, searches_heading: text, searches_note: text, breaks_heading: text, fixes_heading: text,
+      example_heading: text, example_label: text, example_real_label: text, example_columns: z.array(text).length(2),
+      proof_heading: text, faq_heading: text, cta_label: text, cta_note: text, call_label: text, breadcrumb_root: text,
+      step_names: z.record(z.string(), text),
     }),
     industries: z.array(z.object({
       slug: z.string().regex(/^[a-z0-9-]+$/),
       flag: flagName,
       indexed: z.boolean(),
       name: text, tile: text, h1: text, sub: text,
-      searches: z.array(text),
-      fixes: z.array(text).min(1),
+      searches: z.array(text).min(4),
+      breaks: z.array(z.object({ title: text, body: text })).length(3),
+      fixes: z.array(z.object({ step: z.enum(['get-found', 'get-chosen', 'keep-ranking']), body: text })).length(3),
+      example: z.object({
+        rows: z.array(z.object({ label: text, before: text, after: text })).min(2).max(5),
+        note: text,
+      }),
       proof: z.string(),
-      addon: z.object({ name: text, body: text, href: text }).optional(),
     })),
   }),
 });

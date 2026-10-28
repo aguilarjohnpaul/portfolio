@@ -157,11 +157,23 @@ seo:
       title: "About JP · 21 Jewel Advisory"
       description: "Agency and analytics background. I do the work myself, use your existing tools and show you the numbers."
     sign-print:
-      title: "More quote requests for sign and print shops · 21 Jewel Advisory"
-      description: "Google profile, reviews and a quote-ready page for sign and print shops."
+      title: "Local search for San Antonio sign and print shops · 21 Jewel Advisory"
+      description: "Show up for banners, yard signs and vehicle wraps, get reviews after every order, and take quotes in 5 fields. Free audit, setups from $650."
+    plumbing:
+      title: "Local search for San Antonio plumbers · 21 Jewel Advisory"
+      description: "Right hours, one phone number everywhere, a profile that ranks for water heaters and emergencies. Cut paid leads. Free audit, setups from $650."
+    electrical:
+      title: "Local search for San Antonio electricians · 21 Jewel Advisory"
+      description: "Show up for panel upgrades, EV chargers and generators, not just emergencies. Pages with price ranges. Free audit, setups from $650."
+    remodeling:
+      title: "Local search for San Antonio remodelers · 21 Jewel Advisory"
+      description: "Fewer out-of-budget inquiries, more of the right ones. Before-and-after photos, budget ranges, a 5-field inquiry form. Free audit, setups from $650."
+    landscaping-tree:
+      title: "Local search for San Antonio tree service and landscaping · 21 Jewel Advisory"
+      description: "Show up for tree removal, trimming and oak wilt across your real service area, with reviews from every invoice. Free audit, setups from $650."
     roofing:
-      title: "More inspection requests for roofing companies · 21 Jewel Advisory"
-      description: "Photos, reviews and an easy inspection request for roofing companies."
+      title: "Local search for San Antonio roofers · 21 Jewel Advisory"
+      description: "The right category, steady reviews, real roof photos and a one-tap inspection request. Map pack in your service area within 90 days. Free audit."
     results:
       title: "Results · 21 Jewel Advisory"
       description: "Before-and-after numbers from local service businesses."
