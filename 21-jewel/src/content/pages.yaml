@@ -46,9 +46,9 @@ audit:
   errors:
     required: This one's needed.
     invalid_email: That email doesn't look right. Check it and try again.
-    verification_failed: "We couldn't confirm you're not a bot. Refresh the check below and try again."
-    list_unavailable: "I couldn't save your request just now. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
-    network: "Something went wrong sending your request. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
+    verification_failed: "The spam check didn't finish. If a checkbox appears above the button, tap it, then send again. Or call or text (737) 391-3041."
+    list_unavailable: "I couldn't save your request just now. Try again in a minute, or call or text (737) 391-3041."
+    network: "Something went wrong sending your request. Try again in a minute, or call or text (737) 391-3041."
 
 about:
   heading: "Hi, I'm JP. Texas born and raised."

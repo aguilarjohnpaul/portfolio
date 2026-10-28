@@ -51,6 +51,16 @@ export function initAuditForm() {
     submit.disabled = true;
     submit.textContent = submit.dataset.sending ?? label;
     let code = 'network';
+    // No token yet (the check is still running, needs a tap, or failed): don't send a request the server will reject.
+    const token = (await turnstile?.token()) ?? '';
+    if (!token) {
+      track('audit_error', { error: 'no_token', turnstile: turnstile?.error() || 'timeout' });
+      setErr('form', errors.verification_failed);
+      turnstile?.reset();
+      submit.disabled = false;
+      submit.textContent = label;
+      return;
+    }
     try {
       const res = await fetch('/api/audit', {
         method: 'POST',
@@ -61,7 +71,7 @@ export function initAuditForm() {
           situation: val('situation'), source: val('source'),
           page: location.pathname + location.search, utm: readUtm(),
           website_hp: val('website_hp'), heroVariant: heroVariant(),
-          turnstileToken: (await turnstile?.token()) ?? '',
+          turnstileToken: token,
         }),
       });
       const body = (await res.json().catch(() => ({}))) as { ok?: boolean; id?: string; error?: string; fields?: string[] };
