@@ -1,6 +1,6 @@
 # 21 Jewel website — project rules for Claude Code
 
-Read this file first, then `PHASE1_SPEC.md` (the build spec). The spec is the source of truth for scope, copy and behavior. If something in the spec is ambiguous, pick the simplest option that keeps Phase 2 and 3 possible, note it in `DECISIONS.md`, and keep going.
+Read this file first, then `docs/changes/CHANGE_03_local_search.md` (the current build spec, Oct 27, 2026). Change 03 wins wherever it disagrees with `PHASE1_SPEC.md` or Change 02; those two stay for history. The spec is the source of truth for scope, copy and behavior. If something in the spec is ambiguous, pick the simplest option that keeps Phase 2 and 3 possible, note it in `DECISIONS.md`, and keep going.
 
 ## What this is
 
