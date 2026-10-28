@@ -39,3 +39,8 @@ const redirects = join(dist, '_redirects');
 const extra = [`/thanks ${target} 301`, ...(site.flags.showFounding ? ['/founding /founding-clients 301'] : [])];
 writeFileSync(redirects, readFileSync(redirects, 'utf8').trimEnd() + '\n' + extra.join('\n') + '\n');
 console.log(`Redirects: /thanks → ${target}`);
+
+// Keep a committed copy of /content-seed.json so the content Sheet can set itself up before a deploy.
+import { copyFileSync, existsSync as exists } from 'node:fs';
+const seedSrc = join(dist, 'content-seed.json');
+if (exists(seedSrc)) copyFileSync(seedSrc, new URL('../docs/google-sheet-content/seed.json', import.meta.url));

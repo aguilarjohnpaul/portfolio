@@ -15,7 +15,10 @@ This is a second Sheet, separate from the leads Sheet (`docs/google-sheet-setup.
 
 1. Extensions → Apps Script. Delete what's there, paste all of `docs/google-sheet-content/Code.gs`, save.
 2. Project Settings (gear) → Script Properties → add `DEPLOY_HOOK_URL` (step 3 below). `PREVIEW_HOOK_URL` and `SITE_URL` are optional.
-3. Reload the Sheet. A **21J** menu appears. Run **21J → Set up tabs from site** and approve the permission prompts (Advanced → Go to project → Allow; it's your own script). The tabs fill themselves from the live site.
+3. In the Apps Script editor, pick **START_HERE** in the function dropdown (top bar, next to Debug) and click **Run**. Approve the permission prompts (Advanced → Go to project → Allow; it's your own script). The tabs fill themselves, from the live site if Change 03 is deployed, otherwise from the copy on GitHub.
+4. Go back to the Sheet tab and reload it. A **21J** menu appears next to Help.
+
+**If Run shows "unexpected error while creating the Cloud Platform project. Error code INTERNAL":** Google couldn't set up the script's hidden Cloud project for this account. Fixes, in order: (1) open the Sheet in a browser window signed into only this one Google account (an incognito window works) and run again; (2) sign in at console.cloud.google.com once as this account and accept the terms, then run again; (3) if the account is Google Workspace, an admin turns on Admin console → Apps → Additional Google services → Google Cloud Platform, and under Cloud Resource Manager API settings checks "Allow users to create projects"; (4) or create the Sheet under a different Google account where scripts already run (your 21jewelbrand Gmail) and share it with johnpaul@ as an editor. The site reads the Sheet by its link, so which account owns it doesn't matter.
 
 ## 3. Cloudflare
 

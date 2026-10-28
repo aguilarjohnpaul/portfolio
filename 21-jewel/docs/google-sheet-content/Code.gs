@@ -4,11 +4,14 @@
  * Paste this into the "21J Site Content" Sheet's Extensions → Apps Script editor (a different Sheet
  * from the leads one). Setup: docs/google-sheet-content-setup.md. Daily use: docs/how-to-edit-the-sheet.md.
  *
+ * FIRST TIME: pick START_HERE in the function dropdown above and click Run. It creates and fills
+ * every tab, then reload the Sheet to see the 21J menu. (Clicking Run on onOpen does nothing useful.)
+ *
  * Menu "21J":
  *   Publish site            → asks Cloudflare to rebuild production (live in about 2 minutes)
  *   Preview changes         → rebuilds the preview branch instead
  *   Check for problems      → lists rows the site would ignore, before you publish
- *   Set up tabs from site   → creates the tabs and fills them from https://21jeweladvisory.com/content-seed.json
+ *   Set up tabs from site   → creates the tabs and fills them (live site first, then the copy on GitHub)
  *   Refresh keys from site  → adds any new keys and updates the "default" column; never touches your values
  *
  * Script Properties (Project Settings → Script Properties):
@@ -18,6 +21,24 @@
  */
 
 var TABS = ['strings', 'offers', 'faqs', 'industries', 'testimonials', 'flags', 'guides'];
+// Where the tab layout comes from, in order. The live site's file exists once Change 03 is deployed;
+// until then the copy committed to GitHub is used.
+var SEED_FALLBACKS = [
+  'https://raw.githubusercontent.com/aguilarjohnpaul/portfolio/claude/21-jewel-advisory-concept-i3vpz5/21-jewel/docs/google-sheet-content/seed.json',
+  'https://raw.githubusercontent.com/aguilarjohnpaul/portfolio/claude/change-03-local-search/21-jewel/docs/google-sheet-content/seed.json',
+];
+
+/** Run this once from the editor (function dropdown → START_HERE → Run). Then reload the Sheet. */
+function START_HERE() {
+  setupTabs();
+  say_('Done. Close this tab and reload the Sheet: a "21J" menu appears next to Help.');
+}
+
+/** Shows a message as a dialog when run from the Sheet, or in the execution log when run from the editor. */
+function say_(msg, title) {
+  try { SpreadsheetApp.getUi().alert(title ? title + '\n\n' + msg : msg); }
+  catch (e) { Logger.log((title ? title + ': ' : '') + msg); try { SpreadsheetApp.getActive().toast(msg.slice(0, 200), '21J', 10); } catch (e2) {} }
+}
 var EDITABLE = { strings: 'value', offers: null, faqs: null, industries: null, testimonials: null, flags: 'on' };
 
 function onOpen() {
@@ -60,9 +81,8 @@ function previewSite() {
 
 function checkProblems() {
   var problems = problems_();
-  var ui = SpreadsheetApp.getUi();
-  if (!problems.length) ui.alert('No problems found. Everything here will apply on the next publish.');
-  else ui.alert(problems.length + ' row(s) the site will ignore', problems.join('\n'), ui.ButtonSet.OK);
+  if (!problems.length) say_('No problems found. Everything here will apply on the next publish.');
+  else say_(problems.join('\n'), problems.length + ' row(s) the site will ignore');
 }
 
 /** Rows the site would skip. Mirrors the checks in src/lib/overrides.ts. */
@@ -100,9 +120,17 @@ function problems_() {
 }
 
 function seed_() {
-  var res = UrlFetchApp.fetch(siteUrl_() + '/content-seed.json', { muteHttpExceptions: true });
-  if (res.getResponseCode() !== 200) throw new Error('Could not read ' + siteUrl_() + '/content-seed.json (' + res.getResponseCode() + ')');
-  return JSON.parse(res.getContentText());
+  var urls = [siteUrl_() + '/content-seed.json'].concat(SEED_FALLBACKS);
+  var tried = [];
+  for (var i = 0; i < urls.length; i++) {
+    var res = UrlFetchApp.fetch(urls[i], { muteHttpExceptions: true, followRedirects: true });
+    var text = res.getContentText();
+    if (res.getResponseCode() === 200 && text.charAt(0) === '{') {
+      try { var data = JSON.parse(text); if (data.columns && data.strings) return data; } catch (e) {}
+    }
+    tried.push(urls[i] + ' (' + res.getResponseCode() + ')');
+  }
+  throw new Error('Could not read the tab layout from any source:\n' + tried.join('\n'));
 }
 
 function sheet_(name, headers) {
@@ -152,7 +180,7 @@ function setupTabs() {
   });
   var first = ss.getSheetByName('Sheet1');
   if (first && ss.getSheets().length > 1 && first.getLastRow() === 0) ss.deleteSheet(first);
-  SpreadsheetApp.getUi().alert(made.length ? 'Created: ' + made.join(', ') + '\n\nEdit the "value" column (strings), prices (offers) or "on" (flags), then 21J → Publish site.' : 'All tabs already exist. Use "Refresh keys from site" to pick up new keys.');
+  say_(made.length ? 'Created: ' + made.join(', ') + '\n\nEdit the "value" column (strings), prices (offers) or "on" (flags), then 21J → Publish site.' : 'All tabs already exist. Use "Refresh keys from site" to pick up new keys.');
 }
 
 /** Add new keys and update the "default" column on strings; add new ids/slugs/flags elsewhere. Never overwrites your edits. */
@@ -197,5 +225,5 @@ function refreshKeys() {
     added++;
   });
   sheet_('testimonials', seed.columns.testimonials);
-  SpreadsheetApp.getUi().alert('Refreshed. ' + added + ' row(s) added, ' + updated + ' default(s) updated. Your values were not changed.');
+  say_('Refreshed. ' + added + ' row(s) added, ' + updated + ' default(s) updated. Your values were not changed.');
 }
