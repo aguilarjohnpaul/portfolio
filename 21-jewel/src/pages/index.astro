@@ -3,35 +3,35 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import PainList from '../components/PainList.astro';
 import StageCards from '../components/StageCards.astro';
-import YourPart from '../components/YourPart.astro';
 import OfferLadder from '../components/OfferLadder.astro';
-import PromiseStrip from '../components/PromiseStrip.astro';
+import IndustryTiles from '../components/IndustryTiles.astro';
 import MeasureBlock from '../components/MeasureBlock.astro';
 import FoundingBand from '../components/FoundingBand.astro';
 import ProofSlot from '../components/ProofSlot.astro';
 import AboutBlock from '../components/AboutBlock.astro';
+import LearnTeaser from '../components/LearnTeaser.astro';
 import FAQ from '../components/FAQ.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import { doc } from '../lib/content';
 import { faqPage, professionalService, website } from '../lib/schema';
 
-const [site, home, offers] = await Promise.all([doc('site'), doc('home'), doc('offers')]);
+const [site, home, offers, faqs] = await Promise.all([doc('site'), doc('home'), doc('offers'), doc('faqs')]);
 const { flags } = site;
-const homeFaq = offers.faq.filter((f) => f.home);
+const homeFaq = faqs.pages.home ?? [];
 // FAQ structured data only when the FAQ is visible.
-const jsonLd = [professionalService(site, offers), website(site), ...(flags.showFaq ? [faqPage(homeFaq)] : [])];
+const jsonLd = [professionalService(site, offers), website(site), ...(flags.showFaq && homeFaq.length ? [faqPage(homeFaq)] : [])];
 ---
 <Base page="home" jsonLd={jsonLd}>
-  <Hero hero={home.hero} example={home.example} test={site.heroTest} />
+  <Hero hero={home.hero} example={home.example} site={site} />
   <PainList pains={home.pains} />
   <StageCards how={home.how} />
-  <YourPart part={home.your_part} />
   <OfferLadder intro={home.offers} data={offers} />
-  <PromiseStrip promise={home.promise} />
+  <IndustryTiles intro={home.industries} />
   <MeasureBlock measure={home.measure} />
   {flags.showFounding && <FoundingBand founding={home.founding} site={site} />}
   <ProofSlot proof={home.proof} enabled={flags.showResults} />
   <AboutBlock about={home.about} />
-  {flags.showFaq && <FAQ heading={home.faq_heading} items={homeFaq} />}
-  <FinalCTA cta={home.final_cta} />
+  <LearnTeaser intro={home.learn} />
+  {flags.showFaq && homeFaq.length > 0 && <FAQ heading={faqs.heading} items={homeFaq} />}
+  <FinalCTA cta={home.final_cta} site={site} />
 </Base>

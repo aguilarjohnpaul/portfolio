@@ -2,14 +2,17 @@
 # Edit values here. Components read everything from this file.
 
 brand:
-  name: 21 Jewel
+  name: 21 Jewel                      # wordmark
+  legal_name: 21 Jewel Advisory       # schema, titles, footer; matches the Google Business Profile
   url: https://21jeweladvisory.com
   email: johnpaul@21jeweladvisory.com
+  phone: (737) 391-3041
+  phone_href: "+17373913041"
   location: San Antonio, TX
   founder: JP
-  tagline: Precise work. More calls.
+  tagline: Get found. Get chosen. Get the call.
   # One-liner used in structured data (Change 02 §1).
-  one_liner: "I help local service businesses get more calls from Google: a cleaner Google profile, steady reviews, and a website that turns visits into quote requests."
+  one_liner: "Local search for San Antonio service businesses. I set your business up to show up on Google, Bing and Maps and to get the call: profiles, listings, reviews and website pages, done by one person, month-to-month, with the numbers before and after."
   values:
     - Honest over impressive
     - Serve the person, not the project
@@ -20,15 +23,21 @@ links:
   cal: "https://cal.com/21jewel/20min"
   # Tally founding application form.
   tally: "https://tally.so/r/7XRqva"
+  # Public profiles for schema sameAs. Leave "" until live.
+  google_profile: ""
+  linkedin: ""
 
 # Feature flags. Flip to true to show a section or page. Nothing else needs to change.
 flags:
-  showFounding: false   # founding band, nav link, /founding-clients, /thanks/founding
-  showResults: false    # /results and the homepage proof slot
-  showHvac: false       # /industries/hvac and its footer link
-  showRoofing: false    # /industries/roofing and its footer link
-  showFaq: false        # FAQ on the homepage and /offers
-  showTerms: false      # /terms and its footer link (needs a lawyer review first)
+  showFounding: false      # founding band, nav link, /founding-clients, /thanks/founding
+  showResults: false       # /results and the homepage proof slot
+  showFaq: true            # FAQ blocks and their FAQPage schema
+  showTerms: false         # /terms and its footer link (needs a lawyer review first)
+  showAreas: false         # /areas/* (Change 03 §3.1). Needs entries with proof first.
+  showSpanish: false       # /es/* (Change 03 §3). Nothing built yet.
+  showClarity: false       # Microsoft Clarity (Change 03 §10). Needs a project id and a privacy line.
+  showScorecardLink: true  # scorecard link in the footer
+  realExamples: false      # industry worked examples labeled as real instead of "Example"
 
 founding:
   total: 5
@@ -48,35 +57,66 @@ nav:
   home_label: 21 Jewel home
   menu_open: Menu
   menu_close: Close
+  # Dropdown groups (desktop) and flat group labels (mobile menu).
+  groups:
+    - label: Services
+      links:
+        - { label: Get Found Setup, href: "/services/get-found" }
+        - { label: Get Chosen Setup, href: "/services/get-chosen" }
+        - { label: Keep Ranking, href: "/services/keep-ranking" }
+    - label: Industries
+      links:
+        - { label: Sign and print shops, href: "/industries/sign-print" }
+        - { label: Roofing, href: "/industries/roofing" }
+        - { label: Plumbing, href: "/industries/plumbing" }
+        - { label: Electrical, href: "/industries/electrical" }
+        - { label: Remodeling, href: "/industries/remodeling" }
+        - { label: Landscaping and tree service, href: "/industries/landscaping-tree" }
   links:
-    - { label: How it works, href: "/#how" }
-    - { label: Offers, href: "/offers" }
+    - { label: Pricing, href: "/pricing" }
+    - { label: Learn, href: "/learn" }
     - { label: About, href: "/about" }
-  # Added between Offers and About when flags.showFounding is true.
+  # Added before About when flags.showFounding is true.
   founding_link: { label: Founding clients, href: "/founding-clients" }
-  cta: { label: Free Website Review, href: "/review" }
-  # Shown in the header on phones narrower than 460px.
-  cta_short: Free review
+  cta: { label: Free Local Search Audit, href: "/audit" }
+  # Header button text on phones.
+  cta_short: Free audit
+  # Phone icon button in the header on phones.
+  phone_label: Call JP
+
+# Mobile sticky bar (Change 03 §3). Hidden on /audit and while a form is on screen.
+sticky:
+  call: (737) 391-3041
+  cta: { label: Free audit, href: "/audit" }
+
+# Trust strip under every primary call to action (Change 03 §2.3).
+trust:
+  label: What working with me looks like
+  items:
+    - I do the work myself.
+    - Month-to-month. No contracts.
+    - You own every login.
+    - No new software to pay for.
+    - San Antonio. I can drive to you.
 
 footer:
   who_heading: Who I help
   industries:
     - { label: Sign and print shops, href: "/industries/sign-print", flag: "" }
-    - { label: HVAC, href: "/industries/hvac", flag: showHvac }
-    - { label: Roofing, href: "/industries/roofing", flag: showRoofing }
+    - { label: Roofing, href: "/industries/roofing", flag: "" }
+    - { label: Plumbing, href: "/industries/plumbing", flag: "" }
+    - { label: Electrical, href: "/industries/electrical", flag: "" }
+    - { label: Remodeling, href: "/industries/remodeling", flag: "" }
+    - { label: Landscaping and tree service, href: "/industries/landscaping-tree", flag: "" }
   links_heading: More
   links:
-    - { label: Scorecard, href: "/scorecard", flag: "" }
-    - { label: Offers, href: "/offers", flag: "" }
-    - { label: For studios, href: "/studios", flag: "" }
+    - { label: Pricing, href: "/pricing", flag: "" }
+    - { label: Learn, href: "/learn", flag: "" }
+    - { label: About, href: "/about", flag: "" }
+    - { label: Scorecard, href: "/scorecard", flag: showScorecardLink }
     - { label: Privacy, href: "/privacy", flag: "" }
     - { label: Terms, href: "/terms", flag: showTerms }
-  bottom: "© {year} 21 Jewel. Independent. Not affiliated with Google."
-  theme_label: Theme
-  theme_options:
-    - { value: light, label: Light }
-    - { value: dark, label: Dark }
-    - { value: system, label: System }
+  bottom: "© {year} 21 Jewel Advisory. Independent. Not affiliated with Google."
 
 spots:
   open_label: "{n} of {total} spots open"
@@ -87,53 +127,71 @@ spots:
 seo:
   og_image: /og.png
   # Describes the share image (it shows hero variant A's headline).
-  og_image_alt: "21 Jewel: More calls from Google. No new software."
+  og_image_alt: "21 Jewel Advisory: When someone nearby searches for what you do, show up. Then get the call. (737) 391-3041"
   pages:
     home:
-      title: "21 Jewel · More calls from Google for local service businesses"
-      description: "I fix your Google profile, reviews and website so more searches turn into calls. San Antonio-based. Free Website Review."
-    review:
-      title: "Free Website Review · 21 Jewel"
-      description: "Get the top 3 things costing you calls, ranked, plus a checklist you keep. Free for local service businesses."
+      title: "Local search for San Antonio service businesses · 21 Jewel Advisory"
+      description: "Show up when San Antonio searches for what you do, on Google, Bing and Maps, and get the call. One person, month-to-month, you own every login. Free audit."
+    audit:
+      title: "Free Local Search Audit · San Antonio · 21 Jewel Advisory"
+      description: "A 10-minute video and a one-page scorecard: the top 3 things costing your business calls on Google, Bing and Maps, ranked. Free, in 5 business days."
     scorecard:
-      title: "Is Your Website Losing You Work? · 21 Jewel"
+      title: "Is Your Website Losing You Work? · 21 Jewel Advisory"
       description: "12 quick questions about your Google profile, website and follow-up. Get your score and biggest leaks in 3 minutes."
-    offers:
-      title: "Offers and prices · 21 Jewel"
-      description: "Free Website Review, Google Profile Tune-Up from $450, The 30-Day Fix from $1,250, Growth Advisor from $500/month."
+    pricing:
+      title: "Pricing · San Antonio local search · 21 Jewel Advisory"
+      description: "Free Local Search Audit, Get Found Setup from $650, Get Chosen Setup from $1,450, Keep Ranking $450/month. Month-to-month, you own every login."
+    service-get-found:
+      title: "Get Found Setup · Google, Bing and Apple profiles · 21 Jewel Advisory"
+      description: "Your Google Business Profile rebuilt, Bing and Apple claimed, 10 listings fixed and a review system set up in 10 business days. From $650, San Antonio."
+    service-get-chosen:
+      title: "Get Chosen Setup · website pages that get the call · 21 Jewel Advisory"
+      description: "Homepage and up to 3 service pages rewritten on your current platform, one-tap calling, a 5-field quote form and tracking. From $1,450 in about 3 weeks."
+    service-keep-ranking:
+      title: "Keep Ranking · month-to-month local search · 21 Jewel Advisory"
+      description: "4 profile posts, review asks and replies, listings checked, one page a quarter and a one-page report each month. $450/month, cancel any month."
     founding:
-      title: "Founding clients: The 30-Day Fix, free · 21 Jewel"
-      description: "5 spots for local service businesses. Free 30-Day Fix in exchange for sharing the results."
+      title: "Founding clients: Get Found Setup, free · 21 Jewel Advisory"
+      description: "5 spots for San Antonio service businesses. Free Get Found Setup in exchange for sharing the before-and-after numbers."
+    learn:
+      title: "Learn · local search guides for San Antonio owners · 21 Jewel Advisory"
+      description: "Plain guides on showing up on Google Maps, getting reviews, the 10 listings that matter, what leads really cost and what local SEO should cost. Written for owners."
     about:
-      title: "About JP · 21 Jewel"
+      title: "About JP · 21 Jewel Advisory"
       description: "Agency and analytics background. I do the work myself, use your existing tools and show you the numbers."
     sign-print:
-      title: "More quote requests for sign and print shops · 21 Jewel"
-      description: "Google profile, reviews and a quote-ready page for sign and print shops."
-    hvac:
-      title: "More calls from Google for HVAC companies · 21 Jewel"
-      description: "Google profile, reviews and one-tap calling for HVAC companies."
+      title: "Local search for San Antonio sign and print shops · 21 Jewel Advisory"
+      description: "Show up for banners, yard signs and vehicle wraps, get reviews after every order, and take quotes in 5 fields. Free audit, setups from $650."
+    plumbing:
+      title: "Local search for San Antonio plumbers · 21 Jewel Advisory"
+      description: "Right hours, one phone number everywhere, a profile that ranks for water heaters and emergencies. Cut paid leads. Free audit, setups from $650."
+    electrical:
+      title: "Local search for San Antonio electricians · 21 Jewel Advisory"
+      description: "Show up for panel upgrades, EV chargers and generators, not just emergencies. Pages with price ranges. Free audit, setups from $650."
+    remodeling:
+      title: "Local search for San Antonio remodelers · 21 Jewel Advisory"
+      description: "Fewer out-of-budget inquiries, more of the right ones. Before-and-after photos, budget ranges, a 5-field inquiry form. Free audit, setups from $650."
+    landscaping-tree:
+      title: "Tree and landscape local search, San Antonio · 21 Jewel Advisory"
+      description: "Show up for tree removal, trimming and oak wilt across your real service area, with reviews from every invoice. Free audit, setups from $650."
     roofing:
-      title: "More inspection requests for roofing companies · 21 Jewel"
-      description: "Photos, reviews and an easy inspection request for roofing companies."
+      title: "Local search for San Antonio roofers · 21 Jewel Advisory"
+      description: "The right category, steady reviews, real roof photos and a one-tap inspection request. Map pack in your service area within 90 days. Free audit."
     results:
-      title: "Results · 21 Jewel"
+      title: "Results · 21 Jewel Advisory"
       description: "Before-and-after numbers from local service businesses."
-    studios:
-      title: "White-label Strategy Sprint · 21 Jewel"
-      description: "For design studios of 2 to 10 people. Strategy delivered under your studio's name."
     privacy:
-      title: "Privacy · 21 Jewel"
+      title: "Privacy · 21 Jewel Advisory"
       description: "What this site collects, which services store it and how to ask for deletion."
     terms:
-      title: "Terms · 21 Jewel"
+      title: "Terms · 21 Jewel Advisory"
       description: "Plain-language terms for working with 21 Jewel."
-    thanks-review:
-      title: "Your review is on the way · 21 Jewel"
-      description: "Your free Website Review request is in."
+    thanks-audit:
+      title: "Your audit is on the way · 21 Jewel Advisory"
+      description: "Your free Local Search Audit request is in."
     thanks-founding:
-      title: "Thanks for applying · 21 Jewel"
+      title: "Thanks for applying · 21 Jewel Advisory"
       description: "Your founding client application is in."
     notfound:
-      title: "Page not found · 21 Jewel"
+      title: "Page not found · 21 Jewel Advisory"
       description: "That page doesn't exist."

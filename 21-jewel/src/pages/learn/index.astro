@@ -1,0 +1,38 @@
+---
+// The learn hub (Change 03 §6.3). Lists published guides, newest first. Noindex while empty.
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
+import { doc, guides } from '../../lib/content';
+import { breadcrumbs } from '../../lib/schema';
+const [site, hub, list] = await Promise.all([doc('site'), doc('learnHub'), guides()]);
+const jsonLd = [
+  breadcrumbs(site, [{ name: hub.heading, path: '/learn' }]),
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': new URL('/learn#page', site.brand.url).href, name: hub.heading, url: new URL('/learn', site.brand.url).href, isPartOf: { '@id': new URL('/#website', site.brand.url).href } },
+];
+---
+<Base page="learn" jsonLd={jsonLd} noindex={list.length === 0}>
+  <Breadcrumbs trail={[{ name: hub.heading }]} />
+  <div class="container page-head">
+    <h1>{hub.heading}</h1>
+    <p class="lead">{hub.intro}</p>
+  </div>
+  <section class="section">
+    <div class="container">
+      {list.length > 0 ? (
+        <ul role="list" class="grid">{list.map((e) => <GuideCard entry={e} labels={hub.labels} />)}</ul>
+      ) : (
+        <div class="stack empty">
+          <h2>{hub.empty.heading}</h2>
+          <p class="lead">{hub.empty.body}</p>
+        </div>
+      )}
+    </div>
+  </section>
+  <CtaBlock site={site} heading={hub.cta.heading} body={hub.cta.body} label={hub.cta.label} callLabel={hub.cta.call_label} location="learn-hub" />
+</Base>
+
+<style>
+  .empty { max-width: 60ch; }
+</style>

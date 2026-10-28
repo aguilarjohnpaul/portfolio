@@ -1,20 +1,21 @@
 ---
-import { fill, flagOn, type SiteData } from '../lib/content';
-import ThemeToggle from './ThemeToggle.astro';
+import { fill, flagOn, guides, type SiteData } from '../lib/content';
 interface Props { site: SiteData }
 const { site } = Astro.props;
 const { brand, footer, flags } = site;
 const industries = footer.industries.filter((l) => flagOn(flags, l.flag));
-const links = footer.links.filter((l) => flagOn(flags, l.flag));
+const hasGuides = (await guides()).length > 0;
+const links = footer.links.filter((l) => flagOn(flags, l.flag) && (l.href !== '/learn' || hasGuides));
 ---
 <footer class="site-footer">
   <div class="container inner">
     <div class="cols">
       <div class="col brand">
-        <p class="name">{brand.name}</p>
+        <p class="name">{brand.legal_name}</p>
         <p class="tagline">{brand.tagline}</p>
+        <p><a class="contact" href={`tel:${brand.phone_href}`} data-event="call_click" data-prop-location="footer">{brand.phone}</a></p>
+        <p><a class="contact" href={`mailto:${brand.email}`} data-event="email_click" data-prop-location="footer">{brand.email}</a></p>
         <p class="small muted">{brand.location}</p>
-        <p class="small"><a href={`mailto:${brand.email}`} data-event="email_click" data-prop-location="footer">{brand.email}</a></p>
       </div>
       <nav class="col" aria-labelledby="ft-who">
         <p class="col-h" id="ft-who">{footer.who_heading}</p>
@@ -27,7 +28,6 @@ const links = footer.links.filter((l) => flagOn(flags, l.flag));
     </div>
     <div class="bottom">
       <p class="small muted">{fill(footer.bottom, { year: new Date().getFullYear() })}</p>
-      <ThemeToggle footer={footer} />
     </div>
   </div>
 </footer>
@@ -43,5 +43,6 @@ const links = footer.links.filter((l) => flagOn(flags, l.flag));
   .col ul { display: grid; }
   .col li a { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--small); }
   .brand a { overflow-wrap: anywhere; }
+  .contact { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
   .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); border-top: 1px solid var(--line); padding-top: var(--space-5); }
 </style>

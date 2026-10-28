@@ -1,0 +1,21 @@
+---
+import Headshot from './Headshot.astro';
+interface Props { author: { name: string; role: string; line: string }; photo: string; by: string }
+const { author, photo, by } = Astro.props;
+---
+<aside class="author card" aria-label={`${by} ${author.name}`}>
+  <div class="pic"><Headshot photo={photo} alt={`${author.name}, ${author.role}`} /></div>
+  <div class="stack">
+    <p class="micro">{by}</p>
+    <p class="name">{author.name}, <span class="muted">{author.role}</span></p>
+    <p class="small muted">{author.line}</p>
+    <p class="small"><a href="/about">More about {author.name}</a></p>
+  </div>
+</aside>
+
+<style>
+  .author { display: grid; grid-template-columns: 72px 1fr; gap: var(--space-4); align-items: start; }
+  .pic :global(.photo), .pic :global(.monogram) { width: 72px; max-width: 72px; border-radius: 8px; }
+  .stack { gap: var(--space-1); }
+  .name { font-weight: 600; }
+</style>

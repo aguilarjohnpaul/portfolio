@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import OfferDetail from '../components/OfferDetail.astro';
+import AddOns from '../components/AddOns.astro';
+import FAQ from '../components/FAQ.astro';
+import { doc, ladder } from '../lib/content';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { breadcrumbs, faqPage, professionalService } from '../lib/schema';
+
+const [site, data, faqs] = await Promise.all([doc('site'), doc('offers'), doc('faqs')]);
+const faq = faqs.pages.pricing ?? [];
+const { showFaq, showFounding } = site.flags;
+---
+<Base page="pricing" jsonLd={[professionalService(site, data), ...(showFaq && faq.length ? [faqPage(faq)] : []), breadcrumbs(site, [{ name: data.page.heading, path: '/pricing' }])]}>
+  <Breadcrumbs trail={[{ name: data.page.heading }]} />
+  <div class="container page-head">
+    <h1>{data.page.heading}</h1>
+    <p class="lead">{data.page.intro}</p>
+  </div>
+  <section class="section">
+    <div class="container offers">
+      {ladder(data).map((o) => <OfferDetail offer={o} labels={data.page.labels} showFounding={showFounding} />)}
+      <AddOns heading={data.page.addons_heading} addons={data.addons} level="h2" />
+      <div class="card dont" id="how-i-measure">
+        <h2 class="h3">{data.page.measure.heading}</h2>
+        <p>{data.page.measure.body}</p>
+      </div>
+      <div class="card dont">
+        <h2 class="h3">{data.page.dont_do.heading}</h2>
+        <p>{data.page.dont_do.body}</p>
+      </div>
+    </div>
+  </section>
+  {showFaq && faq.length > 0 && <FAQ heading={faqs.heading} items={faq} />}
+  <CtaBlock site={site} heading="Not sure which step? Start with the free audit." label="Get my free Local Search Audit" callLabel="Or call" location="pricing-bottom" />
+</Base>
+
+<style>
+  .offers { display: grid; gap: var(--space-5); max-width: 960px; margin-inline: 0; }
+  .dont { display: grid; gap: var(--space-3); scroll-margin-top: 96px; }
+  .dont p { max-width: 70ch; }
+  .h3 { font-size: var(--h3); }
+</style>
+
+<script>
+  import { track } from '../lib/analytics';
+  // offer_view: fire once per offer when its section scrolls into view.
+  const seen = new Set<string>();
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const id = (e.target as HTMLElement).dataset.offerView!;
+      if (e.isIntersecting && !seen.has(id)) { seen.add(id); track('offer_view', { offer_id: id }); }
+    }
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[data-offer-view]').forEach((el) => io.observe(el));
+</script>

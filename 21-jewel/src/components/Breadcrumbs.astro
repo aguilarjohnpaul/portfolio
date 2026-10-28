@@ -1,0 +1,26 @@
+---
+// Visible breadcrumb trail. Pair it with schema.breadcrumbs() for the JSON-LD.
+interface Props { trail: { name: string; path?: string }[] }
+const { trail } = Astro.props;
+---
+<nav class="crumbs container" aria-label="Breadcrumb">
+  <ol role="list">
+    <li><a href="/">Home</a></li>
+    {trail.map((c, i) => (
+      <li aria-current={i === trail.length - 1 ? 'page' : undefined}>
+        {c.path && i < trail.length - 1 ? <a href={c.path}>{c.name}</a> : <span>{c.name}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .crumbs { padding-top: var(--space-5); }
+  ol { display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--small); color: var(--muted); }
+  li { max-width: none; display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; }
+  li a { display: inline-flex; align-items: center; min-height: 32px; padding-inline: 2px; }
+  li + li::before { content: '/'; color: var(--line); }
+  a { color: var(--muted); text-decoration: none; }
+  a:hover { color: var(--accent-text); text-decoration: underline; }
+  [aria-current] span { color: var(--ink); font-weight: 500; }
+</style>

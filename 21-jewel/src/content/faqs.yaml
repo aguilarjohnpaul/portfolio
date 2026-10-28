@@ -1,0 +1,145 @@
+# FAQ lists by page (Change 03 §8). Shown when site.yaml flags.showFaq is true, with FAQPage schema.
+# The content Sheet's "faqs" tab can replace any page's list (page, order, question, answer, active).
+# Page ids: home, pricing, audit, and one per service slug and industry slug.
+
+heading: Questions owners ask
+
+pages:
+  home:
+    - q: Do I have to do anything?
+      a: About 30 to 45 minutes in total. Add me as a manager on your Google profile, one short call, approve the words, and text me photos of your work. I do the rest.
+    - q: Do you need my passwords?
+      a: No. You add me as a manager on your Google profile and your website, and you can remove me any time. You own every login.
+    - q: Will I be number one on Google?
+      a: Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and that you see the numbers before and after.
+    - q: How will I know it worked?
+      a: Before I start, I save your calls, direction requests, website clicks, review count and map rank for your top searches. You see the same five numbers at 30, 60 and 90 days. Google only keeps about six months of that history, so I keep yours from day one.
+    - q: Is there a contract?
+      a: No. Setups are one-time projects. Keep Ranking is month-to-month, and you can cancel any month.
+  pricing:
+    - q: Do I need to start with the audit?
+      a: Yes, and it's free. It takes me about an hour and tells us both which step you actually need. Sometimes the answer is "fix these three things yourself."
+    - q: Why is the setup cheaper than what agencies charge?
+      a: Because it's a fixed scope done once, by one person, with no account manager or markup on top. The ongoing work is where I earn a living, and that's month-to-month, so I have to keep earning it.
+    - q: Can I cancel Keep Ranking?
+      a: Any month, with notice before the next billing date. There's no minimum. You keep every login and everything I built.
+    - q: Do you need my passwords?
+      a: No. Manager access on your Google profile and editor access on your website. Both can be removed by you in a minute.
+    - q: What website platforms do you work on?
+      a: Wix, Squarespace, WordPress, GoDaddy, Shopify and Google Sites. If yours isn't listed, ask. If you don't have a website yet, start with Get Found Setup and a partner can build a simple site while I write the words.
+    - q: Do you run ads or post on Facebook and Instagram for me?
+      a: No. I build the plan and the pages. Ongoing social posting, Google Ads and Local Services Ads go to vetted partners who quote and bill you directly.
+    - q: I already have a web person. Is that a problem?
+      a: No. I can make the changes myself, or hand your web person exactly what to change, page by page.
+    - q: Do you only work in San Antonio?
+      a: San Antonio and the surrounding counties first, because I can drive to you. Anywhere in Texas works by phone and screen share.
+    - q: Who owns the work?
+      a: You do. Your profile, your pages, your reviews and your numbers. When we're done, you remove my access.
+  audit:
+    - q: Is it really free?
+      a: Yes. It takes me about an hour, and it's how most of my clients start. There's no pitch inside the video, and the scorecard tells you how to fix things yourself if you'd rather.
+    - q: What do you do with my information?
+      a: I use it to do your audit and follow up about it, from my own email. It sits in a private spreadsheet. Reply "stop" to any email and I remove you.
+    - q: Do I have to buy anything?
+      a: No. About a third of the people I audit fix the top three things themselves. The rest ask what a setup would cost.
+    - q: What if I don't have a website?
+      a: Request the audit anyway. Most of what decides whether you get the call happens on your Google profile, and I'll tell you whether a website would change that for your trade.
+  get-found:
+    - q: Why does the main category matter so much?
+      a: Google uses it to decide which searches your profile can show up for. A roofer listed as "Contractor" competes with every contractor in the city and rarely shows for "roof repair." I set it to the service that earns you the most.
+    - q: Do I need Bing and Apple too?
+      a: Yes. Microsoft Edge and Windows search send a steady share of desktop searches to Bing, and every iPhone's default Maps and Siri use Apple Business Connect. They're free to claim and most competitors ignore them.
+    - q: Which listings are "the 10 that matter"?
+      a: Google, Bing, Apple, Yelp, Facebook, the Better Business Bureau, Nextdoor, and the three directories that carry the most weight for your trade. Hundreds of listings isn't the goal; one correct name, address and phone on the ones that feed the map is.
+    - q: How fast will I see a change?
+      a: Profile edits usually show within a few days. Map rank and calls move over 30 to 90 days. That's why the baseline is saved on day 0 and checked at 30.
+    - q: What if my business has no reviews yet?
+      a: The review link, QR code and ask script are built for exactly that. Most businesses see their first new reviews within the first two weeks of asking after every job.
+  get-chosen:
+    - q: Do you rebuild my website?
+      a: No. I rewrite and restructure it on the platform you already use. If the site needs a full rebuild, I introduce you to a partner who quotes it separately, and I write the words.
+    - q: Why only up to 3 service pages?
+      a: Because three well-written pages for the services that earn you the most beat ten thin ones. Extra pages are $350 each when you want them.
+    - q: Will this change how my site looks?
+      a: The words, the order of sections, the buttons and the form change. Colors, logo and layout stay unless they're getting in the way, and then I'll tell you.
+    - q: What's the 5-field quote form?
+      a: Name, phone, what you need, when you need it, and "How did you hear about us?" Fewer fields, more sends, and a source on every lead.
+    - q: Do I need Get Found first?
+      a: Usually. A good page with no profile sending people to it sits empty. If your profile is already in shape, I'll say so in the audit and we can start here.
+  keep-ranking:
+    - q: Why month-to-month?
+      a: Because you should be able to leave if the numbers don't justify it, and because that keeps me honest. Agencies want six-month contracts for a reason.
+    - q: What happens if I cancel?
+      a: Everything stays. Your profile, your pages, your reviews and the report history are yours. You remove my access and that's it.
+    - q: Can I pause for a slow season?
+      a: Yes. Tell me before the billing date and we pause. Posts and review replies stop; nothing is lost.
+    - q: Do you answer bad reviews too?
+      a: Yes, within 2 business days, in your voice, and you can approve the reply first if you'd like. A calm answer to a bad review wins more customers than ten unanswered good ones.
+    - q: What does the monthly report show?
+      a: Calls, direction requests and website clicks from your Google profile, your review count and rating, and your map rank for your top three searches from three spots in your service area, each next to last month and your day-0 baseline.
+  sign-print:
+    - q: My shop runs 40 products. Which ones go on the profile?
+      a: All of them as services, but the five that earn the most get photos, descriptions and their own page. Buyers search by product, so the product names have to be on the profile in their words, not yours.
+    - q: Can the quote form ask for size, quantity and due date?
+      a: Yes. That's the point of it. Five fields, one of them the date they need it, so you can triage rush jobs before you call back.
+    - q: We do a lot of trade work under NDA. Can I still show photos?
+      a: Show the work you have permission to show, and describe the rest by type ("event signage for a 2,000-person conference"). A review that mentions the deadline you hit does the rest.
+    - q: Do you work with shops that also do promotional products?
+      a: Yes. Promo goes on the profile as a service. If it's a big part of the business, it gets a page, and the audit will tell you whether it should.
+    - q: How fast will quote requests change?
+      a: The form change shows within days once the page is live. Map rank and new searchers take 30 to 90 days. That's why I save your numbers first.
+  roofing:
+    - q: Isn't roofing search in San Antonio already taken by the big companies?
+      a: The top three for "roof repair san antonio" are competitive. The map pack for your side of town, for "metal roofing," for "hail damage inspection," usually isn't. Most roofers with a correct category, steady reviews and real photos reach the map pack in their service area within 90 days.
+    - q: Can you help during storm season when we're slammed?
+      a: That's when the review ask and the photo posts matter most, and both run without you. You text photos from the roof, I do the rest.
+    - q: Do you handle insurance-claim content?
+      a: Yes, as part of the quarterly page in Keep Ranking or as an extra page. Plain language about what the inspection covers and how the claim process works, with no promises about approvals.
+    - q: We buy leads from a lead service. Should we stop?
+      a: Not on day one. Fix the profile first, watch the calls for 60 to 90 days, then cut the paid leads as your own calls replace them. The report shows you when.
+    - q: Do you work with storm chasers?
+      a: No. I work with roofers who have a San Antonio address, local reviews and crews that will be here next spring.
+  plumbing:
+    - q: We're open 24/7. Why doesn't Google show that?
+      a: Because the hours on the profile say otherwise, or the 24/7 attribute isn't set, or a directory with old hours is feeding Google. Fixing all three is part of Get Found Setup.
+    - q: Can you stop Angi and Thumbtack from calling us?
+      a: No, but I can make them less necessary. Most plumbers I work with cut paid leads by half or more within 90 days of a fixed profile, because their own calls go up.
+    - q: Our trucks have a different number than the website. Does that matter?
+      a: Yes. One number everywhere is the rule, or the listings disagree and your rank suffers. If you need tracking, we track clicks and sources, not swap numbers.
+    - q: We get a lot of one-star reviews from price complaints. Can you fix that?
+      a: I can't remove them. I can answer them calmly, in your voice, within 2 business days, and set up a review ask that brings in the happy customers who never thought to leave one. The average moves.
+    - q: Do you do commercial plumbing pages?
+      a: Yes. Commercial gets its own service on the profile and its own page if it's a real part of the business, with the property-manager questions answered.
+  electrical:
+    - q: Should I publish prices for panel upgrades?
+      a: Ranges, yes. "Most 200-amp panel upgrades run $2,500 to $4,500 depending on the panel, the permit and the meter" wins the call over "Call for a quote." You still quote the exact job.
+    - q: Do EV charger pages really bring work?
+      a: In San Antonio, yes. The searches are growing, the competition on them is thin, and the buyer has a budget. It's usually the first page I build for an electrician.
+    - q: We do residential and commercial. One profile or two?
+      a: One profile unless you have two addresses. Both listed as services, the primary category set for the one you want more of, and separate pages on the site so each buyer sees their own answers.
+    - q: Where does the license number go?
+      a: On the profile description, in the site footer, and on every service page near the call button. Property managers look for it before they call.
+    - q: What about generator work?
+      a: Same as EV chargers. A planned, high-ticket job with a buyer who searches first. It gets a page with ranges and lead times, and a form instead of a phone number.
+  remodeling:
+    - q: We don't publish prices. Do we have to?
+      a: Ranges, not prices. "Most of our kitchen remodels run $45,000 to $90,000" protects your time from the budgets that can't work and reassures the ones that can. You still quote each project.
+    - q: Our projects take months. How do reviews work?
+      a: Ask at the moment the client is happiest, usually the walkthrough, and prompt for the project type so the review says "kitchen" or "addition." A photo of the finished room with the review is worth two reviews without.
+    - q: Can you show before-and-after photos?
+      a: Yes, with the client's permission. Pairs with one line of context (neighborhood, scope, weeks) outrank galleries of afters, on the profile and on the site.
+    - q: Do you work with design-build firms?
+      a: Yes. The process page explains design-build in plain words, since most homeowners don't know the term, and the inquiry form asks whether they have plans yet.
+    - q: What if most of our work is referrals?
+      a: Good. Referred clients still search your name and read your reviews before they call. A thin profile loses referrals too. The audit shows what a referred client sees today.
+  landscaping-tree:
+    - q: Tree service or landscaping as the main category?
+      a: Whichever earns more per job and that you want more of, usually tree service. The other is listed as a service with its own photos and page. Splitting into two profiles only makes sense with two real locations.
+    - q: Can you help us get reviews from maintenance customers?
+      a: Yes. The ask goes out with the monthly invoice, not just after removals. That's where the steady reviews come from.
+    - q: Our crews go to Boerne and New Braunfels. Will we show up there?
+      a: The service area on the profile has to include them, and a page or a guide for each town helps once you have jobs there to show. Map rank in a town is strongest near your actual yard, so the plan is honest about that.
+    - q: Storm season floods us with calls. Can the site handle it?
+      a: The tap-to-call bar and a short "emergency tree service" page are built for that week. Posts and review replies keep running without you.
+    - q: Do you do oak wilt content?
+      a: Yes. It's one of the most searched tree topics in Bexar County and almost no company explains it plainly. A guide and a service page for it are a natural quarterly addition.

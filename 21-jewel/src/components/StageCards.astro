@@ -1,33 +1,44 @@
 ---
+// Get found. Get chosen. Get the call. (Change 03 §2, §5.4)
 import type { HomeData } from '../lib/content';
 interface Props { how: HomeData['how'] }
 const { how } = Astro.props;
+const { labels } = how;
 ---
 <section id="how" class="section" aria-labelledby="how-h">
   <div class="container">
     <div class="section-head">
       <p class="eyebrow">{how.eyebrow}</p>
       <h2 id="how-h">{how.heading}</h2>
+      <p class="lead">{how.intro}</p>
     </div>
     <ol role="list" class="grid carousel" tabindex="0" aria-labelledby="how-h">
       {how.steps.map((s, i) => (
         <li class="card stage">
           <p class="n" aria-hidden="true">{i + 1}</p>
           <h3><span class="visually-hidden">{i + 1}. </span>{s.name}</h3>
-          <p>{s.body}</p>
+          <dl>
+            <dt>{labels.means}</dt><dd>{s.means}</dd>
+            <dt>{labels.breaks}</dt><dd>{s.breaks}</dd>
+            <dt>{labels.fix}</dt><dd>{s.fix}</dd>
+          </dl>
+          <a class="more" href={s.link.href} data-event="cta_click" data-prop-location={`how-${i + 1}`} data-prop-target={s.link.href}>{s.link.label}</a>
         </li>
       ))}
     </ol>
-    <p class="framework">{how.framework}</p>
   </div>
 </section>
 
 <style>
-  .stage { display: grid; gap: var(--space-3); align-content: start; }
+  .stage { display: grid; gap: var(--space-3); align-content: start; grid-template-rows: auto auto 1fr auto; }
   .n {
     font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--accent-text);
     width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%;
     display: grid; place-items: center;
   }
-  .framework { margin-top: var(--space-5); font-family: var(--font-display); font-weight: 600; font-size: var(--h3); color: var(--accent-text); }
+  dl { display: grid; gap: var(--space-3); margin: 0; }
+  dt { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  dd { margin: 0; }
+  dt + dd { margin-top: calc(var(--space-2) * -1); }
+  .more { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
 </style>

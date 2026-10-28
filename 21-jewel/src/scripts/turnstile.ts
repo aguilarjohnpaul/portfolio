@@ -9,20 +9,23 @@ declare global {
   }
 }
 
-export interface TurnstileHandle { token: () => Promise<string>; reset: () => void }
+export interface TurnstileHandle { token: () => Promise<string>; reset: () => void; error: () => string }
 
 const SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__onTurnstile';
 
 export function loadTurnstile(el: HTMLElement): TurnstileHandle {
   let token = '';
+  let lastError = '';
   let id: string | undefined;
   const render = () => {
     id = window.turnstile!.render(el, {
       sitekey: el.dataset.sitekey,
       appearance: 'interaction-only',
-      callback: (t: string) => (token = t),
-      'expired-callback': () => (token = ''),
-      'error-callback': () => { token = ''; },
+      callback: (t: string) => { token = t; lastError = ''; },
+      'expired-callback': () => { token = ''; },
+      // Error codes are listed at developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/
+      // 110200 = this domain isn't in the widget's hostname list; 400020 = wrong site key.
+      'error-callback': (code: string) => { token = ''; lastError = String(code || 'unknown'); console.warn('[turnstile] error', lastError); return true; },
     });
   };
   if (window.turnstile) render();
@@ -40,6 +43,7 @@ export function loadTurnstile(el: HTMLElement): TurnstileHandle {
       for (let i = 0; !token && i < 40; i++) await new Promise((r) => setTimeout(r, 200));
       return token;
     },
-    reset: () => { token = ''; if (window.turnstile && id) window.turnstile.reset(id); },
+    reset: () => { token = ''; lastError = ''; if (window.turnstile && id) window.turnstile.reset(id); },
+    error: () => lastError,
   };
 }

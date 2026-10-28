@@ -8,7 +8,7 @@ const t = (await doc('pages')).notfound;
     <h1>{t.heading}</h1>
     <p class="lead">{t.body}</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="/review" data-event="cta_click" data-prop-location="404" data-prop-target="/review">{t.review}</a>
+      <a class="btn btn-primary" href={t.cta.href} data-event="cta_click" data-prop-location="404" data-prop-target={t.cta.href}>{t.cta.label}</a>
       <a class="btn btn-ghost" href="/">{t.home}</a>
     </div>
   </div>

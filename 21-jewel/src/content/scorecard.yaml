@@ -20,7 +20,6 @@ industry:
   text: What kind of business do you run?
   options:
     - { label: Sign and print, value: sign-print }
-    - { label: HVAC, value: hvac }
     - { label: Roofing, value: roofing }
     - { label: Other trade, value: other-trade }
     - { label: Other service, value: other-service }
@@ -121,7 +120,7 @@ result:
   score_suffix: / 24
   fixes_label: Your top fixes
   perfect: No leaks found. Keep doing what you're doing.
-  review_button: { label: "Want me to check this for you? Get a free Website Review", href: "/review" }
+  review_button: { label: "Want me to check this for you? Get a free Local Search Audit", href: "/audit" }
   restart: Start over
 
 email:

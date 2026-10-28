@@ -1,0 +1,90 @@
+# Service pages (Change 03 §6.1). One template at /services/<slug>. Prices come from offers.yaml by offer id.
+# FAQs come from faqs.yaml under the same slug. The content Sheet's "strings" tab can edit any text here.
+
+labels:
+  get_heading: What you get
+  how_heading: How it works
+  your_time: Your part
+  price_heading: What it costs
+  not_for_heading: Who it's not for
+  faq_heading: Questions owners ask
+  cta_label: Get my free Local Search Audit
+  cta_note: The audit comes first either way. It tells us whether this is the right step.
+  call_label: Or call
+  breadcrumb_root: Services
+
+services:
+  - slug: get-found
+    offer: get-found
+    nav_label: Get Found Setup
+    h1: Get found when San Antonio searches for what you do.
+    intro: Get Found Setup rebuilds how your business shows up on Google, Bing and Apple Maps and fixes the 10 listings that feed them, in 10 business days for $650. About 30 minutes of your time. It is the first paid step for almost every business I audit, because a thin or wrong profile hides good work.
+    get:
+      - Your Google Business Profile rebuilt around your best jobs. The right main category (the single biggest setting on the profile), every service listed, accurate hours, a service area that matches where you actually work, 15 or more real photos, Q&A and products.
+      - Bing Places and Apple Business Connect claimed, matched and filled, so Edge, Siri and iPhone Maps searches reach the same business Google does.
+      - The 10 listings that feed the map results set to one name, address and phone. Three versions of your phone number across the web is a common reason a profile stalls.
+      - A review link, a QR code sized for invoices and truck magnets, and a text or email ask you can send in 10 seconds after a job.
+      - 3 months of profile posts, written and scheduled, so the profile looks alive while you're busy.
+      - Your five baseline numbers saved on day 0, so the 30-day check means something.
+    steps:
+      - name: Access and a short call
+        body: You add me as a manager on your Google profile (2 minutes, no passwords) and we talk for 20 minutes about your best jobs, your worst jobs and where you want more work.
+        your_time: 25 minutes
+      - name: I do the work
+        body: Profile, Bing, Apple, listings, review system, posts and baseline numbers, over about 10 business days. You approve the words before they go live.
+        your_time: 5 minutes to approve
+      - name: The 30-day check
+        body: You get the five numbers side by side with day 0, and a plain read on what moved. If Keep Ranking makes sense, that's when we talk about it.
+        your_time: A 20-minute call
+    price_note: Paid upfront. Half of the fee is credited against your first three months of Keep Ranking if it starts within 60 days.
+    not_for: Franchise locations where corporate controls the profile, businesses with no reviews and no way to earn them yet, and anyone who wants a ranking guaranteed. Nobody can honestly promise a map position. I promise the work gets done and you see the numbers.
+
+  - slug: get-chosen
+    offer: get-chosen
+    nav_label: Get Chosen Setup
+    h1: Get chosen when they land on your website.
+    intro: Get Chosen Setup rewrites your homepage and up to 3 service pages on the website platform you already use, adds one-tap calling and a 5-field quote form, and wires up tracking, in about 3 weeks for $1,450. It comes after Get Found, because a page only earns its keep once the profile is sending people to it.
+    get:
+      - Your homepage rewritten so the first line says what you do and where, with your best jobs, your reviews and a call button above the fold on a phone.
+      - Up to 3 service pages, one per service that earns you the most, written the way your customers search ("roof repair San Antonio," not "roofing solutions") and answering the questions they'd ask you on the phone.
+      - One-tap calling at the top of every page and a 5-field quote form with "How did you hear about us?" built in, so you can tie calls to jobs.
+      - The structured data that lets Google and the AI answers understand your business, services and area, checked with Google's own testing tool.
+      - Google Analytics and Search Console set up in your name, with calls, form sends and page views tracked.
+      - Speed and mobile fixes within what your platform allows, and a short list of anything it doesn't.
+    steps:
+      - name: Two short calls
+        body: One to go through what you sell and who buys it, one to read the drafts together. Both under 25 minutes.
+        your_time: 45 minutes total
+      - name: I write and build
+        body: Drafts in week one, your edits in week two, pages live in week three. Everything is built on your current platform, so nothing new to pay for and nothing to migrate.
+        your_time: Reading drafts
+      - name: Tracking and the 30-day check
+        body: Calls and form sends start counting the day the pages go live. At 30 days you see visits, calls and quote requests next to the month before.
+        your_time: A 20-minute call
+    price_note: 50% upfront, 50% when the pages are live. Half of the fee is credited against your first three months of Keep Ranking if it starts within 60 days.
+    not_for: Businesses that need a full rebuild (a vetted partner does that, and I write the words), owners who can't approve copy within a week, and anyone who wants the site to say "quality service you can trust." Specific beats impressive.
+
+  - slug: keep-ranking
+    offer: keep-ranking
+    nav_label: Keep Ranking
+    h1: Keep ranking without thinking about it.
+    intro: Keep Ranking is the month-to-month plan after a setup. For $450 a month I post to your profile 4 times, send your review asks and answer every review within 2 business days, check your listings, add one page a quarter, and send a one-page report with a 20-minute call. Cancel any month. About 30 minutes of your time.
+    get:
+      - 4 Google profile posts a month, written from the photos you text me from the field.
+      - Review asks sent after your jobs, and every review, good or bad, answered within 2 business days in your voice.
+      - Your listings on Google, Bing, Apple and the directories checked monthly and corrected when something drifts.
+      - One new page or guide every quarter for a service or a question your customers search for.
+      - A one-page report of your five numbers each month, with your history kept past Google's six-month limit.
+      - A 20-minute call to look at the numbers and decide the next move.
+    steps:
+      - name: Starts after a setup
+        body: Keep Ranking picks up the month after Get Found or Get Chosen, so there's a working profile and a baseline to compare against.
+        your_time: None
+      - name: Each month
+        body: You text me photos a few times a month. I handle posts, reviews and listings, and send the report on the same day each month.
+        your_time: 10 minutes of photos
+      - name: The call
+        body: 20 minutes on what moved, what didn't, and whether a new page, a new area or a partner makes sense. If the numbers say stop, I'll say so.
+        your_time: 20 minutes
+    price_note: Billed monthly in advance. Cancel any month with notice before the next billing date. Half of a setup fee is credited against your first three months when Keep Ranking starts within 60 days of the setup.
+    not_for: Businesses that haven't done a setup yet (start with the audit), owners who won't send photos, and anyone who wants ads managed. I build the plan; a partner runs the ads.

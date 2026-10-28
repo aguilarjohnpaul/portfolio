@@ -1,14 +1,14 @@
 # Founding client program (Change 02 §4.5). Hidden while site.yaml flags.showFounding is false.
 
-heading: "5 founding spots: The 30-Day Fix, free."
+heading: "5 founding spots: Get Found Setup, free."
 intro:
-  - I'm building my first case studies. For 5 local service businesses, I'll do The 30-Day Fix, normally starting at $1,250, at no cost.
+  - I'm building my first case studies. For 5 San Antonio service businesses, I'll do Get Found Setup, normally $650, at no cost.
 
 deal:
   heading: The deal
   get_label: What you get
   get:
-    - Everything in The 30-Day Fix.
+    - Everything in Get Found Setup.
     - Results checked at 30, 60 and 90 days.
   ask_label: What I ask in return
   ask:
@@ -36,4 +36,4 @@ apply:
   loading: Loading the application…
   fallback: "Trouble loading the form? Open the application in a new tab."
   iframe_title: Founding client application
-  small_print: Spots are filled in the order applications fit. If yours isn't a fit, I'll tell you why and send you a free Website Review instead.
+  small_print: Spots are filled in the order applications fit. If yours isn't a fit, I'll tell you why and send you a free Local Search Audit instead.

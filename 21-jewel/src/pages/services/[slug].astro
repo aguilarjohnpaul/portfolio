@@ -1,0 +1,117 @@
+---
+// Service pages from services.yaml (Change 03 §6.1). Price and terms come from the matching offer in offers.yaml.
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import { doc, priceLabel, type Offer } from '../../lib/content';
+import { breadcrumbs, faqPage, serviceLd, speakablePage } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const data = await doc('services');
+  return data.services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+type Service = Awaited<ReturnType<typeof doc<'services'>>>['services'][number];
+const { service: s } = Astro.props as { service: Service };
+const [site, { labels }, offers, faqs] = await Promise.all([doc('site'), doc('services'), doc('offers'), doc('faqs')]);
+const offer = offers.offers.find((o) => o.id === s.offer) as Offer | undefined;
+if (!offer) throw new Error(`services.yaml "${s.slug}" points at offer "${s.offer}", which isn't in offers.yaml`);
+const price = priceLabel(offer, offers.page.labels);
+const faq = site.flags.showFaq ? (faqs.pages[s.slug] ?? []) : [];
+const path = `/services/${s.slug}`;
+const jsonLd = [
+  serviceLd(site, { path, name: offer.name, description: offer.one_liner, offer }),
+  speakablePage(site, path, offer.name),
+  breadcrumbs(site, [{ name: labels.breadcrumb_root, path: '/pricing' }, { name: offer.name, path }]),
+  ...(faq.length ? [faqPage(faq)] : []),
+];
+---
+<Base page={`service-${s.slug}`} jsonLd={jsonLd}>
+  <Breadcrumbs trail={[{ name: labels.breadcrumb_root, path: '/pricing' }, { name: offer.name }]} />
+  <div class="container page-head">
+    <p class="eyebrow">{offer.type} · {price}</p>
+    <h1>{s.h1}</h1>
+    <p class="lead answer-first">{s.intro}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/audit" data-event="cta_click" data-prop-location={`service-${s.slug}`} data-prop-target="/audit">{labels.cta_label}</a>
+      <a class="text-link" href={`tel:${site.brand.phone_href}`} data-event="call_click" data-prop-location={`service-${s.slug}`}>{labels.call_label} {site.brand.phone}</a>
+    </div>
+    <TrustStrip trust={site.trust} />
+  </div>
+
+  <section class="section" aria-labelledby="get-h">
+    <div class="container two">
+      <div class="stack">
+        <h2 id="get-h">{labels.get_heading}</h2>
+        <ul class="list big">{s.get.map((g) => <li>{g}</li>)}</ul>
+      </div>
+      <aside class="card facts" aria-label={labels.price_heading}>
+        <p class="price">{price}</p>
+        <dl>
+          <div><dt>{offers.page.labels.for}</dt><dd>{offer.for}</dd></div>
+          {offer.your_time && <div><dt>{offers.page.labels.your_time}</dt><dd>{offer.your_time}</dd></div>}
+          {offer.timeline && <div><dt>{offers.page.labels.timeline}</dt><dd>{offer.timeline}</dd></div>}
+          {offer.terms && <div><dt>{offers.page.labels.terms}</dt><dd>{offer.terms}</dd></div>}
+          {offer.guarantee && <div><dt>{offers.page.labels.guarantee}</dt><dd>{offer.guarantee}</dd></div>}
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-surface" aria-labelledby="how-h">
+    <div class="container">
+      <h2 id="how-h" class="section-head">{labels.how_heading}</h2>
+      <ol role="list" class="grid carousel" tabindex="0" aria-labelledby="how-h">
+        {s.steps.map((st, i) => (
+          <li class="card step">
+            <p class="n" aria-hidden="true">{i + 1}</p>
+            <h3><span class="visually-hidden">{i + 1}. </span>{st.name}</h3>
+            <p>{st.body}</p>
+            <p class="small muted"><strong>{labels.your_time}:</strong> {st.your_time}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="price-h">
+    <div class="container two">
+      <div class="stack">
+        <h2 id="price-h">{labels.price_heading}</h2>
+        <p class="lead">{price}{offer.price_suffix ? '' : ''}. {s.price_note}</p>
+        <p><a class="more" href="/pricing" data-event="cta_click" data-prop-location={`service-${s.slug}`} data-prop-target="/pricing">See all pricing</a></p>
+      </div>
+      <div class="stack">
+        <h2>{labels.not_for_heading}</h2>
+        <p>{s.not_for}</p>
+      </div>
+    </div>
+  </section>
+
+  {faq.length > 0 && <FAQ heading={labels.faq_heading} items={faq} />}
+
+  <CtaBlock site={site} heading={labels.cta_label} body={labels.cta_note} label={labels.cta_label} callLabel={labels.call_label} location={`service-${s.slug}-bottom`} />
+</Base>
+
+<style>
+  .page-head { gap: var(--space-5); }
+  .page-head .eyebrow { margin-bottom: 0; }
+  .btn-row { align-items: center; gap: var(--space-3) var(--space-5); }
+  .text-link { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; }
+  .two { display: grid; gap: var(--space-7); align-items: start; }
+  .big li { font-size: var(--lead); line-height: 1.5; }
+  .facts { display: grid; gap: var(--space-4); align-content: start; }
+  .price { font-family: var(--font-display); font-weight: 600; font-size: var(--h2); line-height: 1.1; }
+  dl { display: grid; gap: var(--space-4); margin: 0; }
+  dt { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: var(--space-1); }
+  dd { margin: 0; }
+  .step { display: grid; gap: var(--space-3); align-content: start; }
+  .n {
+    font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--accent-text);
+    width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .more { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+  @media (min-width: 760px) { .two { grid-template-columns: 1.4fr 1fr; } }
+</style>

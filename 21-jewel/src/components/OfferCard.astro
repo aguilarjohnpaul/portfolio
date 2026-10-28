@@ -2,7 +2,7 @@
 import type { Offer } from '../lib/content';
 interface Props { offer: Offer; price: string; seeDetails: string }
 const { offer, price, seeDetails } = Astro.props;
-const cta = offer.button ?? { label: seeDetails, href: `/offers#${offer.id}` };
+const cta = offer.button ?? { label: seeDetails, href: `/pricing#${offer.id}` };
 ---
 <li class="card offer">
   <p class="price">{price}</p>

@@ -20,7 +20,6 @@
   --band-line: #3A5A4C;
   --focus: #9F5835;
   --error: #A3352B;
-  /* The Tally form doesn't follow dark mode, so its frame stays light in both themes. */
   --embed-bg: #FBF9F6;
   --embed-line: #D5D6CC;
   --embed-muted: #606D63;
@@ -51,6 +50,7 @@
   }
 }
 
+/* Dark mode was removed in Change 03 (Oct 27, 2026). The values are kept here in case it comes back.
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
@@ -88,3 +88,4 @@
   --focus: #E0AE8F;
   --error: #F0A196;
 }
+*/

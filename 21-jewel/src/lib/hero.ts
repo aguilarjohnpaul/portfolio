@@ -12,6 +12,3 @@ try{if(m){v=m[1];localStorage.setItem(k,v)}else{v=localStorage.getItem(k)}}catch
 if(v!=='a'&&v!=='b'){var r=new Uint8Array(1);crypto.getRandomValues(r);v=r[0]&1?'b':'a';try{localStorage.setItem(k,v)}catch(e){}}
 ${root}v})()`;
 }
-
-// Applies the saved theme before paint. "System" means no attribute.
-export const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;

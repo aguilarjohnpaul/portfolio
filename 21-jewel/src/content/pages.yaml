@@ -1,49 +1,54 @@
 # Copy for the smaller pages (Change 02 §4.3, §4.6, §4.8, §4.10–§4.12).
 
-review:
-  heading: Your free Website Review
-  intro: Tell me about your business. Within 5 business days, I'll send you the top 3 things costing you calls, ranked, and a checklist you keep.
+audit:
+  heading: Your free Local Search Audit
+  intro: Tell me about your business. Within 5 business days you get a 10-minute screen recording and a one-page scorecard with the top 3 things costing you calls, ranked, and how to fix each one.
+  get_heading: What you get
+  get:
+    - How you show up right now on Google, Bing and Apple Maps for the three searches your customers actually make.
+    - What your reviews say to someone choosing between you and the shop down the street.
+    - Whether your website gets the call on a phone, measured in taps.
+    - The top 3 fixes, ranked by the calls they're likely costing you. Yours to keep, no strings.
   how_heading: How it works
   steps:
-    - Fill out the form, which takes about 3 minutes.
-    - I review your website and Google profile from the outside.
-    - You get a short video or PDF. If you want, we can talk it through on a 20-minute call.
-  capacity: I take 5 reviews a week so each one gets real attention.
+    - Fill out the form. About 3 minutes.
+    - I look at your profiles, listings, reviews and website from the outside, the way a customer does.
+    - You get the video and the scorecard by email within 5 business days. If you want, we talk it through on a 20-minute call.
+  need_heading: What I'll need from you
+  need: Nothing. Everything I look at is public. No logins, no passwords, no access.
+  capacity: I take 5 audits a week so each one gets real attention.
+  phone_heading: Rather talk?
+  phone_label: Call or text
   form:
     heading: Tell me about your business
-    name: Name
-    email: Email
-    phone: Phone (optional)
     business: Business name
+    trade: What you do
+    trade_hint: For example, roofing, plumbing, sign shop, landscaping.
+    city: City or ZIP you work from
     website: Website (optional)
     website_placeholder: yourbusiness.com
     no_website: No website yet
-    city: City or area you serve
-    services: The 3 services that earn you the most
-    services_hint: For example, banners, yard signs, vehicle graphics.
-    source: How do most of your customers find you today?
-    sources:
-      - { value: word-of-mouth, label: Word of mouth }
-      - { value: google, label: Google }
-      - { value: repeat, label: Repeat customers }
-      - { value: ads, label: Ads }
-      - { value: not-sure, label: Not sure }
-    notes: Anything else I should know? (optional)
-    format: How would you like it?
-    formats:
-      - { value: video, label: Video }
-      - { value: pdf, label: PDF }
+    email: Best email
+    phone: Phone (optional, if you'd rather I text you)
+    situation: What's going on?
+    situations:
+      - { value: quiet, label: My phone's too quiet }
+      - { value: paying, label: I'm paying for leads and want my own }
+      - { value: maps, label: Not showing up on Maps }
+      - { value: reviews, label: Reviews are stale or bad }
+      - { value: check, label: Not sure, just check }
+    source: How did you hear about me? (optional)
     honeypot: Leave this field empty
-    submit: Send my request
+    submit: Send my audit request
     sending: Sending…
-    privacy_note: "I'll only use your details to do your review and follow up about it. Reply \"stop\" any time and I'll remove you."
+    privacy_note: "I'll email you the audit and nothing else unless you ask. Reply \"stop\" any time and I'll remove you."
     privacy_link: Privacy
   errors:
     required: This one's needed.
     invalid_email: That email doesn't look right. Check it and try again.
-    verification_failed: "We couldn't confirm you're not a bot. Refresh the check below and try again."
-    list_unavailable: "I couldn't save your request just now. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
-    network: "Something went wrong sending your request. Try again in a minute, or email me at johnpaul@21jeweladvisory.com."
+    verification_failed: "The spam check didn't finish. If a checkbox appears above the button, tap it, then send again. Or call or text (737) 391-3041."
+    list_unavailable: "I couldn't save your request just now. Try again in a minute, or call or text (737) 391-3041."
+    network: "Something went wrong sending your request. Try again in a minute, or call or text (737) 391-3041."
 
 about:
   heading: "Hi, I'm JP. Texas born and raised."
@@ -63,8 +68,9 @@ about:
     - { title: "Serve the person, not the project.", body: "Your time matters, so I keep your part to minutes." }
     - { title: Build things that outlast me., body: "You own everything, and it keeps working after we're done." }
   photo: ""
-  photo_alt: "[PLACEHOLDER: headshot]"
-  button: { label: Get my free Website Review, href: "/review" }
+  photo_alt: JP, founder of 21 Jewel Advisory
+  button: { label: Get my free Local Search Audit, href: "/audit" }
+  book_label: Book a 20-minute call
 
 results:
   heading: Results
@@ -77,8 +83,8 @@ privacy:
   updated_label: Last updated
   intro: This site collects as little as it needs. Here's what each service stores and why.
   services:
-    - name: The Website Review form
-      body: "If you request a free Website Review, your name, email, phone (if given), business details, website, the area you serve, your top services, how customers find you and any notes are saved in a private Google Sheet. I use them to do your review and follow up about it. You get a confirmation from my Gmail."
+    - name: The Local Search Audit form
+      body: "If you request a free Local Search Audit, your business name, what you do, your city, website, email, phone (if given), what's going on and how you heard about me are saved in a private Google Sheet, along with which homepage headline you saw and the link you arrived from. I use them to do your audit and to follow up about it two or three times from my own email. You get a confirmation from my Gmail."
     - name: Google Sheets and Gmail (scorecard email)
       body: "If you ask for your scorecard results, your email, optional first name, business type and score are saved in a private Google Sheet. I use them to send your results from Gmail and the occasional note. Reply \"stop\" to any email and I'll remove you."
     - name: Cal.com (bookings)
@@ -86,14 +92,17 @@ privacy:
     - name: Tally (applications)
       body: If you apply for a founding client spot, Tally stores your answers and emails them to me.
     - name: Google Analytics (analytics)
-      body: "Counts page views and button clicks, such as starting the scorecard or requesting a review, so I can see what's working. It sets first-party cookies with a random ID and uses an approximate location (city level). It does not get your answers, your email or anything you type into a form. It isn't used for ads. It doesn't load at all if your browser sends Global Privacy Control or Do Not Track. You can also block it with Google's opt-out add-on at tools.google.com/dlpage/gaoptout."
+      body: "Counts page views and button clicks, such as requesting an audit, tapping the phone number or how far down a page people read, so I can see what's working. It sets first-party cookies with a random ID and uses an approximate location (city level). It does not get your answers, your email or anything you type into a form. It isn't used for ads. It doesn't load at all if your browser sends Global Privacy Control or Do Not Track. You can also block it with Google's opt-out add-on at tools.google.com/dlpage/gaoptout."
+    - name: Microsoft Clarity (how pages are used)
+      flag: showClarity
+      body: "Records how visitors scroll and tap around the site, as anonymous heatmaps and session replays, so I can see which parts of a page people read and where they stop. Anything you type into a form is masked before it's recorded. It sets a first-party cookie with a random ID, and it doesn't load if your browser sends Global Privacy Control or Do Not Track."
     - name: Cloudflare Turnstile (spam protection)
-      body: Checks that the review and scorecard forms are filled in by a person. It does not use your answers.
+      body: Checks that the audit and scorecard forms are filled in by a person. It does not use your answers.
     - name: Cloudflare (hosting)
       body: Hosts this site and keeps standard server logs, such as IP addresses, for security.
     - name: Client work access
       body: "When we work together, manager access to your Google profile and website is used only for the agreed work and removed when the work ends. The performance numbers I save are stored privately and never shared without your permission."
-  storage: "Your browser also keeps your scorecard progress for this visit, your theme choice and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
+  storage: "Your browser also keeps your scorecard progress for this visit and which homepage headline you saw. None of that leaves your device except the headline version, which is sent with analytics events."
   deletion: "To see or delete anything I hold about you, email me at"
   deletion_suffix: and I'll take care of it within 30 days.
 
@@ -104,19 +113,20 @@ terms:
   intro: Plain-language terms for working with me.
   sections:
     - { title: What I provide, body: "The offer as described on the Offers page at the time you buy it." }
-    - { title: Payment, body: "Each offer's terms are on the Offers page. What you pay for one step is credited toward the next if you upgrade within 30 days. Growth Advisor has a 6-month minimum. If you cancel before month 4, the rest of The 30-Day Fix is due ($1,250 minus $250 for each month paid)." }
+    - { title: Payment, body: "Each offer's terms are on the Pricing page. Setups are paid as described there. Keep Ranking is billed monthly in advance with no minimum. Half of a setup fee is credited against your first three months of Keep Ranking when it starts within 60 days." }
     - { title: The guarantee, body: "If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is. That's a guarantee on the work getting built. There's no guarantee of rankings, calls, leads or revenue." }
     - { title: Your part, body: "Manager access, approvals and photos. If something on your side is delayed, the dates move with it." }
     - { title: Ownership, body: "You own your profile, pages, content and data." }
     - { title: Access, body: "I only use manager access, never your passwords. You remove my access at the end." }
     - { title: Partners, body: "Partner work is quoted and billed by the partner directly." }
-    - { title: Cancellation, body: "Project work is paid as described. Growth Advisor needs 30 days' notice after the minimum." }
+    - { title: Cancellation, body: "Project work is paid as described. Keep Ranking can be cancelled any month with notice before the next billing date." }
   contact: "Questions? Email me at"
 
-thanks_review:
-  heading: Got it. Your review is on the way.
-  body: I'll send it within 5 business days to the email you gave me. While you wait, the 3-minute scorecard shows where you stand.
-  link: { label: Take the scorecard, href: "/scorecard" }
+thanks_audit:
+  heading: Got it. Your audit is on the way.
+  body: I'll send the video and the scorecard within 5 business days to the email you gave me. If you'd rather talk it through live, grab a 20-minute slot and I'll walk you through it on the call.
+  book: { label: Book a 20-minute call, href: "" }
+  link: { label: Take the 3-minute scorecard while you wait, href: "/scorecard" }
 
 thanks_founding:
   heading: Thanks for applying.
@@ -125,6 +135,6 @@ thanks_founding:
 
 notfound:
   heading: This page isn't here.
-  body: But your free Website Review is.
-  review: Get my free Website Review
+  body: But your free Local Search Audit is.
+  cta: { label: Get my free Local Search Audit, href: "/audit" }
   home: Go home

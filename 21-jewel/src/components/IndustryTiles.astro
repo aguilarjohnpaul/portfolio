@@ -1,0 +1,45 @@
+---
+// Six industry tiles on the homepage (Change 03 §5.6). Reads the built industries from industries.yaml.
+import { doc, flagOn, type HomeData } from '../lib/content';
+interface Props { intro: HomeData['industries'] }
+const { intro } = Astro.props;
+const [site, data] = await Promise.all([doc('site'), doc('industries')]);
+const list = data.industries.filter((i) => flagOn(site.flags, i.flag));
+---
+{list.length > 0 && (
+  <section id="industries" class="section section-surface" aria-labelledby="ind-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{intro.eyebrow}</p>
+        <h2 id="ind-h">{intro.heading}</h2>
+        <p class="lead">{intro.intro}</p>
+      </div>
+      <ul role="list" class="tiles">
+        {list.map((i) => (
+          <li>
+            <a class="tile" href={`/industries/${i.slug}`} data-event="cta_click" data-prop-location="home-industries" data-prop-target={`/industries/${i.slug}`}>
+              <span class="name">{i.name}</span>
+              <span class="small muted">{i.tile}</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .tiles { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .tile {
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: var(--space-3); row-gap: var(--space-1);
+    align-items: center; min-height: 72px; padding: var(--space-4) var(--space-5);
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-card);
+    color: var(--ink); text-decoration: none;
+  }
+  .tile:hover { border-color: var(--accent); }
+  .tile:hover svg { color: var(--accent-text); }
+  .name { font-weight: 600; font-size: var(--lead); }
+  .tile svg { grid-row: 1 / span 2; color: var(--muted); }
+  .tile .small { max-width: none; }
+</style>

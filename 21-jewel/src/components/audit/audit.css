@@ -1,0 +1,29 @@
+/* Local Search Audit form. One column, labels above fields. Colors come from tokens.css. */
+.audit-form { display: grid; gap: var(--space-5); padding: var(--space-6); }
+.audit-form .h3 { font-size: var(--h3); line-height: 1.25; }
+.audit-form .fields { display: grid; gap: var(--space-4); }
+.audit-form .field { display: grid; gap: 6px; align-content: start; }
+.audit-form .field > label, .audit-form legend { font-weight: 600; font-size: var(--small); }
+.audit-form input[type="text"], .audit-form input[type="email"], .audit-form input[type="tel"] {
+  min-height: 48px; padding: var(--space-2) var(--space-3); width: 100%;
+  background: var(--bg); border: 1px solid var(--muted); border-radius: var(--radius-btn);
+}
+.audit-form [aria-invalid="true"] { border: 2px solid var(--error); }
+.audit-form .check { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; font-size: var(--small); cursor: pointer; }
+.audit-form .check input { width: 24px; height: 24px; accent-color: var(--btn-bg); }
+.audit-form .choices { border: 0; padding: 0; margin: 0; min-width: 0; }
+.audit-form legend { padding: 0; margin-bottom: 6px; }
+.audit-form .opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.audit-form .choice { position: relative; }
+.audit-form .choice input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.audit-form .choice span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-4);
+  border: 1px solid var(--line); border-radius: 99px; background: var(--bg); font-weight: 500; font-size: var(--small);
+}
+.audit-form .choice input:checked + span { background: var(--btn-bg); color: var(--btn-fg); border-color: var(--btn-bg); }
+.audit-form .choice input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+.audit-form .choices[aria-invalid="true"] .opts span { border-color: var(--error); }
+.audit-form .err { color: var(--error); font-size: var(--small); font-weight: 500; }
+.audit-form .err:empty { display: none; }
+.audit-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.audit-form .turnstile:empty { display: none; }

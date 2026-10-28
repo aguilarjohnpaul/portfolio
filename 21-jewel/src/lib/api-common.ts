@@ -1,4 +1,4 @@
-// Shared helpers for the Pages Functions (scorecard and Website Review). Server-only.
+// Shared helpers for the Pages Functions (scorecard and Local Search Audit). Server-only.
 import { kitClient, KitError } from './kit';
 import { sendToSheet, type Lead } from './sheet';
 

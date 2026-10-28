@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { readMinutes } from '../lib/content';
+interface Props { entry: CollectionEntry<'learn'>; labels: { guide: string; answer: string; minutes: string } }
+const { entry, labels } = Astro.props;
+const { data } = entry;
+const mins = readMinutes(entry.body ?? '');
+---
+<li class="card guide">
+  <p class="kind">{data.kind === 'guide' ? labels.guide : labels.answer} · {mins} {labels.minutes}</p>
+  <h3><a href={`/learn/${entry.id}`}>{data.title}</a></h3>
+  <p class="muted small">{data.description}</p>
+</li>
+
+<style>
+  .guide { display: grid; gap: var(--space-3); align-content: start; }
+  .kind { font-size: var(--micro); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-text); }
+  h3 { font-size: 20px; }
+  h3 a { color: var(--ink); text-decoration: none; }
+  h3 a:hover { color: var(--accent-text); text-decoration: underline; }
+  .small { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

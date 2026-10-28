@@ -17,6 +17,8 @@ body {
   overflow-x: clip;
 }
 main { flex: 1; }
+/* Room for the mobile sticky bar (StickyBar.astro) so it never covers the footer. */
+@media (max-width: 759.98px) { body.has-sticky { padding-bottom: calc(56px + env(safe-area-inset-bottom)); } }
 img, svg { display: block; max-width: 100%; }
 button, input, select, textarea { font: inherit; color: inherit; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
@@ -37,6 +39,8 @@ p, li { max-width: 60ch; }
 .muted { color: var(--muted); }
 
 a { color: var(--accent-text); text-underline-offset: 3px; }
+/* Inline links in small text keep a 24px tap height without changing the line box. */
+.micro a, .small a, p a { padding-block: 4px; margin-block: -4px; }
 a:hover { text-decoration-thickness: 2px; }
 
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }

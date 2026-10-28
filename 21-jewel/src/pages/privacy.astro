@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { doc } from '../lib/content';
+import { doc, flagOn } from '../lib/content';
 const [site, pages] = await Promise.all([doc('site'), doc('pages')]);
 const p = pages.privacy;
+const services = p.services.filter((s) => flagOn(site.flags, s.flag ?? ''));
 const updated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Chicago' });
 ---
 <Base page="privacy">
@@ -13,7 +14,7 @@ const updated = new Date().toLocaleDateString('en-US', { year: 'numeric', month:
   </div>
   <section class="section">
     <div class="container stack prose">
-      {p.services.map((s) => (
+      {services.map((s) => (
         <div class="stack item">
           <h2 class="h3">{s.name}</h2>
           <p>{s.body}</p>
