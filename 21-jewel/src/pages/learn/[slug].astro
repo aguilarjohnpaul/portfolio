@@ -32,7 +32,8 @@ const titleFor = (href: string) => {
 };
 const related = d.related.filter((href) => href !== path);
 const faq = site.flags.showFaq ? d.faqs : [];
-const seo = { title: `${d.title} · 21 Jewel Advisory`.slice(0, 120), description: d.description.slice(0, 160) };
+const short = d.seo_title ?? d.title;
+const seo = { title: short.length > 44 ? short : `${short} · 21 Jewel Advisory`, description: d.description.slice(0, 160) };
 const jsonLd = [
   articleLd(site, { path, title: d.title, description: d.description, published: d.published.toISOString(), updated: d.updated.toISOString(), author: hub.author }),
   breadcrumbs(site, [{ name: hub.heading, path: '/learn' }, { name: d.title, path }]),

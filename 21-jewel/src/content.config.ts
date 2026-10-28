@@ -5,7 +5,7 @@ import { glob } from 'astro/loaders';
 import type { Loader } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { parse } from 'yaml';
-import { printSummary, withOverrides } from './lib/sheet-overrides';
+import { printSummary, withGuideOverrides, withOverrides } from './lib/sheet-overrides';
 
 // Each YAML file is one document, loaded as a single entry with id "main".
 // The Google Sheet (Change 03 §8) overrides whitelisted values before the schema check,
@@ -117,7 +117,6 @@ const offers = defineCollection({
       price_from: z.string(),
       price_suffix: z.string().optional(),
       free: z.boolean().optional(),
-      studio_only: z.boolean().optional(),
       get: z.array(getItem),
       needs: z.string().optional(),
       your_time: z.string().optional(),
@@ -288,10 +287,25 @@ const learnHub = defineCollection({
 });
 
 // Guides and quick answers (Change 03 §6.3). draft: true never builds.
+// The Sheet's "guides" tab can change title, description and draft per slug; the body stays in the repo.
+const learnGlob = glob({ pattern: '**/*.md', base: './src/content/learn' });
+const learnLoader: Loader = {
+  name: 'learn-with-sheet',
+  load: async (ctx) => {
+    await learnGlob.load(ctx);
+    for (const entry of ctx.store.values()) {
+      const data = await withGuideOverrides(entry.id, { ...(entry.data as Record<string, unknown>) });
+      const parsed = await ctx.parseData({ id: entry.id, data, filePath: entry.filePath });
+      ctx.store.set({ ...entry, data: parsed, digest: ctx.generateDigest(parsed) });
+    }
+    printSummary(ctx.logger);
+  },
+};
 const learn = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/learn' }),
+  loader: learnLoader,
   schema: z.object({
     title: text,
+    seo_title: z.string().max(60).optional(),   // short browser/search title; falls back to title
     description: z.string().min(40),
     kind: z.enum(['guide', 'answer']),
     published: z.coerce.date(),

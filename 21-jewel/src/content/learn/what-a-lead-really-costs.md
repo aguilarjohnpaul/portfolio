@@ -1,10 +1,11 @@
 ---
 title: "What a lead really costs: Angi, Thumbtack and Yelp Ads vs. your own Google profile"
 description: "A paid lead for a San Antonio home-service business typically costs $20 to $100 before you've spoken to anyone, and the same lead is usually sold to two or three competitors. A call from your own Google profile costs the time it took to set the profile up. Here's how to work out your real cost per job on each, with the math."
+seo_title: "What a lead really costs: Angi, Thumbtack vs. Google"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/services/get-found", "/industries/plumbing", "/learn/what-local-seo-costs-in-san-antonio"]
 faqs:
   - q: Should I cancel Angi and Thumbtack today?

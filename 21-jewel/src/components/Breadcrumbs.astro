@@ -18,6 +18,7 @@ const { trail } = Astro.props;
   .crumbs { padding-top: var(--space-5); }
   ol { display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--small); color: var(--muted); }
   li { max-width: none; display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; }
+  li a { display: inline-flex; align-items: center; min-height: 32px; padding-inline: 2px; }
   li + li::before { content: '/'; color: var(--line); }
   a { color: var(--muted); text-decoration: none; }
   a:hover { color: var(--accent-text); text-decoration: underline; }

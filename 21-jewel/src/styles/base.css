@@ -39,6 +39,8 @@ p, li { max-width: 60ch; }
 .muted { color: var(--muted); }
 
 a { color: var(--accent-text); text-underline-offset: 3px; }
+/* Inline links in small text keep a 24px tap height without changing the line box. */
+.micro a, .small a, p a { padding-block: 4px; margin-block: -4px; }
 a:hover { text-decoration-thickness: 2px; }
 
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }

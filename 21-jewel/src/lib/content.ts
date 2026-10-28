@@ -57,18 +57,18 @@ export function spotsOpen(site: SiteData) {
   return Math.max(0, site.founding.total - site.founding.filled);
 }
 
-/** "Free", "Starting at $500/month" or "Pricing on request". */
+/** "Free", "From $450/month" or "Pricing on request". */
 export function priceLabel(offer: Offer, labels: OffersData['page']['labels']): string {
   if (offer.free) return 'Free';
   if (!offer.price_from.trim()) {
-    if (!offer.studio_only) warn(`offers.yaml "${offer.id}" has no price_from. Showing "${labels.on_request}".`);
+    warn(`offers.yaml "${offer.id}" has no price_from. Showing "${labels.on_request}".`);
     return labels.on_request;
   }
   if (isPlaceholder(offer.price_from)) warn(`offers.yaml "${offer.id}" price is still ${offer.price_from}.`);
   return `${labels.starting_at} ${offer.price_from}${offer.price_suffix ?? ''}`;
 }
 
-export const ladder = (o: OffersData) => o.offers.filter((x) => !x.studio_only);
+export const ladder = (o: OffersData) => o.offers;
 
 export type Flags = SiteData['flags'];
 export type FlagName = keyof Flags | '';

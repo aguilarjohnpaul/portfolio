@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  applyFaqs, applyFlags, applyIndustries, applyOffers, applyOverrides, applyStrings, applyTestimonials,
+  applyGuide, applyFaqs, applyFlags, applyIndustries, applyOffers, applyOverrides, applyStrings, applyTestimonials,
   eligibleStrings, emptySet, newReport,
 } from './overrides';
 
@@ -44,7 +44,7 @@ describe('strings tab', () => {
   });
   it('only touches whitelisted documents', () => {
     const r = newReport();
-    const d = applyStrings('scorecard', { intro: { heading: 'x' } }, [{ key: 'scorecard.intro.heading', value: 'y' }], r);
+    const d = applyStrings('testimonials', { intro: { heading: 'x' } }, [{ key: 'testimonials.intro.heading', value: 'y' }], r);
     expect((d as any).intro.heading).toBe('x');
   });
 });
@@ -114,6 +114,18 @@ describe('industries, testimonials, flags', () => {
     expect(keys).toContain('home.hero.variants.b.subhead');
     expect(keys).toContain('home.pains.items.0');
     expect(keys).not.toContain('home.hero.primary.href');
-    expect(eligibleStrings('scorecard', { a: 'b' })).toEqual([]);
+    expect(eligibleStrings('testimonials', { a: 'b' })).toEqual([]);
+  });
+});
+
+describe('guides tab', () => {
+  it('changes title, description and draft for the matching slug only', () => {
+    const r = newReport();
+    const d = applyGuide('a', { title: 'Old', description: 'Old desc', draft: true }, [
+      { slug: 'a', title: 'New title', description: '', draft: 'FALSE' },
+      { slug: 'b', title: 'Other', draft: 'TRUE' },
+    ], r) as any;
+    expect(d).toEqual({ title: 'New title', description: 'Old desc', draft: false });
+    expect(r.applied).toEqual(['guides.a.title', 'guides.a.draft=false']);
   });
 });

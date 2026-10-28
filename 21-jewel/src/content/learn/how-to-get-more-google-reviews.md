@@ -1,10 +1,11 @@
 ---
 title: "How to get more Google reviews without nagging customers"
 description: "Businesses that ask for a review after every job get one from roughly one customer in four. Businesses that wait for reviews to happen get one a quarter. The difference is a 10-second ask at the right moment, a link that works on a phone, and a reply to every review that comes in."
+seo_title: "How to get more Google reviews, without nagging"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/services/keep-ranking", "/industries/landscaping-tree", "/learn/not-showing-up-on-google-maps"]
 faqs:
   - q: Can I offer a discount for a review?

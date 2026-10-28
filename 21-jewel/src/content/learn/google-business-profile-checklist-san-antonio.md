@@ -1,10 +1,11 @@
 ---
 title: "The Google Business Profile checklist for San Antonio service businesses"
 description: "A complete Google Business Profile has 12 parts filled in, and most San Antonio service businesses have about 5. Here's the full list, in the order that matters, with what to put in each one and how long it takes. Budget about 90 minutes for the whole thing."
+seo_title: "Google Business Profile checklist for San Antonio"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/services/get-found", "/industries/roofing", "/learn/ten-listings-every-local-business-needs"]
 faqs:
   - q: How often should I update my Google Business Profile?

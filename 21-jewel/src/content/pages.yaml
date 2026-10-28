@@ -113,13 +113,13 @@ terms:
   intro: Plain-language terms for working with me.
   sections:
     - { title: What I provide, body: "The offer as described on the Offers page at the time you buy it." }
-    - { title: Payment, body: "Each offer's terms are on the Offers page. What you pay for one step is credited toward the next if you upgrade within 30 days. Growth Advisor has a 6-month minimum. If you cancel before month 4, the rest of The 30-Day Fix is due ($1,250 minus $250 for each month paid)." }
+    - { title: Payment, body: "Each offer's terms are on the Pricing page. Setups are paid as described there. Keep Ranking is billed monthly in advance with no minimum. Half of a setup fee is credited against your first three months of Keep Ranking when it starts within 60 days." }
     - { title: The guarantee, body: "If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is. That's a guarantee on the work getting built. There's no guarantee of rankings, calls, leads or revenue." }
     - { title: Your part, body: "Manager access, approvals and photos. If something on your side is delayed, the dates move with it." }
     - { title: Ownership, body: "You own your profile, pages, content and data." }
     - { title: Access, body: "I only use manager access, never your passwords. You remove my access at the end." }
     - { title: Partners, body: "Partner work is quoted and billed by the partner directly." }
-    - { title: Cancellation, body: "Project work is paid as described. Growth Advisor needs 30 days' notice after the minimum." }
+    - { title: Cancellation, body: "Project work is paid as described. Keep Ranking can be cancelled any month with notice before the next billing date." }
   contact: "Questions? Email me at"
 
 thanks_audit:

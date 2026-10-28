@@ -17,7 +17,7 @@
  *   SITE_URL          optional. Defaults to https://21jeweladvisory.com
  */
 
-var TABS = ['strings', 'offers', 'faqs', 'industries', 'testimonials', 'flags'];
+var TABS = ['strings', 'offers', 'faqs', 'industries', 'testimonials', 'flags', 'guides'];
 var EDITABLE = { strings: 'value', offers: null, faqs: null, industries: null, testimonials: null, flags: 'on' };
 
 function onOpen() {
@@ -83,6 +83,11 @@ function problems_() {
   rows.forEach(function (r, i) {
     var active = String(r.active || 'TRUE').trim().toUpperCase() !== 'FALSE';
     if (active && r.page && (!r.question || !r.answer)) out.push('faqs row ' + (i + 2) + ': missing question or answer');
+  });
+  rows = rows_('guides');
+  rows.forEach(function (r, i) {
+    var v = String(r.draft || '').trim().toUpperCase();
+    if (r.slug && v && ['TRUE', 'FALSE', 'YES', 'NO'].indexOf(v) < 0) out.push('guides row ' + (i + 2) + ': draft "' + r.draft + '" is not TRUE or FALSE');
   });
   rows = rows_('strings');
   rows.forEach(function (r, i) {
@@ -170,7 +175,7 @@ function refreshKeys() {
     }
   });
   // keyed tabs: add missing rows only
-  var keyed = { offers: 'id', industries: 'slug', flags: 'key' };
+  var keyed = { offers: 'id', industries: 'slug', flags: 'key', guides: 'slug' };
   Object.keys(keyed).forEach(function (tab) {
     var k = keyed[tab];
     var t = sheet_(tab, seed.columns[tab]);

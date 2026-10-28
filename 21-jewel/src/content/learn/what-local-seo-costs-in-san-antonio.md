@@ -1,10 +1,11 @@
 ---
 title: "What local SEO costs in San Antonio, and what you should get for the money"
 description: "Local SEO for a small San Antonio service business runs from about $100 a month for a tool you drive yourself to $500 to $2,000 a month for an agency, plus one-time setups from $500 to $5,000. The price tells you less than the deliverables do. Here's what each price band should include, the questions to ask, and the signs you're paying for a report instead of work."
+seo_title: "What local SEO costs in San Antonio (2026)"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/pricing", "/services/keep-ranking", "/learn/what-a-lead-really-costs"]
 faqs:
   - q: Is $500 a month enough for local SEO in San Antonio?

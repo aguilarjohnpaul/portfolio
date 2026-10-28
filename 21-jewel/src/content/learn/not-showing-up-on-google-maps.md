@@ -1,10 +1,11 @@
 ---
 title: "Why your business isn't showing up on Google Maps, and the 20-minute fix"
 description: "Most San Antonio service businesses that don't show up on Google Maps are missing one of five profile basics. Four of them take about 20 minutes to fix. Here's how to check each one, in order, and what to do if the profile is right and you still don't show."
+seo_title: "Not showing up on Google Maps? The 20-minute fix"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/services/get-found", "/industries/plumbing", "/learn/google-business-profile-checklist-san-antonio"]
 faqs:
   - q: How long after I fix my profile will I show up on Maps?

@@ -3,7 +3,7 @@
 About 30 minutes, all free. Do the steps in order. The site is already wired with your ID and is tracking the live domain.
 
 **What each tool answers**
-- **Google Analytics 4 (GA4):** who visits, where they came from, and what they do (scorecard, review requests, booking clicks, hero A vs B).
+- **Google Analytics 4 (GA4):** who visits, where they came from, and what they do (audit requests, calls, how far down pages people scroll, hero A vs B).
 - **Search Console:** which Google searches show your site, how often people click, and whether Google can read every page.
 
 ---
@@ -43,17 +43,22 @@ Custom dimensions only collect data from the day you create them, so set them up
 | Click target | Event | `target` |
 | Scorecard band | Event | `band` |
 | Business type | Event | `industry` |
-| Found you via | Event | `source_answer` |
+| What's going on | Event | `situation` |
 | Offer viewed | Event | `offer_id` |
+| Scroll percent | Event | `percent` |
 
 ## 4. Mark the events that count as leads
 
 **Admin** → **Data display** → **Key events** → **New key event**. Type each name exactly:
 
-- `review_form_submit` (a Website Review request)
+- `audit_submit` (a Local Search Audit request; fires once on `/thanks/audit`)
+- `call_click` (tapped the phone number anywhere)
 - `scorecard_email_submit` (scorecard results requested)
-- `book_call_click` (clicked to book a call)
 - `founding_apply_submit` (add later, when the founding program is on)
+
+Other events you'll see (Change 03 §10): `audit_start` (first tap into the form), `audit_error`, `cta_click` (every button, with `location` and `target`; `target: cal` is a booking click), `email_click`, `scroll_depth` (25/50/75/90 per page), `learn_read` (50/90 of a guide), `offer_view`, `industry_page_view`, and the scorecard events.
+
+**Reading scroll depth and time on page:** Reports → Engagement → Events → `scroll_depth`, add the `percent` dimension and a page filter. Average engagement time per page is under Reports → Engagement → Pages and screens. If you later want heatmaps and recordings, set `flags.showClarity: true` in `site.yaml` (or the Sheet's flags tab), add `PUBLIC_CLARITY_ID` in Cloudflare, and the Clarity line on the privacy page turns on with it.
 
 ## 5. Two housekeeping settings
 

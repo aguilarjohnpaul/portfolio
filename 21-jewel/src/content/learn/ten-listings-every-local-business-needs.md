@@ -1,10 +1,11 @@
 ---
 title: "The 10 listings every local business needs (Google, Bing, Apple Maps and the rest)"
 description: "Ten online listings decide how your business shows up on maps and in searches, and most San Antonio service businesses have three of them right. The rule is one name, one address, one phone number, everywhere. Here are the ten, why each matters, and the order to fix them in. Budget about two hours."
+seo_title: "The 10 listings every local business needs"
 kind: guide
 published: 2026-10-27
 updated: 2026-10-27
-draft: true
+draft: false
 related: ["/services/get-found", "/industries/electrical", "/learn/google-business-profile-checklist-san-antonio"]
 faqs:
   - q: Do I need to be on hundreds of directories?

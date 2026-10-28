@@ -10,7 +10,7 @@
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { parseCsv } from './csv.mjs';
 
-export const TABS = ['strings', 'offers', 'faqs', 'industries', 'testimonials', 'flags'];
+export const TABS = ['strings', 'offers', 'faqs', 'industries', 'testimonials', 'flags', 'guides'];
 const SNAPSHOT_DIR = new URL('../../src/content/snapshot/', import.meta.url);
 
 export function tabUrl(tab, env = process.env) {

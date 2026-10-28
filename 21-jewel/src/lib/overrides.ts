@@ -4,15 +4,15 @@
 // becomes a build warning and the YAML value stands.
 
 export type Row = Record<string, string>;
-export type TabName = 'strings' | 'offers' | 'faqs' | 'industries' | 'testimonials' | 'flags';
+export type TabName = 'strings' | 'offers' | 'faqs' | 'industries' | 'testimonials' | 'flags' | 'guides';
 export type OverrideSet = Record<TabName, Row[]>;
 export interface Report { applied: string[]; warnings: string[] }
 
-export const emptySet = (): OverrideSet => ({ strings: [], offers: [], faqs: [], industries: [], testimonials: [], flags: [] });
+export const emptySet = (): OverrideSet => ({ strings: [], offers: [], faqs: [], industries: [], testimonials: [], flags: [], guides: [] });
 export const newReport = (): Report => ({ applied: [], warnings: [] });
 
 /** Documents whose string fields the `strings` tab may override. */
-export const STRING_DOCS = new Set(['site', 'home', 'pages', 'offers', 'industries', 'services', 'faqs', 'learn']);
+export const STRING_DOCS = new Set(['site', 'home', 'pages', 'offers', 'industries', 'services', 'faqs', 'learn', 'scorecard', 'founding']);
 /** Field names the `strings` tab may never touch, wherever they appear. */
 const DENY = /(^|\.)(href|id|slug|flag|photo|value|checkout_url|url|email|phone|phone_href|google_profile|linkedin|cal|tally|og_image|kind|locale)$/;
 /** Exact "<doc>.<path>" keys that stay in the repo even though they are strings: identity, not copy. */
@@ -182,6 +182,22 @@ export function applyFlags(data: Obj, rows: Row[], report: Report): Obj {
     const on = ['true', 'yes', 'y', '1', 'on', 'x'].includes(s) ? true : ['false', 'no', 'n', '0', 'off'].includes(s) ? false : null;
     if (on === null) { report.warnings.push(`flags.${key}: "${row.on}" isn't TRUE or FALSE`); continue; }
     if (flags[key] !== on) { flags[key] = on; report.applied.push(`flags.${key}=${on}`); }
+  }
+  return data;
+}
+
+/** `guides` tab: slug, title, description, draft. Applies to one guide's frontmatter (body stays in the repo). */
+export function applyGuide(slug: string, data: Obj, rows: Row[], report: Report): Obj {
+  for (const row of rows) {
+    if ((row.slug ?? '').trim() !== slug) continue;
+    for (const f of ['title', 'seo_title', 'description'] as const) {
+      const v = cleanText(`guides.${slug}.${f}`, row[f] ?? '', report);
+      if (v !== null && v !== data[f]) { data[f] = v; report.applied.push(`guides.${slug}.${f}`); }
+    }
+    const d = (row.draft ?? '').trim().toLowerCase();
+    const draft = ['true', 'yes', 'y', '1', 'on', 'x'].includes(d) ? true : ['false', 'no', 'n', '0', 'off'].includes(d) ? false : null;
+    if (d && draft === null) report.warnings.push(`guides.${slug}.draft: "${row.draft}" isn't TRUE or FALSE`);
+    if (draft !== null && draft !== data.draft) { data.draft = draft; report.applied.push(`guides.${slug}.draft=${draft}`); }
   }
   return data;
 }

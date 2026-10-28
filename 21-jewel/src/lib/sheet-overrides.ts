@@ -3,7 +3,7 @@
 // Never runs in the browser.
 
 import { TABS, loadTab } from '../../scripts/sheet/source.mjs';
-import { applyOverrides, emptySet, newReport, type OverrideSet, type Report, type TabName } from './overrides';
+import { applyGuide, applyOverrides, emptySet, newReport, type OverrideSet, type Report, type TabName } from './overrides';
 
 interface Loaded { set: OverrideSet; sources: Record<string, string>; errors: string[] }
 let loading: Promise<Loaded> | null = null;
@@ -35,6 +35,13 @@ export function overrides(): Promise<Loaded> {
 export async function withOverrides<T extends Record<string, unknown>>(docName: string, data: T): Promise<T> {
   const { set } = await overrides();
   applyOverrides(docName, data, set, report);
+  return data;
+}
+
+/** Apply the Sheet's guides tab to one guide's frontmatter in place. */
+export async function withGuideOverrides<T extends Record<string, unknown>>(slug: string, data: T): Promise<T> {
+  const { set } = await overrides();
+  applyGuide(slug, data, set.guides, report);
   return data;
 }
 
