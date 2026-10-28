@@ -1,7 +1,7 @@
 ---
 import { priceLabel, type Offer, type OffersData } from '../lib/content';
-interface Props { offer: Offer; labels: OffersData['page']['labels']; cal: string; showFounding: boolean }
-const { offer, labels, cal, showFounding } = Astro.props;
+interface Props { offer: Offer; labels: OffersData['page']['labels']; showFounding: boolean }
+const { offer, labels, showFounding } = Astro.props;
 const facts = [
   { label: labels.needs, value: offer.needs },
   { label: labels.your_time, value: offer.your_time },
@@ -9,11 +9,11 @@ const facts = [
   { label: labels.terms, value: offer.terms },
   { label: labels.guarantee, value: offer.guarantee },
 ].filter((f) => f.value);
-const cta = offer.button ?? { label: labels.book_button, href: cal };
+const cta = offer.button ?? { label: labels.book_button, href: '/audit' };
 ---
 <article id={offer.id} class="card detail" aria-labelledby={`${offer.id}-h`} data-offer-view={offer.id}>
   <header class="head">
-    <p class="price">{offer.type} · {priceLabel(offer, labels)}</p>
+    <p class="price">{offer.free ? offer.type : `${offer.type} · ${priceLabel(offer, labels)}`}</p>
     <h2 id={`${offer.id}-h`}>{offer.name}</h2>
     <p class="lead">{offer.one_liner}</p>
   </header>

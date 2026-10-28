@@ -1,41 +1,79 @@
-# FAQ lists by page (Change 03 §8). Shown when site.yaml flags.showFaq is true.
-# The Google Sheet's "faqs" tab can replace any page's list (page, order, question, answer, active).
-# Page ids: home, pricing. Services and industries get their own ids in later steps.
+# FAQ lists by page (Change 03 §8). Shown when site.yaml flags.showFaq is true, with FAQPage schema.
+# The content Sheet's "faqs" tab can replace any page's list (page, order, question, answer, active).
+# Page ids: home, pricing, audit, and one per service slug and industry slug.
 
-heading: Questions
+heading: Questions owners ask
 
 pages:
   home:
-    - q: "Do I have to do anything?"
-      a: "About 30–45 minutes in total. Add me as a manager, one short call, approve the words, and send photos. I do the rest."
-    - q: "Do you need my passwords?"
-      a: "No. You add me as a manager on your Google profile and your website, and you can remove me anytime."
-    - q: "Will I be #1 on Google?"
-      a: "Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and you see the numbers."
-    - q: "How will I know it worked?"
-      a: "Before I start, I save your profile numbers, review count and map position. Google only shows about six months of profile history, so I keep yours from day one. You see the change at 30, 60 and 90 days. In The 30-Day Fix, I also add a \"How did you hear about us?\" question so you can tie calls to real jobs."
-    - q: "Do I need to buy new software?"
-      a: "No. Everything runs on the tools you already pay for."
+    - q: Do I have to do anything?
+      a: About 30 to 45 minutes in total. Add me as a manager on your Google profile, one short call, approve the words, and text me photos of your work. I do the rest.
+    - q: Do you need my passwords?
+      a: No. You add me as a manager on your Google profile and your website, and you can remove me any time. You own every login.
+    - q: Will I be number one on Google?
+      a: Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and that you see the numbers before and after.
+    - q: How will I know it worked?
+      a: Before I start, I save your calls, direction requests, website clicks, review count and map rank for your top searches. You see the same five numbers at 30, 60 and 90 days. Google only keeps about six months of that history, so I keep yours from day one.
+    - q: Is there a contract?
+      a: No. Setups are one-time projects. Keep Ranking is month-to-month, and you can cancel any month.
   pricing:
-    - q: "Do I have to do anything?"
-      a: "About 30–45 minutes in total. Add me as a manager, one short call, approve the words, and send photos. I do the rest."
-    - q: "Do you need my passwords?"
-      a: "No. You add me as a manager on your Google profile and your website, and you can remove me anytime."
-    - q: "Will I be #1 on Google?"
-      a: "Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and you see the numbers."
-    - q: "How will I know it worked?"
-      a: "Before I start, I save your profile numbers, review count and map position. Google only shows about six months of profile history, so I keep yours from day one. You see the change at 30, 60 and 90 days. In The 30-Day Fix, I also add a \"How did you hear about us?\" question so you can tie calls to real jobs."
-    - q: "Do I need to buy new software?"
-      a: "No. Everything runs on the tools you already pay for."
-    - q: "I already have a web person. Is that a problem?"
-      a: "No. I can make the changes myself, or hand your web person exactly what to change."
-    - q: "What website platforms do you work on?"
-      a: "Wix, Squarespace, WordPress, GoDaddy, Shopify and Google Sites. If yours isn't listed, ask."
-    - q: "I don't have a website."
-      a: "Start with the Google Profile Tune-Up. If you need a site, I'll introduce you to a partner who builds simple ones, and I'll write the words."
-    - q: "Do you only work in San Antonio?"
-      a: "I'm based in San Antonio and work with local service businesses anywhere in the US."
-    - q: "Can I cancel Growth Advisor?"
-      a: "After the 6-month minimum, yes, anytime with 30 days' notice. Project work has no contract beyond the project itself."
-    - q: "Who owns the work?"
-      a: "You do. Your profile, your pages, your reviews and your data. When we're done, you remove my access."
+    - q: Do I need to start with the audit?
+      a: Yes, and it's free. It takes me about an hour and tells us both which step you actually need. Sometimes the answer is "fix these three things yourself."
+    - q: Why is the setup cheaper than what agencies charge?
+      a: Because it's a fixed scope done once, by one person, with no account manager or markup on top. The ongoing work is where I earn a living, and that's month-to-month, so I have to keep earning it.
+    - q: Can I cancel Keep Ranking?
+      a: Any month, with notice before the next billing date. There's no minimum. You keep every login and everything I built.
+    - q: Do you need my passwords?
+      a: No. Manager access on your Google profile and editor access on your website. Both can be removed by you in a minute.
+    - q: What website platforms do you work on?
+      a: Wix, Squarespace, WordPress, GoDaddy, Shopify and Google Sites. If yours isn't listed, ask. If you don't have a website yet, start with Get Found Setup and a partner can build a simple site while I write the words.
+    - q: Do you run ads or post on Facebook and Instagram for me?
+      a: No. I build the plan and the pages. Ongoing social posting, Google Ads and Local Services Ads go to vetted partners who quote and bill you directly.
+    - q: I already have a web person. Is that a problem?
+      a: No. I can make the changes myself, or hand your web person exactly what to change, page by page.
+    - q: Do you only work in San Antonio?
+      a: San Antonio and the surrounding counties first, because I can drive to you. Anywhere in Texas works by phone and screen share.
+    - q: Who owns the work?
+      a: You do. Your profile, your pages, your reviews and your numbers. When we're done, you remove my access.
+  audit:
+    - q: Is it really free?
+      a: Yes. It takes me about an hour, and it's how most of my clients start. There's no pitch inside the video, and the scorecard tells you how to fix things yourself if you'd rather.
+    - q: What do you do with my information?
+      a: I use it to do your audit and follow up about it, from my own email. It sits in a private spreadsheet. Reply "stop" to any email and I remove you.
+    - q: Do I have to buy anything?
+      a: No. About a third of the people I audit fix the top three things themselves. The rest ask what a setup would cost.
+    - q: What if I don't have a website?
+      a: Request the audit anyway. Most of what decides whether you get the call happens on your Google profile, and I'll tell you whether a website would change that for your trade.
+  get-found:
+    - q: Why does the main category matter so much?
+      a: Google uses it to decide which searches your profile can show up for. A roofer listed as "Contractor" competes with every contractor in the city and rarely shows for "roof repair." I set it to the service that earns you the most.
+    - q: Do I need Bing and Apple too?
+      a: Yes. Microsoft Edge and Windows search send a steady share of desktop searches to Bing, and every iPhone's default Maps and Siri use Apple Business Connect. They're free to claim and most competitors ignore them.
+    - q: Which listings are "the 10 that matter"?
+      a: Google, Bing, Apple, Yelp, Facebook, the Better Business Bureau, Nextdoor, and the three directories that carry the most weight for your trade. Hundreds of listings isn't the goal; one correct name, address and phone on the ones that feed the map is.
+    - q: How fast will I see a change?
+      a: Profile edits usually show within a few days. Map rank and calls move over 30 to 90 days. That's why the baseline is saved on day 0 and checked at 30.
+    - q: What if my business has no reviews yet?
+      a: The review link, QR code and ask script are built for exactly that. Most businesses see their first new reviews within the first two weeks of asking after every job.
+  get-chosen:
+    - q: Do you rebuild my website?
+      a: No. I rewrite and restructure it on the platform you already use. If the site needs a full rebuild, I introduce you to a partner who quotes it separately, and I write the words.
+    - q: Why only up to 3 service pages?
+      a: Because three well-written pages for the services that earn you the most beat ten thin ones. Extra pages are $350 each when you want them.
+    - q: Will this change how my site looks?
+      a: The words, the order of sections, the buttons and the form change. Colors, logo and layout stay unless they're getting in the way, and then I'll tell you.
+    - q: What's the 5-field quote form?
+      a: Name, phone, what you need, when you need it, and "How did you hear about us?" Fewer fields, more sends, and a source on every lead.
+    - q: Do I need Get Found first?
+      a: Usually. A good page with no profile sending people to it sits empty. If your profile is already in shape, I'll say so in the audit and we can start here.
+  keep-ranking:
+    - q: Why month-to-month?
+      a: Because you should be able to leave if the numbers don't justify it, and because that keeps me honest. Agencies want six-month contracts for a reason.
+    - q: What happens if I cancel?
+      a: Everything stays. Your profile, your pages, your reviews and the report history are yours. You remove my access and that's it.
+    - q: Can I pause for a slow season?
+      a: Yes. Tell me before the billing date and we pause. Posts and review replies stop; nothing is lost.
+    - q: Do you answer bad reviews too?
+      a: Yes, within 2 business days, in your voice, and you can approve the reply first if you'd like. A calm answer to a bad review wins more customers than ten unanswered good ones.
+    - q: What does the monthly report show?
+      a: Calls, direction requests and website clicks from your Google profile, your review count and rating, and your map rank for your top three searches from three spots in your service area, each next to last month and your day-0 baseline.

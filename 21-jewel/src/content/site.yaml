@@ -138,9 +138,18 @@ seo:
     scorecard:
       title: "Is Your Website Losing You Work? · 21 Jewel Advisory"
       description: "12 quick questions about your Google profile, website and follow-up. Get your score and biggest leaks in 3 minutes."
-    offers:
-      title: "Offers and prices · 21 Jewel Advisory"
-      description: "Free Website Review, Google Profile Tune-Up from $450, The 30-Day Fix from $1,250, Growth Advisor from $500/month."
+    pricing:
+      title: "Pricing · San Antonio local search · 21 Jewel Advisory"
+      description: "Free Local Search Audit, Get Found Setup from $650, Get Chosen Setup from $1,450, Keep Ranking $450/month. Month-to-month, you own every login."
+    service-get-found:
+      title: "Get Found Setup · Google, Bing and Apple profiles · 21 Jewel Advisory"
+      description: "Your Google Business Profile rebuilt, Bing and Apple claimed, 10 listings fixed and a review system set up in 10 business days. From $650, San Antonio."
+    service-get-chosen:
+      title: "Get Chosen Setup · website pages that get the call · 21 Jewel Advisory"
+      description: "Homepage and up to 3 service pages rewritten on your current platform, one-tap calling, a 5-field quote form and tracking. From $1,450 in about 3 weeks."
+    service-keep-ranking:
+      title: "Keep Ranking · month-to-month local search · 21 Jewel Advisory"
+      description: "4 profile posts, review asks and replies, listings checked, one page a quarter and a one-page report each month. $450/month, cancel any month."
     founding:
       title: "Founding clients: The 30-Day Fix, free · 21 Jewel Advisory"
       description: "5 spots for local service businesses. Free 30-Day Fix in exchange for sharing the results."

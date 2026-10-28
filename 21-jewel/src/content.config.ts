@@ -105,6 +105,7 @@ const offers = defineCollection({
     page: z.object({
       heading: text, intro: text, ladder_rule: text, addons_heading: text,
       dont_do: z.object({ heading: text, body: text }),
+      measure: z.object({ heading: text, body: text }),
       labels: z.object({
         for: text, get: text, needs: text, your_time: text, timeline: text, terms: text, guarantee: text,
         see_details: text, book_button: text, founding_link: text, starting_at: text, on_request: text,
@@ -128,6 +129,25 @@ const offers = defineCollection({
       checkout_url: z.string(),
     })),
     addons: z.array(z.object({ id: text, name: text, price_label: text, one_liner: text })),
+  }),
+});
+
+// Service pages (Change 03 §6.1): one template, prices from offers.yaml by offer id.
+const services = defineCollection({
+  loader: one('services'),
+  schema: z.object({
+    labels: z.object({
+      get_heading: text, how_heading: text, your_time: text, price_heading: text, not_for_heading: text,
+      faq_heading: text, cta_label: text, cta_note: text, call_label: text, breadcrumb_root: text,
+    }),
+    services: z.array(z.object({
+      slug: z.string().regex(/^[a-z0-9-]+$/),
+      offer: z.string().regex(/^[a-z0-9-]+$/),
+      nav_label: text, h1: text, intro: text,
+      get: z.array(text).min(3),
+      steps: z.array(z.object({ name: text, body: text, your_time: text })).length(3),
+      price_note: text, not_for: text,
+    })),
   }),
 });
 
@@ -264,5 +284,5 @@ const caseStudies = defineCollection({
 });
 
 export const collections = {
-  site, home, offers, faqs, scorecard, founding, pages, industries, testimonials, caseStudies,
+  site, home, offers, services, faqs, scorecard, founding, pages, industries, testimonials, caseStudies,
 };

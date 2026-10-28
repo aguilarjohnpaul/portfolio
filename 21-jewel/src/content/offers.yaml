@@ -1,12 +1,13 @@
-# The offer ladder (Change 02 §2 and §4.2). Display order is the ladder order.
-# price_from: a number like "$450". Leave it "" to show "Pricing on request".
-# checkout_url: Phase 2 hook for payment links. Leave empty.
-# Prices after 3 case studies (not shown on the site): Tune-Up $600, The 30-Day Fix $1,500, Growth Advisor $650/month.
+# The ladder (Change 03 §4). Display order is the ladder order: the free audit, then three brackets.
+# price_from: a number like "$650". Leave it "" to show "Pricing on request".
+# The content Sheet's "offers" tab can change name, price_from, price_suffix, one_liner and active.
+# Prices after 3 case studies (not shown on the site): Get Found $850, Get Chosen $1,950, Keep Ranking $600/month.
+# checkout_url: hook for payment links later. Leave empty.
 
 page:
-  heading: Offers and prices
-  intro: Four steps. Start anywhere. What you pay for one step is credited toward the next if you upgrade within 30 days.
-  ladder_rule: Start anywhere. What you pay for one step is credited toward the next if you upgrade within 30 days.
+  heading: Pricing
+  intro: Start with the free audit. Then pick the one step that fits where you are. Every price is the real starting price, and every bracket is a fixed scope, so the quote conversation is short.
+  ladder_rule: Half of any setup fee is credited against your first three months of Keep Ranking when it starts within 60 days.
   labels:
     for: Who it's for
     get: What you get
@@ -15,100 +16,117 @@ page:
     timeline: Timeline
     terms: Terms
     guarantee: Guarantee
-    see_details: See details
-    book_button: Book a call
+    see_details: See what's included
+    book_button: Start with the free audit
     founding_link: Or apply as a founding client
-    starting_at: Starting at
+    starting_at: From
     on_request: Pricing on request
-  addons_heading: Add-ons
+  addons_heading: If you need more
   dont_do:
     heading: What I don't do myself
-    body: "Ads management, social media posting (Facebook, Instagram and similar), logo or design work, and full website rebuilds. If you need one, I'll introduce you to a partner who quotes and bills you directly."
+    body: "Ongoing social media posting (Facebook, Instagram and similar), paid search and Local Services Ads management, logo or design work, and full website rebuilds. If you need one, I'll introduce you to a partner who quotes and bills you directly, and I'll make sure what they build fits the rest."
+  measure:
+    heading: How I measure
+    body: "Before I change anything, I save five numbers: calls from your Google profile, direction requests, website clicks, your review count and rating, and where you rank on the map for your three best searches, checked from three spots in your service area. Google only keeps about six months of profile history, so I keep yours from day one. You see the same five numbers at 30, 60 and 90 days, side by side. I present them as signs of progress, and I claim a job only when your \"How did you hear about us?\" field says so."
 
 offers:
-  - id: website-review
-    name: Website Review
-    type: Free diagnostic
+  - id: audit
+    name: Free Local Search Audit
+    type: Free
     free: true
     price_from: ""
-    one_liner: I look at your website and Google profile and send you the top 3 things costing you calls.
-    for: Owners who want to know why the phone isn't ringing more, without paying to find out.
+    one_liner: A 10-minute video and a one-page scorecard. The top 3 things costing you calls, ranked.
+    for: Any owner who wants to know why the phone isn't ringing more, without paying to find out.
     get:
-      - An outside-in look at your website, your Google profile, and how you show up for 3 searches your customers make.
-      - The top 3 fixes, ranked by the calls they're likely costing you.
-      - A short video walkthrough or PDF, your choice.
-      - A do-it-yourself checklist that's yours to keep.
-    needs: Your website address, and the 3 services that earn you the most.
-    timeline: Within 5 business days.
-    note: No sales pitch. If you'd rather fix things yourself, the checklist is yours.
-    button: { label: Get my free Website Review, href: "/review" }
+      - How you show up right now on Google, Bing and Apple Maps for the three searches your customers actually make.
+      - What your reviews say to someone choosing between you and the shop down the street.
+      - Whether your website gets the call on a phone, measured in taps.
+      - The top 3 fixes, ranked by the calls they're likely costing you, in a 10-minute screen recording and a one-page scorecard you keep.
+    needs: Nothing. Everything I look at is public.
+    timeline: Delivered within 5 business days.
+    note: No pitch inside the video. If you'd rather fix things yourself, the scorecard tells you how.
+    button: { label: Get my free Local Search Audit, href: "/audit" }
     checkout_url: ""
 
-  - id: profile-tune-up
-    name: Google Profile Tune-Up
-    type: Quick win
-    price_from: "$450"
-    one_liner: I clean up your Google profile and set up a simple way to get reviews after every job.
-    for: Owners who want a quick, visible win before a bigger project.
+  - id: get-found
+    name: Get Found Setup
+    type: One-time
+    price_from: "$650"
+    one_liner: Your Google, Bing and Apple profiles rebuilt, the 10 listings that matter fixed, and a review system that runs itself.
+    for: Owners whose profile is thin, wrong or invisible, which is most of the businesses I audit.
     get:
-      - "A full Google Business Profile cleanup: categories, services, service area, hours, description, photos and Q&A."
-      - Your review link turned into a short link and a QR code for invoices, your counter and your trucks.
-      - A review request message loaded into the invoicing or booking tool you already use.
-      - A before-and-after check of your profile numbers and review count at 30 days.
+      - Your Google Business Profile rebuilt around your best jobs. The right main category, every service listed, hours, service area, 15 or more real photos, Q&A and products.
+      - Bing Places and Apple Business Connect claimed and matched, so Microsoft and iPhone searches find the same business Google does.
+      - The 10 listings that feed the map results set to one name, address and phone.
+      - A review link, a QR code for invoices and trucks, and a text or email ask you can send in 10 seconds.
+      - 3 months of profile posts written and scheduled.
+      - Your five baseline numbers saved before anything changes.
+    needs: Manager access to your Google profile (2 minutes, no passwords), a 20-minute call, and photos of your work.
     your_time: About 30 minutes.
-    timeline: Work done within 1 week, results checked at 30 days.
-    terms: Paid upfront. Credited toward The 30-Day Fix if you upgrade within 30 days.
+    timeline: Done within 10 business days. Numbers checked at 30 days.
+    terms: Paid upfront. Half is credited against Keep Ranking if it starts within 60 days.
     guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
-  - id: thirty-day-fix
-    name: The 30-Day Fix
-    type: Core project
-    price_from: "$1,250"
-    one_liner: Your Google profile, reviews and a service page that turns searches into quote requests, done in 30 days.
-    for: Owners ready to turn Google searches into quote requests.
+  - id: get-chosen
+    name: Get Chosen Setup
+    type: One-time
+    price_from: "$1,450"
+    one_liner: Your homepage and up to 3 service pages rewritten on your current website, with one-tap calling and a 5-field quote form.
+    for: Owners whose profile already brings visits that the website wastes. Comes after Get Found, or an equivalent profile already in shape.
     get:
-      - Everything in the Tune-Up.
-      - One service page for the service that earns you the most, written and built on your current website, with reviews, photos, one-tap calling and a short quote form.
-      - Review reply templates for good and bad reviews, plus a one-line script your team can use to ask.
-      - A "How did you hear about us?" question added to your booking or invoicing tool, so you can see where jobs come from.
-      - Results checked at 30, 60 and 90 days.
-    your_time: About 45 minutes in total.
-    timeline: Installed in 30 days.
-    terms: 50% upfront and 50% on day 30, or 3 equal monthly payments. Tune-Up fee credited within 30 days.
-    guarantee: If anything in your plan isn't done by day 30, I keep working at no charge until it is.
+      - Your homepage rewritten and restructured on the platform you already use (Wix, Squarespace, WordPress, GoDaddy, Shopify or Google Sites).
+      - Up to 3 service pages, one per service that earns you the most, written the way your customers search and with the questions they'd ask on the phone answered.
+      - One-tap calling at the top of every page and a 5-field quote form with "How did you hear about us?" built in.
+      - The structured data that lets Google and the AI answers understand what you do and where.
+      - Google Analytics and Search Console set up, with calls and form sends tracked.
+      - Speed and mobile fixes within what your platform allows.
+    needs: Editor access to your website, approval of the words before they go live, and about 45 minutes across two calls.
+    your_time: About 45 minutes.
+    timeline: About 3 weeks.
+    terms: 50% upfront, 50% when the pages are live. Half is credited against Keep Ranking if it starts within 60 days.
+    guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
-  - id: growth-advisor
-    name: Growth Advisor
-    type: Monthly
-    price_from: "$500"
+  - id: keep-ranking
+    name: Keep Ranking
+    type: Month-to-month
+    price_from: "$450"
     price_suffix: /month
-    one_liner: The 30-Day Fix with $0 upfront, then I keep your profile, reviews and pages working every month.
-    for: Owners who want this handled every month without thinking about it.
+    one_liner: I keep your profile, reviews and listings working every month, and show you the numbers. Cancel any month.
+    for: Owners who want this handled without thinking about it, after Get Found or Get Chosen.
     get:
-      - The 30-Day Fix, with $0 upfront.
-      - heading: "Then every month:"
+      - heading: "Every month:"
         items:
-          - Google profile posts and photo updates.
-          - Replies to your reviews.
-          - One new page or website edit.
-          - A short report of calls, clicks and reviews, with your history saved past Google's six-month limit.
-          - A 30-minute call.
-    terms: Billed monthly in advance with a 6-month minimum. If you cancel before month 4, the rest of The 30-Day Fix is due ($1,250 minus $250 for each month paid).
+          - 4 Google profile posts with the photos you text me.
+          - Review asks sent after your jobs, and every review answered within 2 business days.
+          - Your listings checked and corrected if something drifts.
+          - A one-page report of your five numbers, with your history kept past Google's six-month limit.
+          - A 20-minute call to decide what's next.
+      - heading: "Every quarter:"
+        items:
+          - One new page or guide on your website for a service or question your customers search for.
+    needs: Photos from the field a few times a month, and 20 minutes on the call.
+    your_time: About 30 minutes a month.
+    timeline: Starts the month after your setup. Report on the same day each month.
+    terms: Billed monthly in advance. Cancel any month with notice before the next billing date. No minimum.
     guarantee: If anything in your plan isn't done by the date I gave you, I keep working at no charge until it is.
     checkout_url: ""
 
 addons:
   - id: extra-page
     name: Extra service page
-    price_label: Starting at $750
-    one_liner: One more page for a service or area you want to show up for.
-  - id: lead-pipelines
-    name: Lead Pipelines
-    price_label: Ask me
-    one_liner: Quote follow-up and past-customer emails that run in the tools you already use.
+    price_label: $350
+    one_liner: One more page for a service you want to show up for, written and built on your site.
+  - id: extra-area-page
+    name: Extra industry or area page
+    price_label: $350
+    one_liner: A page for a second trade you serve or a town you want more work from.
+  - id: partner-work
+    name: Social posting or paid search
+    price_label: Partner quote
+    one_liner: Set up through a vetted partner who quotes and bills you directly. I make sure it fits the rest.
   - id: advisory-hour
     name: Advisory hour
-    price_label: $200/hour
-    one_liner: An hour on whatever is stuck. Vendors, a redesign, a new service.
+    price_label: $150/hour
+    one_liner: An hour on whatever is stuck. Vendors, a redesign, a new service, a bad review.

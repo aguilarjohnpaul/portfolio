@@ -11,7 +11,7 @@ function offerLd(o: Offer, site: SiteData) {
   const price = o.free ? 0 : amount(o.price_from);
   const out: Record<string, unknown> = {
     '@type': 'Offer',
-    url: new URL(`/offers#${o.id}`, site.brand.url).href,
+    url: new URL(`/pricing#${o.id}`, site.brand.url).href,
     itemOffered: { '@type': 'Service', name: o.name, description: o.one_liner },
   };
   if (price !== null) {
@@ -82,5 +82,48 @@ export function faqPage(faq: { q: string; a: string }[]) {
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
+  };
+}
+
+/** BreadcrumbList for everything below the home page. `trail` is in order, without Home. */
+export function breadcrumbs(site: SiteData, trail: { name: string; path: string }[]) {
+  const items = [{ name: 'Home', path: '/' }, ...trail];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((b, i) => ({
+      '@type': 'ListItem', position: i + 1, name: b.name, item: new URL(b.path, site.brand.url).href,
+    })),
+  };
+}
+
+/** Service entity for a service or industry page, priced from its offer when there is one. */
+export function serviceLd(site: SiteData, args: { path: string; name: string; description: string; offer?: Offer; serviceType?: string }) {
+  const { path, name, description, offer, serviceType } = args;
+  const out: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': new URL(`${path}#service`, site.brand.url).href,
+    name,
+    description,
+    url: new URL(path, site.brand.url).href,
+    serviceType: serviceType ?? name,
+    provider: { '@id': new URL('/#business', site.brand.url).href },
+    areaServed: [{ '@type': 'City', name: 'San Antonio, TX' }, { '@type': 'State', name: 'Texas' }],
+  };
+  if (offer) out.offers = offerLd(offer, site);
+  return out;
+}
+
+/** WebPage with a speakable pointer at the answer-first opening paragraph (Change 03 §9). */
+export function speakablePage(site: SiteData, path: string, name: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': new URL(`${path}#webpage`, site.brand.url).href,
+    url: new URL(path, site.brand.url).href,
+    name,
+    isPartOf: { '@id': new URL('/#website', site.brand.url).href },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-first'] },
   };
 }
