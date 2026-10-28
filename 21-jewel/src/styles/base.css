@@ -17,6 +17,8 @@ body {
   overflow-x: clip;
 }
 main { flex: 1; }
+/* Room for the mobile sticky bar (StickyBar.astro) so it never covers the footer. */
+@media (max-width: 759.98px) { body.has-sticky { padding-bottom: calc(56px + env(safe-area-inset-bottom)); } }
 img, svg { display: block; max-width: 100%; }
 button, input, select, textarea { font: inherit; color: inherit; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }

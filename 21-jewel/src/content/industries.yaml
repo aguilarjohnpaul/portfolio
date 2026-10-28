@@ -16,6 +16,7 @@ industries:
     flag: ""
     indexed: true
     name: Sign and print shops
+    tile: Banners, yard signs, vehicle graphics, storefront signs.
     h1: More quote requests for sign and print shops.
     sub: Your customers search for banners, yard signs, vehicle graphics and storefront signs, often with an event date coming up. I make sure they find you and can ask for a quote in one tap.
     searches:
@@ -34,6 +35,7 @@ industries:
     flag: ""
     indexed: false
     name: Roofing companies
+    tile: Repairs, replacements, storm inspections.
     h1: More inspection requests for roofing companies.
     sub: Homeowners compare roofers on reviews and photos. I make sure yours are current and that requesting an inspection is easy.
     searches: []

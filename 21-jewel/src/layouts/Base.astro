@@ -4,6 +4,7 @@ import '../styles/base.css';
 import Fonts from '../components/Fonts.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StickyBar from '../components/StickyBar.astro';
 import { doc } from '../lib/content';
 import { heroScript } from '../lib/hero';
 
@@ -11,8 +12,9 @@ interface Props {
   page: string;               // key in site.yaml seo.pages
   jsonLd?: object[];
   noindex?: boolean;
+  stickyBar?: boolean;        // mobile call/audit bar (off on the audit page itself)
 }
-const { page, jsonLd = [], noindex = false } = Astro.props;
+const { page, jsonLd = [], noindex = false, stickyBar = true } = Astro.props;
 const site = await doc('site');
 const seo = site.seo.pages[page];
 if (!seo) throw new Error(`site.yaml seo.pages is missing "${page}"`);
@@ -53,13 +55,14 @@ const ogImage = new URL(site.seo.og_image, site.brand.url).href;
     <Fonts />
     {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
   </head>
-  <body>
+  <body class:list={{ 'has-sticky': stickyBar }}>
     <a class="skip-link" href="#main">{site.nav.skip}</a>
     <Header site={site} />
     <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer site={site} />
+    {stickyBar && <StickyBar site={site} />}
     <script>
       import { initAnalytics } from '../lib/analytics';
       initAnalytics();

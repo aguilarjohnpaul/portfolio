@@ -1,79 +1,81 @@
-# Homepage copy, section by section (Change 02 §4.1).
+# Homepage copy, section by section (Change 03 §5). Most text here can be overridden from the content Sheet.
 
 hero:
-  eyebrow: For local service businesses
-  primary: { label: Get my free Website Review, href: "/review" }
-  secondary: { label: Or take the 3-minute scorecard, href: "/scorecard" }
+  eyebrow: Local search for San Antonio service businesses
+  primary: { label: Get my free Local Search Audit, href: "/audit" }
+  # The secondary action is the phone. The number itself comes from site.yaml.
+  secondary_label: Call or text
+  micro: Free · 10-minute video · Delivered in 5 business days
   variants:
     a:
-      h1: More calls from Google. No new software.
-      subhead: I fix your Google profile, reviews and website so more searches turn into calls. You spend about 30–45 minutes. I show you your numbers before and after.
+      h1: When someone nearby searches for what you do, show up. Then get the call.
+      subhead: I fix how your business shows up on Google, Bing and Maps, and make sure the people who find you call. One person, month-to-month, and you own every login.
     b:
-      h1: Be the shop people call first.
-      subhead: I fix your Google profile, reviews and website so more searches turn into calls. You spend about 30–45 minutes. I show you your numbers before and after.
+      h1: Tired of paying for leads? Show up on your own when San Antonio searches for what you do.
+      subhead: Google, Bing and Maps already send your competitors free calls. I set your business up to get its share, month-to-month, and you keep every login.
 
 # Example card. Must stay labeled as an example. It is not a real client.
 example:
-  label: Example Website Review
+  label: Example audit
   items:
-    - Your Google profile's main category doesn't match the service that earns you the most.
-    - Requesting a quote on a phone takes 5 taps. It should take 1.
-    - Your last Google review was 7 months ago.
-  footer: Every review ends with the top 3 fixes, ranked by the calls they're likely costing you.
+    - Your Google profile's main category is "Contractor." Your best jobs are roof replacements. Searchers for those never see you.
+    - Apple Maps lists an old address, so iPhone directions requests go to your last shop.
+    - Last Google review was 7 months ago. Three competitors got 10 or more in that time.
+  footer: Every audit ends with the top 3 fixes, ranked by the calls they're likely costing you.
 
 pains:
   heading: Sound familiar?
   items:
-    - The phone is quieter than it should be for how good your work is.
-    - Customers find you by word of mouth, almost never Google.
-    - Your website looks fine, but hardly anyone fills out the form.
-    - Your last Google review was months ago.
-    - You've paid someone for "SEO" and never saw what they did.
+    - The phone's quiet, and you can't tell why.
+    - You're paying Angi or Thumbtack for leads your competitor gets free.
+    - Your last Google review is from a year ago.
+    - You paid someone for SEO and never saw what they did.
 
 how:
   eyebrow: How it works
-  heading: Review. Fix. Prove.
+  heading: Get found. Get chosen. Get the call.
+  intro: Three things decide whether a search turns into a job. Most businesses lose it at one of them.
+  labels:
+    means: What it means
+    breaks: What usually breaks
+    fix: What I fix
   steps:
-    - name: Review
-      body: I look at your website and Google profile from the outside and send you the top 3 things costing you calls. Free.
-    - name: Fix
-      body: I fix them myself, using the tools you already have. You spend about 30–45 minutes with me in total.
-    - name: Prove
-      body: I save your numbers before I start and show you what changed at 30, 60 and 90 days.
-  framework: Get found → Get hired → Get hired again.
-
-your_part:
-  heading: What you'll need to do
-  items:
-    - Add me as a manager on your Google profile. It takes 2 minutes, and no passwords are shared.
-    - One 20-minute call so I understand your best jobs and customers.
-    - Approve the words before anything goes live.
-    - Text me some photos of your work.
-  closing: That's it. I handle the rest.
+    - name: Get found
+      means: Your profile shows up when someone nearby searches for what you do, on Google, Bing, Apple Maps and the directories that feed them.
+      breaks: The wrong main category, a service area that's too small or too big, and listings with three versions of your phone number.
+      fix: The profile rebuilt around your best jobs, Bing and Apple claimed, and the listings that matter set to one name, address and phone.
+      link: { label: See Get Found Setup, href: "/services/get-found" }
+    - name: Get chosen
+      means: Reviews, photos and a page that answer the questions people would ask you on the phone.
+      breaks: A last review from months ago, stock photos, and a website that says "quality service" instead of what you do and where.
+      fix: A review ask that goes out after every job, your real work in photos, and pages written the way your customers search.
+      link: { label: See Get Chosen Setup, href: "/services/get-chosen" }
+    - name: Get the call
+      means: A tap-to-call button, a short quote form and a reply the same day.
+      breaks: A phone number buried in the footer, a 12-field form, and a voicemail that fills up.
+      fix: One-tap calling at the top of every page, a 5-field quote form, and tracking so you know which calls came from where.
+      link: { label: See Keep Ranking, href: "/services/keep-ranking" }
 
 offers:
-  eyebrow: Offers
-  heading: Start anywhere.
+  eyebrow: Pricing
+  heading: Start with the free audit. Then pick one step.
+  link: { label: See all pricing and what's included, href: "/pricing" }
 
-promise:
-  label: My promise
-  items:
-    - No new software to pay for
-    - No passwords shared
-    - No contracts on project work
-    - You own everything I set up
+industries:
+  eyebrow: Who I help
+  heading: Built for the trades the big agencies skip.
+  intro: Every industry page shows what your customers search for, what usually breaks, and what I fix first.
 
 measure:
-  heading: You'll see the numbers, not just a report.
-  body: Before I touch anything, I save your Google profile numbers (calls, direction requests, website clicks), your review count and where you show up on the map for your top searches. Google only shows about six months of profile history, so I keep yours from day one. Then I show you the change at 30, 60 and 90 days.
-  # The doc links this to the offers FAQ; while the FAQ is hidden it goes to the offers page.
-  link: { label: See offers and prices, href: "/offers" }
+  heading: Numbers before. Numbers after.
+  body: Before I change anything, I save your Google profile numbers (calls, direction requests, website clicks), your review count, and where you rank on the map for your top searches. Google only keeps about six months of that history, so I keep yours from day one. You see the change at 30, 60 and 90 days.
+  link: { label: How I measure, href: "/pricing#how-i-measure" }
 
 # Hidden while site.yaml flags.showFounding is false.
 founding:
   eyebrow: Founding clients
-  heading: "5 founding spots: The 30-Day Fix, free."
-  body: I'm building my first case studies. If your business is a fit, I'll do The 30-Day Fix at no cost in exchange for permission to share the results.
+  heading: "5 founding spots: Get Found Setup, free."
+  body: I'm building my first case studies. If your business is a fit, I'll do Get Found Setup at no cost in exchange for permission to share the results.
   button: { label: See if you're a fit, href: "/founding-clients" }
 
 proof:
@@ -81,16 +83,22 @@ proof:
   heading: What clients say
 
 about:
-  # Put a 4:5 photo at public/jp.jpg and set photo: /jp.jpg
+  # Put a 4:5 photo at public/jp.jpg and set photo: /jp.jpg. Until then the monogram shows.
   photo: ""
-  photo_alt: "[PLACEHOLDER: headshot]"
+  photo_alt: JP, founder of 21 Jewel Advisory
   heading: Hi, I'm JP.
   paragraphs:
-    - I spent 8 years in agency and in-house marketing and analytics, measuring what campaigns actually did.
+    - I spent 8 years in agency and in-house marketing, measuring what campaigns actually did instead of what they claimed.
     - I started 21 Jewel because owner-run shops get sold marketing they can't see. I do the work myself, I use the tools you already pay for, and I show you the numbers.
   link: { label: More about me, href: "/about" }
 
+learn:
+  eyebrow: Learn
+  heading: Fix it yourself, or know what you're paying for.
+  link: { label: All guides, href: "/learn" }
+
 final_cta:
   heading: Find out what's costing you calls.
-  body: The Website Review is free, takes about 3 minutes to request, and you keep the checklist either way.
-  button: { label: Get my free Website Review, href: "/review" }
+  body: The Local Search Audit is free, takes about 3 minutes to request, and you keep the fix list either way.
+  button: { label: Get my free Local Search Audit, href: "/audit" }
+  secondary_label: Or call

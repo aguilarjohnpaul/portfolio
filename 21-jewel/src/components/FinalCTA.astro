@@ -1,17 +1,25 @@
 ---
-import type { HomeData } from '../lib/content';
-interface Props { cta: HomeData['final_cta'] }
-const { cta } = Astro.props;
+import type { HomeData, SiteData } from '../lib/content';
+import TrustStrip from './TrustStrip.astro';
+interface Props { cta: HomeData['final_cta']; site: SiteData; location?: string }
+const { cta, site, location = 'final-cta' } = Astro.props;
 ---
 <section class="section section-surface" aria-labelledby="final-h">
   <div class="container inner">
     <h2 id="final-h">{cta.heading}</h2>
     <p class="lead">{cta.body}</p>
-    <div><a class="btn btn-primary" href={cta.button.href} data-event="cta_click" data-prop-location="final-cta" data-prop-target={cta.button.href}>{cta.button.label}</a></div>
+    <div class="actions">
+      <a class="btn btn-primary" href={cta.button.href} data-event="cta_click" data-prop-location={location} data-prop-target={cta.button.href}>{cta.button.label}</a>
+      <a class="text-link" href={`tel:${site.brand.phone_href}`} data-event="call_click" data-prop-location={location}>{cta.secondary_label} {site.brand.phone}</a>
+    </div>
+    <TrustStrip trust={site.trust} />
   </div>
 </section>
 
 <style>
   .inner { display: grid; gap: var(--space-4); justify-items: center; text-align: center; }
   .inner p { margin-inline: auto; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-3) var(--space-5); }
+  .text-link { font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; }
+  .inner :global(.chips) { justify-content: center; }
 </style>

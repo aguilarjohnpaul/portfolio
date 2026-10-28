@@ -54,8 +54,11 @@ const site = defineCollection({
     router: z.object({ enabled: z.boolean() }),
     nav: z.object({
       skip: text, home_label: text, menu_open: text, menu_close: text,
-      links: z.array(link), founding_link: link, cta: link, cta_short: text,
+      groups: z.array(z.object({ label: text, links: z.array(link).min(1) })),
+      links: z.array(link), founding_link: link, cta: link, cta_short: text, phone_label: text,
     }),
+    sticky: z.object({ call: text, cta: link }),
+    trust: z.object({ label: text, items: z.array(text).min(3).max(6) }),
     footer: z.object({
       who_heading: text, industries: z.array(flagged), links_heading: text, links: z.array(flagged),
       bottom: text,
@@ -74,23 +77,24 @@ const home = defineCollection({
   loader: one('home'),
   schema: z.object({
     hero: z.object({
-      eyebrow: text, primary: link, secondary: link,
+      eyebrow: text, primary: link, secondary_label: text, micro: text,
       variants: z.object({ a: variant, b: variant }),
     }),
     example: z.object({ label: text, items: z.array(text).length(3), footer: text }),
     pains: z.object({ heading: text, items: z.array(text).min(1) }),
     how: z.object({
-      eyebrow: text, heading: text, framework: text,
-      steps: z.array(z.object({ name: text, body: text })).length(3),
+      eyebrow: text, heading: text, intro: text,
+      labels: z.object({ means: text, breaks: text, fix: text }),
+      steps: z.array(z.object({ name: text, means: text, breaks: text, fix: text, link })).length(3),
     }),
-    your_part: z.object({ heading: text, items: z.array(text), closing: text }),
-    offers: z.object({ eyebrow: text, heading: text }),
-    promise: z.object({ label: text, items: z.array(text).min(1) }),
+    offers: z.object({ eyebrow: text, heading: text, link }),
+    industries: z.object({ eyebrow: text, heading: text, intro: text }),
     measure: z.object({ heading: text, body: text, link }),
     founding: z.object({ eyebrow: text, heading: text, body: text, button: link }),
     proof: z.object({ eyebrow: text, heading: text }),
     about: z.object({ photo: z.string(), photo_alt: text, heading: text, paragraphs: z.array(text), link }),
-    final_cta: z.object({ heading: text, body: text, button: link }),
+    learn: z.object({ eyebrow: text, heading: text, link }),
+    final_cta: z.object({ heading: text, body: text, button: link, secondary_label: text }),
   }),
 });
 
@@ -229,7 +233,7 @@ const industries = defineCollection({
       slug: z.string().regex(/^[a-z0-9-]+$/),
       flag: flagName,
       indexed: z.boolean(),
-      name: text, h1: text, sub: text,
+      name: text, tile: text, h1: text, sub: text,
       searches: z.array(text),
       fixes: z.array(text).min(1),
       proof: z.string(),

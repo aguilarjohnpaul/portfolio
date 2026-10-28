@@ -1,0 +1,38 @@
+---
+// The five lines under every primary call to action (Change 03 §2.3). Two looks:
+// "chips" (compact, under a hero or CTA block) and "band" (full-width dark strip on the homepage).
+import type { SiteData } from '../lib/content';
+interface Props { trust: SiteData['trust']; look?: 'chips' | 'band' }
+const { trust, look = 'chips' } = Astro.props;
+---
+{look === 'band' ? (
+  <section class="band" aria-label={trust.label}>
+    <ul role="list" class="container items">
+      {trust.items.map((t) => (
+        <li>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <span>{t}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+) : (
+  <ul role="list" class="chips" aria-label={trust.label}>
+    {trust.items.map((t) => (
+      <li>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <span>{t}</span>
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .band { background: var(--band-bg); color: var(--band-fg); padding-block: var(--space-6); }
+  .items { display: grid; gap: var(--space-3) var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+  .items li { display: flex; gap: var(--space-2); align-items: center; font-weight: 600; max-width: none; }
+  .items svg { flex: none; color: var(--band-accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+  .chips li { display: inline-flex; gap: 6px; align-items: center; font-size: var(--small); font-weight: 500; color: var(--muted); max-width: none; }
+  .chips svg { flex: none; color: var(--data); }
+</style>

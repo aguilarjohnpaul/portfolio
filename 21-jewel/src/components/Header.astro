@@ -1,20 +1,25 @@
 ---
 import { navLinks, type SiteData } from '../lib/content';
+import NavGroup from './NavGroup.astro';
 import MobileMenu from './MobileMenu.astro';
 interface Props { site: SiteData }
 const { site } = Astro.props;
-const { nav } = site;
+const { nav, brand } = site;
 const links = navLinks(site);
 ---
 <header class="site-header">
   <div class="container bar">
-    <a class="wordmark" href="/" aria-label={nav.home_label}>{site.brand.name}</a>
+    <a class="wordmark" href="/" aria-label={nav.home_label}>{brand.name}</a>
     <nav class="desktop-nav" aria-label="Main">
       <ul role="list">
+        {nav.groups.map((g) => <NavGroup group={g} />)}
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
       </ul>
     </nav>
     <div class="actions">
+      <a class="phone" href={`tel:${brand.phone_href}`} aria-label={`${nav.phone_label}, ${brand.phone}`} data-event="call_click" data-prop-location="header">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6.6 3h3.1l1.6 4-2 1.3a11.5 11.5 0 0 0 6.4 6.4l1.3-2 4 1.6v3.1A2.6 2.6 0 0 1 18.4 20 15.4 15.4 0 0 1 4 5.6 2.6 2.6 0 0 1 6.6 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </a>
       <a class="btn btn-primary cta" href={nav.cta.href} data-event="cta_click" data-prop-location="header" data-prop-target={nav.cta.href}><span class="long">{nav.cta.label}</span><span class="short" aria-hidden="true">{nav.cta_short}</span></a>
       <MobileMenu nav={nav} links={links} />
     </div>
@@ -33,22 +38,29 @@ const links = navLinks(site);
     min-height: 44px; display: inline-flex; align-items: center;
   }
   .desktop-nav { margin-left: auto; }
-  .desktop-nav ul { display: flex; gap: var(--space-5); }
-  .desktop-nav a {
+  .desktop-nav > ul { display: flex; gap: var(--space-4); align-items: center; }
+  .desktop-nav > ul > li > a {
     color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px;
-    min-height: 44px; display: inline-flex; align-items: center;
+    min-height: 44px; display: inline-flex; align-items: center; padding-inline: var(--space-2);
   }
-  .desktop-nav a:hover { color: var(--accent-text); }
+  .desktop-nav > ul > li > a:hover { color: var(--accent-text); }
   .actions { display: flex; align-items: center; gap: var(--space-2); }
   .cta { padding: 10px 16px; font-size: 15px; }
-  @media (max-width: 759.98px) {
+  .phone {
+    display: none; width: 44px; height: 44px; align-items: center; justify-content: center;
+    border: 1px solid var(--line); border-radius: var(--radius-btn); color: var(--ink);
+  }
+  .short { display: none; }
+  @media (max-width: 1023.98px) {
     .desktop-nav { display: none; }
     .actions { margin-left: auto; }
+    .phone { display: inline-flex; }
+  }
+  @media (max-width: 759.98px) {
     .bar { gap: var(--space-3); min-height: 64px; }
     .wordmark { font-size: 20px; }
     .cta { padding: 10px 12px; font-size: 14px; white-space: nowrap; }
   }
-  .short { display: none; }
   @media (max-width: 459.98px) {
     .long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .short { display: inline; }

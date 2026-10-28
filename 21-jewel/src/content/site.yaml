@@ -57,23 +57,61 @@ nav:
   home_label: 21 Jewel home
   menu_open: Menu
   menu_close: Close
+  # Dropdown groups (desktop) and flat group labels (mobile menu).
+  groups:
+    - label: Services
+      links:
+        - { label: Get Found Setup, href: "/services/get-found" }
+        - { label: Get Chosen Setup, href: "/services/get-chosen" }
+        - { label: Keep Ranking, href: "/services/keep-ranking" }
+    - label: Industries
+      links:
+        - { label: Sign and print shops, href: "/industries/sign-print" }
+        - { label: Roofing, href: "/industries/roofing" }
+        - { label: Plumbing, href: "/industries/plumbing" }
+        - { label: Electrical, href: "/industries/electrical" }
+        - { label: Remodeling, href: "/industries/remodeling" }
+        - { label: Landscaping and tree service, href: "/industries/landscaping-tree" }
   links:
-    - { label: How it works, href: "/#how" }
-    - { label: Offers, href: "/offers" }
+    - { label: Pricing, href: "/pricing" }
+    - { label: Learn, href: "/learn" }
     - { label: About, href: "/about" }
-  # Added between Offers and About when flags.showFounding is true.
+  # Added before About when flags.showFounding is true.
   founding_link: { label: Founding clients, href: "/founding-clients" }
-  cta: { label: Free Website Review, href: "/review" }
-  # Shown in the header on phones narrower than 460px.
-  cta_short: Free review
+  cta: { label: Free Local Search Audit, href: "/audit" }
+  # Header button text on phones.
+  cta_short: Free audit
+  # Phone icon button in the header on phones.
+  phone_label: Call JP
+
+# Mobile sticky bar (Change 03 §3). Hidden on /audit and while a form is on screen.
+sticky:
+  call: (737) 391-3041
+  cta: { label: Free audit, href: "/audit" }
+
+# Trust strip under every primary call to action (Change 03 §2.3).
+trust:
+  label: What working with me looks like
+  items:
+    - I do the work myself.
+    - Month-to-month. No contracts.
+    - You own every login.
+    - No new software to pay for.
+    - San Antonio. I can drive to you.
 
 footer:
   who_heading: Who I help
   industries:
     - { label: Sign and print shops, href: "/industries/sign-print", flag: "" }
+    - { label: Roofing, href: "/industries/roofing", flag: "" }
+    - { label: Plumbing, href: "/industries/plumbing", flag: "" }
+    - { label: Electrical, href: "/industries/electrical", flag: "" }
+    - { label: Remodeling, href: "/industries/remodeling", flag: "" }
+    - { label: Landscaping and tree service, href: "/industries/landscaping-tree", flag: "" }
   links_heading: More
   links:
-    - { label: Offers, href: "/offers", flag: "" }
+    - { label: Pricing, href: "/pricing", flag: "" }
+    - { label: Learn, href: "/learn", flag: "" }
     - { label: About, href: "/about", flag: "" }
     - { label: Scorecard, href: "/scorecard", flag: showScorecardLink }
     - { label: Privacy, href: "/privacy", flag: "" }

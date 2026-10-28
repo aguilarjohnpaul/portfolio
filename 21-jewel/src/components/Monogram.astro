@@ -1,0 +1,14 @@
+---
+// Stands in for the photo until public/jp.jpg exists: initials on a brand-colored card, 4:5, no placeholder text.
+interface Props { initials?: string; label: string }
+const { initials = 'JP', label } = Astro.props;
+---
+<svg class="monogram" viewBox="0 0 480 600" role="img" aria-label={label}>
+  <rect width="480" height="600" rx="12" fill="var(--ink)" />
+  <circle cx="240" cy="300" r="150" fill="none" stroke="var(--accent)" stroke-width="6" />
+  <text x="240" y="326" text-anchor="middle" font-family="var(--font-display)" font-weight="600" font-size="128" fill="var(--bg)">{initials}</text>
+</svg>
+
+<style>
+  .monogram { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; border-radius: var(--radius-card); display: block; }
+</style>

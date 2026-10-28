@@ -63,7 +63,7 @@ about:
     - { title: "Serve the person, not the project.", body: "Your time matters, so I keep your part to minutes." }
     - { title: Build things that outlast me., body: "You own everything, and it keeps working after we're done." }
   photo: ""
-  photo_alt: "[PLACEHOLDER: headshot]"
+  photo_alt: JP, founder of 21 Jewel Advisory
   button: { label: Get my free Website Review, href: "/review" }
 
 results:
