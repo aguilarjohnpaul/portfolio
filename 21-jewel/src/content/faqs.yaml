@@ -1,0 +1,41 @@
+# FAQ lists by page (Change 03 §8). Shown when site.yaml flags.showFaq is true.
+# The Google Sheet's "faqs" tab can replace any page's list (page, order, question, answer, active).
+# Page ids: home, pricing. Services and industries get their own ids in later steps.
+
+heading: Questions
+
+pages:
+  home:
+    - q: "Do I have to do anything?"
+      a: "About 30–45 minutes in total. Add me as a manager, one short call, approve the words, and send photos. I do the rest."
+    - q: "Do you need my passwords?"
+      a: "No. You add me as a manager on your Google profile and your website, and you can remove me anytime."
+    - q: "Will I be #1 on Google?"
+      a: "Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and you see the numbers."
+    - q: "How will I know it worked?"
+      a: "Before I start, I save your profile numbers, review count and map position. Google only shows about six months of profile history, so I keep yours from day one. You see the change at 30, 60 and 90 days. In The 30-Day Fix, I also add a \"How did you hear about us?\" question so you can tie calls to real jobs."
+    - q: "Do I need to buy new software?"
+      a: "No. Everything runs on the tools you already pay for."
+  pricing:
+    - q: "Do I have to do anything?"
+      a: "About 30–45 minutes in total. Add me as a manager, one short call, approve the words, and send photos. I do the rest."
+    - q: "Do you need my passwords?"
+      a: "No. You add me as a manager on your Google profile and your website, and you can remove me anytime."
+    - q: "Will I be #1 on Google?"
+      a: "Nobody can honestly promise that, and you should be wary of anyone who does. I promise the work gets done on time and you see the numbers."
+    - q: "How will I know it worked?"
+      a: "Before I start, I save your profile numbers, review count and map position. Google only shows about six months of profile history, so I keep yours from day one. You see the change at 30, 60 and 90 days. In The 30-Day Fix, I also add a \"How did you hear about us?\" question so you can tie calls to real jobs."
+    - q: "Do I need to buy new software?"
+      a: "No. Everything runs on the tools you already pay for."
+    - q: "I already have a web person. Is that a problem?"
+      a: "No. I can make the changes myself, or hand your web person exactly what to change."
+    - q: "What website platforms do you work on?"
+      a: "Wix, Squarespace, WordPress, GoDaddy, Shopify and Google Sites. If yours isn't listed, ask."
+    - q: "I don't have a website."
+      a: "Start with the Google Profile Tune-Up. If you need a site, I'll introduce you to a partner who builds simple ones, and I'll write the words."
+    - q: "Do you only work in San Antonio?"
+      a: "I'm based in San Antonio and work with local service businesses anywhere in the US."
+    - q: "Can I cancel Growth Advisor?"
+      a: "After the 6-month minimum, yes, anytime with 30 days' notice. Project work has no contract beyond the project itself."
+    - q: "Who owns the work?"
+      a: "You do. Your profile, your pages, your reviews and your data. When we're done, you remove my access."

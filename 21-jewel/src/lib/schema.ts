@@ -73,7 +73,7 @@ export function website(site: SiteData) {
   };
 }
 
-export function faqPage(faq: OffersData['faq']) {
+export function faqPage(faq: { q: string; a: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

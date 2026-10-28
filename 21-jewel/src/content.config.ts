@@ -1,12 +1,33 @@
 // Content schemas. A typo or missing field in src/content/*.yaml fails the build.
+import { readFileSync } from 'node:fs';
 import { defineCollection } from 'astro:content';
-import { file, glob } from 'astro/loaders';
+import { glob } from 'astro/loaders';
+import type { Loader } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { parse } from 'yaml';
+import { printSummary, withOverrides } from './lib/sheet-overrides';
 
 // Each YAML file is one document, loaded as a single entry with id "main".
-const one = (name: string) =>
-  file(`src/content/${name}.yaml`, { parser: (text) => ({ main: parse(text) }) });
+// The Google Sheet (Change 03 §8) overrides whitelisted values before the schema check,
+// so a Sheet value that breaks the schema fails the build the same way a YAML typo would.
+const one = (name: string): Loader => ({
+  name: `yaml:${name}`,
+  load: async ({ store, parseData, generateDigest, logger, watcher }) => {
+    const path = `src/content/${name}.yaml`;
+    const read = async () => {
+      const raw = parse(readFileSync(new URL(`../${path}`, import.meta.url), 'utf8')) as Record<string, unknown>;
+      const merged = await withOverrides(name, raw);
+      const data = await parseData({ id: 'main', data: merged });
+      store.set({ id: 'main', data, digest: generateDigest(data) });
+      printSummary(logger);
+    };
+    await read();
+    if (watcher) {
+      watcher.add(path);
+      watcher.on('change', (changed) => { if (changed.endsWith(path)) read().catch((e) => logger.error(String(e))); });
+    }
+  },
+});
 
 const link = z.object({ label: z.string(), href: z.string() });
 const text = z.string().min(1);
@@ -69,7 +90,6 @@ const home = defineCollection({
     founding: z.object({ eyebrow: text, heading: text, body: text, button: link }),
     proof: z.object({ eyebrow: text, heading: text }),
     about: z.object({ photo: z.string(), photo_alt: text, heading: text, paragraphs: z.array(text), link }),
-    faq_heading: text,
     final_cta: z.object({ heading: text, body: text, button: link }),
   }),
 });
@@ -79,7 +99,7 @@ const offers = defineCollection({
   loader: one('offers'),
   schema: z.object({
     page: z.object({
-      heading: text, intro: text, ladder_rule: text, addons_heading: text, faq_heading: text,
+      heading: text, intro: text, ladder_rule: text, addons_heading: text,
       dont_do: z.object({ heading: text, body: text }),
       labels: z.object({
         for: text, get: text, needs: text, your_time: text, timeline: text, terms: text, guarantee: text,
@@ -104,7 +124,15 @@ const offers = defineCollection({
       checkout_url: z.string(),
     })),
     addons: z.array(z.object({ id: text, name: text, price_label: text, one_liner: text })),
-    faq: z.array(z.object({ q: text, a: text, home: z.boolean().optional() })),
+  }),
+});
+
+// FAQ lists per page (Change 03 §8). Keys are page ids; the Sheet's faqs tab can replace any list.
+const faqs = defineCollection({
+  loader: one('faqs'),
+  schema: z.object({
+    heading: text,
+    pages: z.record(z.string().regex(/^[a-z0-9-]+$/), z.array(z.object({ q: text, a: text }))),
   }),
 });
 
@@ -232,5 +260,5 @@ const caseStudies = defineCollection({
 });
 
 export const collections = {
-  site, home, offers, scorecard, founding, pages, industries, testimonials, caseStudies,
+  site, home, offers, faqs, scorecard, founding, pages, industries, testimonials, caseStudies,
 };

@@ -6,11 +6,12 @@ import FAQ from '../components/FAQ.astro';
 import { calHref, doc, ladder } from '../lib/content';
 import { faqPage } from '../lib/schema';
 
-const [site, data] = await Promise.all([doc('site'), doc('offers')]);
+const [site, data, faqs] = await Promise.all([doc('site'), doc('offers'), doc('faqs')]);
+const faq = faqs.pages.pricing ?? [];
 const cal = calHref(site);
 const { showFaq, showFounding } = site.flags;
 ---
-<Base page="offers" jsonLd={showFaq ? [faqPage(data.faq)] : []}>
+<Base page="offers" jsonLd={showFaq && faq.length ? [faqPage(faq)] : []}>
   <div class="container page-head">
     <h1>{data.page.heading}</h1>
     <p class="lead">{data.page.intro}</p>
@@ -25,7 +26,7 @@ const { showFaq, showFounding } = site.flags;
       </div>
     </div>
   </section>
-  {showFaq && <FAQ heading={data.page.faq_heading} items={data.faq} />}
+  {showFaq && faq.length > 0 && <FAQ heading={faqs.heading} items={faq} />}
 </Base>
 
 <style>

@@ -1,7 +1,7 @@
 // One place to read each content document. Pages call these instead of getEntry.
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 
-type Single = 'site' | 'home' | 'offers' | 'scorecard' | 'founding' | 'pages' | 'industries' | 'testimonials';
+type Single = 'site' | 'home' | 'offers' | 'faqs' | 'scorecard' | 'founding' | 'pages' | 'industries' | 'testimonials';
 
 export async function doc<K extends Single>(name: K): Promise<CollectionEntry<K>['data']> {
   const entry = (await getEntry(name, 'main')) as CollectionEntry<K> | undefined;

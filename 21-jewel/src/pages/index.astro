@@ -15,9 +15,9 @@ import FinalCTA from '../components/FinalCTA.astro';
 import { doc } from '../lib/content';
 import { faqPage, professionalService, website } from '../lib/schema';
 
-const [site, home, offers] = await Promise.all([doc('site'), doc('home'), doc('offers')]);
+const [site, home, offers, faqs] = await Promise.all([doc('site'), doc('home'), doc('offers'), doc('faqs')]);
 const { flags } = site;
-const homeFaq = offers.faq.filter((f) => f.home);
+const homeFaq = faqs.pages.home ?? [];
 // FAQ structured data only when the FAQ is visible.
 const jsonLd = [professionalService(site, offers), website(site), ...(flags.showFaq ? [faqPage(homeFaq)] : [])];
 ---
@@ -32,6 +32,6 @@ const jsonLd = [professionalService(site, offers), website(site), ...(flags.show
   {flags.showFounding && <FoundingBand founding={home.founding} site={site} />}
   <ProofSlot proof={home.proof} enabled={flags.showResults} />
   <AboutBlock about={home.about} />
-  {flags.showFaq && <FAQ heading={home.faq_heading} items={homeFaq} />}
+  {flags.showFaq && homeFaq.length > 0 && <FAQ heading={faqs.heading} items={homeFaq} />}
   <FinalCTA cta={home.final_cta} />
 </Base>
