@@ -60,6 +60,16 @@ GA4 removed the separate Key events page in 2025. Key events are now the star ne
 
 GA4 can take 24 to 48 hours to list a brand-new event name in Recent events, even while it is already receiving it. To register one before it arrives: **+ Create event** → exact name → turn on **Mark as key event** → **Create with code** → Create. Never use **Create without code** for these: it builds a second event from page views and double counts.
 
+**Value and counting method** (the arrow next to Mark as key event, or Key events tab → three dots on the row):
+
+| Event | Counting method | Default value |
+|---|---|---|
+| `audit_submit` | Once per event (each request is a lead; the site fires it once per request) | None yet |
+| `call_click` | Once per session (three taps in one visit is one person) | None yet |
+| `scorecard_email_submit` | Once per session | None yet |
+
+Leave values off until you know your close rate; a guessed value shows up as fake revenue in every report. Example later: if 1 in 4 audits becomes a $650 setup, an audit is worth about $160. Values only apply from the day you set them.
+
 `close_convert_lead` and `qualify_lead` are GA4 defaults for the "Generate leads" objective. The site doesn't send them; leave or unstar them.
 
 Other events you'll see (Change 03 §10): `audit_start` (first tap into the form), `audit_error`, `cta_click` (every button, with `location` and `target`; `target: cal` is a booking click), `email_click`, `scroll_depth` (25/50/75/90 per page), `learn_read` (50/90 of a guide), `offer_view`, `industry_page_view`, and the scorecard events.
